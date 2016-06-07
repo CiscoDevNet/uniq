@@ -1,0 +1,342 @@
+{
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/v2/neighborhood",
+    "consumes": [
+        "application/json"
+    ],
+    "swaggerVersion": "1.2",
+    "apis": [
+        {
+            "path": "/v2/neighborhood",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Update Neighbor(s)",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "type": "NeighborhoodDTO",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "description": "Neighborhood Object",
+                            "required": true,
+                            "name": "nbr"
+                        }
+                    ],
+                    "notes": "Update a Neighborhood",
+                    "method": "PUT",
+                    "nickname": "updateNeighbor"
+                }
+            ],
+            "description": "updateNeighbor"
+        },
+        {
+            "path": "/v2/neighborhood",
+            "operations": [
+                {
+                    "type": "NeighborhoodListResult",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Lists all neighborhood",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "NeighborhoodListResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [],
+                    "notes": "Get all Neighborhood(s)",
+                    "method": "GET",
+                    "nickname": "getAllNeighbors"
+                }
+            ],
+            "description": "getAllNeighbors"
+        },
+        {
+            "path": "/v2/neighborhood",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Create Neighbor(s)",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This Request is Accepted",
+                            "code": 202
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "type": "NeighborhoodDTO",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "description": "Neighborhood Object",
+                            "required": true,
+                            "name": "nbr"
+                        }
+                    ],
+                    "notes": "Create a Neighborhood",
+                    "method": "POST",
+                    "nickname": "addNeighbor"
+                }
+            ],
+            "description": "addNeighbor"
+        },
+        {
+            "path": "/v2/neighborhood/{id}",
+            "operations": [
+                {
+                    "type": "NeighborhoodResult",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "List a neighborhood",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "NeighborhoodResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "description": "Retrieve Neighborhood for a given UUID",
+                            "required": true,
+                            "name": "id"
+                        }
+                    ],
+                    "notes": "Get specific Neighborhood",
+                    "method": "GET",
+                    "nickname": "getNeighbor"
+                }
+            ],
+            "description": "getNeighbor"
+        },
+        {
+            "path": "/v2/neighborhood/{id}",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Delete neighborhood",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "description": "Delete Neighborhood for a given UUID",
+                            "required": true,
+                            "name": "id"
+                        }
+                    ],
+                    "notes": "Delete specific Neighborhood",
+                    "method": "DELETE",
+                    "nickname": "deleteNeighbor"
+                }
+            ],
+            "description": "deleteNeighbor"
+        }
+    ],
+    "basePath": "/",
+    "apiVersion": "1.0",
+    "models": {
+        "TaskId": {
+            "extends": "",
+            "properties": {},
+            "id": "TaskId",
+            "description": ""
+        },
+        "NeighborhoodResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "NeighborhoodDTO"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "NeighborhoodResult",
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "TaskIdResult",
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "extends": "",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "id": "TaskIdResponse",
+            "description": ""
+        },
+        "NeighborhoodDTO": {
+            "extends": "",
+            "properties": {
+                "listofScalableGroups": {
+                    "type": "array",
+                    "description": "List of Scalable Groups",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Isolation Property"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Neighborhood Name"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "UUID of the Neighborhood"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the group"
+                }
+            },
+            "id": "NeighborhoodDTO",
+            "description": ""
+        },
+        "NeighborhoodListResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "NeighborhoodDTO"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "NeighborhoodListResult",
+            "description": ""
+        }
+    }
+}

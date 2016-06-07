@@ -1,0 +1,196 @@
+{
+    "resourcePath": "/category",
+    "apis": [
+        {
+            "operations": [
+                {
+                    "notes": "Get all categories",
+                    "type": "CategoryListResult",
+                    "parameters": [],
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "CategoryListResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Lists all categories",
+                    "nickname": "getAllCategories",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "getAllCategories",
+            "path": "/category"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Get total count for categories",
+                    "type": "CountResult",
+                    "parameters": [],
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Return total count of categories",
+                    "nickname": "getCategoryCount",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "getCategoryCount",
+            "path": "/category/count"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Get category by id",
+                    "type": "CategoryResult",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "required": true,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "allowMultiple": false,
+                            "description": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "CategoryResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Retrieves a category based on their id",
+                    "nickname": "getCategoryById",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "getCategoryById",
+            "path": "/category/{id}"
+        }
+    ],
+    "models": {
+        "CategoryDTO": {
+            "description": "",
+            "required": [
+                "name",
+                "id"
+            ],
+            "id": "CategoryDTO",
+            "properties": {
+                "name": {
+                    "description": "Category Name",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "CategoryListResult": {
+            "description": "",
+            "id": "CategoryListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "CategoryDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": ""
+        },
+        "CategoryResult": {
+            "description": "",
+            "id": "CategoryResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "CategoryDTO"
+                }
+            },
+            "extends": ""
+        },
+        "CountResult": {
+            "description": "",
+            "id": "CountResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "extends": ""
+        }
+    },
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "produces": [
+        "application/json"
+    ],
+    "basePath": "/"
+}

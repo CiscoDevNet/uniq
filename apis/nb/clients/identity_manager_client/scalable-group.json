@@ -1,0 +1,253 @@
+{
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/v2/scalable-group",
+    "swaggerVersion": "1.2",
+    "apis": [
+        {
+            "path": "/v2/scalable-group",
+            "operations": [
+                {
+                    "type": "ScalableGroupListResult",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Retrieves scalable group based on a given filter",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "ScalableGroupListResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "description": "Retrieve policies for a given name",
+                            "required": false,
+                            "name": "name"
+                        },
+                        {
+                            "defaultValue": "",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "description": "Starting index of the resources (1 based)",
+                            "required": false,
+                            "name": "offset"
+                        },
+                        {
+                            "defaultValue": "",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "description": "Number of resources to return",
+                            "required": false,
+                            "name": "limit"
+                        }
+                    ],
+                    "notes": "Retrieves scalable group based on a given filter",
+                    "method": "GET",
+                    "nickname": "getScalableGroupByFilters"
+                }
+            ],
+            "description": "getScalableGroupByFilters"
+        },
+        {
+            "path": "/v2/scalable-group/count",
+            "operations": [
+                {
+                    "type": "CountResult",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "getCount",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "CountResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [],
+                    "notes": "This method is used to obtain the number of scalable groups known to APIC-EM",
+                    "method": "GET",
+                    "nickname": "getCount"
+                }
+            ],
+            "description": "getCount"
+        },
+        {
+            "path": "/v2/scalable-group/{id}",
+            "operations": [
+                {
+                    "type": "ScalableGroupResult",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "List scalable group based on id",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "ScalableGroupResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "description": "id",
+                            "required": true,
+                            "name": "id"
+                        }
+                    ],
+                    "notes": "Get Scalable group based on id",
+                    "method": "GET",
+                    "nickname": "getEndPointGroupbyId"
+                }
+            ],
+            "description": "getEndPointGroupbyId"
+        }
+    ],
+    "basePath": "/",
+    "apiVersion": "1.0",
+    "models": {
+        "ScalableGroupDTO": {
+            "extends": "",
+            "properties": {
+                "identitySourceIpAddress": {
+                    "type": "string",
+                    "description": "identitySourceIpAddress"
+                },
+                "createTime": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "createTime"
+                },
+                "scalableGroupExternalHandle": {
+                    "type": "string",
+                    "description": "scalableGroupExternalHandle"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description"
+                },
+                "lastUpdateTime": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "lastUpdateTime"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name"
+                },
+                "identitySourceId": {
+                    "type": "string",
+                    "description": "identitySourceId"
+                },
+                "identitySourceType": {
+                    "type": "string",
+                    "description": "identitySourceType"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                }
+            },
+            "id": "ScalableGroupDTO",
+            "description": "",
+            "required": [
+                "name"
+            ]
+        },
+        "ScalableGroupListResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ScalableGroupDTO"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "ScalableGroupListResult",
+            "description": ""
+        },
+        "ScalableGroupResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "ScalableGroupDTO"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "ScalableGroupResult",
+            "description": ""
+        },
+        "CountResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "CountResult",
+            "description": ""
+        }
+    }
+}

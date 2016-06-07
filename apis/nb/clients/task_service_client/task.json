@@ -1,0 +1,274 @@
+{
+    "models": {
+        "TaskDTOResponse": {
+            "id": "TaskDTOResponse",
+            "description": "",
+            "properties": {
+                "response": {
+                    "$ref": "AugmentedTaskDTO"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "AugmentedTaskDTO": {
+            "id": "AugmentedTaskDTO",
+            "description": "Represents a task",
+            "properties": {
+                "rootId": {
+                    "description": "rootId",
+                    "type": "string"
+                },
+                "serviceType": {
+                    "description": "serviceType",
+                    "type": "string"
+                },
+                "parentId": {
+                    "description": "parentId",
+                    "type": "string"
+                },
+                "data": {
+                    "description": "data",
+                    "type": "string"
+                },
+                "operationIdList": {
+                    "$ref": "Collection\u00abstring\u00bb"
+                },
+                "errorCode": {
+                    "description": "errorCode",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "username",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "startTime",
+                    "$ref": "date-time"
+                },
+                "isError": {
+                    "description": "isError",
+                    "type": "boolean"
+                },
+                "progress": {
+                    "description": "progress",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "version",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "failureReason": {
+                    "description": "failureReason",
+                    "type": "string"
+                },
+                "lastUpdate": {
+                    "description": "lastUpdate",
+                    "$ref": "date-time"
+                },
+                "endTime": {
+                    "description": "endTime",
+                    "$ref": "date-time"
+                }
+            },
+            "extends": ""
+        },
+        "Collection\u00abstring\u00bb": {
+            "id": "Collection\u00abstring\u00bb",
+            "description": "",
+            "properties": {},
+            "extends": ""
+        },
+        "TaskDTOListResponse": {
+            "id": "TaskDTOListResponse",
+            "description": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "AugmentedTaskDTO"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        }
+    },
+    "apis": [
+        {
+            "description": "getTaskByRange",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getTaskByRange",
+                    "type": "TaskDTOListResponse",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "offset",
+                            "type": "integer",
+                            "description": "Index",
+                            "format": "int32",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "limit",
+                            "type": "integer",
+                            "description": "The maximum value of {limit} supported is 500. <br/> Base 1 indexing for {limit}, minimum value is 1",
+                            "format": "int32",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "path"
+                        }
+                    ],
+                    "notes": "This method is used to list number of tasks (Pagination)",
+                    "summary": "getTaskByRange",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskDTOListResponse",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "responseModel": "Void",
+                            "code": 400,
+                            "message": "If {limit} value is more than 500"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/task/{offset}/{limit}"
+        },
+        {
+            "description": "getTask",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getTask",
+                    "type": "TaskDTOResponse",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "taskId",
+                            "type": "TaskId",
+                            "description": "UUID of the Task",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        }
+                    ],
+                    "notes": "This method is used to retrieve a task based on their id",
+                    "summary": "getTruststoreFileCount",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskDTOResponse",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "responseModel": "Void",
+                            "code": 404,
+                            "message": "No task corresponding to the id was found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/task/{taskId}"
+        },
+        {
+            "description": "getTaskTree",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getTaskTree",
+                    "type": "TaskDTOListResponse",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "taskId",
+                            "type": "TaskId",
+                            "description": "UUID of the Task",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        }
+                    ],
+                    "notes": "This method is used to retrieve a task with its children tasks based on their id",
+                    "summary": "Get Task Tree",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskDTOListResponse",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "responseModel": "Void",
+                            "code": 404,
+                            "message": "No task corresponding to the id was found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/task/{taskId}/tree"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/task"
+}

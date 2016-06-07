@@ -1,0 +1,1629 @@
+{
+    "apiVersion": "1.0",
+    "apis": [
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "object",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "object"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getAllNetworkDevice",
+                    "summary": "Retrieves the network devices by filters",
+                    "parameters": [
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the list of network devices filtered using management IP address, mac address, hostname and location name"
+                }
+            ],
+            "description": "getAllNetworkDevice",
+            "path": "/network-device"
+        },
+        {
+            "operations": [
+                {
+                    "method": "PUT",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "updateNetworkDevice",
+                    "summary": "Updates network device role",
+                    "parameters": [
+                        {
+                            "description": "networkDeviceBriefNIO",
+                            "defaultValue": "",
+                            "type": "NetworkDeviceBriefNIO",
+                            "paramType": "body",
+                            "name": "networkDeviceBriefNIO",
+                            "required": false,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Updates the role of the device as access, core, distribution, border router",
+                    "consumes": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "updateNetworkDevice",
+            "path": "/network-device/brief"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "CountResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceCount",
+                    "summary": "Retrieves network device count by filters",
+                    "parameters": [
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the count of network devices filtered by management IP address, mac address, hostname and location name"
+                }
+            ],
+            "description": "getNetworkDeviceCount",
+            "path": "/network-device/count"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceByIp",
+                    "summary": "Retrieves network device by IP address",
+                    "parameters": [
+                        {
+                            "description": "Device IP address",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "ipAddress",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the network device with the given IP address"
+                }
+            ],
+            "description": "getNetworkDeviceByIp",
+            "path": "/network-device/ip-address/{ipAddress}"
+        },
+        {
+            "operations": [
+                {
+                    "method": "POST",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "addNetworkDeviceLocation",
+                    "summary": "Associates location with device",
+                    "parameters": [
+                        {
+                            "description": "networkDeviceNIO",
+                            "defaultValue": "",
+                            "type": "NetworkDeviceNIO",
+                            "paramType": "body",
+                            "name": "networkDeviceNIO",
+                            "required": false,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Associates the given location to the given device",
+                    "consumes": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "addNetworkDeviceLocation",
+            "path": "/network-device/location"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceListResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceLocation",
+                    "summary": "Retrieves device location",
+                    "parameters": [
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the list of network devices that has a location"
+                }
+            ],
+            "description": "getNetworkDeviceLocation",
+            "path": "/network-device/location"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceListResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceByLocationId",
+                    "summary": "Retrieves network device by location ID",
+                    "parameters": [
+                        {
+                            "description": "Location ID",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "locationId",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets list of network devices that are associated with the given location"
+                }
+            ],
+            "description": "getNetworkDeviceByLocationId",
+            "path": "/network-device/location/{locationId}"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceListResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceByLocationByRange",
+                    "summary": "Retrieves network devices with location by range",
+                    "parameters": [
+                        {
+                            "description": "Location ID",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "locationId",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "format": "int32",
+                            "description": "Start index",
+                            "defaultValue": "",
+                            "type": "integer",
+                            "paramType": "path",
+                            "name": "startIndex",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "format": "int32",
+                            "description": "Number of records to return",
+                            "defaultValue": "",
+                            "type": "integer",
+                            "paramType": "path",
+                            "name": "recordsToReturn",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets network devices associated with the given location in the given range"
+                }
+            ],
+            "description": "getNetworkDeviceByLocationByRange",
+            "path": "/network-device/location/{locationId}/{startIndex}/{recordsToReturn}"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceListResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceLocationByRange",
+                    "summary": "Retrieves device location range",
+                    "parameters": [
+                        {
+                            "format": "int32",
+                            "description": "startIndex",
+                            "defaultValue": "",
+                            "type": "integer",
+                            "paramType": "path",
+                            "name": "startIndex",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "format": "int32",
+                            "description": "recordsToReturn",
+                            "defaultValue": "",
+                            "type": "integer",
+                            "paramType": "path",
+                            "name": "recordsToReturn",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the location for the devices in the given range"
+                }
+            ],
+            "description": "getNetworkDeviceLocationByRange",
+            "path": "/network-device/location/{startIndex}/{recordsToReturn}"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkManagementInfoResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkManagementInfoResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkManagementInfo",
+                    "summary": "Get the network management information",
+                    "parameters": [
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the managment information of network devices and sites. Maximum allowed limit is 100."
+                }
+            ],
+            "description": "getNetworkManagementInfo",
+            "path": "/network-device/management-info"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "CountResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkManagementInfoCount",
+                    "summary": "Get the network management information count",
+                    "parameters": [
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the number of network devices or sites, whichever is maximum. This count is used to paginate and query the /network-device/management-info API"
+                }
+            ],
+            "description": "getNetworkManagementInfoCount",
+            "path": "/network-device/management-info/count"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceBySerialNumber",
+                    "summary": "Retrieves network device by serial number",
+                    "parameters": [
+                        {
+                            "description": "Device serial number",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "serialNumber",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the network device with the given serial number"
+                }
+            ],
+            "description": "getNetworkDeviceBySerialNumber",
+            "path": "/network-device/serial-number/{serialNumber}"
+        },
+        {
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "deleteDevicebyId",
+                    "summary": "Delete network device by ID",
+                    "parameters": [
+                        {
+                            "description": "Device ID",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "id",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Removes the network device for the given ID"
+                }
+            ],
+            "description": "deleteDevicebyId",
+            "path": "/network-device/{id}"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceById",
+                    "summary": "Retrieves network device by ID",
+                    "parameters": [
+                        {
+                            "description": "Device ID",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "id",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the network device for the given device ID"
+                }
+            ],
+            "description": "getNetworkDeviceById",
+            "path": "/network-device/{id}"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceBriefNIOResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceBriefNIOResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceBrief",
+                    "summary": "Retrieves network device brief by ID",
+                    "parameters": [
+                        {
+                            "description": "Device ID",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "id",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets brief network device info such as hostname, management IP address for the given device ID"
+                }
+            ],
+            "description": "getNetworkDeviceBrief",
+            "path": "/network-device/{id}/brief"
+        },
+        {
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "deleteNetworkLocationById",
+                    "summary": "Removes network device location",
+                    "parameters": [
+                        {
+                            "description": "Device ID",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "id",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Removes the association between device and location for the given device"
+                }
+            ],
+            "description": "deleteNetworkLocationById",
+            "path": "/network-device/{id}/location"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceLocationById",
+                    "summary": "Retrieves device location by device ID",
+                    "parameters": [
+                        {
+                            "description": "Device ID",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "id",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the location for the given device ID"
+                }
+            ],
+            "description": "getNetworkDeviceLocationById",
+            "path": "/network-device/{id}/location"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "NetworkDeviceListResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkDeviceRange",
+                    "summary": "Retrieves network device by range",
+                    "parameters": [
+                        {
+                            "format": "int32",
+                            "description": "Start index",
+                            "defaultValue": "",
+                            "type": "integer",
+                            "paramType": "path",
+                            "name": "startIndex",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "format": "int32",
+                            "description": "Number of records to return",
+                            "defaultValue": "",
+                            "type": "integer",
+                            "paramType": "path",
+                            "name": "recordsToReturn",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the list of network devices for the given range"
+                }
+            ],
+            "description": "getNetworkDeviceRange",
+            "path": "/network-device/{startIndex}/{recordsToReturn}"
+        }
+    ],
+    "resourcePath": "/network-device",
+    "basePath": "/apic-em-inventory-manager-service",
+    "models": {
+        "NetworkDeviceManagementInfo": {
+            "id": "NetworkDeviceManagementInfo",
+            "required": [
+                "family",
+                "hostname",
+                "credentials",
+                "series",
+                "managementIpAddress",
+                "id",
+                "type"
+            ],
+            "description": "",
+            "extends": "",
+            "properties": {
+                "family": {
+                    "description": "Family of device as switch, router, wireless lan controller, accesspoints",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of device as switch, router, wireless lan controller, accesspoints",
+                    "type": "string"
+                },
+                "hostname": {
+                    "description": "Device name",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Unique identifier of device",
+                    "type": "string"
+                },
+                "credentials": {
+                    "description": "Credential info",
+                    "$ref": "object"
+                },
+                "series": {
+                    "description": "Device series",
+                    "type": "string"
+                },
+                "managementIpAddress": {
+                    "description": "IP address of the device",
+                    "type": "string"
+                }
+            }
+        },
+        "NetworkManagementInfo": {
+            "id": "NetworkManagementInfo",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "networkDeviceManagementInfo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "NetworkDeviceManagementInfo"
+                    }
+                },
+                "siteManagementInfo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "SiteManagementInfo"
+                    }
+                }
+            }
+        },
+        "CountResult": {
+            "id": "CountResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        },
+        "NetworkDeviceDTO": {
+            "id": "NetworkDeviceDTO",
+            "required": [
+                "serialNumber",
+                "family",
+                "inventoryStatusDetail",
+                "hostname",
+                "macAddress",
+                "lastUpdated",
+                "upTime",
+                "role",
+                "tagCount",
+                "softwareVersion",
+                "series",
+                "collectionStatus",
+                "interfaceCount",
+                "lineCardCount",
+                "lineCardId",
+                "managementIpAddress",
+                "memorySize",
+                "platformId",
+                "reachabilityStatus",
+                "type"
+            ],
+            "description": "",
+            "extends": "",
+            "properties": {
+                "family": {
+                    "description": "Family of device as switch, router, wireless lan controller, accesspoints",
+                    "type": "string"
+                },
+                "inventoryStatusDetail": {
+                    "description": "Status detail of inventory sync",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of device as switch, router, wireless lan controller, accesspoints",
+                    "type": "string"
+                },
+                "softwareVersion": {
+                    "description": "Software version on the device",
+                    "type": "string"
+                },
+                "snmpContact": {
+                    "description": "SNMP contact on device",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "Location ID that is associated with the device",
+                    "type": "string"
+                },
+                "series": {
+                    "description": "Device series",
+                    "type": "string"
+                },
+                "lastUpdateTime": {
+                    "$ref": "date-time"
+                },
+                "lineCardId": {
+                    "description": "IDs of linecards of the device",
+                    "type": "string"
+                },
+                "lineCardCount": {
+                    "description": "Number of linecards on the device",
+                    "type": "string"
+                },
+                "macAddress": {
+                    "description": "MAC address of device",
+                    "type": "string"
+                },
+                "snmpLocation": {
+                    "description": "SNMP location on device",
+                    "type": "string"
+                },
+                "locationName": {
+                    "description": "Name of the associated location",
+                    "type": "string"
+                },
+                "platformId": {
+                    "description": "Platform ID of device",
+                    "type": "string"
+                },
+                "roleSource": {
+                    "description": "Role source as manual / auto",
+                    "type": "string"
+                },
+                "memorySize": {
+                    "description": "Processor memory size",
+                    "type": "string"
+                },
+                "interfaceCount": {
+                    "description": "Number of interfaces on the device",
+                    "type": "string"
+                },
+                "hostname": {
+                    "description": "Device name",
+                    "type": "string"
+                },
+                "apManagerInterfaceIp": {
+                    "description": "IP address of WLC on AP manager interface",
+                    "type": "string"
+                },
+                "reachabilityFailureReason": {
+                    "description": "Failure reason for unreachable devices",
+                    "type": "string"
+                },
+                "tunnelUdpPort": {
+                    "description": "Mobility protocol port is stored as tunneludpport for WLC",
+                    "type": "string"
+                },
+                "upTime": {
+                    "description": "Time that shows for how long the device has been up",
+                    "type": "string"
+                },
+                "collectionStatus": {
+                    "description": "Collection status as Synchronizing, Could not synchronize, Not manageable, Managed, Partial Collection Failure, Incomplete, Unreachable, Wrong credential, Reachable, In Progress",
+                    "type": "string"
+                },
+                "serialNumber": {
+                    "description": "Serial number of device",
+                    "type": "string"
+                },
+                "tagCount": {
+                    "description": "Number of tags associated with the device",
+                    "type": "string"
+                },
+                "reachabilityStatus": {
+                    "description": "Device reachability status as Reachable / Unreachable",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "Role of device as access, distribution, border router, core",
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "description": "Time when the network device info last got updated",
+                    "type": "string"
+                },
+                "managementIpAddress": {
+                    "description": "IP address of the device",
+                    "type": "string"
+                },
+                "bootDateTime": {
+                    "description": "Device boot time",
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "instanceUuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "Date": {
+            "id": "Date",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "date": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minutes": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "month": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "hours": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "time": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "year": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "seconds": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        },
+        "NetworkDeviceResult": {
+            "id": "NetworkDeviceResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "NetworkDeviceDTO"
+                }
+            }
+        },
+        "NetworkManagementInfoResult": {
+            "id": "NetworkManagementInfoResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "NetworkManagementInfo"
+                }
+            }
+        },
+        "NetworkDeviceListResult": {
+            "id": "NetworkDeviceListResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "NetworkDeviceDTO"
+                    }
+                }
+            }
+        },
+        "NetworkDeviceBriefNIOResult": {
+            "id": "NetworkDeviceBriefNIOResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "NetworkDeviceBriefNIO"
+                }
+            }
+        },
+        "NetworkDeviceBriefNIO": {
+            "id": "NetworkDeviceBriefNIO",
+            "required": [
+                "role",
+                "roleSource",
+                "id"
+            ],
+            "description": "",
+            "extends": "",
+            "properties": {
+                "id": {
+                    "description": "Unique identifier of the network device",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "Role of device as access, distribution, border router, core",
+                    "type": "string"
+                },
+                "roleSource": {
+                    "description": "Role source as manual / auto",
+                    "type": "string"
+                }
+            }
+        },
+        "NetworkDeviceNIO": {
+            "id": "NetworkDeviceNIO",
+            "required": [
+                "type",
+                "id",
+                "hostname",
+                "serialNumber",
+                "macAddress",
+                "lastUpdated",
+                "upTime",
+                "role",
+                "tagCount",
+                "softwareVersion",
+                "interfaceCount",
+                "lineCardCount",
+                "lineCardId",
+                "managementIpAddress",
+                "memorySize",
+                "platformId",
+                "reachabilityStatus",
+                "family"
+            ],
+            "description": "",
+            "extends": "",
+            "properties": {
+                "numUpdates": {
+                    "format": "int32",
+                    "description": "Number of time network-device info got updated",
+                    "type": "integer"
+                },
+                "family": {
+                    "description": "Family of device as switch, router, wireless lan controller, accesspoints",
+                    "type": "string"
+                },
+                "ingressQueueConfig": {
+                    "description": "Ingress queue config on device",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of device as switch, router, wireless lan controller, accesspoints",
+                    "type": "string"
+                },
+                "memorySize": {
+                    "description": "Processor memory size",
+                    "type": "string"
+                },
+                "anchorWlcForAp": {
+                    "description": "Connected WLC device for AP",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Unique identifier of network device",
+                    "type": "string"
+                },
+                "snmpContact": {
+                    "description": "SNMP contact on device",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "Location ID that is associated with the device",
+                    "type": "string"
+                },
+                "softwareVersion": {
+                    "description": "Software version on the device",
+                    "type": "string"
+                },
+                "lineCardId": {
+                    "description": "IDs of linecards of the device",
+                    "type": "string"
+                },
+                "qosStatus": {
+                    "description": "Qos status on device",
+                    "type": "string"
+                },
+                "tagCount": {
+                    "format": "int32",
+                    "description": "Number of tags associated with the device",
+                    "type": "integer"
+                },
+                "interfaceCount": {
+                    "description": "Number of interfaces on the device",
+                    "type": "string"
+                },
+                "snmpLocation": {
+                    "description": "SNMP location on device",
+                    "type": "string"
+                },
+                "macAddress": {
+                    "description": "MAC address of device",
+                    "type": "string"
+                },
+                "vendor": {
+                    "description": "Vendor information of the device",
+                    "type": "string"
+                },
+                "locationName": {
+                    "description": "Name of the associated location",
+                    "type": "string"
+                },
+                "tag": {
+                    "description": "Tag ID that is associated with the device",
+                    "type": "string"
+                },
+                "platformId": {
+                    "description": "Platform ID of device",
+                    "type": "string"
+                },
+                "roleSource": {
+                    "description": "Role source as manual / auto",
+                    "type": "string"
+                },
+                "portRange": {
+                    "description": "Range of ports on device",
+                    "type": "string"
+                },
+                "duplicateDeviceId": {
+                    "description": "Identifier of the duplicate ip of the same device discovered",
+                    "type": "string"
+                },
+                "avgUpdateFrequency": {
+                    "format": "int32",
+                    "description": "Frequency in which interface info gets updated",
+                    "type": "integer"
+                },
+                "hostname": {
+                    "description": "Device name",
+                    "type": "string"
+                },
+                "lineCardCount": {
+                    "description": "Number of linecards on the device",
+                    "type": "string"
+                },
+                "reachabilityFailureReason": {
+                    "description": "Failure reason for unreachable devices",
+                    "type": "string"
+                },
+                "upTime": {
+                    "description": "Time that shows for how long the device has been up",
+                    "type": "string"
+                },
+                "imageName": {
+                    "description": "Image details on the device",
+                    "type": "string"
+                },
+                "wlcApDeviceStatus": {
+                    "description": "Collection status of AP devices",
+                    "type": "string"
+                },
+                "serialNumber": {
+                    "description": "Serial number of device",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "Role of device as access, distribution, border router, core",
+                    "type": "string"
+                },
+                "reachabilityStatus": {
+                    "description": "Device reachability status as Reachable / Unreachable",
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "description": "Time when the network device info last got updated",
+                    "type": "string"
+                },
+                "managementIpAddress": {
+                    "description": "IP address of the device",
+                    "type": "string"
+                },
+                "bootDateTime": {
+                    "format": "date-time",
+                    "description": "Device boot time",
+                    "type": "string"
+                },
+                "authModelId": {
+                    "description": "Authentication model Id on device",
+                    "type": "string"
+                }
+            }
+        },
+        "TaskIdResponse": {
+            "id": "TaskIdResponse",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            }
+        },
+        "SiteManagementInfo": {
+            "id": "SiteManagementInfo",
+            "required": [
+                "description",
+                "deviceIds",
+                "name",
+                "location",
+                "properties",
+                "id"
+            ],
+            "description": "",
+            "extends": "",
+            "properties": {
+                "description": {
+                    "description": "Description of site",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of site",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Properties of site",
+                    "$ref": "object"
+                },
+                "id": {
+                    "description": "Unique identifier of site",
+                    "type": "string"
+                },
+                "deviceIds": {
+                    "description": "Unique identifier of devices that are associated with site",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "location": {
+                    "description": "Location of site",
+                    "type": "string"
+                }
+            }
+        },
+        "TaskId": {
+            "id": "TaskId",
+            "description": "",
+            "extends": "",
+            "properties": {}
+        },
+        "TaskIdResult": {
+            "id": "TaskIdResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            }
+        }
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "swaggerVersion": "1.2"
+}

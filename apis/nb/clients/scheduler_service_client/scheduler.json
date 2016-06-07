@@ -1,0 +1,348 @@
+{
+    "models": {
+        "ScheduleInfoOutput": {
+            "id": "ScheduleInfoOutput",
+            "description": "",
+            "properties": {
+                "scheduledWorkSpecId": {
+                    "description": "UUID of the ScheduledWorkSpec associated with the scheduled task",
+                    "type": "string"
+                },
+                "nextTime": {
+                    "description": "The next time at which the trigger should fire",
+                    "$ref": "date-time"
+                },
+                "prevTime": {
+                    "description": "The previous time at which the trigger fired. If the trigger has not yet fired, null will be returned",
+                    "$ref": "date-time"
+                },
+                "origin": {
+                    "description": "Contextual field used to identify work spcifications originating from the same source",
+                    "type": "string"
+                },
+                "operation": {
+                    "description": "Contextual field used by the service to identify an operation",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Simple description to be shown to end-users",
+                    "type": "string"
+                },
+                "groupName": {
+                    "description": "A grouping name that can be specified by the service to allow for filtered work spec retrieval",
+                    "type": "string"
+                },
+                "taskId": {
+                    "description": "UUID of the Task",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "The time at which the trigger should first fire. If the schedule has fired and will not fire again, this value will be null",
+                    "$ref": "date-time"
+                },
+                "endTime": {
+                    "description": "The time at which the trigger should quit repeating",
+                    "$ref": "date-time"
+                }
+            },
+            "extends": "",
+            "required": [
+                "origin",
+                "startTime",
+                "endTime",
+                "operation",
+                "scheduledWorkSpecId",
+                "taskId",
+                "nextTime"
+            ]
+        },
+        "SuccessResult": {
+            "id": "SuccessResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "ScheduleInfoOutputListResult": {
+            "id": "ScheduleInfoOutputListResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ScheduleInfoOutput"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "ScheduleInfoOutputResult": {
+            "id": "ScheduleInfoOutputResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "$ref": "ScheduleInfoOutput"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        }
+    },
+    "apis": [
+        {
+            "description": "getAllScheduledTasks",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getAllScheduledTasks",
+                    "type": "ScheduleInfoOutputListResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": false,
+                            "name": "sortBy",
+                            "type": "string",
+                            "description": "sortBy",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": false,
+                            "name": "order",
+                            "type": "string",
+                            "description": "orderBy",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": false,
+                            "name": "groupName",
+                            "type": "string",
+                            "description": "filterByGroup",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": false,
+                            "name": "origin",
+                            "type": "string",
+                            "description": "filterByOrigin",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": false,
+                            "name": "operation",
+                            "type": "string",
+                            "description": "filterByOperation",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": false,
+                            "name": "taskId",
+                            "type": "string",
+                            "description": "filterByTaskId",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": false,
+                            "name": "limit",
+                            "type": "string",
+                            "description": "limit",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": false,
+                            "name": "offset",
+                            "type": "string",
+                            "description": "offset",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "getAllScheduledTasks",
+                    "summary": "List scheduled tasks (Pagination)",
+                    "responseMessages": [
+                        {
+                            "responseModel": "ScheduleInfoOutputListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "responseModel": "Void",
+                            "code": 400,
+                            "message": "If offset value is less than 1"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/scheduled-job"
+        },
+        {
+            "description": "getScheduledTask",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getScheduledTask",
+                    "type": "ScheduleInfoOutputResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "scheduledWorkSpecId",
+                            "type": "string",
+                            "description": "ScheduledWorkSpecification Id",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "getScheduledTask",
+                    "summary": "Retrieves a specific scheduled task",
+                    "responseMessages": [
+                        {
+                            "responseModel": "ScheduleInfoOutputResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "responseModel": "Void",
+                            "code": 404,
+                            "message": "No ScheduledWorkSpecification corresponding to the {scheduledWorkSpecId} was found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/scheduled-job/{scheduledWorkSpecId}"
+        },
+        {
+            "description": "deleteScheduledTask",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "deleteScheduledTask",
+                    "type": "SuccessResult",
+                    "method": "DELETE",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "scheduledWorkSpecId",
+                            "type": "string",
+                            "description": "ScheduledWorkSpecification Id",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "deleteScheduledTask",
+                    "summary": "Deletes a specific scheduled task",
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/scheduled-job/{scheduledWorkSpecId}"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/scheduled-job"
+}

@@ -1,0 +1,383 @@
+{
+    "apis": [
+        {
+            "description": "addTicket",
+            "path": "/ticket",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to create a new user ticket",
+                    "summary": "addTicket",
+                    "nickname": "addTicket",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "TicketRbacResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "user",
+                            "description": "user",
+                            "type": "User",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TicketRbacResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "description": "createTicketAttribute",
+            "path": "/ticket/attribute",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "Create and update specific ticket attribute, Idle Timeout Minimum 60 seconds, Max 3600 seconds, default 900 seconds, Session Timeout Minimum 1800 seconds, Max 86400 seconds, default 21600 seconds",
+                    "summary": "createTicketAttribute",
+                    "nickname": "createTicketAttribute",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "ticketAttribute",
+                            "description": "ticketAttribute",
+                            "type": "TicketAttribute",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "description": "getIdleTimeout",
+            "path": "/ticket/attribute/idletimeout",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "Get Idle timeout",
+                    "summary": "getIdleTimeout",
+                    "nickname": "getIdleTimeout",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "TicketAttributeResult",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TicketAttributeResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "getSessionTimeout",
+            "path": "/ticket/attribute/sessiontimeout",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "Get Session timeout",
+                    "summary": "getSessionTimeout",
+                    "nickname": "getSessionTimeout",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "TicketAttributeResult",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TicketAttributeResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "deleteTicketAttribute",
+            "path": "/ticket/attribute/{attribute}",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "Delete Ticket Attribute",
+                    "summary": "deleteTicketAttribute",
+                    "nickname": "deleteTicketAttribute",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "name": "attribute",
+                            "description": "attribute",
+                            "type": "string",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "description": "deleteTicket",
+            "path": "/ticket/{ticket}",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "Revoke ticket, effectively sign out",
+                    "summary": "deleteTicket",
+                    "nickname": "deleteTicket",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "name": "ticket",
+                            "description": "ticket",
+                            "type": "string",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "DELETE"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "TicketAttribute": {
+            "extends": "",
+            "properties": {
+                "value": {
+                    "description": "Service Ticket Attribute Value",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "attribute": {
+                    "description": "Service Ticket Attribute Name",
+                    "type": "string"
+                }
+            },
+            "id": "TicketAttribute",
+            "required": [
+                "attribute",
+                "value"
+            ],
+            "description": "Object used to retrieve the ticket attributes"
+        },
+        "ServiceTicketRbac": {
+            "extends": "",
+            "properties": {
+                "idleTimeout": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "serviceTicket": {
+                    "description": "Service Ticket to be used as authentication Ticket",
+                    "type": "string"
+                },
+                "sessionTimeout": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "id": "ServiceTicketRbac",
+            "required": [
+                "serviceTicket"
+            ],
+            "description": "Object used to retrieve the service ticket"
+        },
+        "User": {
+            "extends": "",
+            "properties": {
+                "password": {
+                    "description": "password",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "username",
+                    "type": "string"
+                }
+            },
+            "id": "User",
+            "required": [
+                "password",
+                "username"
+            ],
+            "description": ""
+        },
+        "TicketAttributeResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "TicketAttribute"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "TicketAttributeResult",
+            "description": ""
+        },
+        "TicketRbacResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "ServiceTicketRbac"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "TicketRbacResult",
+            "description": ""
+        },
+        "SuccessResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "SuccessResult",
+            "description": ""
+        }
+    },
+    "resourcePath": "/ticket",
+    "basePath": "/",
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "produces": [
+        "application/json"
+    ]
+}

@@ -1,0 +1,700 @@
+{
+    "resourcePath": "/application",
+    "apis": [
+        {
+            "operations": [
+                {
+                    "notes": "Get application(s) based on a filter provided",
+                    "type": "ApplicationListResult",
+                    "parameters": [
+                        {
+                            "name": "isCustom",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "Retrieve custom applications",
+                            "type": "string"
+                        },
+                        {
+                            "name": "isRepresentative",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "Retrieve representative applications",
+                            "type": "string"
+                        },
+                        {
+                            "name": "categoryId",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "Retrieve applications by categoryId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "name",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "offset",
+                            "required": false,
+                            "defaultValue": "1",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "Starting index of the resources (1 based), This should be only used in conjuction with the limit param.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "limit",
+                            "required": false,
+                            "defaultValue": "50",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "Number of resources to return, WARNING: results may take an unexpectely long time with more than 50 results requested.",
+                            "type": "string"
+                        }
+                    ],
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "ApplicationListResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Retrieves applications based on a given filter, filters should be applied one at a time, except for the limit/index pagination filters.",
+                    "nickname": "getFilterApplication",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "getFilterApplication",
+            "path": "/application"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Update an application",
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "name": "scheduleAt",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "scheduleAt",
+                            "type": "string"
+                        },
+                        {
+                            "name": "scheduleDesc",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "scheduleDesc",
+                            "type": "string"
+                        },
+                        {
+                            "name": "scheduleOrigin",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "scheduleOrigin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "applicationDTOList",
+                            "required": false,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "ApplicationDTO"
+                            },
+                            "paramType": "body",
+                            "allowMultiple": true,
+                            "description": "applicationDTOList",
+                            "type": "array"
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Updates application(s)",
+                    "nickname": "updateApplication",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "updateApplication",
+            "path": "/application"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Create an application",
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "name": "scheduleAt",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "scheduleAt",
+                            "type": "string"
+                        },
+                        {
+                            "name": "scheduleDesc",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "scheduleDesc",
+                            "type": "string"
+                        },
+                        {
+                            "name": "scheduleOrigin",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "scheduleOrigin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "applicationDTOList",
+                            "required": false,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "ApplicationDTO"
+                            },
+                            "paramType": "body",
+                            "allowMultiple": true,
+                            "description": "applicationDTOList",
+                            "type": "array"
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This Request is Accepted",
+                            "code": 202
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Creates custom application(s)",
+                    "nickname": "addApplication",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "addApplication",
+            "path": "/application"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Get total count of application(s)",
+                    "type": "CountResult",
+                    "parameters": [],
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Return total count of application(s)",
+                    "nickname": "getApplicationCount",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "getApplicationCount",
+            "path": "/application/count"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Get an application by id",
+                    "type": "ApplicationResult",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "required": true,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "allowMultiple": false,
+                            "description": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "ApplicationResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Return an application given an id",
+                    "nickname": "getApplication",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "getApplication",
+            "path": "/application/{id}"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Delete an application by id",
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "name": "scheduleAt",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "scheduleAt",
+                            "type": "string"
+                        },
+                        {
+                            "name": "scheduleDesc",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "scheduleDesc",
+                            "type": "string"
+                        },
+                        {
+                            "name": "scheduleOrigin",
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "description": "scheduleOrigin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "id",
+                            "required": true,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "allowMultiple": false,
+                            "description": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "method": "DELETE",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Delete an application by id",
+                    "nickname": "deleteApplication",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "deleteApplication",
+            "path": "/application/{id}"
+        }
+    ],
+    "models": {
+        "TaskIdResponse": {
+            "description": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "extends": ""
+        },
+        "ApplicationListResult": {
+            "description": "",
+            "id": "ApplicationListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "ApplicationDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": ""
+        },
+        "ApplicationResult": {
+            "description": "",
+            "id": "ApplicationResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "ApplicationDTO"
+                }
+            },
+            "extends": ""
+        },
+        "ApplicationDTO": {
+            "description": "",
+            "required": [
+                "name",
+                "id",
+                "trafficClass",
+                "categoryId",
+                "subCategory",
+                "category",
+                "appProtocol",
+                "tcpPorts",
+                "indicativeTcpPorts",
+                "udpPorts",
+                "indicativeUdpPorts",
+                "pfrThresholdLossRatePriority",
+                "pfrThresholdOneWayDelayPriority",
+                "pfrThresholdJitter",
+                "pfrThresholdLossRate",
+                "pfrThresholdOneWayDelay",
+                "popularity",
+                "transportIps"
+            ],
+            "id": "ApplicationDTO",
+            "properties": {
+                "engineId": {
+                    "description": "engine id",
+                    "type": "string"
+                },
+                "references": {
+                    "description": "references of the app",
+                    "type": "string"
+                },
+                "ipPorts": {
+                    "description": "list of ip ports",
+                    "type": "string"
+                },
+                "longDescription": {
+                    "description": "Long description of the app",
+                    "type": "string"
+                },
+                "selectorId": {
+                    "description": "selector id",
+                    "type": "string"
+                },
+                "indicativeTcpPorts": {
+                    "description": "Indicative tcp ports",
+                    "type": "string"
+                },
+                "popularity": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "popularity of the app"
+                },
+                "url": {
+                    "description": "url of the app",
+                    "type": "string"
+                },
+                "applicationGroup": {
+                    "description": "App group name",
+                    "type": "string"
+                },
+                "indicativeUdpPorts": {
+                    "description": "Indicative udp ports",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "App Name",
+                    "type": "string"
+                },
+                "isRepresentativeApp": {
+                    "description": "If the app is representative",
+                    "type": "boolean"
+                },
+                "tunnel": {
+                    "description": "If the app is a tunnel",
+                    "type": "string"
+                },
+                "pfrThresholdOneWayDelayPriority": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "PfR Threshold One Way Delay Priority"
+                },
+                "ignoreConflict": {
+                    "description": "If true ignore conflicts with other Applications",
+                    "type": "boolean"
+                },
+                "trafficClass": {
+                    "description": "Traffic class to which the app belongs",
+                    "type": "string"
+                },
+                "nbarId": {
+                    "description": "nbar id",
+                    "type": "string"
+                },
+                "tcpPorts": {
+                    "description": "list of tcp ports",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "category": {
+                    "description": "Category name",
+                    "type": "string"
+                },
+                "appProtocol": {
+                    "description": "protocol of the app. Valid values are tcp, udp, tcp/udp, ip or it could be empty. Values are case sensitive.",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "If the app enabled",
+                    "type": "string"
+                },
+                "pfrThresholdOneWayDelay": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "PfR Threshold One Way Delay"
+                },
+                "dscp": {
+                    "description": "dscp value",
+                    "type": "string"
+                },
+                "globalId": {
+                    "description": "global id",
+                    "type": "string"
+                },
+                "subCategory": {
+                    "description": "Sub-Category Id",
+                    "type": "string"
+                },
+                "indicativeIpPorts": {
+                    "description": "Indicative ip ports",
+                    "type": "string"
+                },
+                "rank": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "rank"
+                },
+                "pfrThresholdJitterPriority": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "PfR Threshold Jitter Priority"
+                },
+                "helpString": {
+                    "description": "help string to describe the app",
+                    "type": "string"
+                },
+                "transportIps": {
+                    "description": "Transport IP of the app",
+                    "type": "string"
+                },
+                "udpPorts": {
+                    "description": "list of udp ports",
+                    "type": "string"
+                },
+                "pfrThresholdLossRatePriority": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "PfR Threshold Loss Rate Priority"
+                },
+                "pfrThresholdLossRate": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "PfR Threshold Loss Rate"
+                },
+                "categoryId": {
+                    "description": "Category id",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Gives status of the app",
+                    "type": "string"
+                },
+                "p2pTechnology": {
+                    "description": "If the app is a p2p technology",
+                    "type": "string"
+                },
+                "encrypted": {
+                    "description": "If the app is encrypted",
+                    "type": "string"
+                },
+                "pfrThresholdJitter": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "PfR Threshold Jitter"
+                },
+                "instanceUuid": {
+                    "description": "",
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TaskId": {
+            "description": "",
+            "id": "TaskId",
+            "properties": {},
+            "extends": ""
+        },
+        "TaskIdResult": {
+            "description": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "extends": ""
+        },
+        "CountResult": {
+            "description": "",
+            "id": "CountResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "extends": ""
+        }
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "produces": [
+        "application/json"
+    ],
+    "basePath": "/"
+}

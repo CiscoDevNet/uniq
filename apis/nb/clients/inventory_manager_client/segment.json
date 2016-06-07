@@ -1,0 +1,85 @@
+{
+    "models": {
+        "SegmentNamesResult": {
+            "id": "SegmentNamesResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        }
+    },
+    "apis": [
+        {
+            "description": "getWlanNames",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getWlanNames",
+                    "type": "SegmentNamesResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "type",
+                            "type": "string",
+                            "description": "Type of segment",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": true,
+                            "name": "policyTag",
+                            "type": "string",
+                            "description": "Policy tag",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        }
+                    ],
+                    "notes": "Gets list of wlan names based on policyTag",
+                    "summary": "list of unique wlan names based on the policyTag",
+                    "responseMessages": [
+                        {
+                            "responseModel": "SegmentNamesResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/segment"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/apic-em-inventory-manager-service",
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/segment"
+}

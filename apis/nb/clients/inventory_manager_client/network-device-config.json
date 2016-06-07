@@ -1,0 +1,260 @@
+{
+    "apiVersion": "1.0",
+    "apis": [
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "RawCliInfoNIOListResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "RawCliInfoNIOListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getRunningConfig",
+                    "summary": "Retrieves device config list",
+                    "parameters": [
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "ALL",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the config for all devices"
+                }
+            ],
+            "description": "getRunningConfig",
+            "path": "/network-device/config"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "CountResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getNetworkConfigCount",
+                    "summary": "Retrieves config count",
+                    "parameters": [
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "ALL",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the count of device configs"
+                }
+            ],
+            "description": "getNetworkConfigCount",
+            "path": "/network-device/config/count"
+        },
+        {
+            "operations": [
+                {
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "SuccessResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getRunningConfigById",
+                    "summary": "Retrieves device config by device id",
+                    "parameters": [
+                        {
+                            "description": "networkDeviceId",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "name": "networkDeviceId",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Authorization Scope for RBAC",
+                            "defaultValue": "ALL",
+                            "type": "List",
+                            "paramType": "header",
+                            "name": "scope",
+                            "required": true,
+                            "allowMultiple": false
+                        }
+                    ],
+                    "deprecated": "false",
+                    "notes": "Gets the device config by device ID"
+                }
+            ],
+            "description": "getRunningConfig",
+            "path": "/network-device/{networkDeviceId}/config"
+        }
+    ],
+    "resourcePath": "/network-device",
+    "basePath": "/apic-em-inventory-manager-service",
+    "models": {
+        "SuccessResult": {
+            "id": "SuccessResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "string"
+                }
+            }
+        },
+        "RawCliInfoNIO": {
+            "id": "RawCliInfoNIO",
+            "required": [
+                "id",
+                "runningConfig"
+            ],
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "description": "Version configuration info of the device",
+                    "type": "string"
+                },
+                "attributeInfo": {
+                    "$ref": "object"
+                },
+                "snmp": {
+                    "description": "SNMP configuration info of the device",
+                    "type": "string"
+                },
+                "runningConfig": {
+                    "description": "Running-config of the device",
+                    "type": "string"
+                },
+                "ipIntfBrief": {
+                    "description": "IP interface brief configuration info of the device",
+                    "type": "string"
+                },
+                "macAddressTable": {
+                    "description": "MAC address configuration info of the device",
+                    "type": "string"
+                },
+                "healthMonitor": {
+                    "description": "Health monitor configuration info of the device",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Unique identifier for config",
+                    "type": "string"
+                },
+                "intfDescription": {
+                    "description": "Interface configuration info of the device",
+                    "type": "string"
+                },
+                "inventory": {
+                    "description": "Inventory configuration info of the device",
+                    "type": "string"
+                },
+                "cdpNeighbors": {
+                    "description": "CDP configuration info of the device",
+                    "type": "string"
+                }
+            }
+        },
+        "RawCliInfoNIOListResult": {
+            "id": "RawCliInfoNIOListResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "RawCliInfoNIO"
+                    }
+                }
+            }
+        },
+        "CountResult": {
+            "id": "CountResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "produces": [
+        "application/json"
+    ],
+    "swaggerVersion": "1.2"
+}

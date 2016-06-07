@@ -1,0 +1,128 @@
+{
+    "resourcePath": "/network-device/{id}/vlan",
+    "models": {
+        "VlanDTO": {
+            "extends": "",
+            "properties": {
+                "mask": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "prefix": {
+                    "type": "string"
+                },
+                "vlanType": {
+                    "type": "string"
+                },
+                "vlanNumber": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "interfaceName": {
+                    "type": "string"
+                },
+                "numberOfIPs": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "networkAddress": {
+                    "type": "string"
+                }
+            },
+            "id": "VlanDTO",
+            "description": ""
+        },
+        "VlanListResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "items": {
+                        "$ref": "VlanDTO"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "VlanListResult",
+            "description": ""
+        }
+    },
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/apic-em-inventory-manager-service",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "operations": [
+                {
+                    "nickname": "getDeviceVLANData",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "VlanListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "type": "VlanListResult",
+                    "notes": "getDeviceVLANData",
+                    "deprecated": "false",
+                    "summary": "API to get the List of VLAN Data for a device",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "description": "deviceUUID",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "Vlan assocaited with sub-interface",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "interfaceType",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": true,
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List",
+                            "allowMultiple": false,
+                            "name": "scope",
+                            "defaultValue": ""
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "path": "/network-device/{id}/vlan",
+            "description": "getDeviceVLANData"
+        }
+    ]
+}

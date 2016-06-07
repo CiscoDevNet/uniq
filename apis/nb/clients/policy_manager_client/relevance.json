@@ -1,0 +1,66 @@
+{
+    "resourcePath": "/relevance",
+    "apis": [
+        {
+            "operations": [
+                {
+                    "notes": "Get all Relevance(s)",
+                    "type": "RelevanceListResult",
+                    "parameters": [],
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "RelevanceListResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Lists all relevances",
+                    "nickname": "getAllRelevanceLevels",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "description": "getAllRelevanceLevels",
+            "path": "/relevance"
+        }
+    ],
+    "models": {
+        "RelevanceListResult": {
+            "description": "",
+            "id": "RelevanceListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": ""
+        }
+    },
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "produces": [
+        "application/json"
+    ],
+    "basePath": "/"
+}

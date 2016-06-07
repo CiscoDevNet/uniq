@@ -1,0 +1,122 @@
+{
+    "models": {
+        "IPGeoModel": {
+            "id": "IPGeoModel",
+            "description": "",
+            "properties": {
+                "subDivision": {
+                    "type": "string"
+                },
+                "continent": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "longitude": {
+                    "type": "string"
+                },
+                "subDivisionCode": {
+                    "type": "string"
+                },
+                "continentCode": {
+                    "type": "string"
+                },
+                "countryCode": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "HashMap\u00abstring,IPGeoModel\u00bb": {
+            "id": "HashMap\u00abstring,IPGeoModel\u00bb",
+            "description": "",
+            "properties": {},
+            "extends": ""
+        },
+        "IPGeoModelResult": {
+            "id": "IPGeoModelResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "$ref": "HashMap\u00abstring,IPGeoModel\u00bb"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        }
+    },
+    "apis": [
+        {
+            "description": "getCityInfo",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getCityInfo",
+                    "type": "IPGeoModelResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "wanIP",
+                            "type": "string",
+                            "description": "space-separated WAN IP addresses",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "ALL",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "This method is used to get the location details for a list of space-separated WAN IP addresses.",
+                    "summary": "Get city details for a WAN IP address",
+                    "responseMessages": [
+                        {
+                            "responseModel": "IPGeoModelResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/ipgeo/{wanIP}"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/ipgeo/{wanIP}"
+}

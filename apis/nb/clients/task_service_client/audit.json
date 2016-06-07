@@ -1,0 +1,191 @@
+{
+    "models": {
+        "TaskId": {
+            "id": "TaskId",
+            "description": "",
+            "properties": {},
+            "extends": ""
+        },
+        "AugmentedAuditResourceDTO": {
+            "id": "AugmentedAuditResourceDTO",
+            "description": "See: http://apic-em/wiki/Audit_Design",
+            "properties": {
+                "auditParentId": {
+                    "type": "string"
+                },
+                "auditParameters": {
+                    "type": "string"
+                },
+                "auditId": {
+                    "type": "string"
+                },
+                "deviceIP": {
+                    "type": "string"
+                },
+                "instanceUuid": {
+                    "description": "This field is deprecated. Use 'id' instead.",
+                    "type": "string"
+                },
+                "createdDateTime": {
+                    "$ref": "date-time"
+                },
+                "auditDescription": {
+                    "type": "string"
+                },
+                "hasChildren": {
+                    "type": "boolean"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "derivedParentId": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "persistDateTime": {
+                    "$ref": "date-time"
+                },
+                "siteName": {
+                    "type": "string"
+                },
+                "auditRequestor": {
+                    "type": "string"
+                },
+                "hasParent": {
+                    "type": "boolean"
+                },
+                "deviceName": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TaskIdResult": {
+            "id": "TaskIdResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "ListAuditResourceDTOResponse": {
+            "id": "ListAuditResourceDTOResponse",
+            "description": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "AugmentedAuditResourceDTO"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TaskIdResponse": {
+            "id": "TaskIdResponse",
+            "description": "",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "extends": ""
+        }
+    },
+    "apis": [
+        {
+            "description": "getAuditWithFilter",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getAuditWithFilter",
+                    "type": "ListAuditResourceDTOResponse",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [],
+                    "notes": "Free search on any atomic attributes passed as request parameter. <br/>For example: '/audit?auditRecordStartTime=10&auditRecordEndTime=1529152597971&auditRequestor=123a1&auditRequestor=some_other_value'. <br/>Request parameter is case sensitive, so '/audit?device<b>IP</b>=10.1.1.0' will search for deviceIP equals to 10.1.1.0. '/audit?device<b>ip</b>=10.1.1.0' will be ignored. <br/>Operation supports offset, limit: '/audit?limit=100&offset=40' will retrieve 100 records starts from position 40 <br/>Wildcards are supported using %25 as a wildcard, for example: '/audit?auditDescription=%25success%25' will retrieve all records matching success, successful, successive, etc.<br/>Request values are not case sensitive, so '/audit?auditRequestor=ADMIN' will retrieve all records with auditRequestor of 'admin', 'Admin', 'ADMIN', etc.",
+                    "summary": "Retrieve Audit by flexible search",
+                    "responseMessages": [
+                        {
+                            "responseModel": "ListAuditResourceDTOResponse",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/audit"
+        },
+        {
+            "description": "downloadAuditLogs",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "downloadAuditLogs",
+                    "type": "TaskIdResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [],
+                    "notes": "Free search on any atomic attributes passed as request parameter. <br/>For example: '/audit?auditRecordStartTime=10&auditRecordEndTime=1529152597971&auditRequestor=123a1&auditRequestor=some_other_value'. <br/>Request parameter is case sensitive, so '/audit?device<b>IP</b>=10.1.1.0' will search for deviceIP equals to 10.1.1.0. '/audit?device<b>ip</b>=10.1.1.0' will be ignored. <br/>Operation supports offset, limit: '/audit?limit=100&offset=40' will retrieve 100 records starts from position 40 <br/>Wildcards are supported using %25 as a wildcard, for example: '/audit?auditDescription=%25success%25' will retrieve all records matching success, successful, successive, etc.<br/>Request values are not case sensitive, so '/audit?auditRequestor=ADMIN' will retrieve all records with auditRequestor of 'admin', 'Admin', 'ADMIN', etc.",
+                    "summary": "Download Audit logs in Syslog format",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/audit/downloadAuditLogs"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/audit"
+}

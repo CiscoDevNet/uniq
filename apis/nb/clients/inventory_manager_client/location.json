@@ -1,0 +1,727 @@
+{
+    "models": {
+        "TaskId": {
+            "id": "TaskId",
+            "description": "",
+            "properties": {},
+            "extends": ""
+        },
+        "TagNIO": {
+            "id": "TagNIO",
+            "description": "",
+            "properties": {
+                "linkId": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "interfaceId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "networkDeviceId": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "LocationNIOResult": {
+            "id": "LocationNIOResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "$ref": "LocationNIO"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "LocationNIO": {
+            "id": "LocationNIO",
+            "description": "",
+            "properties": {
+                "attributeInfo": {
+                    "$ref": "object"
+                },
+                "locationName": {
+                    "description": "Name of the location",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the location",
+                    "type": "string"
+                },
+                "geographicalAddress": {
+                    "description": "Geographic address of the location",
+                    "type": "string"
+                },
+                "tag": {
+                    "description": "Tag associated with the location",
+                    "type": "string"
+                },
+                "civicAddress": {
+                    "description": "Civic address of the location",
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "required": [
+                "id",
+                "locationName"
+            ]
+        },
+        "LocationNIOListResult": {
+            "id": "LocationNIOListResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "LocationNIO"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TaskIdResult": {
+            "id": "TaskIdResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "CountResult": {
+            "id": "CountResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TaskIdResponse": {
+            "id": "TaskIdResponse",
+            "description": "",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "extends": ""
+        }
+    },
+    "apis": [
+        {
+            "description": "updateLocation",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "updateLocation",
+                    "type": "TaskIdResult",
+                    "method": "PUT",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "locationNIO",
+                            "type": "LocationNIO",
+                            "description": "Attributes of a location",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Updates a location with the given attributes",
+                    "summary": "Updates location",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/location"
+        },
+        {
+            "description": "addLocation",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "addLocation",
+                    "type": "TaskIdResult",
+                    "method": "POST",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "locationNIO",
+                            "type": "LocationNIO",
+                            "description": "Attributes of a location",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Creates a new location with the attributes given",
+                    "summary": "Creates location",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/location"
+        },
+        {
+            "description": "getAllLocation",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getAllLocation",
+                    "type": "LocationNIOListResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Gets list of locations",
+                    "summary": "Retrieves all locations",
+                    "responseMessages": [
+                        {
+                            "responseModel": "LocationNIOListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/location"
+        },
+        {
+            "description": "getLocationCount",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getLocationCount",
+                    "type": "CountResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Gets the count of all locations",
+                    "summary": "Retrieves location count",
+                    "responseMessages": [
+                        {
+                            "responseModel": "CountResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/location/count"
+        },
+        {
+            "description": "getLocationByName",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getLocationByName",
+                    "type": "LocationNIOResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "location-name",
+                            "type": "string",
+                            "description": "Location name",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Gets the location with the given location name",
+                    "summary": "Retrieves location by location name",
+                    "responseMessages": [
+                        {
+                            "responseModel": "LocationNIOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/location/location-name/{location-name}"
+        },
+        {
+            "description": "updateLocationTag",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "updateLocationTag",
+                    "type": "TaskIdResult",
+                    "method": "POST",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "tagNIO",
+                            "type": "TagNIO",
+                            "description": "TagNIO with tag ID and location ID",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Associates the given tag to the given location",
+                    "summary": "Associate a tag to a location",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/location/tag"
+        },
+        {
+            "description": "getLocationById",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getLocationById",
+                    "type": "LocationNIOResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "id",
+                            "type": "string",
+                            "description": "Location ID",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Gets the location with the given ID",
+                    "summary": "Retrieves location by ID",
+                    "responseMessages": [
+                        {
+                            "responseModel": "LocationNIOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/location/{id}"
+        },
+        {
+            "description": "deleteLocationById",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "deleteLocationById",
+                    "type": "TaskIdResult",
+                    "method": "DELETE",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "id",
+                            "type": "string",
+                            "description": "Location ID",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Deletes the location with the given ID",
+                    "summary": "Deletes location by ID",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/location/{id}"
+        },
+        {
+            "description": "getLocationByRange",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getLocationByRange",
+                    "type": "LocationNIOListResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "startIndex",
+                            "type": "integer",
+                            "description": "Start index",
+                            "format": "int32",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "recordsToReturn",
+                            "type": "integer",
+                            "description": "Number of records to return",
+                            "format": "int32",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Gets list of locations in the given range",
+                    "summary": "Retrieves location range",
+                    "responseMessages": [
+                        {
+                            "responseModel": "LocationNIOListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/location/{startIndex}/{recordsToReturn}"
+        },
+        {
+            "description": "getLocationByTag",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "nickname": "getLocationByTag",
+                    "type": "LocationNIOListResult",
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "tagId",
+                            "type": "string",
+                            "description": "Tag ID",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Gets list of locations associated with the given tag",
+                    "summary": "Retrieves location by tag",
+                    "responseMessages": [
+                        {
+                            "responseModel": "LocationNIOListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ]
+                }
+            ],
+            "path": "/tag/{tagId}/location"
+        }
+    ],
+    "apiVersion": "1.0",
+    "consumes": [
+        "application/json"
+    ],
+    "swaggerVersion": "1.2",
+    "basePath": "/apic-em-inventory-manager-service",
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/"
+}

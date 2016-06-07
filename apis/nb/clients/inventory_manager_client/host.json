@@ -1,0 +1,380 @@
+{
+    "apis": [
+        {
+            "operations": [
+                {
+                    "notes": "Get Hosts",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "HostListResult",
+                    "parameters": [
+                        {
+                            "required": false,
+                            "description": "limit",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "name": "limit",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "description": "offset",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "name": "offset",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "description": "sortBy",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "name": "sortBy",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "description": "order",
+                            "paramType": "query",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "name": "order",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "description": "hostName",
+                            "paramType": "query",
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "name": "hostName",
+                            "type": "List"
+                        },
+                        {
+                            "required": false,
+                            "description": "hostMac",
+                            "paramType": "query",
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "name": "hostMac",
+                            "type": "List"
+                        },
+                        {
+                            "required": false,
+                            "description": "hostType",
+                            "paramType": "query",
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "name": "hostType",
+                            "type": "List"
+                        },
+                        {
+                            "required": false,
+                            "description": "connectedInterfaceName",
+                            "paramType": "query",
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "name": "connectedInterfaceName",
+                            "type": "List"
+                        },
+                        {
+                            "required": false,
+                            "description": "hostIp",
+                            "paramType": "query",
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "name": "hostIp",
+                            "type": "List"
+                        },
+                        {
+                            "required": false,
+                            "description": "connectedDeviceIp",
+                            "paramType": "query",
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "name": "connectedDeviceIp",
+                            "type": "List"
+                        },
+                        {
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "paramType": "header",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "name": "scope",
+                            "type": "List"
+                        }
+                    ],
+                    "nickname": "getHosts",
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "HostListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Retrieve hosts"
+                }
+            ],
+            "path": "/host",
+            "description": "getHosts"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Get host Count",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "CountResult",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "paramType": "header",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "name": "scope",
+                            "type": "List"
+                        }
+                    ],
+                    "nickname": "getHostCount",
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Gives total number of hosts"
+                }
+            ],
+            "path": "/host/count",
+            "description": "getHostCount"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Get host by id",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "HostResult",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "description": "Host Id",
+                            "paramType": "path",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "name": "id",
+                            "type": "string"
+                        },
+                        {
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "paramType": "header",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "name": "scope",
+                            "type": "List"
+                        }
+                    ],
+                    "nickname": "getHostById",
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "HostResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "summary": "Retrieves host based on id"
+                }
+            ],
+            "path": "/host/{id}",
+            "description": "getHostById"
+        }
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0",
+    "basePath": "/apic-em-inventory-manager-service",
+    "resourcePath": "/host",
+    "swaggerVersion": "1.2",
+    "models": {
+        "HostDTO": {
+            "required": [
+                "source",
+                "lastUpdated",
+                "avgUpdateFrequency",
+                "connectedNetworkDeviceId",
+                "connectedNetworkDeviceIpAddress",
+                "hostIp",
+                "hostMac",
+                "hostType"
+            ],
+            "extends": "",
+            "description": "",
+            "id": "HostDTO",
+            "properties": {
+                "connectedNetworkDeviceIpAddress": {
+                    "type": "string",
+                    "description": "Ip address of the network device to which host gets connected"
+                },
+                "hostIp": {
+                    "type": "string",
+                    "description": "Ip address of the host"
+                },
+                "hostMac": {
+                    "type": "string",
+                    "description": "Mac address of the host"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Source from which the host gets collected. Available option:200 for inventory collection and 300 for trap based data collection"
+                },
+                "connectedAPMacAddress": {
+                    "type": "string",
+                    "description": "Mac address of the AP to which wireless host gets connected"
+                },
+                "avgUpdateFrequency": {
+                    "type": "string",
+                    "description": "Frequency in which host info gets updated"
+                },
+                "pointOfPresence": {
+                    "type": "string",
+                    "description": "Id of the Host's Point of presence network device (wlc). Based on mobility"
+                },
+                "vlanId": {
+                    "type": "string",
+                    "description": "Vlan Id of the host"
+                },
+                "connectedInterfaceName": {
+                    "type": "string",
+                    "description": "Name of the interface to which host gets connected"
+                },
+                "connectedInterfaceId": {
+                    "type": "string",
+                    "description": "Id of the interface to which host gets connected"
+                },
+                "hostName": {
+                    "type": "string",
+                    "description": "Name of the host"
+                },
+                "attributeInfo": {
+                    "$ref": "object"
+                },
+                "connectedAPName": {
+                    "type": "string",
+                    "description": "Name of the AP to which wireless host gets connected"
+                },
+                "connectedNetworkDeviceId": {
+                    "type": "string",
+                    "description": "Id of the network device to which host gets connected"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "Time when the host info last got updated"
+                },
+                "hostType": {
+                    "type": "string",
+                    "description": "Type of the host. Available options are: Wired, Wireless"
+                },
+                "pointOfAttachment": {
+                    "type": "string",
+                    "description": "Id of the Host's Point of attachment network device (wlc). Based on mobility"
+                }
+            }
+        },
+        "HostResult": {
+            "extends": "",
+            "description": "",
+            "id": "HostResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "HostDTO"
+                }
+            }
+        },
+        "CountResult": {
+            "extends": "",
+            "description": "",
+            "id": "CountResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "HostListResult": {
+            "extends": "",
+            "description": "",
+            "id": "HostListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "HostDTO"
+                    },
+                    "type": "array"
+                }
+            }
+        }
+    }
+}

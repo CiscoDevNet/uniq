@@ -1,0 +1,853 @@
+{
+    "apis": [
+        {
+            "description": "addUser",
+            "path": "/user",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to add a new user. <b>The password is excluded from the json schema below, but will still need to be included.</b>",
+                    "summary": "addUser",
+                    "nickname": "addUser",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "user",
+                            "description": "user",
+                            "type": "UserReqRes",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "description": "getUsers",
+            "path": "/user",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to get the list of Users. If you are an admin user, this will return a list of all the users, if you have an observer role, it will only show your own user information.",
+                    "summary": "getUsers",
+                    "nickname": "getUsers",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "UserListResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "authSource",
+                            "description": "authSource",
+                            "type": "string",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "UserListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "updateUser",
+            "path": "/user",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to update user data.<br /> To update the password, \"oldPassword\" will need to be provided and the new password can be represented as \"password\".<br /> <b>A user can only update their own password</b>.<br /> For an admin to update another admin or user's password, then the process is to delete and add a new user by the same name with the same permissions.",
+                    "summary": "updateUser",
+                    "nickname": "updateUser",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "user",
+                            "description": "user",
+                            "type": "UserReqRes",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "description": "getUsersCache",
+            "path": "/user/cache",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "getUsersCache",
+                    "summary": "getUsersCache",
+                    "nickname": "getUsersCache",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "UserListResult",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "responseModel": "UserListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "getAutoPassphrase",
+            "path": "/user/passphrase/auto",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to get an auto generated password.",
+                    "summary": "getAutoPassphrase",
+                    "nickname": "getAutoPassphrase",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "AutoPassphraseResult",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "responseModel": "AutoPassphraseResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "getAutoPassphraseWithSeedPhrase",
+            "path": "/user/passphrase/auto/{seedPhrase}",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to get an auto generated password with a seed phrase.",
+                    "summary": "getAutoPassphrase",
+                    "nickname": "getAutoPassphraseWithSeedPhrase",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "AutoPassphraseResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "name": "seedPhrase",
+                            "description": "seedPhrase",
+                            "type": "string",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "AutoPassphraseResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "getAttemptCount",
+            "path": "/user/password-policy/invalid-attempt-count",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to get the max user invalid attempts before the user account is locked.",
+                    "summary": "getAttemptCount",
+                    "nickname": "getAttemptCount",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "UserLoginInvalidAttemptCountResult",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "responseModel": "UserLoginInvalidAttemptCountResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "updateAttemptCount",
+            "path": "/user/password-policy/invalid-attempt-count",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to update the max user invalid attempts before the user account is locked.",
+                    "summary": "updateAttemptCount",
+                    "nickname": "updateAttemptCount",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "attemptCount",
+                            "description": "attemptCount",
+                            "type": "UserLoginInvalidAttemptCount",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "description": "updateLockExpiryTimeout",
+            "path": "/user/password-policy/lock-expiry-time",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to set the lock expiration timer value which is used to unlock a user account.",
+                    "summary": "updateLockExpiryTimeout",
+                    "nickname": "updateLockExpiryTimeout",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "expiryTime",
+                            "description": "expiryTime",
+                            "type": "UserLockExpiryTime",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "description": "getLockExpiry",
+            "path": "/user/password-policy/lock-expiry-time",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to get the lock expiration timer value which is used to unlock a user account.",
+                    "summary": "getLockExpiry",
+                    "nickname": "getLockExpiry",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "UserLockExpiryTimeResult",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "responseModel": "UserLockExpiryTimeResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "updateUserStatus",
+            "path": "/user/status",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to update a user's lock status from locked to un-locked.<br/> Admin permission is required.<br/>",
+                    "summary": "updateUserStatus",
+                    "nickname": "updateUserStatus",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "userStatus",
+                            "description": "userStatus",
+                            "type": "UserStatus",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "description": "getUserStatus",
+            "path": "/user/status/{username}",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to retrieve a user's lock status.<br/> Admin permission is required.<br/>",
+                    "summary": "getUserStatus",
+                    "nickname": "getUserStatus",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "UserStatusResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "name": "username",
+                            "description": "username",
+                            "type": "string",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "UserStatusResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "getUser",
+            "path": "/user/{username}",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to get user data by username.",
+                    "summary": "getUser",
+                    "nickname": "getUser",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "UserResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "name": "username",
+                            "description": "username",
+                            "type": "string",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "UserResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "description": "deleteUser",
+            "path": "/user/{username}",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to delete a user.<br/> Admin permission is required.<br/> It is possible to delete your own user.",
+                    "summary": "deleteUser",
+                    "nickname": "deleteUser",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "SuccessResult",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "name": "username",
+                            "description": "username",
+                            "type": "string",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "SuccessResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "DELETE"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "UserLoginInvalidAttemptCount": {
+            "extends": "",
+            "properties": {
+                "loginInvalidAttemptCount": {
+                    "description": "User Invalid Attempt Count",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "id": "UserLoginInvalidAttemptCount",
+            "required": [
+                "loginInvalidAttemptCount"
+            ],
+            "description": "Object used to retrieve the maximum user invalid attempts permitted before user account is locked."
+        },
+        "UserStatus": {
+            "extends": "",
+            "properties": {
+                "accountLocked": {
+                    "type": "boolean"
+                },
+                "lockExpiration": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "lockedAt": {
+                    "type": "string"
+                }
+            },
+            "id": "UserStatus",
+            "description": ""
+        },
+        "UserResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "UserReqRes"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "UserResult",
+            "description": ""
+        },
+        "UserLoginInvalidAttemptCountResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "UserLoginInvalidAttemptCount"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "UserLoginInvalidAttemptCountResult",
+            "description": ""
+        },
+        "UserLockExpiryTime": {
+            "extends": "",
+            "properties": {
+                "lockExpiryTime": {
+                    "description": "User Lock Expiry Timer",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "id": "UserLockExpiryTime",
+            "required": [
+                "lockExpiryTime"
+            ],
+            "description": "Object used to retrieve the global user lock expiry timer"
+        },
+        "UserLockExpiryTimeResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "UserLockExpiryTime"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "UserLockExpiryTimeResult",
+            "description": ""
+        },
+        "ScopeRole": {
+            "extends": "",
+            "properties": {
+                "scope": {
+                    "description": "Scope of Authorization. Added to support future implementations, supported value is only ALL",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "Authorization Role. Supported values are ROLE_ADMIN, ROLE_OBSERVER and ROLE_INSTALLER",
+                    "type": "string"
+                }
+            },
+            "id": "ScopeRole",
+            "required": [
+                "scope",
+                "role"
+            ],
+            "description": ""
+        },
+        "UserStatusResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "UserStatus"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "UserStatusResult",
+            "description": ""
+        },
+        "AutoPassphrase": {
+            "extends": "",
+            "properties": {
+                "autoPassphrase": {
+                    "description": "Auto generated passphrase",
+                    "type": "string"
+                }
+            },
+            "id": "AutoPassphrase",
+            "required": [
+                "autoPassphrase"
+            ],
+            "description": "Object used to retrieve the optional auto generated passphrase."
+        },
+        "UserReqRes": {
+            "extends": "",
+            "properties": {
+                "authorization": {
+                    "description": "User Authorization Scope",
+                    "type": "array",
+                    "items": {
+                        "$ref": "ScopeRole"
+                    }
+                },
+                "authSource": {
+                    "description": "User Authentication Source",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "Username",
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "oldPassword": {
+                    "type": "string"
+                }
+            },
+            "id": "UserReqRes",
+            "required": [
+                "username",
+                "authorization"
+            ],
+            "description": ""
+        },
+        "UserListResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "UserReqRes"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "UserListResult",
+            "description": ""
+        },
+        "SuccessResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "SuccessResult",
+            "description": ""
+        },
+        "AutoPassphraseResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "AutoPassphrase"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "AutoPassphraseResult",
+            "description": ""
+        }
+    },
+    "resourcePath": "/user",
+    "basePath": "/",
+    "consumes": [
+        "application/json"
+    ],
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "produces": [
+        "application/json"
+    ]
+}

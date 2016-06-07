@@ -1,0 +1,84 @@
+{
+    "apis": [
+        {
+            "description": "getRoles",
+            "path": "/user/role",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "notes": "This method is used to get the list of roles",
+                    "summary": "getRoles",
+                    "nickname": "getRoles",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "RoleListResult",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "responseModel": "RoleListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "RoleListResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Role"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "RoleListResult",
+            "description": ""
+        },
+        "Role": {
+            "extends": "",
+            "properties": {
+                "role": {
+                    "enum": [
+                        "ROLE_OBSERVER",
+                        " ROLE_ADMIN"
+                    ],
+                    "description": "User Role",
+                    "type": "string"
+                }
+            },
+            "id": "Role",
+            "required": [
+                "role"
+            ],
+            "description": ""
+        }
+    },
+    "resourcePath": "/user/role",
+    "basePath": "/",
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "produces": [
+        "application/json"
+    ]
+}
