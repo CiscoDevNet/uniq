@@ -1,0 +1,1013 @@
+{
+    "resourcePath": "/",
+    "models": {
+        "LicenseInfoDTO": {
+            "required": [
+                "id",
+                "description",
+                "expiredPeriod",
+                "deployPending",
+                "status",
+                "provisionState",
+                "parentId",
+                "totalCount",
+                "physicalIndex",
+                "licenseIndex",
+                "featureVersion",
+                "counted",
+                "validityPeriod",
+                "validityPeriodRemaining",
+                "maxUsageCount",
+                "usageCount",
+                "eulaStatus",
+                "usageCountRemaining",
+                "hostId",
+                "evalPeriodLeft",
+                "evalPeriodUsed",
+                "expiredDate",
+                "isCounted",
+                "isEulaAccepted",
+                "isEulaApplicable",
+                "isTechnologyLicense",
+                "licenseFileCount",
+                "licenseFileName",
+                "storeName",
+                "storedUsed",
+                "name",
+                "priority",
+                "type"
+            ],
+            "extends": "",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of license"
+                },
+                "deployPending": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Deploy Pending information of license"
+                },
+                "evalPeriodLeft": {
+                    "type": "string",
+                    "description": "Number of days remaining in the eval period"
+                },
+                "usageCount": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Usage count of the license feature"
+                },
+                "type": {
+                    "enum": [
+                        "DEMO",
+                        "EXTENSION",
+                        "GRACEPERIOD",
+                        "PERMANENT",
+                        "PAIDSUBSCRIPTION",
+                        "EVALUATIONSUBSCRIPTION",
+                        "EXTENSIONSUBSCRIPTION",
+                        "EVALRIGHTTOUSE",
+                        "RIGHTTOUSE",
+                        "PERMANENTRIGHTTOUSE"
+                    ],
+                    "type": "string",
+                    "description": "License type"
+                },
+                "isCounted": {
+                    "type": "boolean",
+                    "description": "If the license is counted as part of license usage"
+                },
+                "validityPeriodRemaining": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Remaining validityPeriod"
+                },
+                "attributeInfo": {
+                    "$ref": "object"
+                },
+                "storeName": {
+                    "type": "string",
+                    "description": "Name of the license Store"
+                },
+                "validityPeriod": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Validity period the the license"
+                },
+                "storedUsed": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "License store usage detail"
+                },
+                "featureVersion": {
+                    "type": "string",
+                    "description": "Version of the license feature"
+                },
+                "hostId": {
+                    "type": "string",
+                    "description": "Device Id/Name of the license info"
+                },
+                "evalPeriodUsed": {
+                    "type": "string",
+                    "description": "Number of days used in the eval period"
+                },
+                "totalCount": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of license installed in the device"
+                },
+                "usageCountRemaining": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Unused license count"
+                },
+                "physicalIndex": {
+                    "type": "string",
+                    "description": "Physical entity index"
+                },
+                "isEulaAccepted": {
+                    "type": "boolean",
+                    "description": "If the EULA is accepted"
+                },
+                "expiredDate": {
+                    "type": "string",
+                    "description": "Expired date of the license"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description about the license"
+                },
+                "status": {
+                    "enum": [
+                        "INACTIVE",
+                        "NOTINUSE",
+                        "INUSE",
+                        "EXPIREDINUSE",
+                        "EXPIREDNOTINUSE",
+                        "USAGECOUNTCONSUMED"
+                    ],
+                    "type": "string",
+                    "description": "Status of the license"
+                },
+                "isEulaApplicable": {
+                    "type": "boolean",
+                    "description": "If the EULA is applicable"
+                },
+                "provisionState": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Provision state of the license feature"
+                },
+                "parentId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Parent Id of the license"
+                },
+                "maxUsageCount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Maximum usage of the license feature"
+                },
+                "eulaStatus": {
+                    "type": "boolean",
+                    "description": "EULA status of the license"
+                },
+                "priority": {
+                    "type": "string",
+                    "description": "License priority"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the license feature"
+                },
+                "counted": {
+                    "type": "boolean",
+                    "description": "If license feature is counted as part of the license"
+                },
+                "licenseFileCount": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of license file"
+                },
+                "isTechnologyLicense": {
+                    "type": "boolean",
+                    "description": "If the license is technology license or not"
+                },
+                "licenseFileName": {
+                    "type": "string",
+                    "description": "Name of license file"
+                },
+                "licenseIndex": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Index of the license"
+                },
+                "expiredPeriod": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "License expired period"
+                }
+            },
+            "id": "LicenseInfoDTO",
+            "description": ""
+        },
+        "SuccessResultList": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "SuccessResultList",
+            "description": ""
+        },
+        "LicenseInfoListResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "items": {
+                        "$ref": "LicenseInfoDTO"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "LicenseInfoListResult",
+            "description": ""
+        },
+        "CountResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "CountResult",
+            "description": ""
+        }
+    },
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/apic-em-inventory-manager-service",
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "operations": [
+                {
+                    "nickname": "getLicenseInfo",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "LicenseInfoListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "type": "LicenseInfoListResult",
+                    "notes": "Gets the list of licenses for network device with given filters",
+                    "deprecated": "false",
+                    "summary": "Retrieves the license info for a network devices by filters",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "description": "Network Device Id",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "deviceId",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "limit",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "limit",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "offset",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "offset",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "sortBy",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "sortBy",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "order",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "order",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "countedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "countedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "deployPendingList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "deployPendingList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "eulaStatusList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "eulaStatusList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "evalPeriodLeftList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "evalPeriodLeftList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "evalPeriodUsedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "evalPeriodUsedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "expiredDateList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "expiredDateList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "expiredPeriodList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "expiredPeriodList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "featureVersionList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "featureVersionList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "hostIdList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "hostIdList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "isCountedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "isCountedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "isEulaAcceptedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "isEulaAcceptedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "isEulaApplicableList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "isEulaApplicableList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "isTechnologyLicenseList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "isTechnologyLicenseList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "licenseFileCountList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "licenseFileCountList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "licenseFileNameList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "licenseFileNameList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "licenseIndexList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "licenseIndexList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "maxUsageCountList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "maxUsageCountList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "parentIdList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "parentIdList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "physicalIndexList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "physicalIndexList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "priorityList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "priorityList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "provisionStateList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "provisionStateList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "statusList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "statusList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "storedUsedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "storedUsedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "storeNameList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "storeNameList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "totalCountList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "totalCountList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "licenseTypeList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "licenseTypeList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "usageCountList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "usageCountList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "usageCountRemainingList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "usageCountRemainingList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "validityPeriodList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "validityPeriodList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "validityPeriodRemainingList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "validityPeriodRemainingList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": true,
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List",
+                            "allowMultiple": false,
+                            "name": "scope",
+                            "defaultValue": ""
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "path": "/license-info/network-device/{deviceId}",
+            "description": "getLicenseInfo"
+        },
+        {
+            "operations": [
+                {
+                    "nickname": "getLicenseInfoCount",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "type": "CountResult",
+                    "notes": "Gets the list of licenses for network device with given filters",
+                    "deprecated": "false",
+                    "summary": "Retrieves the license info for a network devices by filters",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "description": "Network Device Id",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "deviceId",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "countedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "countedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "deployPendingList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "deployPendingList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "eulaStatusList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "eulaStatusList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "evalPeriodLeftList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "evalPeriodLeftList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "evalPeriodUsedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "evalPeriodUsedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "expiredDateList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "expiredDateList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "expiredPeriodList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "expiredPeriodList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "featureVersionList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "featureVersionList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "hostIdList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "hostIdList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "isCountedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "isCountedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "isEulaAcceptedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "isEulaAcceptedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "isEulaApplicableList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "isEulaApplicableList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "isTechnologyLicenseList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "isTechnologyLicenseList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "licenseFileCountList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "licenseFileCountList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "licenseFileNameList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "licenseFileNameList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "licenseIndexList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "licenseIndexList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "maxUsageCountList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "maxUsageCountList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "parentIdList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "parentIdList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "physicalIndexList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "physicalIndexList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "priorityList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "priorityList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "provisionStateList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "provisionStateList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "statusList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "statusList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "storedUsedList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "storedUsedList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "storeNameList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "storeNameList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "totalCountList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "totalCountList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "licenseTypeList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "licenseTypeList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "usageCountList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "usageCountList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "usageCountRemainingList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "usageCountRemainingList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "validityPeriodList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "validityPeriodList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "description": "validityPeriodRemainingList",
+                            "type": "List",
+                            "allowMultiple": true,
+                            "name": "validityPeriodRemainingList",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": true,
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List",
+                            "allowMultiple": false,
+                            "name": "scope",
+                            "defaultValue": ""
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "path": "/license-info/network-device/{deviceId}/count",
+            "description": "getLicenseInfoCount"
+        },
+        {
+            "operations": [
+                {
+                    "nickname": "getDeviceIdByFilename",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "SuccessResultList"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "type": "SuccessResultList",
+                    "notes": "Gets the list of devices with licensefilename",
+                    "deprecated": "false",
+                    "summary": "Retrieves the list of devices with given license filenames",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "description": "License file name",
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "licenseFileName",
+                            "defaultValue": ""
+                        },
+                        {
+                            "required": true,
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List",
+                            "allowMultiple": false,
+                            "name": "scope",
+                            "defaultValue": ""
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "path": "/network-device/license/{licenseFileName}",
+            "description": "getDeviceIdByFilename"
+        }
+    ]
+}
