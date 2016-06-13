@@ -26,6 +26,7 @@ class Services(object):
     """ Services base class"""
 
     TASK_DEFAULT_TIMEOUT = 60  # seconds
+    TASK_POLL_FREQUENCY = 1 # seconds
 
     def __init__(self, nb_api, *args, **kwargs):
         """ Initializer makes available the nb_api client and logger to objects of this class.
@@ -49,25 +50,27 @@ class Services(object):
             a serialized dict of the swagger model object
         """
 
-        self.log.info("Serializing swagger model: {0}".format(model.__class__.__name__))
+        self.log.info("Serializing swagger model object: {0}".format(model.__class__.__name__))
         return self.nb_api.serialize(model)
 
-    def handle_task(self, task, task_status=None, timeout=TASK_DEFAULT_TIMEOUT):
+    def handle_task(self, task, task_status=None, timeout=TASK_DEFAULT_TIMEOUT,
+                    poll_frequency=TASK_POLL_FREQUENCY):
         """ Returns the task response for a task on completion
 
         By default it will only wait for the task to complete, it can be made to wait for a
-        particular state (Success/Failre), depending on the argument value of task_status.
+        particular state (Success/Failure), depending on the argument value of task_status.
 
         Args:
-            task (task model object): an object of the task response
-            task_status (str): task status to  wait for (Success/Failure). Default is None
+            task (TaskIdResult): an object of the task response
+            task_status (str): task status to wait for (Success/Failure). Default is None
             timeout (int): timeout in seconds.
         """
 
         if task_status:
             if task_status.lower() == "success":
-                return self.nb_api.task_util.wait_for_task_success(task, timeout)
+                return self.nb_api.task_util.wait_for_task_success(task, timeout, poll_frequency)
             elif task_status.lower() == "failure":
-                return self.nb_api.task_util.wait_for_task_failure(task, timeout)
-
-        return self.nb_api.task_util.wait_for_task_complete(task, timeout)
+                return self.nb_api.task_util.wait_for_task_failure(task, timeout, poll_frequency)
+            else:
+                raise Exception('Unrecognized task status "{}".'.format(task_status))
+        return self.nb_api.task_util.wait_for_task_complete(task, timeout, poll_frequency)
