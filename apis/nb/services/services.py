@@ -16,6 +16,7 @@ limitations under the License.
 
 try:
     from uniq.common import logger
+    logger = logger.log
 except:
     import logging
     logger = logging.getLogger("uniq")
@@ -26,12 +27,17 @@ class Services(object):
 
     TASK_DEFAULT_TIMEOUT = 60  # seconds
 
-    def __init__(self, base, *args, **kwargs):
-        """ Initializer makes available the nb_api client and logger to objects of this class. """
+    def __init__(self, nb_api, *args, **kwargs):
+        """ Initializer makes available the nb_api client and logger to objects of this class.
+
+        Args:
+            nb_api (NbClientManager): instance of NbClientManager
+        """
 
         super(Services, self).__init__(*args, **kwargs)
 
-        self.log = logger.log
+        self.nb_api = nb_api
+        self.log = logger
 
     def serialize(self, model):
         """ Serializes any service's model object into dictionary.
