@@ -11,7 +11,8 @@ class ExamplePolicyService(Services):
             tag_name (str): name of tag.
         """
 
-        task = self.nb_api.policy.addPolicyTag(policyTagDTO={'policyTag': 'example_tag'})
+        print('Creating new policy tag "{}" using self-defined service.'.format(tag_name))
+        task = self.nb_api.policy.addPolicyTag(policyTagDTO={'policyTag': tag_name})
         self.handle_task(task, 'Success')
 
     def delete_policy_tag(self, tag_name):
@@ -21,7 +22,8 @@ class ExamplePolicyService(Services):
             tag_name (str): name of tag.
         """
 
-        task = self.nb_api.policy.deletePolicyTag(policyTag='example_tag')
+        print('Deleting policy tag "{}" using self-defined service.'.format(tag_name))
+        task = self.nb_api.policy.deletePolicyTag(policyTag=tag_name)
         self.handle_task(task, 'Success')
 
 client = login.login()
@@ -36,12 +38,7 @@ response = client.policy.deletePolicyTag(policyTag='example_tag')
 print('Waiting for task complete successfully.')
 client.task_util.wait_for_task_success(response)
 
-
 example_policy_service = ExamplePolicyService(client)
-
 tag_name = 'new_tag'
-print('Creating new policy tag "{}" using self-defined service.'.format(tag_name))
 example_policy_service.add_policy_tag(tag_name)
-
-print('Deleting policy tag "{}" using self-defined service.'.format(tag_name))
 example_policy_service.delete_policy_tag(tag_name)
