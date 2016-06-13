@@ -1,8 +1,6 @@
 ![uniq](uniq.png?raw=true "uniq")
 
-# uniq
-
-A Python API client library for Cisco's Application Policy Infrastructure Controller Enterprise Module (APIC-EM) Northbound APIs.
+uniq is a Python API client library for Cisco's Application Policy Infrastructure Controller Enterprise Module (APIC-EM) Northbound APIs.
 
 # Description
 
@@ -53,6 +51,15 @@ users = client.serialize(user_list_result)
 print(users)
 ```
 
+### Running Tests
+
+The tests are located in the [tests](tests/) directory.
+After installing the package, they can be run by executing the below command:
+
+```
+python setup.py test
+```
+
 ### Sample Scripts
 
 For sample scripts check out the [sample_scripts](sample_scripts/) directory.
@@ -60,3 +67,16 @@ For sample scripts check out the [sample_scripts](sample_scripts/) directory.
 # Python
 
 This project has been tested and working on Python 3.0+
+
+#### Installation Issues
+
+*   Issue due to ```setuptools```
+
+    If you see an error message like so:
+    ```
+    error: can't copy 'opyright': doesn't exist or not a regular file
+    ```
+    please update the ```setuptools``` package by running the below command, and trying again.
+    ```
+    pip3 install -U setuptools
+    ```
