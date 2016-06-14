@@ -1,7 +1,7 @@
-from uniq.apis.nb.services.services import Services
+from uniq.apis.nb.services.service import Service
 import login
 
-class ExamplePolicyService(Services):
+class ExamplePolicyService(Service):
     """ Example Policy service class. """
 
     def add_policy_tag(self, tag_name):
