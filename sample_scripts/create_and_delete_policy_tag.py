@@ -1,7 +1,7 @@
-from uniq.apis.nb.services.service import Service
+from uniq.apis.nb.services.services import Services
 import login
 
-class ExamplePolicyService(Service):
+class ExamplePolicyService(Services):
     """ Example Policy service class. """
 
     def add_policy_tag(self, tag_name):
@@ -28,15 +28,25 @@ class ExamplePolicyService(Service):
 
 client = login.login()
 
-print('Creating policy tag "example_tag".')
-response = client.policy.addPolicyTag(policyTagDTO={'policyTag': 'example_tag'})
+tag_name = 'example_tag'
+print('Creating policy tag "{}".'.format(tag_name))
+task_id_result = client.policy.addPolicyTag(policyTagDTO={'policyTag': tag_name})
 print('Waiting for task complete successfully.')
-client.task_util.wait_for_task_success(response, timeout=3, poll_frequency=0.5)
+client.task_util.wait_for_task_success(task_id_result, timeout=3, poll_frequency=0.5)
+
+print('Trying to create duplicated policy tag "{}".'.format(tag_name))
+task_id_result = client.policy.addPolicyTag(policyTagDTO={'policyTag': tag_name})
+failed = client.task_util.is_task_failure(task_id_result)
+if failed:
+    print('The task failed.')
+    failure_reason = client.task_util.get_task_failure_reasons(task_id_result)
+    print('Failure reason: {}'.format(failure_reason))
 
 print('Deleting policy tag "example_tag".')
-response = client.policy.deletePolicyTag(policyTag='example_tag')
+task_id_result = client.policy.deletePolicyTag(policyTag='example_tag')
 print('Waiting for task complete successfully.')
-client.task_util.wait_for_task_success(response)
+client.task_util.wait_for_task_success(task_id_result)
+client.task_util.is_task_tree_success(task_id_result)
 
 example_policy_service = ExamplePolicyService(client)
 tag_name = 'new_tag'

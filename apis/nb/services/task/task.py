@@ -20,10 +20,10 @@ from http.client import NOT_FOUND
 
 from requests.exceptions import HTTPError
 
-from uniq.apis.nb.services.service import Service
+from uniq.apis.nb.services.services import Services
 from uniq.apis.exceptions import ApiClientException
 
-class Task(Service):
+class Task(Services):
     """ Utility to use Task service. """
 
     POLL_FREQUENCY = 3  # seconds
@@ -61,8 +61,8 @@ class Task(Service):
             else:
                 return False
 
-        task_response = self.waits_until(
-            get_task_status, task_id=task_id, timeout=timeout, poll_frequency=poll_frequency,
+        task_response = self.utils.wait.until(
+            get_task_status, task_id=task_id, timeout=timeout, interval=poll_frequency,
             message="Task didn't finish in {} seconds.".format(timeout))
         return task_response
 
@@ -269,11 +269,11 @@ class Task(Service):
             else:
                 return False
 
-        return self.waits_until(
+        return self.utils.wait.until(
             task_tree_results,
             task_id=task_id,
             timeout=timeout,
-            poll_frequency=poll_frequency)
+            interval=poll_frequency)
 
     def is_task_tree_success(self, task_id_result):
         """ Returns true if all tasks in task tree are successful.

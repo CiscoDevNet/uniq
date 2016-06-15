@@ -21,9 +21,10 @@ try:
 except:
     import logging
     logger = logging.getLogger("uniq")
+from uniq.utils import utils
 
 
-class Service(object):
+class Services(object):
     """ Services base class"""
 
     DEFAULT_TIMEOUT = 60  # seconds
@@ -40,6 +41,7 @@ class Service(object):
 
         self.nb_api = nb_api
         self.log = logger
+        self.utils = utils
 
     def serialize(self, model):
         """ Serializes any service's model object into dictionary.
