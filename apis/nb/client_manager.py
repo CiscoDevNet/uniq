@@ -419,7 +419,7 @@ class NbClientManager(ClientManager):
             self.add_api(attr_name.lower(), self.__get_api_instance(api))
 
         # Task Wrapper Library
-        self.task_util = Task(self.task)
+        self.task_util = Task(self)
 
     def add_new_apis(self, nb_client_path):
         """ Finds and loads NB clients(their models, api files) from user-defined location.
