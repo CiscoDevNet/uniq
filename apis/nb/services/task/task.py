@@ -16,35 +16,23 @@ limitations under the License.
 
 import time
 import json
-
-from requests.exceptions import HTTPError
 from http.client import NOT_FOUND
 
-class Task(object):
-    '''
-    Utility to use Task service
-    '''
+from requests.exceptions import HTTPError
+
+from uniq.apis.nb.services.services import Services
+from uniq.apis.exceptions import ApiClientException
+
+class Task(Services):
+    """ Utility to use Task service. """
 
     POLL_FREQUENCY = 3  # seconds
     TASK_DEFAULT_TIMEOUT = 60  # seconds
 
-    SERVICE_TYPE = 'serviceType'
-    PROGRESS = 'progress'
-
     GET_TASK_MAX_RETRIES = 6
     EXPONENTIAL_BACKOFF_MULTIPLIER = 2
 
-    def __init__(self, task):
-        """ Constructor of task service.
-
-        Args:
-            task (TaskApi): initalized TaskApi instance.
-        """
-
-        self.__task_api = task
-
-
-    def __wait_for_task_complete(self, task_id=None, timeout=TASK_DEFAULT_TIMEOUT,
+    def __wait_for_task_complete(self, task_id, timeout=TASK_DEFAULT_TIMEOUT,
                                  poll_frequency=POLL_FREQUENCY):
         """ Waits for task complete.
 
@@ -57,20 +45,25 @@ class Task(object):
             the failure/success response of the task.
         """
 
-        assert task_id is not None
-        task_completed = False
+        def get_task_status(task_id):
+            """ Get task status.
 
-        start_time = time.time()
-        while not task_completed:
-            if (time.time() > (start_time + timeout)):
-                assert False, ("Task {0} didn't complete within {1} seconds"
-                               .format(task_response.__dict__, timeout))
+            Args:
+                task_id (str): id of task to check.
+
+            Returns:
+                task_response(AugmentedTaskDTO) if task is complete, else return False.
+            """
+
             task_response = self.__get_task_response(task_id)
             if self.__is_task_success(task_response) or self.__is_task_failed(task_response):
-                task_completed = True
                 return task_response
             else:
-                time.sleep(poll_frequency)
+                return False
+
+        task_response = self.utils.wait.until(
+            get_task_status, task_id=task_id, timeout=timeout, interval=poll_frequency,
+            message="Task didn't finish in {} seconds.".format(timeout))
         return task_response
 
     def __wait_for_task_success(self, task_id=None, timeout=TASK_DEFAULT_TIMEOUT,
@@ -91,7 +84,9 @@ class Task(object):
         if self.__is_task_success(task_response):
             return task_response
         elif self.__is_task_failed(task_response):
-            assert False, ("Task failed, task response {0}".format(task_response.__dict__))
+            raise ApiClientException(
+                "Task Failed. errorCode: {}, failure reason: {}, progress: {}".format(
+                    task_response.errorCode, task_response.failureReason, task_response.progress))
 
     def __wait_for_task_failure(self, task_id=None, timeout=TASK_DEFAULT_TIMEOUT,
                                 poll_frequency=POLL_FREQUENCY):
@@ -110,22 +105,21 @@ class Task(object):
         if self.__is_task_failed(task_response):
             return task_response
         elif self.__is_task_success(task_response):
-            assert False, ("Task successed, task response {0}".format(task_response.__dict__))
+            raise ApiClientException("Task expected to fail, but actually succeed.")
 
-    def wait_for_task_success(self, task_id_result=None, timeout=TASK_DEFAULT_TIMEOUT,
+    def wait_for_task_success(self, task_id_result, timeout=TASK_DEFAULT_TIMEOUT,
                               poll_frequency=POLL_FREQUENCY):
         """ Waits for task to be success for a given task_id.
 
         Args:
             task_id_result (TaskIdResult): TaskIdResult object is waiting for the failure status.
-            timeout (float): timeout in seconds.
+            timeout (float): timeout (in seconds) value to wait for failure status of the task.
             poll_frequency (float): poll frequency in seconds of getting task status.
 
         Returns:
             the failure/success response of the task.
         """
 
-        assert task_id_result is not None
         task_id = self.get_task_id_from_task_id_result(task_id_result)
         return self.__wait_for_task_success(task_id=task_id, timeout=timeout,
                                             poll_frequency=poll_frequency)
@@ -136,7 +130,7 @@ class Task(object):
 
         Args:
             task_id_result (TaskIdResult): TaskIdResult object is waiting for the failure status.
-            timeout (int): time_out value to wait for failure status of the task.
+            timeout (float): timeout (in seconds) value to wait for failure status of the task.
             poll_frequency (float): poll frequency in seconds of getting task status.
 
         Returns:
@@ -178,12 +172,8 @@ class Task(object):
         retries = self.GET_TASK_MAX_RETRIES
         for retry in range(retries):
             try:
-                task_result = self.__task_api.getTask(taskId=task_id)
-                assert task_result is not None
-
+                task_result = self.nb_api.task.getTask(taskId=task_id)
                 task_response = task_result.response
-                assert task_response is not None
-
                 return task_response
             except HTTPError as err:
                 error_code = err.response.status_code
@@ -193,54 +183,66 @@ class Task(object):
                         time.sleep(retry_interval)
                         retry_interval *= self.EXPONENTIAL_BACKOFF_MULTIPLIER
                     else:
-                        assert False, ("Max retries ({0}) exceeded\nHTTP error code: "
-                                       "{1}\nerror result: {2}".format(retries,
-                                                                       error_code,
-                                                                       json.loads(error_result)))
+                        raise ApiClientException(
+                            "Max retries ({0}) exceeded\nHTTP error code: {1}\nerror result: {2}"
+                            .format(retries, error_code, json.loads(error_result)))
                 else:
-                    assert False, ("HTTP error code: {0}\nerror result: {1}"
-                                   .format(error_code, json.loads(error_result)))
+                    raise ApiClientException("HTTP error code: {0}\nerror result: {1}"
+                                             .format(error_code, json.loads(error_result)))
+        raise ApiClientException("Didn't get any valid task response for '{}'".format(task_id))
 
     def __is_task_failed(self, task_response):
-        assert task_response is not None
-        return task_response.isError == True
+        """ Returns true if task failed.
 
-    def __is_task_success(self, task_response, error_codes=[]):
+        Args:
+            task_response(AugmentedTaskDTO): object of task response.
         """
-        :type error_codes: list
+
+        return task_response.isError is True
+
+    def __is_task_success(self, task_response, error_codes=None):
+        """ Returns true if task succeed.
+
+        Args:
+            task_response(AugmentedTaskDTO): object of task response.
+            error_codes (list[str]): error codes to treat as success.
+
+        Returns:
+            true if task succeed.
         """
-        assert task_response is not None
-        for error_code in error_codes:
-            if (error_code is not None and hasattr(task_response, 'errorCode')
-                and error_code == task_response.errorCode):
-                return True
-        is_not_error = task_response.isError is None or task_response.isError == False
-        is_end_time_present = task_response.endTime is not None
-        return (is_not_error and is_end_time_present)
+
+        if error_codes and hasattr(task_response, 'errorCode'):
+            return task_response.errorCode in error_codes
+
+        return not (task_response.isError or task_response.endTime is None)
 
     def get_task_id_from_task_id_result(self, task_id_result):
-        assert task_id_result is not None
-        task_id_response = task_id_result.response
-        assert task_id_response is not None
-        task_id = task_id_response.taskId
-        assert task_id is not None
-        return task_id
+        """ Gets task id from TaskIdResult object.
+
+        Args:
+            task_id_result (TaskIdResult): TaskIdResult object.
+
+        Returns:
+            task_id (str).
+        """
+
+        return task_id_result.response.taskId
 
     def get_task_progress(self, task_id_result):
         """ Gives the progress of the task from task response
 
         Args:
-            task_id_result (TaskIdResult object): TaskIdResult object
+            task_id_result (TaskIdResult): TaskIdResult object
 
         Returns:
             progress (str): the progress (current state) of the task
         """
 
-        task_id = task_id_result.response.taskId
-        task_dto_response = self.__task_api.getTask(taskId=task_id).response
+        task_id = self.get_task_id_from_task_id_result(task_id_result)
+        task_dto_response = self.__get_task_response(task_id)
         return task_dto_response.progress
 
-    def get_task_tree(self, task_id, timeout=None):
+    def get_task_tree(self, task_id, timeout=TASK_DEFAULT_TIMEOUT, poll_frequency=POLL_FREQUENCY):
         """ Returns the task objects of the parent and child task
 
         Args:
@@ -251,61 +253,87 @@ class Task(object):
             task_list_response (TaskDTOListResponse object): list with parent and child task objects
         """
 
-        if timeout is None:
-            timeout = self.TASK_DEFAULT_TIMEOUT
+        def task_tree_results(task_id):
+            """ Get task tree results.
 
-        task_list_response = self.__task_api.getTaskTree(taskId=task_id).response
+            Args:
+                task_id (str): task id.
 
-        start_time = time.time()
-        while (len(task_list_response) == 1):
-            if (time.time() > (start_time + timeout)):
-                break
-            time.sleep(1)
-            task_list_response = self.__task_api.getTaskTree(taskId=task_id).response
+            Returns:
+                task_list_response (TaskDTOListResponse) if found 2 or more tasks, else return False
+            """
 
-        return task_list_response
+            task_list_response = self.nb_api.task.getTaskTree(taskId=task_id).response
+            if len(task_list_response) > 1:
+                return task_list_response
+            else:
+                return False
 
-    def is_task_tree_success(self, task_id_result=None):
-        assert task_id_result is not None
-        self.wait_for_task_success(task_id_result=task_id_result)
+        return self.utils.wait.until(
+            task_tree_results,
+            task_id=task_id,
+            timeout=timeout,
+            interval=poll_frequency)
+
+    def is_task_tree_success(self, task_id_result):
+        """ Returns true if all tasks in task tree are successful.
+
+        Args:
+            task_id_result (TaskIdResult): TaskIdResult object to check.
+
+        Returns:
+            True if all tasks in stask tree succeed, if any task failed, return False.
+        """
+
+        task_response = self.wait_for_task_complete(task_id_result=task_id_result)
+        if self.__is_task_failed(task_response):
+            return False
         task_id = self.get_task_id_from_task_id_result(task_id_result=task_id_result)
-        task_list_result = self.__task_api.getTaskTree(taskId=task_id)
-        assert task_list_result is not None
-
-        task_list_response = task_list_result.response
-        assert task_list_response is not None
+        task_list_response = self.nb_api.task.getTaskTree(taskId=task_id).response
 
         for task in task_list_response:
-            assert self.__is_task_success(task_response=task), ("Task failed, task response {0}"
-                                                                .format(task.__dict__))
+            if self.__is_task_failed(task):
+                return False
         return True
 
-    def is_task_success(self, task_id_result=None, error_codes=[]):
+    def is_task_success(self, task_id_result=None, error_codes=None):
+        """ Returns true if task succeed.
+
+        Args:
+            task_id_result (TaskIdResult): TaskIdResult object to check.
+            error_codes (list[str]): error_codes considered as success.
+
+        Returns:
+            True if task succeed.
         """
-        :type error_codes: list
-        """
-        assert task_id_result is not None
+
         task_response = self.wait_for_task_complete(task_id_result=task_id_result)
-        assert task_response is not None , "Task is completed but response is None"
         return self.__is_task_success(task_response=task_response, error_codes=error_codes)
 
     def is_task_failure(self, task_id_result=None):
-        assert task_id_result is not None
+        """ Returns true if task failed.
+
+        Args:
+            task_id_result (TaskIdResult): TaskIdResult object to check.
+
+        Returns:
+            True if task failed.
+        """
+
         task_response = self.wait_for_task_complete(task_id_result=task_id_result)
-        assert task_response is not None , "Task is completed but response is None"
         return self.__is_task_failed(task_response=task_response)
 
-    def get_task_failure_reasons(self, task_id):
+    def get_task_failure_reasons(self, task_id_result):
         """ Retrieves the task failure reasons.
 
         Args:
-            task_id (TaskIdResult object): TaskIdResult object
+            task_id_result (TaskIdResult): TaskIdResult object to check.
 
         Returns:
             string containing a list of task failure reasons
         """
 
-        task_id = task_id.response.taskId
+        task_id = self.get_task_id_from_task_id_result(task_id_result)
         task_list_response = self.get_task_tree(task_id=task_id)
         failure_reasons = []
         for task in task_list_response:
@@ -314,5 +342,15 @@ class Task(object):
 
         return ", ".join(failure_reasons)
 
-    def get_task_response(self, task_id):
+    def get_task_response(self, task_id_result):
+        """ Get current task response.
+
+        Args:
+            task_id_result (TaskIdResult): TaskIdResult object to check.
+
+        Returns:
+            task_response (AugmentedTaskDTO) of the task.
+        """
+
+        task_id = self.get_task_id_from_task_id_result(task_id_result)
         return self.__get_task_response(task_id)
