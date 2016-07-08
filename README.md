@@ -14,20 +14,11 @@ This package provides a handle to this rich API library in an easy to consume fa
 
 # Getting Started
 
-
-### Download
-Clone this repository:
-
-``` bash
-git clone https://github.com/CiscoDevNet/uniq.git
-```
-
 ### Install
-Then install the package locally.
+To install uniq, simply
 
 ``` bash
-cd uniq
-python setup.py install
+pip install uniq
 ```
 
 ### Use
@@ -67,16 +58,3 @@ For sample scripts check out the [sample_scripts](sample_scripts/) directory.
 # Python
 
 This project has been tested and working on Python 3.0+
-
-#### Installation Issues
-
-*   Issue due to ```setuptools```
-
-    If you see an error message like so:
-    ```
-    error: can't copy 'opyright': doesn't exist or not a regular file
-    ```
-    please update the ```setuptools``` package by running the below command, and trying again.
-    ```
-    pip3 install -U setuptools
-    ```
