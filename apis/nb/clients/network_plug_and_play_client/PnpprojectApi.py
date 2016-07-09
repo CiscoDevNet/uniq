@@ -856,10 +856,10 @@ class PnpprojectApi(object):
             projectId, str: Project ID (required)
 
 
-            deleteRule, int: Delete project rules (true) or not (false) (required)
+            deleteRule, int: Delete project rules (1) or not (0) (required)
 
 
-            deleteDevice, int: Delete project devices (true) or not (false) (required)
+            deleteDevice, int: Delete project devices (1) or not (0) (required)
 
 
             scope, str: Authorization Scope for RBAC (required)

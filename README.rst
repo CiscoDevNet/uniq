@@ -1,5 +1,10 @@
-.. image:: uniq.png
+.. image:: https://raw.githubusercontent.com/CiscoDevNet/uniq/master/uniq.png
    :alt: uniq
+
+|
+
+.. image:: https://badge.fury.io/py/uniq.svg
+    :target: https://badge.fury.io/py/uniq
 
 uniq is a Python API client library for Cisco's Application Policy
 Infrastructure Controller Enterprise Module (APIC-EM) Northbound APIs.
