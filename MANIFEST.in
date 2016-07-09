@@ -1,6 +1,8 @@
 graft tests
 include apis/nb/clients/*_client/*.json
-include README
+include README.md
+include README.rst
 include LICENSE
 include Copyright
 include requirements.txt
+include uniq.png
