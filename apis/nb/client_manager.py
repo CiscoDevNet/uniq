@@ -15,6 +15,7 @@ limitations under the License.
 """
 
 import os
+import io
 import importlib
 import json
 import ssl
@@ -579,12 +580,18 @@ class NbClientManager(ClientManager):
 
         headers.pop('Content-Type')
         files_to_post = {}
-        if type(files) == dict:
-            for name, filepath in files.items():
-                fileobj = open(filepath, 'rb')
-                files_to_post[name] = fileobj
-
-        if type(files) == str:
+        if isinstance(files, dict):
+            for name, value in files.items():
+                if isinstance(value, str):
+                    fileobj = open(value, 'rb')
+                    files_to_post[name] = fileobj
+                elif isinstance(value, tuple):
+                    files_to_post = files
+                    break
+                elif isinstance(value, io.IOBase):
+                    files_to_post = files
+                    break
+        elif isinstance(files, str):
             fileobj = open(files, 'rb')
             files_to_post['fileUpload'] = fileobj
 
@@ -655,7 +662,7 @@ class NbClientManager(ClientManager):
         """
         if isinstance(obj, type(None)):
             return None
-        elif isinstance(obj, (str, int, float, bool)):
+        elif isinstance(obj, (str, int, float, bool, io.IOBase, tuple)):
             return obj
         elif isinstance(obj, list):
             return [NbClientManager.sanitize_for_serialization(sub_obj) for sub_obj in obj]
