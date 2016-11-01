@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 class DeviceIfDTO(object):
-
 
 
     def __init__(self):
@@ -28,40 +15,19 @@ class DeviceIfDTO(object):
         """
         self.swaggerTypes = {
             
-            'description': 'str',
-            
-            
             'className': 'str',
             
             
-            'deviceId': 'str',
-            
-            
-            'status': 'str',
+            'description': 'str',
             
             
             'interfaceType': 'str',
             
             
-            'duplex': 'str',
+            'status': 'str',
             
             
-            'portMode': 'str',
-            
-            
-            'portType': 'str',
-            
-            
-            'lastUpdated': 'str',
-            
-            
-            'vlanId': 'str',
-            
-            
-            'portName': 'str',
-            
-            
-            'series': 'str',
+            'voiceVlan': 'str',
             
             
             'ipv4Address': 'str',
@@ -79,59 +45,75 @@ class DeviceIfDTO(object):
             'mappedPhysicalInterfaceName': 'str',
             
             
+            'mediaType': 'str',
+            
+            
             'nativeVlanId': 'str',
             
             
             'ospfSupport': 'str',
             
             
-            'pid': 'str',
-            
-            
             'serialNo': 'str',
             
             
-            'ifIndex': 'str',
+            'pid': 'str',
+            
+            
+            'series': 'str',
+            
+            
+            'vlanId': 'str',
+            
+            
+            'deviceId': 'str',
+            
+            
+            'duplex': 'str',
+            
+            
+            'portMode': 'str',
+            
+            
+            'portType': 'str',
+            
+            
+            'lastUpdated': 'str',
             
             
             'macAddress': 'str',
             
             
+            'ifIndex': 'str',
+            
+            
             'speed': 'str',
             
             
-            'id': 'str',
+            'adminStatus': 'str',
             
             
-            'instanceUuid': 'str'
+            'portName': 'str',
+            
+            
+            'instanceUuid': 'str',
+            
+            
+            'id': 'str'
             
         }
 
         self.attributeMap = {
             
-            'description': 'description',
-            
             'className': 'className',
             
-            'deviceId': 'deviceId',
-            
-            'status': 'status',
+            'description': 'description',
             
             'interfaceType': 'interfaceType',
             
-            'duplex': 'duplex',
+            'status': 'status',
             
-            'portMode': 'portMode',
-            
-            'portType': 'portType',
-            
-            'lastUpdated': 'lastUpdated',
-            
-            'vlanId': 'vlanId',
-            
-            'portName': 'portName',
-            
-            'series': 'series',
+            'voiceVlan': 'voiceVlan',
             
             'ipv4Address': 'ipv4Address',
             
@@ -143,73 +125,65 @@ class DeviceIfDTO(object):
             
             'mappedPhysicalInterfaceName': 'mappedPhysicalInterfaceName',
             
+            'mediaType': 'mediaType',
+            
             'nativeVlanId': 'nativeVlanId',
             
             'ospfSupport': 'ospfSupport',
             
-            'pid': 'pid',
-            
             'serialNo': 'serialNo',
             
-            'ifIndex': 'ifIndex',
+            'pid': 'pid',
+            
+            'series': 'series',
+            
+            'vlanId': 'vlanId',
+            
+            'deviceId': 'deviceId',
+            
+            'duplex': 'duplex',
+            
+            'portMode': 'portMode',
+            
+            'portType': 'portType',
+            
+            'lastUpdated': 'lastUpdated',
             
             'macAddress': 'macAddress',
             
+            'ifIndex': 'ifIndex',
+            
             'speed': 'speed',
             
-            'id': 'id',
+            'adminStatus': 'adminStatus',
             
-            'instanceUuid': 'instanceUuid'
+            'portName': 'portName',
+            
+            'instanceUuid': 'instanceUuid',
+            
+            'id': 'id'
             
         }       
 
+        
+        
+        self.className = None # str
         
         #interface description
         
         self.description = None # str
         
+        #Interface type as Physical or Virtual
         
-        self.className = None # str
-        
-        #ID of the device
-        
-        self.deviceId = None # str
+        self.interfaceType = None # str
         
         #Interface status as Down / Up
         
         self.status = None # str
         
-        #Interface type as Physical or Virtual
+        #Vlan information of the interface
         
-        self.interfaceType = None # str
-        
-        #Interface duplex as AutoNegotiate or FullDuplex
-        
-        self.duplex = None # str
-        
-        #Port mode as access, trunk, routed
-        
-        self.portMode = None # str
-        
-        #Port type as Ethernet Port / Ethernet SVI / Ethernet Sub Interface
-        
-        self.portType = None # str
-        
-        #Time when the device interface info last got updated
-        
-        self.lastUpdated = None # str
-        
-        #Vlan ID of interface
-        
-        self.vlanId = None # str
-        
-        #Interface name
-        
-        self.portName = None # str
-        
-        #Series of the device
-        
-        self.series = None # str
+        self.voiceVlan = None # str
         
         #IPv4 address assigned for interface
         
@@ -231,6 +205,10 @@ class DeviceIfDTO(object):
         
         self.mappedPhysicalInterfaceName = None # str
         
+        #Media Type of the interface
+        
+        self.mediaType = None # str
+        
         #Vlan to receive untagged frames on trunk port
         
         self.nativeVlanId = None # str
@@ -239,28 +217,65 @@ class DeviceIfDTO(object):
         
         self.ospfSupport = None # str
         
-        #Platform ID of the device
-        
-        self.pid = None # str
-        
         #Serial number of the device
         
         self.serialNo = None # str
         
-        #Interface index
+        #Platform ID of the device
         
-        self.ifIndex = None # str
+        self.pid = None # str
+        
+        #Series of the device
+        
+        self.series = None # str
+        
+        #Vlan ID of interface
+        
+        self.vlanId = None # str
+        
+        #ID of the device
+        
+        self.deviceId = None # str
+        
+        #Interface duplex as AutoNegotiate or FullDuplex
+        
+        self.duplex = None # str
+        
+        #Port mode as access, trunk, routed
+        
+        self.portMode = None # str
+        
+        #Port type as Ethernet Port / Ethernet SVI / Ethernet Sub Interface
+        
+        self.portType = None # str
+        
+        #Time when the device interface info last got updated
+        
+        self.lastUpdated = None # str
         
         #MAC address of interface
         
         self.macAddress = None # str
         
+        #Interface index
+        
+        self.ifIndex = None # str
+        
         #Speed of the interface
         
         self.speed = None # str
         
+        #Administrative status of the interface
         
-        self.id = None # str
+        self.adminStatus = None # str
+        
+        #Interface name
+        
+        self.portName = None # str
         
         
         self.instanceUuid = None # str
+        
+        
+        self.id = None # str
+        

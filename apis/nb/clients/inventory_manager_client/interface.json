@@ -1,347 +1,38 @@
 {
-    "models": {
-        "DeviceIfDTO": {
-            "id": "DeviceIfDTO",
-            "description": "",
-            "properties": {
-                "status": {
-                    "description": "Interface status as Down / Up",
-                    "type": "string"
-                },
-                "deviceId": {
-                    "description": "ID of the device",
-                    "type": "string"
-                },
-                "serialNo": {
-                    "description": "Serial number of the device",
-                    "type": "string"
-                },
-                "lastUpdated": {
-                    "description": "Time when the device interface info last got updated",
-                    "type": "string"
-                },
-                "isisSupport": {
-                    "description": "Flag for ISIS enabled / disabled",
-                    "type": "string"
-                },
-                "ipv4Mask": {
-                    "description": "Subnet mask for IPv4 address assigned for interface",
-                    "type": "string"
-                },
-                "instanceUuid": {
-                    "type": "string"
-                },
-                "ipv4Address": {
-                    "description": "IPv4 address assigned for interface",
-                    "type": "string"
-                },
-                "portType": {
-                    "description": "Port type as Ethernet Port / Ethernet SVI / Ethernet Sub Interface",
-                    "type": "string"
-                },
-                "portName": {
-                    "description": "Interface name",
-                    "type": "string"
-                },
-                "mappedPhysicalInterfaceId": {
-                    "description": "ID of physical interface mapped with the virtual interface of WLC",
-                    "type": "string"
-                },
-                "portMode": {
-                    "description": "Port mode as access, trunk, routed",
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "nativeVlanId": {
-                    "description": "Vlan to receive untagged frames on trunk port",
-                    "type": "string"
-                },
-                "ifIndex": {
-                    "description": "Interface index",
-                    "type": "string"
-                },
-                "interfaceType": {
-                    "description": "Interface type as Physical or Virtual",
-                    "type": "string"
-                },
-                "series": {
-                    "description": "Series of the device",
-                    "type": "string"
-                },
-                "pid": {
-                    "description": "Platform ID of the device",
-                    "type": "string"
-                },
-                "vlanId": {
-                    "description": "Vlan ID of interface",
-                    "type": "string"
-                },
-                "duplex": {
-                    "description": "Interface duplex as AutoNegotiate or FullDuplex",
-                    "type": "string"
-                },
-                "macAddress": {
-                    "description": "MAC address of interface",
-                    "type": "string"
-                },
-                "speed": {
-                    "description": "Speed of the interface",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "interface description",
-                    "type": "string"
-                },
-                "ospfSupport": {
-                    "description": "Flag for OSPF enabled / disabled",
-                    "type": "string"
-                },
-                "mappedPhysicalInterfaceName": {
-                    "description": "Physical interface name mapped with the virtual interface of WLC",
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "required": [
-                "status",
-                "interfaceType",
-                "speed",
-                "ifIndex",
-                "portName",
-                "duplex",
-                "lastUpdated",
-                "deviceId",
-                "portMode",
-                "series",
-                "isisSupport",
-                "ospfSupport",
-                "pid",
-                "serialNo"
-            ]
-        },
-        "InterfaceNIO": {
-            "id": "InterfaceNIO",
-            "description": "",
-            "properties": {
-                "numUpdates": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "deviceId": {
-                    "type": "string"
-                },
-                "serialNo": {
-                    "type": "string"
-                },
-                "lastUpdated": {
-                    "type": "string"
-                },
-                "isisSupport": {
-                    "type": "boolean"
-                },
-                "servicePolicyOut": {
-                    "type": "string"
-                },
-                "ipv4Mask": {
-                    "type": "string"
-                },
-                "servicePolicyIn": {
-                    "type": "string"
-                },
-                "lineCardId": {
-                    "type": "string"
-                },
-                "portType": {
-                    "type": "string"
-                },
-                "portName": {
-                    "type": "string"
-                },
-                "vendor": {
-                    "type": "string"
-                },
-                "portMode": {
-                    "type": "string"
-                },
-                "queueCount": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "ipv4Address": {
-                    "type": "string"
-                },
-                "macAddress": {
-                    "type": "string"
-                },
-                "connectedNeighborType": {
-                    "type": "string"
-                },
-                "ifIndex": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "connectorType": {
-                    "type": "string"
-                },
-                "interfaceType": {
-                    "type": "string"
-                },
-                "ospfSupport": {
-                    "type": "boolean"
-                },
-                "pid": {
-                    "type": "string"
-                },
-                "aclIn": {
-                    "type": "string"
-                },
-                "securityStatus": {
-                    "type": "boolean"
-                },
-                "egressQueueConfig": {
-                    "type": "string"
-                },
-                "duplex": {
-                    "type": "boolean"
-                },
-                "aclOut": {
-                    "type": "string"
-                },
-                "ipv6Address": {
-                    "type": "string"
-                },
-                "speed": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "trustPolicy": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "avgUpdateFrequency": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "ipv6Mask": {
-                    "type": "string"
-                },
-                "connectedNeighbor": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "DeviceIfResult": {
-            "id": "DeviceIfResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "$ref": "DeviceIfDTO"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "InterfaceNIOListResult": {
-            "id": "InterfaceNIOListResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "InterfaceNIO"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "CountResult": {
-            "id": "CountResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "DeviceIfListResult": {
-            "id": "DeviceIfListResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "DeviceIfDTO"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        }
-    },
     "apis": [
         {
             "description": "getInterface",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getInterface",
-                    "type": "DeviceIfListResult",
-                    "method": "GET",
+                    "notes": "Gets all available interfaces with a maximum limit of 500",
+                    "summary": "Retrieves all interfaces",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets all available interfaces with a maximum limit of 500",
-                    "summary": "Retrieves all interfaces",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DeviceIfListResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DeviceIfListResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
                         }
-                    ]
+                    ],
+                    "type": "DeviceIfListResult",
+                    "parameters": []
                 }
             ],
             "path": "/interface"
@@ -350,45 +41,35 @@
             "description": "getInterfaceCount",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getInterfaceCount",
-                    "type": "CountResult",
-                    "method": "GET",
+                    "notes": "Gets the count of interfaces for all devices",
+                    "summary": "Retrieves interface count",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the count of interfaces for all devices",
-                    "summary": "Retrieves interface count",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "CountResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "CountResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
                         }
-                    ]
+                    ],
+                    "type": "CountResult",
+                    "parameters": []
                 }
             ],
             "path": "/interface/count"
@@ -397,52 +78,43 @@
             "description": "getInterfaceListByIp",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getInterfaceListByIp",
-                    "type": "DeviceIfListResult",
-                    "method": "GET",
+                    "notes": "Gets list of interfaces with the given IP address",
+                    "summary": "Retrieves interfaces by IP address",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "ipAddress",
-                            "type": "string",
-                            "description": "IP address of the interface",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets list of interfaces with the given IP address",
-                    "summary": "Retrieves interfaces by IP address",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DeviceIfListResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DeviceIfListResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "DeviceIfListResult",
+                    "parameters": [
+                        {
+                            "name": "ipAddress",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "IP address of the interface",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -453,45 +125,35 @@
             "description": "getInterfaceByIsis",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getInterfaceByIsis",
-                    "type": "DeviceIfListResult",
-                    "method": "GET",
+                    "notes": "Gets the interfaces that has ISIS enabled",
+                    "summary": "Retrieves ISIS interfaces",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the interfaces that has ISIS enabled",
-                    "summary": "Retrieves ISIS interfaces",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DeviceIfListResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DeviceIfListResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
                         }
-                    ]
+                    ],
+                    "type": "DeviceIfListResult",
+                    "parameters": []
                 }
             ],
             "path": "/interface/isis"
@@ -500,52 +162,43 @@
             "description": "getInterfaceByDeviceId",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getInterfaceByDeviceId",
-                    "type": "DeviceIfListResult",
-                    "method": "GET",
+                    "notes": "Gets list of interfaces for the given device",
+                    "summary": "Retrieves device interfaces",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "deviceId",
-                            "type": "string",
-                            "description": "Device ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets list of interfaces for the given device",
-                    "summary": "Retrieves device interfaces",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DeviceIfListResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DeviceIfListResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "DeviceIfListResult",
+                    "parameters": [
+                        {
+                            "name": "deviceId",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Device ID",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -553,64 +206,102 @@
             "path": "/interface/network-device/{deviceId}"
         },
         {
-            "description": "getInterfaceByDeviceIdAndName",
+            "description": "getInterfaceCountByDevice",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "nickname": "getInterfaceByDeviceIdAndName",
-                    "type": "DeviceIfResult",
-                    "method": "GET",
+                    "nickname": "getInterfaceCountByDevice",
+                    "notes": "Gets the interface count for the given device",
+                    "summary": "Retrieves device interface count",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "deviceId",
-                            "type": "string",
-                            "description": "Device ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "name",
-                            "type": "string",
-                            "description": "Interface name",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "query"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the interface for the given device ID and for the given interface name",
-                    "summary": "Retrieves interface for the given device and interface name",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DeviceIfResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "CountResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "CountResult",
+                    "parameters": [
+                        {
+                            "name": "deviceId",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Device ID",
+                            "required": true,
+                            "defaultValue": ""
+                        }
+                    ]
+                }
+            ],
+            "path": "/interface/network-device/{deviceId}/count"
+        },
+        {
+            "description": "getInterfaceByDeviceIdAndName",
+            "operations": [
+                {
+                    "nickname": "getInterfaceByDeviceIdAndName",
+                    "notes": "Gets the interface for the given device ID and for the given interface name",
+                    "summary": "Retrieves interface for the given device and interface name",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "DeviceIfResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "DeviceIfResult",
+                    "parameters": [
+                        {
+                            "name": "deviceId",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Device ID",
+                            "required": true,
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "name",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string",
+                            "description": "Interface name",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -621,72 +312,63 @@
             "description": "getInterfaceRangeByDevice",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getInterfaceRangeByDevice",
-                    "type": "DeviceIfListResult",
-                    "method": "GET",
+                    "notes": "Gets list of interfaces for the device and for the given range",
+                    "summary": "Retrieves interface range for the device",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "deviceId",
-                            "type": "string",
-                            "description": "Device ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "startIndex",
-                            "type": "integer",
-                            "description": "Start index",
-                            "format": "int32",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "recordsToReturn",
-                            "type": "integer",
-                            "description": "Number of records to return",
-                            "format": "int32",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets list of interfaces for the device and for the given range",
-                    "summary": "Retrieves interface range for the device",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DeviceIfListResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DeviceIfListResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "DeviceIfListResult",
+                    "parameters": [
+                        {
+                            "name": "deviceId",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Device ID",
+                            "required": true,
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "startIndex",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "integer",
+                            "description": "Start index",
+                            "required": true,
+                            "format": "int32",
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "recordsToReturn",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "integer",
+                            "description": "Number of records to return",
+                            "required": true,
+                            "format": "int32",
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -694,104 +376,38 @@
             "path": "/interface/network-device/{deviceId}/{startIndex}/{recordsToReturn}"
         },
         {
-            "description": "getInterfaceCountByDevice",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getInterfaceCountByDevice",
-                    "type": "CountResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "networkDeviceId",
-                            "type": "string",
-                            "description": "Device ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the interface count for the given device",
-                    "summary": "Retrieves device interface count",
-                    "responseMessages": [
-                        {
-                            "responseModel": "CountResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/interface/network-device/{networkDeviceId}/count"
-        },
-        {
             "description": "getInterfaceByOspf",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getInterfaceByOspf",
-                    "type": "DeviceIfListResult",
-                    "method": "GET",
+                    "notes": "Gets the interfaces that has OSPF enabled",
+                    "summary": "Retrieves OSPF interfaces",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the interfaces that has OSPF enabled",
-                    "summary": "Retrieves OSPF interfaces",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DeviceIfListResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DeviceIfListResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
                         }
-                    ]
+                    ],
+                    "type": "DeviceIfListResult",
+                    "parameters": []
                 }
             ],
             "path": "/interface/ospf"
@@ -800,176 +416,239 @@
             "description": "getInterfaceById",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getInterfaceById",
-                    "type": "DeviceIfResult",
-                    "method": "GET",
+                    "notes": "Gets the interface for the given interface ID",
+                    "summary": "Retrieves interface by ID",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "id",
-                            "type": "string",
-                            "description": "Interface ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the interface for the given interface ID",
-                    "summary": "Retrieves interface by ID",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DeviceIfResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DeviceIfResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "DeviceIfResult",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Interface ID",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
             ],
             "path": "/interface/{id}"
-        },
-        {
-            "description": "getInterfaceByTag",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getInterfaceByTag",
-                    "type": "InterfaceNIOListResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "tagId",
-                            "type": "string",
-                            "description": "Tag ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets list of interfaces associated with the given tag",
-                    "summary": "Retrieves interfaces by tag",
-                    "responseMessages": [
-                        {
-                            "responseModel": "InterfaceNIOListResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag/{tagId}/interface"
-        },
-        {
-            "description": "getInterfaceCountByTagId",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getInterfaceCountByTagId",
-                    "type": "CountResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "tagId",
-                            "type": "string",
-                            "description": "Tag ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets interface count that are associated with the given tag",
-                    "summary": "Retrieves interface count by tag",
-                    "responseMessages": [
-                        {
-                            "responseModel": "CountResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag/{tagId}/interface/count"
         }
     ],
     "apiVersion": "1.0",
     "swaggerVersion": "1.2",
+    "models": {
+        "DeviceIfDTO": {
+            "required": [
+                "interfaceType",
+                "status",
+                "voiceVlan",
+                "isisSupport",
+                "mediaType",
+                "ospfSupport",
+                "serialNo",
+                "pid",
+                "series",
+                "deviceId",
+                "duplex",
+                "portMode",
+                "lastUpdated",
+                "ifIndex",
+                "speed",
+                "adminStatus",
+                "portName"
+            ],
+            "properties": {
+                "ipv4Address": {
+                    "type": "string",
+                    "description": "IPv4 address assigned for interface"
+                },
+                "interfaceType": {
+                    "type": "string",
+                    "description": "Interface type as Physical or Virtual"
+                },
+                "mediaType": {
+                    "type": "string",
+                    "description": "Media Type of the interface"
+                },
+                "duplex": {
+                    "type": "string",
+                    "description": "Interface duplex as AutoNegotiate or FullDuplex"
+                },
+                "ipv4Mask": {
+                    "type": "string",
+                    "description": "Subnet mask for IPv4 address assigned for interface"
+                },
+                "voiceVlan": {
+                    "type": "string",
+                    "description": "Vlan information of the interface"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "deviceId": {
+                    "type": "string",
+                    "description": "ID of the device"
+                },
+                "isisSupport": {
+                    "type": "string",
+                    "description": "Flag for ISIS enabled / disabled"
+                },
+                "pid": {
+                    "type": "string",
+                    "description": "Platform ID of the device"
+                },
+                "speed": {
+                    "type": "string",
+                    "description": "Speed of the interface"
+                },
+                "nativeVlanId": {
+                    "type": "string",
+                    "description": "Vlan to receive untagged frames on trunk port"
+                },
+                "portMode": {
+                    "type": "string",
+                    "description": "Port mode as access, trunk, routed"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "Time when the device interface info last got updated"
+                },
+                "serialNo": {
+                    "type": "string",
+                    "description": "Serial number of the device"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "interface description"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Interface status as Down / Up"
+                },
+                "mappedPhysicalInterfaceId": {
+                    "type": "string",
+                    "description": "ID of physical interface mapped with the virtual interface of WLC"
+                },
+                "series": {
+                    "type": "string",
+                    "description": "Series of the device"
+                },
+                "ospfSupport": {
+                    "type": "string",
+                    "description": "Flag for OSPF enabled / disabled"
+                },
+                "ifIndex": {
+                    "type": "string",
+                    "description": "Interface index"
+                },
+                "vlanId": {
+                    "type": "string",
+                    "description": "Vlan ID of interface"
+                },
+                "adminStatus": {
+                    "type": "string",
+                    "description": "Administrative status of the interface"
+                },
+                "portType": {
+                    "type": "string",
+                    "description": "Port type as Ethernet Port / Ethernet SVI / Ethernet Sub Interface"
+                },
+                "mappedPhysicalInterfaceName": {
+                    "type": "string",
+                    "description": "Physical interface name mapped with the virtual interface of WLC"
+                },
+                "portName": {
+                    "type": "string",
+                    "description": "Interface name"
+                },
+                "macAddress": {
+                    "type": "string",
+                    "description": "MAC address of interface"
+                },
+                "instanceUuid": {
+                    "type": "string"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "DeviceIfDTO"
+        },
+        "CountResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "CountResult"
+        },
+        "DeviceIfListResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "DeviceIfDTO"
+                    }
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "DeviceIfListResult"
+        },
+        "DeviceIfResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "DeviceIfDTO"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "DeviceIfResult"
+        }
+    },
     "basePath": "/apic-em-inventory-manager-service",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/"
+    "resourcePath": "/interface"
 }

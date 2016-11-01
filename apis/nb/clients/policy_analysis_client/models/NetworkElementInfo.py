@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 class NetworkElementInfo(object):
-
 
 
     def __init__(self):
@@ -27,159 +14,159 @@ class NetworkElementInfo(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
-            'role': 'str',
-
-
-            'ip': 'str',
-
-
-            'linkInformationSource': 'str',
-
-
-            'tunnels': 'list[str]',
-
-
-            'accuracyList': 'list[Accuracy]',
-
-
-            'egressInterface': 'InterfaceContainer',
-
-
-            'ingressInterface': 'InterfaceContainer',
-
-
-            'deviceStatsCollectionFailureReason': 'str',
-
-
-            'detailedStatus': 'DetailedStatus',
-
-
+            
             'deviceStatistics': 'DeviceStatistics',
-
-
-            'perfMonCollection': 'str',
-
-
+            
+            
             'perfMonCollectionFailureReason': 'str',
-
-
+            
+            
             'deviceStatsCollection': 'str',
-
-
-            'perfMonitorStatistics': 'PerfMonitorStatistics',
-
-
+            
+            
+            'deviceStatsCollectionFailureReason': 'str',
+            
+            
+            'detailedStatus': 'DetailedStatus',
+            
+            
+            'tunnels': 'list[str]',
+            
+            
+            'linkInformationSource': 'str',
+            
+            
+            'accuracyList': 'list[Accuracy]',
+            
+            
+            'perfMonCollection': 'str',
+            
+            
+            'perfMonitorStatistics': 'list[PerfMonitorStatistics]',
+            
+            
             'name': 'str',
-
-
+            
+            
             'id': 'str',
-
-
-            'type': 'str'
-
+            
+            
+            'type': 'str',
+            
+            
+            'role': 'str',
+            
+            
+            'egressInterface': 'InterfaceContainer',
+            
+            
+            'ingressInterface': 'InterfaceContainer',
+            
+            
+            'ip': 'str'
+            
         }
 
         self.attributeMap = {
-
-            'role': 'role',
-
-            'ip': 'ip',
-
-            'linkInformationSource': 'linkInformationSource',
-
-            'tunnels': 'tunnels',
-
-            'accuracyList': 'accuracyList',
-
-            'egressInterface': 'egressInterface',
-
-            'ingressInterface': 'ingressInterface',
-
-            'deviceStatsCollectionFailureReason': 'deviceStatsCollectionFailureReason',
-
-            'detailedStatus': 'detailedStatus',
-
+            
             'deviceStatistics': 'deviceStatistics',
-
-            'perfMonCollection': 'perfMonCollection',
-
+            
             'perfMonCollectionFailureReason': 'perfMonCollectionFailureReason',
-
+            
             'deviceStatsCollection': 'deviceStatsCollection',
-
+            
+            'deviceStatsCollectionFailureReason': 'deviceStatsCollectionFailureReason',
+            
+            'detailedStatus': 'detailedStatus',
+            
+            'tunnels': 'tunnels',
+            
+            'linkInformationSource': 'linkInformationSource',
+            
+            'accuracyList': 'accuracyList',
+            
+            'perfMonCollection': 'perfMonCollection',
+            
             'perfMonitorStatistics': 'perfMonitorStatistics',
-
+            
             'name': 'name',
-
+            
             'id': 'id',
+            
+            'type': 'type',
+            
+            'role': 'role',
+            
+            'egressInterface': 'egressInterface',
+            
+            'ingressInterface': 'ingressInterface',
+            
+            'ip': 'ip'
+            
+        }       
 
-            'type': 'type'
-
-        }
-
-
-        #Role of device in network(can be access,core,distribution or border router)
-
-        self.role = None # str
-
-        #Network Device IP
-
-        self.ip = None # str
-
-        #The source of the link information to the next hop
-
-        self.linkInformationSource = None # str
-
-        #Tunnels this network element is in
-
-        self.tunnels = None # list[str]
-
-
-        self.accuracyList = None # list[Accuracy]
-
-        #Egress interface of the network device
-
-        self.egressInterface = None # InterfaceContainer
-
-        #Ingress interface of the network device
-
-        self.ingressInterface = None # InterfaceContainer
-
-
-        self.deviceStatsCollectionFailureReason = None # str
-
-
-        self.detailedStatus = None # DetailedStatus
-
+        
         #Device statistics
-
+        
         self.deviceStatistics = None # DeviceStatistics
-
-        #A status value from [ INPROGRESS, SUCCESS, FAILED ]
-
-        self.perfMonCollection = None # str
-
-
+        
+        
         self.perfMonCollectionFailureReason = None # str
-
-        #A status value from [ INPROGRESS, SUCCESS, FAILED ]
-
+        
+        #A status value from [ INPROGRESS, SUCCESS, FAILED ] 
+        
         self.deviceStatsCollection = None # str
-
+        
+        
+        self.deviceStatsCollectionFailureReason = None # str
+        
+        
+        self.detailedStatus = None # DetailedStatus
+        
+        #Tunnels this network element is in
+        
+        self.tunnels = None # list[str]
+        
+        #The source of the link information to the next hop
+        
+        self.linkInformationSource = None # str
+        
+        
+        self.accuracyList = None # list[Accuracy]
+        
+        #A status value from [ INPROGRESS, SUCCESS, FAILED ] 
+        
+        self.perfMonCollection = None # str
+        
         #perf mon statistics on the device for give flow
-
-        self.perfMonitorStatistics = None # PerfMonitorStatistics
-
+        
+        self.perfMonitorStatistics = None # list[PerfMonitorStatistics]
+        
         #Network Device name
-
+        
         self.name = None # str
-
+        
         #Network Device ID
-
+        
         self.id = None # str
-
+        
         #Network Device Type(can be switch,router,wired host or wireless host)
-
+        
         self.type = None # str
-
+        
+        #Role of device in network(can be access,core,distribution or border router)
+        
+        self.role = None # str
+        
+        #Egress interface of the network device
+        
+        self.egressInterface = None # InterfaceContainer
+        
+        #Ingress interface of the network device
+        
+        self.ingressInterface = None # InterfaceContainer
+        
+        #Network Device IP
+        
+        self.ip = None # str
+        

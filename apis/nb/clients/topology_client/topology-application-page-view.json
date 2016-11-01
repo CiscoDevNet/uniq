@@ -1,35 +1,1836 @@
 {
+    "apis": [
+        {
+            "path": "/topology/application",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "createTopologyApplications",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "createTopologyApplications",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "notes": "This method is used to create topology applications.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyApplicationDto"
+                            },
+                            "description": "application",
+                            "name": "topologyApplicationDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "createTopologyApplications"
+        },
+        {
+            "path": "/topology/application",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "updateTopologyApplications",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "updateTopologyApplication",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "notes": "This method is used to update topology applications.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyApplicationDto"
+                            },
+                            "description": "application",
+                            "name": "topologyApplicationDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "updateTopologyApplication"
+        },
+        {
+            "path": "/topology/application",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyApplicationListResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplications",
+                    "nickname": "getTopologyApplications",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain the list of topology aplications",
+                    "deprecated": "false",
+                    "parameters": [],
+                    "type": "TopologyApplicationListResult"
+                }
+            ],
+            "description": "getTopologyApplications"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "deleteTopologyApplication",
+                    "nickname": "deleteTopologyApplication",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "DELETE",
+                    "notes": "This method is used to delete a topology application.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "deleteTopologyApplication"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyApplicationResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplication",
+                    "nickname": "getTopologyApplication",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain a topology aplication",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyApplicationResult"
+                }
+            ],
+            "description": "getTopologyApplication"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "createTopologyPages",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "createTopologyPages",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "notes": "This method is used to create topology pages.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyPageDto"
+                            },
+                            "description": "page",
+                            "name": "topologyPageDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "createTopologyPages"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyPageListResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplicationPages",
+                    "nickname": "getTopologyApplicationPages",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain the list of topology aplication pages for an topology application",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyPageListResult"
+                }
+            ],
+            "description": "getTopologyApplicationPages"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "updateTopologyPages",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "updateTopologyPages",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "notes": "This method is used to update topology pages.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyPageDto"
+                            },
+                            "description": "page",
+                            "name": "topologyPageDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "updateTopologyPages"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page/{pageUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "deleteTopologyPage",
+                    "nickname": "deleteTopologyPage",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "DELETE",
+                    "notes": "This method is used to delete a topology page.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "deleteTopologyPage"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page/{pageUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyPageResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplicationPage",
+                    "nickname": "getTopologyApplicationPage",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain a topology aplication page",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyPageResult"
+                }
+            ],
+            "description": "getTopologyApplicationPage"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyViewListResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplicationPageViews",
+                    "nickname": "getTopologyApplicationPageViews",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain the list of topology aplication page Views for an topology application Page",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyViewListResult"
+                }
+            ],
+            "description": "getTopologyApplicationPageViews"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "createTopologyViews",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "createTopologyViews",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "notes": "This method is used to create topology views.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyViewDto"
+                            },
+                            "description": "view",
+                            "name": "topologyViewDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "createTopologyViews"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "updateTopologyViews",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "updateTopologyViews",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "notes": "This method is used to update topology views.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyViewDto"
+                            },
+                            "description": "page",
+                            "name": "topologyViewDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "updateTopologyViews"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view/{viewUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyViewResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplicationPageView",
+                    "nickname": "getTopologyApplicationPageView",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain a topology aplication page view",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page View Uuid",
+                            "name": "viewUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyViewResult"
+                }
+            ],
+            "description": "getTopologyApplicationPageView"
+        },
+        {
+            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view/{viewUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "deleteTopologyView",
+                    "nickname": "deleteTopologyView",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "DELETE",
+                    "notes": "This method is used to delete a topology view.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application View Uuid",
+                            "name": "viewUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "deleteTopologyView"
+        },
+        {
+            "path": "/topology/controllerapp",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "createTopologyApplications",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "createTopologyApplications",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "notes": "This method is used to create topology applications.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyApplicationDto"
+                            },
+                            "description": "application",
+                            "name": "topologyApplicationDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "createTopologyApplications"
+        },
+        {
+            "path": "/topology/controllerapp",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyApplicationListResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplications",
+                    "nickname": "getTopologyApplications",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain the list of topology aplications",
+                    "deprecated": "false",
+                    "parameters": [],
+                    "type": "TopologyApplicationListResult"
+                }
+            ],
+            "description": "getTopologyApplications"
+        },
+        {
+            "path": "/topology/controllerapp",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "updateTopologyApplications",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "updateTopologyApplication",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "notes": "This method is used to update topology applications.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyApplicationDto"
+                            },
+                            "description": "application",
+                            "name": "topologyApplicationDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "updateTopologyApplication"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "deleteTopologyApplication",
+                    "nickname": "deleteTopologyApplication",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "DELETE",
+                    "notes": "This method is used to delete a topology application.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "deleteTopologyApplication"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyApplicationResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplication",
+                    "nickname": "getTopologyApplication",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain a topology aplication",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyApplicationResult"
+                }
+            ],
+            "description": "getTopologyApplication"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "updateTopologyPages",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "updateTopologyPages",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "notes": "This method is used to update topology pages.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyPageDto"
+                            },
+                            "description": "page",
+                            "name": "topologyPageDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "updateTopologyPages"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "createTopologyPages",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "createTopologyPages",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "notes": "This method is used to create topology pages.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyPageDto"
+                            },
+                            "description": "page",
+                            "name": "topologyPageDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "createTopologyPages"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyPageListResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplicationPages",
+                    "nickname": "getTopologyApplicationPages",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain the list of topology aplication pages for an topology application",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyPageListResult"
+                }
+            ],
+            "description": "getTopologyApplicationPages"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyPageResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplicationPage",
+                    "nickname": "getTopologyApplicationPage",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain a topology aplication page",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyPageResult"
+                }
+            ],
+            "description": "getTopologyApplicationPage"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "deleteTopologyPage",
+                    "nickname": "deleteTopologyPage",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "DELETE",
+                    "notes": "This method is used to delete a topology page.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "deleteTopologyPage"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyViewListResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplicationPageViews",
+                    "nickname": "getTopologyApplicationPageViews",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain the list of topology aplication page Views for an topology application Page",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyViewListResult"
+                }
+            ],
+            "description": "getTopologyApplicationPageViews"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "updateTopologyViews",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "updateTopologyViews",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "notes": "This method is used to update topology views.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyViewDto"
+                            },
+                            "description": "page",
+                            "name": "topologyViewDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "updateTopologyViews"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "createTopologyViews",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "nickname": "createTopologyViews",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "notes": "This method is used to create topology views.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "TopologyViewDto"
+                            },
+                            "description": "view",
+                            "name": "topologyViewDtoList",
+                            "type": "array"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "createTopologyViews"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view/{viewUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TopologyViewResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getTopologyApplicationPageView",
+                    "nickname": "getTopologyApplicationPageView",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain a topology aplication page view",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page View Uuid",
+                            "name": "viewUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TopologyViewResult"
+                }
+            ],
+            "description": "getTopologyApplicationPageView"
+        },
+        {
+            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view/{viewUuid}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "deleteTopologyView",
+                    "nickname": "deleteTopologyView",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "DELETE",
+                    "notes": "This method is used to delete a topology view.",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Uuid",
+                            "name": "applicationUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application Page Uuid",
+                            "name": "pageUuid",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "Topology Application View Uuid",
+                            "name": "viewUuid",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "deleteTopologyView"
+        }
+    ],
+    "resourcePath": "/topology",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0",
+    "basePath": "/topology-service",
+    "swaggerVersion": "1.2",
     "models": {
-        "TopologyPageListResult": {
-            "id": "TopologyPageListResult",
-            "description": "",
+        "TopologyViewResult": {
             "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TopologyPageDto"
-                    }
-                },
                 "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TopologyViewDto"
+                }
+            },
+            "extends": "",
+            "id": "TopologyViewResult",
+            "description": ""
+        },
+        "NodeWrapperCustom": {
+            "properties": {
+                "label": {
+                    "description": "Label for the node",
+                    "type": "string"
+                },
+                "x": {
+                    "format": "int32",
+                    "description": "X - Coordinate for this Node in the topology View",
+                    "type": "integer"
+                },
+                "parentNodeId": {
+                    "description": "Unique Id of the Node for ehich the custom properties are being represented",
+                    "type": "string"
+                },
+                "y": {
+                    "format": "int32",
+                    "description": "Y - Coordinate for this Node in the topology View",
+                    "type": "integer"
+                },
+                "id": {
                     "type": "string"
                 }
             },
-            "extends": ""
+            "extends": "",
+            "id": "NodeWrapperCustom",
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "extends": "",
+            "id": "TaskIdResponse",
+            "description": ""
+        },
+        "TaskIdResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "extends": "",
+            "id": "TaskIdResult",
+            "description": ""
+        },
+        "TopologyApplicationListResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "TopologyApplicationDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "TopologyApplicationListResult",
+            "description": ""
         },
         "TopologyViewDto": {
-            "id": "TopologyViewDto",
-            "description": "",
             "properties": {
+                "name": {
+                    "description": "View name",
+                    "type": "string"
+                },
                 "pageUuid": {
                     "description": "Page unique identifier for this view inside the corresponding application",
                     "type": "string"
                 },
                 "topology": {
-                    "description": "Topology being represented by this view",
-                    "$ref": "Topology"
+                    "$ref": "Topology",
+                    "description": "Topology being represented by this view"
                 },
-                "name": {
-                    "description": "View name",
+                "applicationUuid": {
+                    "description": "Application unique identifier for this view",
                     "type": "string"
                 },
                 "id": {
@@ -39,123 +1840,18 @@
                 "description": {
                     "description": "View description",
                     "type": "string"
-                },
-                "applicationUuid": {
-                    "description": "Application unique identifier for this view",
-                    "type": "string"
                 }
             },
-            "extends": ""
-        },
-        "TopologyApplicationResult": {
-            "id": "TopologyApplicationResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "$ref": "TopologyApplicationDto"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "TopologyViewListResult": {
-            "id": "TopologyViewListResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TopologyViewDto"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "TopologyPageResult": {
-            "id": "TopologyPageResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "$ref": "TopologyPageDto"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "TopologyViewResult": {
-            "id": "TopologyViewResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "$ref": "TopologyViewDto"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "NodeWrapperCustom": {
-            "id": "NodeWrapperCustom",
-            "description": "",
-            "properties": {
-                "x": {
-                    "description": "X - Coordinate for this Node in the topology View",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "label": {
-                    "description": "Label for the node",
-                    "type": "string"
-                },
-                "parentNodeId": {
-                    "description": "Unique Id of the Node for ehich the custom properties are being represented",
-                    "type": "string"
-                },
-                "y": {
-                    "description": "Y - Coordinate for this Node in the topology View",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "extends": ""
-        },
-        "TaskId": {
-            "id": "TaskId",
-            "description": "",
-            "properties": {},
-            "extends": ""
-        },
-        "TopologyApplicationListResult": {
-            "id": "TopologyApplicationListResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TopologyApplicationDto"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
+            "extends": "",
+            "id": "TopologyViewDto",
+            "description": ""
         },
         "TopologyApplicationDto": {
-            "id": "TopologyApplicationDto",
-            "description": "",
             "properties": {
+                "name": {
+                    "description": "Name for this Application",
+                    "type": "string"
+                },
                 "id": {
                     "description": "Unique identifier for this Application",
                     "type": "string"
@@ -163,58 +1859,154 @@
                 "description": {
                     "description": "Description for this Application",
                     "type": "string"
-                },
-                "name": {
-                    "description": "Name for this Application",
-                    "type": "string"
                 }
             },
-            "extends": ""
+            "extends": "",
+            "id": "TopologyApplicationDto",
+            "description": ""
         },
-        "LinkWrapper": {
-            "id": "LinkWrapper",
-            "description": "",
+        "TopologyPageResult": {
             "properties": {
-                "endPortSpeed": {
-                    "description": "Interface port speed corresponding to end devices",
+                "version": {
                     "type": "string"
                 },
-                "startPortIpv4Mask": {
-                    "description": "Interface port IPv4 mask corresponding to start devices",
+                "response": {
+                    "$ref": "TopologyPageDto"
+                }
+            },
+            "extends": "",
+            "id": "TopologyPageResult",
+            "description": ""
+        },
+        "NodeWrapper": {
+            "properties": {
+                "label": {
+                    "description": "Hostname of the device",
                     "type": "string"
                 },
-                "endPortIpv4Address": {
-                    "description": "Interface port IPv4 address corresponding to end devices",
+                "upperNode": {
+                    "description": "Start node ID",
                     "type": "string"
                 },
-                "endPortName": {
-                    "description": "Interface port name corresponding to end devices",
+                "id": {
+                    "description": "Unique identifier for device",
+                    "type": "string"
+                },
+                "x": {
+                    "format": "int32",
+                    "description": "X position of the device on the displayed topology view",
+                    "type": "integer"
+                },
+                "platformId": {
+                    "description": "Device platform description",
+                    "type": "string"
+                },
+                "ip": {
+                    "description": "IP address of the device",
                     "type": "string"
                 },
                 "greyOut": {
-                    "description": "Device greyout",
+                    "description": "Indicates if the device is active for this topology view",
                     "type": "boolean"
                 },
-                "linkStatus": {
-                    "description": "Indicates whether link is working",
+                "order": {
+                    "format": "int32",
+                    "description": "Device order by link number",
+                    "type": "integer"
+                },
+                "fixed": {
+                    "description": "Indication of whether the position is fixed or will use auto layout ",
+                    "type": "boolean"
+                },
+                "softwareVersion": {
+                    "description": "Device OS version",
                     "type": "string"
                 },
-                "startPortIpv4Address": {
-                    "description": "Interface port IPv4 address corresponding to start devices",
+                "customParam": {
+                    "$ref": "NodeWrapperCustom",
+                    "description": "Device custom parameters"
+                },
+                "y": {
+                    "format": "int32",
+                    "description": "Y position of the device on the displayed topology view",
+                    "type": "integer"
+                },
+                "aclApplied": {
+                    "description": "Indicates if the ACL that is applied on the device",
+                    "type": "boolean"
+                },
+                "userId": {
+                    "description": "ID of the host ",
                     "type": "string"
                 },
-                "startPortID": {
-                    "description": "Device port ID corresponding to start devices",
+                "role": {
+                    "description": "Role of the device",
                     "type": "string"
                 },
-                "startPortSpeed": {
-                    "description": "Interface port speed corresponding to start devices",
+                "nodeType": {
+                    "description": "Host or device",
                     "type": "string"
                 },
-                "tag": {
-                    "description": "Tag for the devices",
+                "dataPathId": {
+                    "description": "ID of the path between devices",
                     "type": "string"
                 },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of tags applied on this device",
+                    "type": "array"
+                },
+                "vlanId": {
+                    "description": "VLan id",
+                    "type": "string"
+                },
+                "family": {
+                    "description": "Product family which is part of the product identifier",
+                    "type": "string"
+                },
+                "osType": {
+                    "description": "OS type of the device",
+                    "type": "string"
+                },
+                "deviceType": {
+                    "description": "Type of the device",
+                    "type": "string"
+                },
+                "roleSource": {
+                    "description": "Indicates whether role is assigned manually or automatically",
+                    "type": "string"
+                },
+                "networkType": {
+                    "description": "Type of network",
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "NodeWrapper",
+            "required": [
+                "greyOut",
+                "tags",
+                "aclApplied",
+                "role",
+                "id",
+                "roleSource",
+                "family",
+                "platformId",
+                "vlanId",
+                "deviceType",
+                "y",
+                "x",
+                "label",
+                "ip",
+                "nodeType",
+                "fixed"
+            ],
+            "description": ""
+        },
+        "LinkWrapper": {
+            "properties": {
                 "startPortName": {
                     "description": "Interface port name corresponding to start devices",
                     "type": "string"
@@ -223,47 +2015,178 @@
                     "description": "Unified identifier for device",
                     "type": "string"
                 },
-                "target": {
-                    "description": "Device ID corresponding to the target device",
+                "startPortSpeed": {
+                    "description": "Interface port speed corresponding to start devices",
                     "type": "string"
                 },
-                "source": {
-                    "description": "Device ID correspondng to the source device ",
+                "startPortID": {
+                    "description": "Device port ID corresponding to start devices",
+                    "type": "string"
+                },
+                "linkStatus": {
+                    "description": "Indicates whether link is working",
                     "type": "string"
                 },
                 "endPortID": {
                     "description": "Device port ID corresponding to end devices",
                     "type": "string"
                 },
+                "target": {
+                    "description": "Device ID corresponding to the target device",
+                    "type": "string"
+                },
+                "endPortName": {
+                    "description": "Interface port name corresponding to end devices",
+                    "type": "string"
+                },
                 "endPortIpv4Mask": {
                     "description": "Interface port IPv4 mask corresponding to end devices",
+                    "type": "string"
+                },
+                "greyOut": {
+                    "description": "Device greyout",
+                    "type": "boolean"
+                },
+                "endPortIpv4Address": {
+                    "description": "Interface port IPv4 address corresponding to end devices",
+                    "type": "string"
+                },
+                "startPortIpv4Address": {
+                    "description": "Interface port IPv4 address corresponding to start devices",
+                    "type": "string"
+                },
+                "endPortSpeed": {
+                    "description": "Interface port speed corresponding to end devices",
+                    "type": "string"
+                },
+                "startPortIpv4Mask": {
+                    "description": "Interface port IPv4 mask corresponding to start devices",
+                    "type": "string"
+                },
+                "tag": {
+                    "description": "Tag for the devices",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "Device ID correspondng to the source device ",
                     "type": "string"
                 }
             },
             "extends": "",
+            "id": "LinkWrapper",
             "required": [
-                "source",
-                "id",
-                "startPortID",
                 "endPortID",
+                "startPortID",
                 "greyOut",
-                "linkStatus",
-                "startPortName",
-                "startPortSpeed",
+                "source",
+                "target",
+                "id",
                 "endPortName",
                 "endPortSpeed",
+                "startPortName",
+                "startPortSpeed",
+                "linkStatus",
                 "tag",
-                "endPortIpv4Address",
-                "endPortIpv4Mask",
-                "startPortIpv4Address",
                 "startPortIpv4Mask",
-                "target"
-            ]
+                "startPortIpv4Address",
+                "endPortIpv4Mask",
+                "endPortIpv4Address"
+            ],
+            "description": ""
+        },
+        "TaskId": {
+            "properties": {},
+            "extends": "",
+            "id": "TaskId",
+            "description": ""
+        },
+        "TopologyPageListResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "TopologyPageDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "TopologyPageListResult",
+            "description": ""
+        },
+        "Topology": {
+            "properties": {
+                "links": {
+                    "items": {
+                        "$ref": "LinkWrapper"
+                    },
+                    "description": "List of link between devices",
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "nodes": {
+                    "items": {
+                        "$ref": "NodeWrapper"
+                    },
+                    "description": "List of devices and hosts",
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "Topology",
+            "required": [
+                "links",
+                "nodes"
+            ],
+            "description": ""
+        },
+        "TopologyApplicationResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TopologyApplicationDto"
+                }
+            },
+            "extends": "",
+            "id": "TopologyApplicationResult",
+            "description": ""
+        },
+        "TopologyViewListResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "TopologyViewDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "TopologyViewListResult",
+            "description": ""
         },
         "TopologyPageDto": {
-            "id": "TopologyPageDto",
-            "description": "",
             "properties": {
+                "defaultViewId": {
+                    "description": "Default View unique identifier for this Page",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name for this Page",
+                    "type": "string"
+                },
+                "applicationUuid": {
+                    "description": "Application unique identifier for this Page",
+                    "type": "string"
+                },
                 "id": {
                     "description": "Unique identifier for this Page",
                     "type": "string"
@@ -271,1930 +2194,11 @@
                 "description": {
                     "description": "Description for this Page",
                     "type": "string"
-                },
-                "applicationUuid": {
-                    "description": "Application unique identifier for this Page",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Name for this Page",
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "TaskIdResponse": {
-            "id": "TaskIdResponse",
-            "description": "",
-            "properties": {
-                "url": {
-                    "type": "string"
-                },
-                "taskId": {
-                    "$ref": "TaskId"
-                }
-            },
-            "extends": ""
-        },
-        "TaskIdResult": {
-            "id": "TaskIdResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "$ref": "TaskIdResponse"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "NodeWrapper": {
-            "id": "NodeWrapper",
-            "description": "",
-            "properties": {
-                "aclApplied": {
-                    "description": "Indicates if the ACL that is applied on the device",
-                    "type": "boolean"
-                },
-                "customParam": {
-                    "description": "Device custom parameters",
-                    "$ref": "NodeWrapperCustom"
-                },
-                "greyOut": {
-                    "description": "Indicates if the device is active for this topology view",
-                    "type": "boolean"
-                },
-                "tags": {
-                    "description": "List of tags applied on this device",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "order": {
-                    "description": "Device order by link number",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "deviceType": {
-                    "description": "Type of the device",
-                    "type": "string"
-                },
-                "upperNode": {
-                    "description": "Start node ID",
-                    "type": "string"
-                },
-                "x": {
-                    "description": "X position of the device on the displayed topology view",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "softwareVersion": {
-                    "description": "Device OS version",
-                    "type": "string"
-                },
-                "osType": {
-                    "description": "OS type of the device",
-                    "type": "string"
-                },
-                "roleSource": {
-                    "description": "Indicates whether role is assigned manually or automatically",
-                    "type": "string"
-                },
-                "ip": {
-                    "description": "IP address of the device",
-                    "type": "string"
-                },
-                "family": {
-                    "description": "Product family which is part of the product identifier",
-                    "type": "string"
-                },
-                "role": {
-                    "description": "Role of the device",
-                    "type": "string"
-                },
-                "networkType": {
-                    "description": "Type of network",
-                    "type": "string"
-                },
-                "userId": {
-                    "description": "ID of the host ",
-                    "type": "string"
-                },
-                "vlanId": {
-                    "description": "VLan id",
-                    "type": "string"
-                },
-                "platformId": {
-                    "description": "Device platform description",
-                    "type": "string"
-                },
-                "label": {
-                    "description": "Hostname of the device",
-                    "type": "string"
-                },
-                "dataPathId": {
-                    "description": "ID of the path between devices",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "Unique identifier for device",
-                    "type": "string"
-                },
-                "fixed": {
-                    "description": "Indication of whether the position is fixed or will use auto layout ",
-                    "type": "boolean"
-                },
-                "nodeType": {
-                    "description": "Host or device",
-                    "type": "string"
-                },
-                "y": {
-                    "description": "Y position of the device on the displayed topology view",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "extends": "",
-            "required": [
-                "role",
-                "id",
-                "label",
-                "greyOut",
-                "roleSource",
-                "deviceType",
-                "ip",
-                "nodeType",
-                "family",
-                "platformId",
-                "tags",
-                "vlanId",
-                "y",
-                "x",
-                "fixed",
-                "aclApplied"
-            ]
-        },
-        "Topology": {
-            "id": "Topology",
-            "description": "",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "nodes": {
-                    "description": "List of devices and hosts",
-                    "type": "array",
-                    "items": {
-                        "$ref": "NodeWrapper"
-                    }
-                },
-                "links": {
-                    "description": "List of link between devices",
-                    "type": "array",
-                    "items": {
-                        "$ref": "LinkWrapper"
-                    }
-                }
-            },
-            "extends": "",
-            "required": [
-                "links",
-                "nodes"
-            ]
+            "id": "TopologyPageDto",
+            "description": ""
         }
-    },
-    "apis": [
-        {
-            "description": "createTopologyApplications",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "createTopologyApplications",
-                    "type": "TaskIdResult",
-                    "method": "POST",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "topologyApplicationDtoList",
-                            "type": "array",
-                            "description": "application",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyApplicationDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to create topology applications.",
-                    "summary": "createTopologyApplications",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application"
-        },
-        {
-            "description": "updateTopologyApplication",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "updateTopologyApplication",
-                    "type": "TaskIdResult",
-                    "method": "PUT",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "topologyApplicationDtoList",
-                            "type": "array",
-                            "description": "application",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyApplicationDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to update topology applications.",
-                    "summary": "updateTopologyApplications",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application"
-        },
-        {
-            "description": "getTopologyApplications",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplications",
-                    "type": "TopologyApplicationListResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "notes": "This method is used to obtain the list of topology aplications",
-                    "summary": "getTopologyApplications",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyApplicationListResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application"
-        },
-        {
-            "description": "deleteTopologyApplication",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "deleteTopologyApplication",
-                    "type": "TaskIdResult",
-                    "method": "DELETE",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to delete a topology application.",
-                    "summary": "deleteTopologyApplication",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}"
-        },
-        {
-            "description": "getTopologyApplication",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplication",
-                    "type": "TopologyApplicationResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain a topology aplication",
-                    "summary": "getTopologyApplication",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyApplicationResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}"
-        },
-        {
-            "description": "createTopologyPages",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "createTopologyPages",
-                    "type": "TaskIdResult",
-                    "method": "POST",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "topologyPageDtoList",
-                            "type": "array",
-                            "description": "page",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyPageDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to create topology pages.",
-                    "summary": "createTopologyPages",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page"
-        },
-        {
-            "description": "getTopologyApplicationPages",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplicationPages",
-                    "type": "TopologyPageListResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain the list of topology aplication pages for an topology application",
-                    "summary": "getTopologyApplicationPages",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyPageListResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page"
-        },
-        {
-            "description": "updateTopologyPages",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "updateTopologyPages",
-                    "type": "TaskIdResult",
-                    "method": "PUT",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "topologyPageDtoList",
-                            "type": "array",
-                            "description": "page",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyPageDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to update topology pages.",
-                    "summary": "updateTopologyPages",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page"
-        },
-        {
-            "description": "deleteTopologyPage",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "deleteTopologyPage",
-                    "type": "TaskIdResult",
-                    "method": "DELETE",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to delete a topology page.",
-                    "summary": "deleteTopologyPage",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page/{pageUuid}"
-        },
-        {
-            "description": "getTopologyApplicationPage",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplicationPage",
-                    "type": "TopologyPageResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain a topology aplication page",
-                    "summary": "getTopologyApplicationPage",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyPageResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page/{pageUuid}"
-        },
-        {
-            "description": "getTopologyApplicationPageViews",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplicationPageViews",
-                    "type": "TopologyViewListResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain the list of topology aplication page Views for an topology application Page",
-                    "summary": "getTopologyApplicationPageViews",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyViewListResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view"
-        },
-        {
-            "description": "createTopologyViews",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "createTopologyViews",
-                    "type": "TaskIdResult",
-                    "method": "POST",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "topologyViewDtoList",
-                            "type": "array",
-                            "description": "view",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyViewDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to create topology views.",
-                    "summary": "createTopologyViews",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view"
-        },
-        {
-            "description": "updateTopologyViews",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "updateTopologyViews",
-                    "type": "TaskIdResult",
-                    "method": "PUT",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "topologyViewDtoList",
-                            "type": "array",
-                            "description": "page",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyViewDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to update topology views.",
-                    "summary": "updateTopologyViews",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view"
-        },
-        {
-            "description": "getTopologyApplicationPageView",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplicationPageView",
-                    "type": "TopologyViewResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "viewUuid",
-                            "type": "string",
-                            "description": "Topology Application Page View Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain a topology aplication page view",
-                    "summary": "getTopologyApplicationPageView",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyViewResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view/{viewUuid}"
-        },
-        {
-            "description": "deleteTopologyView",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "deleteTopologyView",
-                    "type": "TaskIdResult",
-                    "method": "DELETE",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "viewUuid",
-                            "type": "string",
-                            "description": "Topology Application View Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to delete a topology view.",
-                    "summary": "deleteTopologyView",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/application/{applicationUuid}/page/{pageUuid}/view/{viewUuid}"
-        },
-        {
-            "description": "createTopologyApplications",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "createTopologyApplications",
-                    "type": "TaskIdResult",
-                    "method": "POST",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "topologyApplicationDtoList",
-                            "type": "array",
-                            "description": "application",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyApplicationDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to create topology applications.",
-                    "summary": "createTopologyApplications",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp"
-        },
-        {
-            "description": "getTopologyApplications",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplications",
-                    "type": "TopologyApplicationListResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "notes": "This method is used to obtain the list of topology aplications",
-                    "summary": "getTopologyApplications",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyApplicationListResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp"
-        },
-        {
-            "description": "updateTopologyApplication",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "updateTopologyApplication",
-                    "type": "TaskIdResult",
-                    "method": "PUT",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "topologyApplicationDtoList",
-                            "type": "array",
-                            "description": "application",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyApplicationDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to update topology applications.",
-                    "summary": "updateTopologyApplications",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp"
-        },
-        {
-            "description": "deleteTopologyApplication",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "deleteTopologyApplication",
-                    "type": "TaskIdResult",
-                    "method": "DELETE",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to delete a topology application.",
-                    "summary": "deleteTopologyApplication",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}"
-        },
-        {
-            "description": "getTopologyApplication",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplication",
-                    "type": "TopologyApplicationResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain a topology aplication",
-                    "summary": "getTopologyApplication",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyApplicationResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}"
-        },
-        {
-            "description": "updateTopologyPages",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "updateTopologyPages",
-                    "type": "TaskIdResult",
-                    "method": "PUT",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "topologyPageDtoList",
-                            "type": "array",
-                            "description": "page",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyPageDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to update topology pages.",
-                    "summary": "updateTopologyPages",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page"
-        },
-        {
-            "description": "createTopologyPages",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "createTopologyPages",
-                    "type": "TaskIdResult",
-                    "method": "POST",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "topologyPageDtoList",
-                            "type": "array",
-                            "description": "page",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyPageDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to create topology pages.",
-                    "summary": "createTopologyPages",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page"
-        },
-        {
-            "description": "getTopologyApplicationPages",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplicationPages",
-                    "type": "TopologyPageListResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain the list of topology aplication pages for an topology application",
-                    "summary": "getTopologyApplicationPages",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyPageListResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page"
-        },
-        {
-            "description": "getTopologyApplicationPage",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplicationPage",
-                    "type": "TopologyPageResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain a topology aplication page",
-                    "summary": "getTopologyApplicationPage",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyPageResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}"
-        },
-        {
-            "description": "deleteTopologyPage",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "deleteTopologyPage",
-                    "type": "TaskIdResult",
-                    "method": "DELETE",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to delete a topology page.",
-                    "summary": "deleteTopologyPage",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}"
-        },
-        {
-            "description": "getTopologyApplicationPageViews",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplicationPageViews",
-                    "type": "TopologyViewListResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain the list of topology aplication page Views for an topology application Page",
-                    "summary": "getTopologyApplicationPageViews",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyViewListResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view"
-        },
-        {
-            "description": "updateTopologyViews",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "updateTopologyViews",
-                    "type": "TaskIdResult",
-                    "method": "PUT",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "topologyViewDtoList",
-                            "type": "array",
-                            "description": "page",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyViewDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to update topology views.",
-                    "summary": "updateTopologyViews",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view"
-        },
-        {
-            "description": "createTopologyViews",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "createTopologyViews",
-                    "type": "TaskIdResult",
-                    "method": "POST",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "topologyViewDtoList",
-                            "type": "array",
-                            "description": "view",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "items": {
-                                "$ref": "TopologyViewDto"
-                            }
-                        }
-                    ],
-                    "notes": "This method is used to create topology views.",
-                    "summary": "createTopologyViews",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view"
-        },
-        {
-            "description": "getTopologyApplicationPageView",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getTopologyApplicationPageView",
-                    "type": "TopologyViewResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "viewUuid",
-                            "type": "string",
-                            "description": "Topology Application Page View Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to obtain a topology aplication page view",
-                    "summary": "getTopologyApplicationPageView",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TopologyViewResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view/{viewUuid}"
-        },
-        {
-            "description": "deleteTopologyView",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "deleteTopologyView",
-                    "type": "TaskIdResult",
-                    "method": "DELETE",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "applicationUuid",
-                            "type": "string",
-                            "description": "Topology Application Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "pageUuid",
-                            "type": "string",
-                            "description": "Topology Application Page Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "viewUuid",
-                            "type": "string",
-                            "description": "Topology Application View Uuid",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        }
-                    ],
-                    "notes": "This method is used to delete a topology view.",
-                    "summary": "deleteTopologyView",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/topology/controllerapp/{applicationUuid}/page/{pageUuid}/view/{viewUuid}"
-        }
-    ],
-    "apiVersion": "1.0",
-    "consumes": [
-        "application/json"
-    ],
-    "swaggerVersion": "1.2",
-    "basePath": "/",
-    "produces": [
-        "application/json"
-    ],
-    "resourcePath": "/topology"
+    }
 }

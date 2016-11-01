@@ -1,0 +1,221 @@
+{
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "resourcePath": "/policy/interrupt",
+    "basePath": "/policy-manager-service",
+    "apiVersion": "1.0",
+    "apis": [
+        {
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "summary": "Update policy interrupt on a scope. Triggers 'abort' and 'abort, restore to original' actions",
+                    "nickname": "updatePolicyInterrupt",
+                    "parameters": [
+                        {
+                            "type": "PolicyInterruptInput",
+                            "description": "policyInterruptInput",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "name": "policyInterruptInput"
+                        }
+                    ],
+                    "notes": "Sends an interrupt for policy scope to ABORT (Abort all tasks for the policy scope where possible) or ABORT-RESTORE-TO-ORIGINAL (Abort all tasks for the policy scope and restore all devices in policy scope to original state)"
+                }
+            ],
+            "description": "updatePolicyInterrupt",
+            "path": "/policy/interrupt/"
+        },
+        {
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "PolicyInterruptDTOResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "PolicyInterruptDTOResult",
+                    "summary": "Retrieves the latest interrupt on a policy scope",
+                    "nickname": "getPolicyInterruptByScope",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "policyScope",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "policyScope"
+                        },
+                        {
+                            "type": "string",
+                            "description": "scopeWirelessSegment",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "scopeWirelessSegment"
+                        }
+                    ],
+                    "notes": "Get the latest policy interrupt by policy scope"
+                }
+            ],
+            "description": "getPolicyInterruptByScope",
+            "path": "/policy/interrupt/"
+        }
+    ],
+    "models": {
+        "PolicyInterruptDTO": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "One of {ABORT, ABORT-RESTORE-TO-ORIGINAL}"
+                },
+                "policyScope": {
+                    "type": "string",
+                    "description": "Policy scope"
+                },
+                "scopeWirelessSegment": {
+                    "type": "string",
+                    "description": "Scope wireless segment"
+                },
+                "createTime": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "lastUpdateTime": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "extends": "",
+            "required": [
+                "action",
+                "policyScope"
+            ],
+            "id": "PolicyInterruptDTO",
+            "description": ""
+        },
+        "PolicyInterruptDTOResult": {
+            "properties": {
+                "response": {
+                    "$ref": "PolicyInterruptDTO"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "PolicyInterruptDTOResult",
+            "description": ""
+        },
+        "TaskIdResult": {
+            "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "TaskIdResult",
+            "description": ""
+        },
+        "PolicyInterruptInput": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "One of {ABORT, ABORT-RESTORE-TO-ORIGINAL}"
+                },
+                "scopeWirelessSegment": {
+                    "type": "string",
+                    "description": "Scope wireless segment"
+                },
+                "policyScope": {
+                    "type": "string",
+                    "description": "Policy scope"
+                }
+            },
+            "extends": "",
+            "required": [
+                "action",
+                "policyScope"
+            ],
+            "id": "PolicyInterruptInput",
+            "description": ""
+        },
+        "TaskId": {
+            "properties": {},
+            "extends": "",
+            "id": "TaskId",
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "extends": "",
+            "id": "TaskIdResponse",
+            "description": ""
+        }
+    },
+    "swaggerVersion": "1.2"
+}

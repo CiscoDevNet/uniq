@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 class PolicyStatusDTO(object):
-
 
 
     def __init__(self):
@@ -27,114 +14,154 @@ class PolicyStatusDTO(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
-            'status': 'str',
-
-
-            'instanceUuid': 'str',
-
-
+            
+            'businessRelevantConsumerProducerApplications': 'list[PolicyConsumerProducerApplication]',
+            
+            
+            'businessIrrelevantConsumerProducerApplications': 'list[PolicyConsumerProducerApplication]',
+            
+            
             'applicationPolicyCount': 'int',
-
-
-            'policyScope': 'str',
-
-
-            'scopeWirelessSegment': 'str',
-
-
-            'networkDeviceId': 'str',
-
-
-            'networkDeviceName': 'str',
-
-
-            'failureReason': 'str',
-
-
-            'lastUpdated': 'str',
-
-
-            'outOfScope': 'bool',
-
-
-            'businessRelevantApplications': 'list[PolicyApplication]',
-
-
+            
+            
             'businessIrrelevantApplications': 'list[PolicyApplication]',
-
-
+            
+            
+            'pending': 'bool',
+            
+            
+            'businessRelevantApplications': 'list[PolicyApplication]',
+            
+            
+            'status': 'str',
+            
+            
+            'instanceUuid': 'str',
+            
+            
+            'lastUpdated': 'str',
+            
+            
+            'policyScope': 'str',
+            
+            
+            'failureReason': 'str',
+            
+            
+            'lastSuccessfulPolicyVersion': 'str',
+            
+            
+            'policyVersion': 'str',
+            
+            
+            'networkDeviceId': 'str',
+            
+            
+            'networkDeviceName': 'str',
+            
+            
+            'outOfScope': 'bool',
+            
+            
+            'scopeWirelessSegment': 'str',
+            
+            
             'networkDeviceIp': 'str'
-
+            
         }
 
         self.attributeMap = {
-
-            'status': 'status',
-
-            'instanceUuid': 'instanceUuid',
-
+            
+            'businessRelevantConsumerProducerApplications': 'businessRelevantConsumerProducerApplications',
+            
+            'businessIrrelevantConsumerProducerApplications': 'businessIrrelevantConsumerProducerApplications',
+            
             'applicationPolicyCount': 'applicationPolicyCount',
-
-            'policyScope': 'policyScope',
-
-            'scopeWirelessSegment': 'scopeWirelessSegment',
-
-            'networkDeviceId': 'networkDeviceId',
-
-            'networkDeviceName': 'networkDeviceName',
-
-            'failureReason': 'failureReason',
-
-            'lastUpdated': 'lastUpdated',
-
-            'outOfScope': 'outOfScope',
-
-            'businessRelevantApplications': 'businessRelevantApplications',
-
+            
             'businessIrrelevantApplications': 'businessIrrelevantApplications',
-
+            
+            'pending': 'pending',
+            
+            'businessRelevantApplications': 'businessRelevantApplications',
+            
+            'status': 'status',
+            
+            'instanceUuid': 'instanceUuid',
+            
+            'lastUpdated': 'lastUpdated',
+            
+            'policyScope': 'policyScope',
+            
+            'failureReason': 'failureReason',
+            
+            'lastSuccessfulPolicyVersion': 'lastSuccessfulPolicyVersion',
+            
+            'policyVersion': 'policyVersion',
+            
+            'networkDeviceId': 'networkDeviceId',
+            
+            'networkDeviceName': 'networkDeviceName',
+            
+            'outOfScope': 'outOfScope',
+            
+            'scopeWirelessSegment': 'scopeWirelessSegment',
+            
             'networkDeviceIp': 'networkDeviceIp'
+            
+        }       
 
-        }
-
-
-
-        self.status = None # str
-
-
-        self.instanceUuid = None # str
-
-
+        
+        
+        self.businessRelevantConsumerProducerApplications = None # list[PolicyConsumerProducerApplication]
+        
+        
+        self.businessIrrelevantConsumerProducerApplications = None # list[PolicyConsumerProducerApplication]
+        
+        
         self.applicationPolicyCount = None # int
-
-
-        self.policyScope = None # str
-
-
-        self.scopeWirelessSegment = None # str
-
-
-        self.networkDeviceId = None # str
-
-
-        self.networkDeviceName = None # str
-
-
-        self.failureReason = None # str
-
-
-        self.lastUpdated = None # str
-
-
-        self.outOfScope = None # bool
-
-
-        self.businessRelevantApplications = None # list[PolicyApplication]
-
-
+        
+        
         self.businessIrrelevantApplications = None # list[PolicyApplication]
-
-
+        
+        
+        self.pending = None # bool
+        
+        
+        self.businessRelevantApplications = None # list[PolicyApplication]
+        
+        
+        self.status = None # str
+        
+        
+        self.instanceUuid = None # str
+        
+        
+        self.lastUpdated = None # str
+        
+        
+        self.policyScope = None # str
+        
+        
+        self.failureReason = None # str
+        
+        
+        self.lastSuccessfulPolicyVersion = None # str
+        
+        
+        self.policyVersion = None # str
+        
+        
+        self.networkDeviceId = None # str
+        
+        
+        self.networkDeviceName = None # str
+        
+        
+        self.outOfScope = None # bool
+        
+        
+        self.scopeWirelessSegment = None # str
+        
+        
         self.networkDeviceIp = None # str
-
+        

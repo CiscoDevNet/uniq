@@ -1,75 +1,83 @@
 {
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
     "resourcePath": "/v2/contract",
+    "basePath": "/policy-manager-service",
+    "apiVersion": "1.0",
     "apis": [
         {
             "operations": [
                 {
-                    "notes": "Retrieves contracts based on a given filter",
-                    "type": "ContractListResult",
-                    "parameters": [
-                        {
-                            "name": "name",
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "allowMultiple": false,
-                            "description": "Retrieve contracts for a given name",
-                            "type": "string"
-                        },
-                        {
-                            "name": "accessAction",
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "allowMultiple": false,
-                            "description": "Retrieve contracts for a given accessAction",
-                            "type": "string"
-                        },
-                        {
-                            "name": "offset",
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "allowMultiple": false,
-                            "description": "Starting index of the resources (1 based)",
-                            "type": "string"
-                        },
-                        {
-                            "name": "limit",
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "allowMultiple": false,
-                            "description": "Number of resources to return",
-                            "type": "string"
-                        }
+                    "produces": [
+                        "application/json"
                     ],
                     "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "message": "This Request is OK",
                             "code": 200,
+                            "message": "This Request is OK",
                             "responseModel": "ContractListResult"
                         },
                         {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
                         },
                         {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
                         },
                         {
-                            "message": "No Resource Found",
-                            "code": 404
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
-                    "deprecated": "false",
+                    "type": "ContractListResult",
                     "summary": "Retrieves contracts based on a given filter",
                     "nickname": "getContractByFilters",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "Retrieve contracts for a given name",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "name"
+                        },
+                        {
+                            "type": "string",
+                            "description": "Retrieve contracts for a given accessAction",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "accessAction"
+                        },
+                        {
+                            "type": "string",
+                            "description": "Starting index of the resources (1 based)",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "offset"
+                        },
+                        {
+                            "type": "string",
+                            "description": "Number of resources to return",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "limit"
+                        }
+                    ],
+                    "notes": "Retrieves contracts based on a given filter"
                 }
             ],
             "description": "getContractByFilters",
@@ -78,51 +86,51 @@
         {
             "operations": [
                 {
-                    "notes": "Update contract(s)",
-                    "type": "TaskIdResult",
-                    "parameters": [
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "responseMessages": [
                         {
-                            "name": "contractDTOs",
-                            "required": true,
-                            "defaultValue": "",
-                            "items": {
-                                "$ref": "ContractDTO"
-                            },
-                            "paramType": "body",
-                            "allowMultiple": false,
-                            "description": "Contract Object(s)",
-                            "type": "array"
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
                     "consumes": [
                         "application/json"
                     ],
-                    "method": "PUT",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "deprecated": "false",
+                    "type": "TaskIdResult",
                     "summary": "Update contract(s)",
                     "nickname": "update",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "type": "array",
+                            "description": "Contract Object(s)",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "ContractDTO"
+                            },
+                            "name": "contractDTOs"
+                        }
+                    ],
+                    "notes": "Update contract(s)"
                 }
             ],
             "description": "update",
@@ -131,55 +139,55 @@
         {
             "operations": [
                 {
-                    "notes": "Create contract(s)",
-                    "type": "TaskIdResult",
-                    "parameters": [
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "deprecated": "false",
+                    "responseMessages": [
                         {
-                            "name": "contractDTOs",
-                            "required": true,
-                            "defaultValue": "",
-                            "items": {
-                                "$ref": "ContractDTO"
-                            },
-                            "paramType": "body",
-                            "allowMultiple": false,
-                            "description": "Contract Object(s)",
-                            "type": "array"
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
                     "consumes": [
                         "application/json"
                     ],
-                    "method": "POST",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This Request is Accepted",
-                            "code": 202
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "deprecated": "false",
+                    "type": "TaskIdResult",
                     "summary": "Create contract(s)",
                     "nickname": "add",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "type": "array",
+                            "description": "Contract Object(s)",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "ContractDTO"
+                            },
+                            "name": "contractDTOs"
+                        }
+                    ],
+                    "notes": "Create contract(s)"
                 }
             ],
             "description": "add",
@@ -188,35 +196,35 @@
         {
             "operations": [
                 {
-                    "notes": "Get total count of contracts",
-                    "type": "CountResult",
-                    "parameters": [],
+                    "produces": [
+                        "application/json"
+                    ],
                     "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "message": "This Request is OK",
                             "code": 200,
+                            "message": "This Request is OK",
                             "responseModel": "CountResult"
                         },
                         {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
                         },
                         {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
                         },
                         {
-                            "message": "No Resource Found",
-                            "code": 404
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
-                    "deprecated": "false",
+                    "type": "CountResult",
                     "summary": "Return total count of contracts",
                     "nickname": "getCount",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [],
+                    "notes": "Get total count of contracts"
                 }
             ],
             "description": "getCount",
@@ -225,45 +233,45 @@
         {
             "operations": [
                 {
-                    "notes": "Get a contract by id",
-                    "type": "ContractResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "allowMultiple": false,
-                            "description": "id",
-                            "type": "string"
-                        }
+                    "produces": [
+                        "application/json"
                     ],
                     "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "message": "This Request is OK",
                             "code": 200,
+                            "message": "This Request is OK",
                             "responseModel": "ContractResult"
                         },
                         {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
                         },
                         {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
                         },
                         {
-                            "message": "No Resource Found",
-                            "code": 404
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
-                    "deprecated": "false",
+                    "type": "ContractResult",
                     "summary": "Retrieves a contract based on its id",
                     "nickname": "getById",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "name": "id"
+                        }
+                    ],
+                    "notes": "Get a contract by id"
                 }
             ],
             "description": "getById",
@@ -272,45 +280,45 @@
         {
             "operations": [
                 {
-                    "notes": "Delete a contract by id",
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "allowMultiple": false,
-                            "description": "id",
-                            "type": "string"
-                        }
+                    "produces": [
+                        "application/json"
                     ],
                     "method": "DELETE",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "message": "This Request is OK",
                             "code": 200,
+                            "message": "This Request is OK",
                             "responseModel": "TaskIdResult"
                         },
                         {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
                         },
                         {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
                         },
                         {
-                            "message": "No Resource Found",
-                            "code": 404
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
-                    "deprecated": "false",
+                    "type": "TaskIdResult",
                     "summary": "Deletes a contract by its id",
                     "nickname": "delete",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "name": "id"
+                        }
+                    ],
+                    "notes": "Delete a contract by id"
                 }
             ],
             "description": "delete",
@@ -318,52 +326,120 @@
         }
     ],
     "models": {
-        "ContractResult": {
-            "description": "",
-            "id": "ContractResult",
+        "TaskIdResult": {
             "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
                 "version": {
                     "type": "string"
-                },
+                }
+            },
+            "extends": "",
+            "id": "TaskIdResult",
+            "description": ""
+        },
+        "ContractResult": {
+            "properties": {
                 "response": {
                     "$ref": "ContractDTO"
-                }
-            },
-            "extends": ""
-        },
-        "ContractListResult": {
-            "description": "",
-            "id": "ContractListResult",
-            "properties": {
+                },
                 "version": {
                     "type": "string"
-                },
-                "response": {
-                    "items": {
-                        "$ref": "ContractDTO"
-                    },
-                    "type": "array"
                 }
             },
-            "extends": ""
+            "extends": "",
+            "id": "ContractResult",
+            "description": ""
+        },
+        "CountResult": {
+            "properties": {
+                "response": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "CountResult",
+            "description": ""
+        },
+        "ContractDTO": {
+            "properties": {
+                "createTime": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": "createTime"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description"
+                },
+                "accessClause": {
+                    "$ref": "AccessClauseDTO",
+                    "description": "accessClause"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "lastUpdateTime": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": "lastUpdateTime"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name"
+                }
+            },
+            "extends": "",
+            "required": [
+                "name",
+                "id"
+            ],
+            "id": "ContractDTO",
+            "description": ""
+        },
+        "ContractListResult": {
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ContractDTO"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "ContractListResult",
+            "description": ""
+        },
+        "TaskId": {
+            "properties": {},
+            "extends": "",
+            "id": "TaskId",
+            "description": ""
         },
         "AccessClauseDTO": {
-            "description": "",
+            "properties": {
+                "access": {
+                    "type": "string",
+                    "description": "access"
+                }
+            },
+            "extends": "",
             "required": [
                 "access"
             ],
             "id": "AccessClauseDTO",
-            "properties": {
-                "access": {
-                    "description": "access",
-                    "type": "string"
-                }
-            },
-            "extends": ""
+            "description": ""
         },
         "TaskIdResponse": {
-            "description": "",
-            "id": "TaskIdResponse",
             "properties": {
                 "url": {
                     "type": "string"
@@ -372,86 +448,10 @@
                     "$ref": "TaskId"
                 }
             },
-            "extends": ""
-        },
-        "ContractDTO": {
-            "description": "",
-            "required": [
-                "name",
-                "id"
-            ],
-            "id": "ContractDTO",
-            "properties": {
-                "name": {
-                    "description": "name",
-                    "type": "string"
-                },
-                "createTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "createTime"
-                },
-                "description": {
-                    "description": "description",
-                    "type": "string"
-                },
-                "accessClause": {
-                    "$ref": "AccessClauseDTO",
-                    "description": "accessClause"
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                },
-                "lastUpdateTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "lastUpdateTime"
-                }
-            },
-            "extends": ""
-        },
-        "TaskId": {
-            "description": "",
-            "id": "TaskId",
-            "properties": {},
-            "extends": ""
-        },
-        "TaskIdResult": {
-            "description": "",
-            "id": "TaskIdResult",
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "$ref": "TaskIdResponse"
-                }
-            },
-            "extends": ""
-        },
-        "CountResult": {
-            "description": "",
-            "id": "CountResult",
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "extends": ""
+            "extends": "",
+            "id": "TaskIdResponse",
+            "description": ""
         }
     },
-    "consumes": [
-        "application/json"
-    ],
-    "swaggerVersion": "1.2",
-    "apiVersion": "1.0",
-    "produces": [
-        "application/json"
-    ],
-    "basePath": "/"
+    "swaggerVersion": "1.2"
 }

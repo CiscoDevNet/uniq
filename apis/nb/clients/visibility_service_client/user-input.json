@@ -1,0 +1,429 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "models": {
+        "IwanUserInputDTO": {
+            "extends": "",
+            "id": "IwanUserInputDTO",
+            "properties": {
+                "inputId": {
+                    "type": "string"
+                },
+                "instanceUuid": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                },
+                "inputValue": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "IwanUserInputDTOListResult": {
+            "extends": "",
+            "id": "IwanUserInputDTOListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "IwanUserInputDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "extends": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "id": "TaskId",
+            "properties": {},
+            "description": ""
+        }
+    },
+    "apis": [
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "addUserInput",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "userInputDTO",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "userInputDTO",
+                            "type": "IwanUserInputDTO"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "addUserInput",
+                    "notes": "addUserInput",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "addUserInput",
+            "path": "/iwan/user-input"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IwanUserInputDTOListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getAllUserInputs",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "userId",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "User Id",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "inputIdPattern",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "Input Id Pattern",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getAllUserInputs",
+                    "notes": "getAllUserInputs",
+                    "type": "IwanUserInputDTOListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getAllUserInputs",
+            "path": "/iwan/user-input"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "deleteAllUserInputs",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "deleteAllUserInputs",
+                    "notes": "deleteAllUserInputs",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "deleteAllUserInputs",
+            "path": "/iwan/user-input"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "updateUserInput",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "userInputDTO",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "userInputDTO",
+                            "type": "IwanUserInputDTO"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "updateUserInput",
+                    "notes": "updateUserInput",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "updateUserInput",
+            "path": "/iwan/user-input"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "object",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getUserInputs",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "id",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getUserInputs",
+                    "notes": "getUserInputs",
+                    "type": "object",
+                    "method": "GET"
+                }
+            ],
+            "description": "getUserInputs",
+            "path": "/iwan/user-input/{id}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "deleteUserInput",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "id",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "deleteUserInput",
+                    "notes": "deleteUserInput",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "deleteUserInput",
+            "path": "/iwan/user-input/{id}"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/iwan/user-input"
+}

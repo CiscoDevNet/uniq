@@ -1,22 +1,9 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-DiscoveryApi.py
-    Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
 
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
-"""
 import sys
 import os
 import urllib.request, urllib.parse, urllib.error
@@ -29,27 +16,24 @@ class DiscoveryApi(object):
     def __init__(self, apiClient):
       self.apiClient = apiClient
 
-
-
+    
+    
     def updateDiscovery(self, **kwargs):
         """Updates an existing discovery specified by id - only for starting/stopping the discovery
 
         Args:
-
-            discovery, DiscoveryNIO: discovery (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            discovery, DiscoveryNIO: Discovery request that holds the status of discovery as active / inactive (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['discovery', 'scope']
+        allParams = ['discovery']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method updateDiscovery" % key)
             params[key] = val
@@ -68,54 +52,50 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
+        
 
+        
 
+        
 
-
-
-
-
+        
         if ('discovery' in params):
             bodyParam = params['discovery']
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def insertDiscovery(self, **kwargs):
         """Starts a new discovery process and returns a task-id
 
         Args:
-
-            request, InventoryRequest: request (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            request, InventoryRequest: Discovery request that holds the parameters required for discovery (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['request', 'scope']
+        allParams = ['request']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method insertDiscovery" % key)
             params[key] = val
@@ -134,53 +114,47 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
+        
 
-
-
-
-
-
-
+        
         if ('request' in params):
             bodyParam = params['request']
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def deleteAllDiscovery(self, **kwargs):
         """Deletes all discovery
 
         Args:
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['scope']
+        allParams = []
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method deleteAllDiscovery" % key)
             params[key] = val
@@ -199,48 +173,44 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
+        
 
+        
 
+        
 
-
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def getDiscoveryCount(self, **kwargs):
-        """Returns the number of discovery
+        """Retrieves the number of discovery
 
         Args:
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+        
         Returns: CountResult
         """
 
-        allParams = ['scope']
+        allParams = []
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getDiscoveryCount" % key)
             params[key] = val
@@ -259,52 +229,121 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
+        
 
+        
 
-
-
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'CountResult')
         return responseObject
-
-
-
-
-    def getDiscoveryById(self, **kwargs):
-        """Returns the discovery specified by id
+        
+        
+        
+    
+    def getDiscoveryJobsByIp(self, **kwargs):
+        """Retrieves the list of discovery jobs for the given IP
 
         Args:
+            
+            offset, int: offset (required)
+            
+            
+            limit, int: limit (required)
+            
+            
+            ipAddress, str: ipAddress (required)
+            
+            
+        
+        Returns: DiscoveryJobNIOListResult
+        """
 
-            id, str: id (required)
+        allParams = ['offset', 'limit', 'ipAddress']
 
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getDiscoveryJobsByIp" % key)
+            params[key] = val
+        del params['kwargs']
 
-            scope, str: Authorization Scope for RBAC (required)
+        resourcePath = '/discovery/job'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
 
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
 
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
 
+        
+        if ('offset' in params):
+            queryParams['offset'] = self.apiClient.toPathValue(params['offset'])
+        
+        if ('limit' in params):
+            queryParams['limit'] = self.apiClient.toPathValue(params['limit'])
+        
+        if ('ipAddress' in params):
+            queryParams['ipAddress'] = self.apiClient.toPathValue(params['ipAddress'])
+        
+
+        
+
+        
+
+        
+
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'DiscoveryJobNIOListResult')
+        return responseObject
+        
+        
+        
+    
+    def getDiscoveryById(self, **kwargs):
+        """Retrieves the discovery specified by id
+
+        Args:
+            
+            id, str: Discovery ID (required)
+            
+            
+        
         Returns: DiscoveryNIOResult
         """
 
-        allParams = ['id', 'scope']
+        allParams = ['id']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getDiscoveryById" % key)
             params[key] = val
@@ -323,58 +362,53 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
-
-
-
+        
         if ('id' in params):
             replacement = str(self.apiClient.toPathValue(params['id']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'id' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'DiscoveryNIOResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def deleteDiscoveryById(self, **kwargs):
         """Deletes the discovery specified by id
 
         Args:
-
-            id, str: id (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            id, str: Discovery ID (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['id', 'scope']
+        allParams = ['id']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method deleteDiscoveryById" % key)
             params[key] = val
@@ -393,58 +427,139 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
-
-
-
+        
         if ('id' in params):
             replacement = str(self.apiClient.toPathValue(params['id']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'id' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
-    def getNetworkDeviceByDiscoveryId(self, **kwargs):
-        """Returns the network devices discovered in the discovery specified by id
+        
+        
+        
+    
+    def getDiscoveryJobsById(self, **kwargs):
+        """Retrieves the list of discovery jobs for the given IP
 
         Args:
+            
+            id, str: Discovery ID (required)
+            
+            
+            offset, int: offset (required)
+            
+            
+            limit, int: limit (required)
+            
+            
+            ipAddress, str: ipAddress (required)
+            
+            
+        
+        Returns: DiscoveryJobNIOListResult
+        """
 
+        allParams = ['id', 'offset', 'limit', 'ipAddress']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getDiscoveryJobsById" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/discovery/{id}/job'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+        
+        if ('offset' in params):
+            queryParams['offset'] = self.apiClient.toPathValue(params['offset'])
+        
+        if ('limit' in params):
+            queryParams['limit'] = self.apiClient.toPathValue(params['limit'])
+        
+        if ('ipAddress' in params):
+            queryParams['ipAddress'] = self.apiClient.toPathValue(params['ipAddress'])
+        
+
+        
+
+        
+        if ('id' in params):
+            replacement = str(self.apiClient.toPathValue(params['id']))
+            replacement = urllib.parse.quote(replacement)
+            resourcePath = resourcePath.replace('{' + 'id' + '}',
+                                                replacement)
+        
+
+        
+
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'DiscoveryJobNIOListResult')
+        return responseObject
+        
+        
+        
+    
+    def getNetworkDeviceByDiscoveryId(self, **kwargs):
+        """Retrieves the network devices discovered in the discovery specified by id
+
+        Args:
+            
+            taskId, str: taskId (required)
+            
+            
             id, str: id (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            
+        
         Returns: NetworkDeviceNIOListResult
         """
 
-        allParams = ['id', 'scope']
+        allParams = ['taskId', 'id']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getNetworkDeviceByDiscoveryId" % key)
             params[key] = val
@@ -463,59 +578,59 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
+        if ('taskId' in params):
+            queryParams['taskId'] = self.apiClient.toPathValue(params['taskId'])
+        
 
+        
 
-
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
-
-
-
+        
         if ('id' in params):
             replacement = str(self.apiClient.toPathValue(params['id']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'id' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'NetworkDeviceNIOListResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def getNetworkDeviceCountByDiscoveryId(self, **kwargs):
-        """Returns the number of network devices discovered in the discovery specified by id
+        """Retrieves the number of network devices discovered in the discovery specified by id
 
         Args:
-
-            id, str: id (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            taskId, str: taskId (required)
+            
+            
+            id, str: Discovery ID (required)
+            
+            
+        
         Returns: CountResult
         """
 
-        allParams = ['id', 'scope']
+        allParams = ['taskId', 'id']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getNetworkDeviceCountByDiscoveryId" % key)
             params[key] = val
@@ -534,64 +649,65 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
+        if ('taskId' in params):
+            queryParams['taskId'] = self.apiClient.toPathValue(params['taskId'])
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
-
-
-
+        
         if ('id' in params):
             replacement = str(self.apiClient.toPathValue(params['id']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'id' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'CountResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def getNetworkDeviceByDiscoveryIdByRange(self, **kwargs):
-        """Returns the network devices discovered in the given range
+        """Retrieves the range of network devices discovered for the given discovery
 
         Args:
-
-            id, str: id (required)
-
-
-            startIndex, int: startIndex (required)
-
-
-            recordsToReturn, int: recordsToReturn (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            taskId, str: taskId (required)
+            
+            
+            id, str: Discovery ID (required)
+            
+            
+            startIndex, int: Start index (required)
+            
+            
+            recordsToReturn, int: Number of records to return (required)
+            
+            
+        
         Returns: NetworkDeviceNIOListResult
         """
 
-        allParams = ['id', 'startIndex', 'recordsToReturn', 'scope']
+        allParams = ['taskId', 'id', 'startIndex', 'recordsToReturn']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getNetworkDeviceByDiscoveryIdByRange" % key)
             params[key] = val
@@ -610,73 +726,71 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
+        if ('taskId' in params):
+            queryParams['taskId'] = self.apiClient.toPathValue(params['taskId'])
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
-
-
-
+        
         if ('id' in params):
             replacement = str(self.apiClient.toPathValue(params['id']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'id' + '}',
                                                 replacement)
-
+        
         if ('startIndex' in params):
             replacement = str(self.apiClient.toPathValue(params['startIndex']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'startIndex' + '}',
                                                 replacement)
-
+        
         if ('recordsToReturn' in params):
             replacement = str(self.apiClient.toPathValue(params['recordsToReturn']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'recordsToReturn' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'NetworkDeviceNIOListResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def deleteDiscoveryByRange(self, **kwargs):
         """Deletes the discovery in the given range
 
         Args:
-
-            startIndex, int: startIndex (required)
-
-
-            recordsToDelete, int: recordsToDelete (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            startIndex, int: Start index (required)
+            
+            
+            recordsToDelete, int: Number of records to delete (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['startIndex', 'recordsToDelete', 'scope']
+        allParams = ['startIndex', 'recordsToDelete']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method deleteDiscoveryByRange" % key)
             params[key] = val
@@ -695,67 +809,62 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
-
-
-
+        
         if ('startIndex' in params):
             replacement = str(self.apiClient.toPathValue(params['startIndex']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'startIndex' + '}',
                                                 replacement)
-
+        
         if ('recordsToDelete' in params):
             replacement = str(self.apiClient.toPathValue(params['recordsToDelete']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'recordsToDelete' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def getDiscoveryByRange(self, **kwargs):
-        """Returns the discovery in the given range
+        """Retrieves the discovery in the given range
 
         Args:
-
-            startIndex, int: startIndex (required)
-
-
-            recordsToReturn, int: recordsToReturn (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            startIndex, int: Start index (required)
+            
+            
+            recordsToReturn, int: Number of records to return (required)
+            
+            
+        
         Returns: DiscoveryNIOListResult
         """
 
-        allParams = ['startIndex', 'recordsToReturn', 'scope']
+        allParams = ['startIndex', 'recordsToReturn']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getDiscoveryByRange" % key)
             params[key] = val
@@ -774,44 +883,42 @@ class DiscoveryApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
-
-
-
+        
         if ('startIndex' in params):
             replacement = str(self.apiClient.toPathValue(params['startIndex']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'startIndex' + '}',
                                                 replacement)
-
+        
         if ('recordsToReturn' in params):
             replacement = str(self.apiClient.toPathValue(params['recordsToReturn']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'recordsToReturn' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'DiscoveryNIOListResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
 
 

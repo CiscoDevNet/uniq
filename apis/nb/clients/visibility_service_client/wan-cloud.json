@@ -1,0 +1,292 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "models": {
+        "WanCloudListResult": {
+            "extends": "",
+            "id": "WanCloudListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "WanCloudDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "WanCloudDTO": {
+            "extends": "",
+            "id": "WanCloudDTO",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "meterType": {
+                    "type": "string"
+                },
+                "wanType": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "WanCloudResult": {
+            "extends": "",
+            "id": "WanCloudResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "WanCloudDTO"
+                }
+            },
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "id": "TaskId",
+            "properties": {},
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "extends": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": ""
+        }
+    },
+    "apis": [
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "WanCloudListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get WAN clouds",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getWanClouds",
+                    "notes": "getWanClouds",
+                    "type": "WanCloudListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getWanClouds",
+            "path": "/wan-cloud"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to Provision WAN Cloud - API to save and apply the WAN Cloud configuration",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "wanClouds",
+                            "allowMultiple": true,
+                            "items": {
+                                "$ref": "WanCloudDTO"
+                            },
+                            "required": false,
+                            "paramType": "body",
+                            "description": "wanClouds",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "addWanCloud",
+                    "notes": "addWanCloud",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "addWanCloud",
+            "path": "/wan-cloud"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "WanCloudResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get the WAN cloud based on WAN cloud ID",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "wanCloudId",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "wanCloudId",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getWanCloudByUuid",
+                    "notes": "getWanCloudByUuid",
+                    "type": "WanCloudResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getWanCloudByUuid",
+            "path": "/wan-cloud/{wanCloudId}"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/wan-cloud"
+}

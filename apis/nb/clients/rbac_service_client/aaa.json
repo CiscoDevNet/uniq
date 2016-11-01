@@ -1,24 +1,23 @@
 {
+    "apiVersion": "1.0",
     "apis": [
         {
-            "description": "getServers",
             "path": "/aaa-server",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "notes": "This method is used to get a list of registered AAA servers.",
+                    "method": "GET",
                     "summary": "getAAAServers",
-                    "nickname": "getServers",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "type": "AAAServerListResult",
                     "parameters": [],
+                    "type": "AAAServerListResult",
                     "responseMessages": [
                         {
-                            "responseModel": "AAAServerListResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "AAAServerListResult"
                         },
                         {
                             "code": 403,
@@ -33,45 +32,45 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "method": "GET"
+                    "notes": "This method is used to get a list of registered AAA servers.",
+                    "nickname": "getServers"
                 }
-            ]
+            ],
+            "description": "getServers"
         },
         {
-            "description": "updateServers",
             "path": "/aaa-server",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "notes": "This method is used to update an individual or a list of AAA servers.",
+                    "method": "PUT",
                     "summary": "updateAAAServers",
-                    "nickname": "updateServers",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "allowMultiple": true,
+                            "items": {
+                                "$ref": "AAAServer"
+                            },
+                            "defaultValue": "",
+                            "required": false,
+                            "name": "aaaServerList",
+                            "description": "aaaServerList",
+                            "type": "array"
+                        }
                     ],
                     "type": "SuccessResult",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "defaultValue": "",
-                            "allowMultiple": true,
-                            "required": false,
-                            "items": {
-                                "$ref": "AAAServer"
-                            },
-                            "name": "aaaServerList",
-                            "description": "aaaServerList",
-                            "type": "array",
-                            "paramType": "body"
-                        }
-                    ],
                     "responseMessages": [
                         {
-                            "responseModel": "SuccessResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "SuccessResult"
                         },
                         {
                             "code": 403,
@@ -86,45 +85,45 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "method": "PUT"
+                    "notes": "This method is used to update an individual or a list of AAA servers.",
+                    "nickname": "updateServers"
                 }
-            ]
+            ],
+            "description": "updateServers"
         },
         {
-            "description": "addAAAServer",
             "path": "/aaa-server",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "notes": "This method is used to add a list of AAA servers.",
+                    "method": "POST",
                     "summary": "addAAAServer",
-                    "nickname": "addAAAServer",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "type": "ServerIdListResult",
                     "consumes": [
                         "application/json"
                     ],
                     "parameters": [
                         {
-                            "defaultValue": "",
+                            "paramType": "body",
                             "allowMultiple": true,
-                            "required": false,
                             "items": {
                                 "$ref": "AAAServer"
                             },
+                            "defaultValue": "",
+                            "required": false,
                             "name": "aaaServerList",
                             "description": "aaaServerList",
-                            "type": "array",
-                            "paramType": "body"
+                            "type": "array"
                         }
                     ],
+                    "type": "ServerIdListResult",
                     "responseMessages": [
                         {
-                            "responseModel": "ServerIdListResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "ServerIdListResult"
                         },
                         {
                             "code": 202,
@@ -143,29 +142,29 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "method": "POST"
+                    "notes": "This method is used to add a list of AAA servers.",
+                    "nickname": "addAAAServer"
                 }
-            ]
+            ],
+            "description": "addAAAServer"
         },
         {
-            "description": "deleteAAAAttribute",
             "path": "/aaa-server/authorization-attribute",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "notes": "This method is used to delete a custom AAA Attribute.",
+                    "method": "DELETE",
                     "summary": "deleteAAAAttribute",
-                    "nickname": "deleteAAAAttribute",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "type": "SuccessResult",
                     "parameters": [],
+                    "type": "SuccessResult",
                     "responseMessages": [
                         {
-                            "responseModel": "SuccessResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "SuccessResult"
                         },
                         {
                             "code": 403,
@@ -180,42 +179,42 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "method": "DELETE"
+                    "notes": "This method is used to delete a custom AAA Attribute.",
+                    "nickname": "deleteAAAAttribute"
                 }
-            ]
+            ],
+            "description": "deleteAAAAttribute"
         },
         {
-            "description": "addAAAAttribute",
             "path": "/aaa-server/authorization-attribute",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "notes": "This method is used to add a custom AAA Attribute.",
+                    "method": "POST",
                     "summary": "addAAAAttribute",
-                    "nickname": "addAAAAttribute",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "type": "SuccessResult",
                     "consumes": [
                         "application/json"
                     ],
                     "parameters": [
                         {
-                            "defaultValue": "",
+                            "paramType": "body",
                             "allowMultiple": false,
+                            "defaultValue": "",
                             "required": false,
                             "name": "aaaAttribute",
                             "description": "aaaAttribute",
-                            "type": "AAAAttribute",
-                            "paramType": "body"
+                            "type": "AAAAttribute"
                         }
                     ],
+                    "type": "SuccessResult",
                     "responseMessages": [
                         {
-                            "responseModel": "SuccessResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "SuccessResult"
                         },
                         {
                             "code": 202,
@@ -234,29 +233,29 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "method": "POST"
+                    "notes": "This method is used to add a custom AAA Attribute.",
+                    "nickname": "addAAAAttribute"
                 }
-            ]
+            ],
+            "description": "addAAAAttribute"
         },
         {
-            "description": "getAAAAttribute",
             "path": "/aaa-server/authorization-attribute",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "notes": "This method is used to get all custom AAA Attributes.",
+                    "method": "GET",
                     "summary": "getAAAAttribute",
-                    "nickname": "getAAAAttribute",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "type": "AAAAttributeResult",
                     "parameters": [],
+                    "type": "AAAAttributeResult",
                     "responseMessages": [
                         {
-                            "responseModel": "AAAAttributeResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "AAAAttributeResult"
                         },
                         {
                             "code": 403,
@@ -271,86 +270,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "method": "GET"
+                    "notes": "This method is used to get all custom AAA Attributes.",
+                    "nickname": "getAAAAttribute"
                 }
-            ]
+            ],
+            "description": "getAAAAttribute"
         },
         {
-            "description": "deleteServer",
             "path": "/aaa-server/{serverId}",
             "operations": [
                 {
+                    "method": "GET",
+                    "summary": "getAAAServer",
                     "deprecated": "false",
-                    "notes": "This method is used to delete a registered AAA server.",
-                    "summary": "deleteAAAServer",
-                    "nickname": "deleteServer",
                     "produces": [
                         "application/json"
                     ],
-                    "type": "SuccessResult",
                     "parameters": [
                         {
-                            "defaultValue": "",
+                            "paramType": "path",
                             "allowMultiple": false,
+                            "defaultValue": "",
                             "required": true,
                             "name": "serverId",
                             "description": "serverId",
-                            "type": "UUID",
-                            "paramType": "path"
+                            "type": "string"
                         }
-                    ],
-                    "responseMessages": [
-                        {
-                            "responseModel": "SuccessResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "method": "DELETE"
-                }
-            ]
-        },
-        {
-            "description": "getServer",
-            "path": "/aaa-server/{serverId}",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "notes": "This method is used to get a registered AAA server.",
-                    "summary": "getAAAServer",
-                    "nickname": "getServer",
-                    "produces": [
-                        "application/json"
                     ],
                     "type": "AAAServerResult",
-                    "parameters": [
-                        {
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "required": true,
-                            "name": "serverId",
-                            "description": "serverId",
-                            "type": "UUID",
-                            "paramType": "path"
-                        }
-                    ],
                     "responseMessages": [
                         {
-                            "responseModel": "AAAServerResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "AAAServerResult"
                         },
                         {
                             "code": 403,
@@ -365,65 +317,81 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "method": "GET"
+                    "notes": "This method is used to get a registered AAA server.",
+                    "nickname": "getServer"
                 }
-            ]
+            ],
+            "description": "getServer"
+        },
+        {
+            "path": "/aaa-server/{serverId}",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "summary": "deleteAAAServer",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "required": true,
+                            "name": "serverId",
+                            "description": "serverId",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "SuccessResult",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "SuccessResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "notes": "This method is used to delete a registered AAA server.",
+                    "nickname": "deleteServer"
+                }
+            ],
+            "description": "deleteServer"
         }
     ],
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/aaa-server",
     "models": {
-        "AAAServerListResult": {
-            "extends": "",
+        "ServerId": {
             "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "AAAServer"
-                    }
-                },
-                "version": {
+                "serverId": {
                     "type": "string"
                 }
             },
-            "id": "AAAServerListResult",
-            "description": ""
-        },
-        "ServerIdListResult": {
             "extends": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "ServerId"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "id": "ServerIdListResult",
-            "description": ""
-        },
-        "AAAServerResult": {
-            "extends": "",
-            "properties": {
-                "response": {
-                    "$ref": "AAAServer"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "id": "AAAServerResult",
-            "description": ""
-        },
-        "UUID": {
-            "extends": "",
-            "properties": {},
-            "id": "UUID",
+            "id": "ServerId",
             "description": ""
         },
         "AAAAttributeResult": {
-            "extends": "",
             "properties": {
                 "response": {
                     "$ref": "AAAAttribute"
@@ -432,85 +400,26 @@
                     "type": "string"
                 }
             },
+            "extends": "",
             "id": "AAAAttributeResult",
             "description": ""
         },
-        "AAAServer": {
-            "extends": "",
+        "UUID": {
             "properties": {
-                "retries": {
-                    "description": "Retries",
-                    "type": "integer",
-                    "format": "int32"
+                "leastSignificantBits": {
+                    "format": "int64",
+                    "type": "integer"
                 },
-                "protocol": {
-                    "enum": [
-                        "RADIUS",
-                        " TACACS"
-                    ],
-                    "description": "Protocol",
-                    "type": "string"
-                },
-                "authenticationPort": {
-                    "description": "Authentication Port",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "socketTimeout": {
-                    "description": "Socket Timeout",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "accountingPort": {
-                    "description": "Accounting Port",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "serverId": {
-                    "description": "Server Id",
-                    "$ref": "UUID"
-                },
-                "serverIp": {
-                    "description": "Server IP Address",
-                    "type": "string"
-                },
-                "sharedSecret": {
-                    "description": "Shared Secret",
-                    "type": "string"
+                "mostSignificantBits": {
+                    "format": "int64",
+                    "type": "integer"
                 }
             },
-            "id": "AAAServer",
-            "required": [
-                "serverIp"
-            ],
-            "description": ""
-        },
-        "AAAAttribute": {
             "extends": "",
-            "properties": {
-                "attributeName": {
-                    "description": "Attributename",
-                    "type": "string"
-                }
-            },
-            "id": "AAAAttribute",
-            "required": [
-                "attributeName"
-            ],
-            "description": ""
-        },
-        "ServerId": {
-            "extends": "",
-            "properties": {
-                "serverId": {
-                    "$ref": "UUID"
-                }
-            },
-            "id": "ServerId",
+            "id": "UUID",
             "description": ""
         },
         "SuccessResult": {
-            "extends": "",
             "properties": {
                 "response": {
                     "type": "string"
@@ -519,18 +428,118 @@
                     "type": "string"
                 }
             },
+            "extends": "",
             "id": "SuccessResult",
             "description": ""
+        },
+        "AAAServerListResult": {
+            "properties": {
+                "response": {
+                    "items": {
+                        "$ref": "AAAServer"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "AAAServerListResult",
+            "description": ""
+        },
+        "AAAServerResult": {
+            "properties": {
+                "response": {
+                    "$ref": "AAAServer"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "AAAServerResult",
+            "description": ""
+        },
+        "AAAAttribute": {
+            "properties": {
+                "attributeName": {
+                    "description": "Attributename",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "attributeName"
+            ],
+            "id": "AAAAttribute",
+            "description": "",
+            "extends": ""
+        },
+        "ServerIdListResult": {
+            "properties": {
+                "response": {
+                    "items": {
+                        "$ref": "ServerId"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "ServerIdListResult",
+            "description": ""
+        },
+        "AAAServer": {
+            "properties": {
+                "protocol": {
+                    "enum": [
+                        "RADIUS",
+                        " TACACS"
+                    ],
+                    "description": "Protocol",
+                    "type": "string"
+                },
+                "serverId": {
+                    "description": "Server Id",
+                    "$ref": "UUID"
+                },
+                "retries": {
+                    "format": "int32",
+                    "description": "Retries",
+                    "type": "integer"
+                },
+                "serverIp": {
+                    "description": "Server IP Address",
+                    "type": "string"
+                },
+                "socketTimeout": {
+                    "format": "int32",
+                    "description": "Socket Timeout",
+                    "type": "integer"
+                },
+                "authenticationPort": {
+                    "format": "int32",
+                    "description": "Authentication Port",
+                    "type": "integer"
+                },
+                "sharedSecret": {
+                    "description": "Shared Secret",
+                    "type": "string"
+                },
+                "accountingPort": {
+                    "format": "int32",
+                    "description": "Accounting Port",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "serverIp"
+            ],
+            "id": "AAAServer",
+            "description": "",
+            "extends": ""
         }
-    },
-    "resourcePath": "/aaa-server",
-    "basePath": "/",
-    "consumes": [
-        "application/json"
-    ],
-    "swaggerVersion": "1.2",
-    "apiVersion": "1.0",
-    "produces": [
-        "application/json"
-    ]
+    }
 }

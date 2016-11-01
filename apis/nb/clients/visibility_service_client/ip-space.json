@@ -1,0 +1,1207 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "models": {
+        "TaskIdResponse": {
+            "extends": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": ""
+        },
+        "IpAddressGlobalSettingsResult": {
+            "extends": "",
+            "id": "IpAddressGlobalSettingsResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "IpAddressGlobalDTO"
+                }
+            },
+            "description": ""
+        },
+        "GenericIpAddressPoolDTO": {
+            "extends": "",
+            "id": "GenericIpAddressPoolDTO",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "usagePercentage": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "addressPoolType": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "SiteIPAddressPoolDTO": {
+            "extends": "",
+            "id": "SiteIPAddressPoolDTO",
+            "properties": {
+                "deviceSerialNumber": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "siteName": {
+                    "type": "string"
+                },
+                "vlanType": {
+                    "type": "string"
+                },
+                "layer3Site": {
+                    "type": "boolean"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "string"
+                },
+                "isBrownFieldSite": {
+                    "type": "boolean"
+                },
+                "ipAddressType": {
+                    "type": "string"
+                },
+                "vlanId": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "GenericIpAddressPoolListResult": {
+            "extends": "",
+            "id": "GenericIpAddressPoolListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "GenericIpAddressPoolDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "ReserveIpSubnetDTO": {
+            "extends": "",
+            "id": "ReserveIpSubnetDTO",
+            "properties": {
+                "deviceSerialNumber": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "siteName": {
+                    "type": "string"
+                },
+                "vlanType": {
+                    "type": "string"
+                },
+                "createSitePool": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "ipv4Subnet": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "vlanId": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": ""
+        },
+        "SiteIPAddressPoolListResult": {
+            "extends": "",
+            "id": "SiteIPAddressPoolListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "SiteIPAddressPoolDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "IpAddressGlobalDTO": {
+            "extends": "",
+            "id": "IpAddressGlobalDTO",
+            "properties": {
+                "numberOfSites": {
+                    "type": "string"
+                },
+                "numberOfSPs": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "id": "TaskId",
+            "properties": {},
+            "description": ""
+        }
+    },
+    "apis": [
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "GenericIpAddressPoolListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Retrieves list of configured global IP space for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "limit",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "limit",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "offset",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "offset",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getGlobalIpPools",
+                    "notes": "API to retrieve list of configured global IP space for IWAN",
+                    "type": "GenericIpAddressPoolListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getGlobalIpPools",
+            "path": "/ip-space/global"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to create Global IP Space for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "iwanGlobalIpPools",
+                            "allowMultiple": true,
+                            "items": {
+                                "$ref": "GenericIpAddressPoolDTO"
+                            },
+                            "required": false,
+                            "paramType": "body",
+                            "description": "iwanGlobalIpPools",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "createIwanGlobalIpPools",
+                    "notes": "createIwanGlobalIpPools",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "createIwanGlobalIpPools",
+            "path": "/ip-space/global"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to create Global Setting IP Space for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "globalSetting",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "globalSetting",
+                            "type": "IpAddressGlobalDTO"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "createIwanIpPoolGlobalSetting",
+                    "notes": "createIwanIpPoolGlobalSetting",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "createIwanIpPoolGlobalSetting",
+            "path": "/ip-space/global-setting"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to update Global Setting IP Space for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "globalSetting",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "globalSetting",
+                            "type": "IpAddressGlobalDTO"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scheduleAt",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "scheduleAt",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "updateIwanIpPoolGlobalSetting",
+                    "notes": "updateIwanIpPoolGlobalSetting",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "updateIwanIpPoolGlobalSetting",
+            "path": "/ip-space/global-setting"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IpAddressGlobalSettingsResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Retrieves IP space global setting for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getIpPoolGlobalSettings",
+                    "notes": "API to retrieve IP space global setting for IWAN",
+                    "type": "IpAddressGlobalSettingsResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getIpPoolGlobalSettings",
+            "path": "/ip-space/global-setting"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Deletes global IP space for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "IP Address Pool ID",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "ALL",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "deleteGlobalAddressPool",
+                    "notes": "API to delete global IP space for IWAN based on its ID",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "deleteGlobalAddressPool",
+            "path": "/ip-space/global/{id}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Schedule deletion of global ip-pool by id",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "IP Address Pool ID",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scheduleTime",
+                            "allowMultiple": false,
+                            "format": "int64",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "Schedule Time",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "scheduleIwanGlobalIpPoolsDeletion",
+                    "notes": "Schedule deletion of global ip pool by id",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "scheduleIwanGlobalIpPoolsDeletion",
+            "path": "/ip-space/global/{id}/{scheduleTime}"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Schedule Creation of global ip-pool(s)",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "iwanGlobalIpPools",
+                            "allowMultiple": true,
+                            "items": {
+                                "$ref": "GenericIpAddressPoolDTO"
+                            },
+                            "required": false,
+                            "paramType": "body",
+                            "description": "iwanGlobalIpPools",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scheduleTime",
+                            "allowMultiple": false,
+                            "format": "int64",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "Schedule Time",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "scheduleIwanGlobalIpPoolsCreation",
+                    "notes": "Schedule creation of a list of global IP Pools",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "scheduleIwanGlobalIpPoolsCreation",
+            "path": "/ip-space/global/{scheduleTime}"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to create Site IP Space for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "iwanReserveIpSubnets",
+                            "allowMultiple": true,
+                            "items": {
+                                "$ref": "ReserveIpSubnetDTO"
+                            },
+                            "required": false,
+                            "paramType": "body",
+                            "description": "iwanReserveIpSubnets",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "reserveIwanIpSubnets",
+                    "notes": "reserveIwanIpSubnets",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "reserveIwanIpSubnets",
+            "path": "/ip-space/reserve-subnet"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Deletes site IP space for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "iwanSiteIpPoolIds",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": true,
+                            "description": "List of Site IP Pool ids",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "ALL",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "deleteSiteAddressPool",
+                    "notes": "API to delete site IP space for IWAN based on its ID",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "deleteSiteAddressPool",
+            "path": "/ip-space/site"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to create Site IP Space for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "iwanSiteIpPools",
+                            "allowMultiple": true,
+                            "items": {
+                                "$ref": "SiteIPAddressPoolDTO"
+                            },
+                            "required": false,
+                            "paramType": "body",
+                            "description": "iwanSiteIpPools",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "createIwanSiteIpPools",
+                    "notes": "createIwanSiteIpPools",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "createIwanSiteIpPools",
+            "path": "/ip-space/site"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "SiteIPAddressPoolListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Retrieves list of configured site IP space for IWAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "limit",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "limit",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "offset",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "offset",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "serialNumbers",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "Comma Separated Serial Numbers",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getSiteIpPools",
+                    "notes": "API to retrieve list of configured site IP space for IWAN",
+                    "type": "SiteIPAddressPoolListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getSiteIpPools",
+            "path": "/ip-space/site"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Schedule Creation of site ip-pool(s)",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "iwanSiteIpPools",
+                            "allowMultiple": true,
+                            "items": {
+                                "$ref": "SiteIPAddressPoolDTO"
+                            },
+                            "required": false,
+                            "paramType": "body",
+                            "description": "iwanSiteIpPools",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scheduleTime",
+                            "allowMultiple": false,
+                            "format": "int64",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "Schedule Time",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "scheduleIwanSiteIpPoolsCreation",
+                    "notes": "Schedule creation of a list of site IP Pools",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "scheduleIwanSiteIpPoolsCreation",
+            "path": "/ip-space/site/{scheduleTime}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Schedule deletion of list of site ip-pools by id",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "iwanSiteIpPoolIds",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": true,
+                            "description": "List of Site IP Pool ids",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scheduleTime",
+                            "allowMultiple": false,
+                            "format": "int64",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "Schedule Time",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "scheduleIwanSiteIpPoolsDeletion",
+                    "notes": "Schedule deletion of site ip pool(s) by id(s)",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "scheduleIwanSiteIpPoolsDeletion",
+            "path": "/ip-space/site/{scheduleTime}"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/ip-space"
+}

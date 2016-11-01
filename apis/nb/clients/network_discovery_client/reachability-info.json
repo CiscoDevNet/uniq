@@ -1,103 +1,14 @@
 {
+    "swaggerVersion": "1.2",
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/reachability-info",
+    "apiVersion": "1.0",
+    "basePath": "/apic-em-network-discovery-service",
     "models": {
-        "NetworkDeviceReachabilityInfoNIO": {
-            "id": "NetworkDeviceReachabilityInfoNIO",
-            "description": "",
-            "properties": {
-                "snmpCommunity": {
-                    "description": "SNMP community used for device connectivity",
-                    "type": "string"
-                },
-                "discoveryStartTime": {
-                    "description": "Time when the discovery was started",
-                    "type": "string"
-                },
-                "password": {
-                    "description": "CLI password used for device connectivity",
-                    "type": "string"
-                },
-                "attributeInfo": {
-                    "$ref": "object"
-                },
-                "protocolUsed": {
-                    "description": "Protocol used for device discovery",
-                    "type": "string"
-                },
-                "discoveryId": {
-                    "description": "ID of discovery thorugh which device was discovered",
-                    "type": "string"
-                },
-                "protocolList": {
-                    "description": "Protocol order given for discovery",
-                    "type": "string"
-                },
-                "reachabilityStatus": {
-                    "description": "Reachability status of the device as Reachable / Unreachable",
-                    "type": "string"
-                },
-                "enablePassword": {
-                    "description": "CLI enable password used for device connectivity",
-                    "type": "string"
-                },
-                "mgmtIp": {
-                    "description": "IP address of the device",
-                    "type": "string"
-                },
-                "reachabilityFailureReason": {
-                    "description": "Reason for failure if the device is not discovered successfully",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "",
-                    "type": "string"
-                },
-                "userName": {
-                    "description": "CLI username used for device connectivity",
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "required": [
-                "discoveryId",
-                "mgmtIp",
-                "protocolList",
-                "protocolUsed",
-                "discoveryStartTime",
-                "snmpCommunity",
-                "id",
-                "reachabilityStatus"
-            ]
-        },
-        "NetworkDeviceReachabilityInfoNIOResult": {
-            "id": "NetworkDeviceReachabilityInfoNIOResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "$ref": "NetworkDeviceReachabilityInfoNIO"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "CountResult": {
-            "id": "CountResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
         "NetworkDeviceReachabilityInfoNIOListResult": {
-            "id": "NetworkDeviceReachabilityInfoNIOListResult",
-            "description": "",
+            "extends": "",
             "properties": {
                 "response": {
                     "type": "array",
@@ -109,39 +20,125 @@
                     "type": "string"
                 }
             },
-            "extends": ""
+            "description": "",
+            "id": "NetworkDeviceReachabilityInfoNIOListResult"
+        },
+        "CountResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "description": "",
+            "id": "CountResult"
+        },
+        "NetworkDeviceReachabilityInfoNIOResult": {
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "NetworkDeviceReachabilityInfoNIO"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "description": "",
+            "id": "NetworkDeviceReachabilityInfoNIOResult"
+        },
+        "NetworkDeviceReachabilityInfoNIO": {
+            "extends": "",
+            "required": [
+                "snmpCommunity",
+                "mgmtIp",
+                "protocolList",
+                "protocolUsed",
+                "discoveryStartTime",
+                "id",
+                "discoveryId",
+                "reachabilityStatus"
+            ],
+            "properties": {
+                "protocolUsed": {
+                    "type": "string",
+                    "description": "Protocol used for device discovery"
+                },
+                "discoveryId": {
+                    "type": "string",
+                    "description": "ID of discovery thorugh which device was discovered"
+                },
+                "reachabilityFailureReason": {
+                    "type": "string",
+                    "description": "Reason for failure if the device is not discovered successfully"
+                },
+                "discoveryStartTime": {
+                    "type": "string",
+                    "description": "Time when the discovery was started"
+                },
+                "reachabilityStatus": {
+                    "type": "string",
+                    "description": "Reachability status of the device as Reachable / Unreachable"
+                },
+                "snmpCommunity": {
+                    "type": "string",
+                    "description": "SNMP community used for device connectivity"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "CLI password used for device connectivity"
+                },
+                "attributeInfo": {
+                    "$ref": "object"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "CLI username used for device connectivity"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for reachability-info"
+                },
+                "mgmtIp": {
+                    "type": "string",
+                    "description": "IP address of the device"
+                },
+                "enablePassword": {
+                    "type": "string",
+                    "description": "CLI enable password used for device connectivity"
+                },
+                "protocolList": {
+                    "type": "string",
+                    "description": "Protocol order given for discovery"
+                }
+            },
+            "description": "",
+            "id": "NetworkDeviceReachabilityInfoNIO"
         }
     },
     "apis": [
         {
-            "description": "getAllNetworkDevicesReachabilityInfo",
+            "path": "/reachability-info",
             "operations": [
                 {
                     "deprecated": "false",
-                    "nickname": "getAllNetworkDevicesReachabilityInfo",
                     "type": "NetworkDeviceReachabilityInfoNIOListResult",
-                    "method": "GET",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "ALL",
-                            "paramType": "header"
-                        }
-                    ],
+                    "parameters": [],
                     "notes": "Get reachability info of all devices",
                     "summary": "Retrieves all reachability-info",
+                    "nickname": "getAllNetworkDevicesReachabilityInfo",
+                    "method": "GET",
                     "responseMessages": [
                         {
-                            "responseModel": "NetworkDeviceReachabilityInfoNIOListResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceReachabilityInfoNIOListResult"
                         },
                         {
                             "code": 403,
@@ -158,37 +155,27 @@
                     ]
                 }
             ],
-            "path": "/reachability-info"
+            "description": "getAllNetworkDevicesReachabilityInfo"
         },
         {
-            "description": "getNetworkDevicesReachabilityInfoCount",
+            "path": "/reachability-info/count",
             "operations": [
                 {
                     "deprecated": "false",
-                    "nickname": "getNetworkDevicesReachabilityInfoCount",
                     "type": "CountResult",
-                    "method": "GET",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "ALL",
-                            "paramType": "header"
-                        }
-                    ],
+                    "parameters": [],
                     "notes": "Get the count of reachability-info of devices",
                     "summary": "Retrieves reachability-info count",
+                    "nickname": "getNetworkDevicesReachabilityInfoCount",
+                    "method": "GET",
                     "responseMessages": [
                         {
-                            "responseModel": "CountResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "CountResult"
                         },
                         {
                             "code": 403,
@@ -205,46 +192,37 @@
                     ]
                 }
             ],
-            "path": "/reachability-info/count"
+            "description": "getNetworkDevicesReachabilityInfoCount"
         },
         {
-            "description": "getNetworkReachabilityInfoByIpaddress",
+            "path": "/reachability-info/ip-address/{ipAddress}",
             "operations": [
                 {
                     "deprecated": "false",
-                    "nickname": "getNetworkReachabilityInfoByIpaddress",
                     "type": "NetworkDeviceReachabilityInfoNIOResult",
-                    "method": "GET",
                     "produces": [
                         "application/json"
                     ],
                     "parameters": [
                         {
-                            "required": true,
                             "name": "ipAddress",
                             "type": "string",
-                            "description": "IP address of device",
                             "allowMultiple": false,
                             "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "ALL",
-                            "paramType": "header"
+                            "paramType": "path",
+                            "description": "IP address of device",
+                            "required": true
                         }
                     ],
                     "notes": "Get reachability info of the given device by IP address",
                     "summary": "Retrieves reachability-info by IP address",
+                    "nickname": "getNetworkReachabilityInfoByIpaddress",
+                    "method": "GET",
                     "responseMessages": [
                         {
-                            "responseModel": "NetworkDeviceReachabilityInfoNIOResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceReachabilityInfoNIOResult"
                         },
                         {
                             "code": 403,
@@ -261,46 +239,37 @@
                     ]
                 }
             ],
-            "path": "/reachability-info/ip-address/{ipAddress}"
+            "description": "getNetworkReachabilityInfoByIpaddress"
         },
         {
-            "description": "getNetworkReachabilityInfoById",
+            "path": "/reachability-info/{networkDeviceId}",
             "operations": [
                 {
                     "deprecated": "false",
-                    "nickname": "getNetworkReachabilityInfoById",
                     "type": "NetworkDeviceReachabilityInfoNIOResult",
-                    "method": "GET",
                     "produces": [
                         "application/json"
                     ],
                     "parameters": [
                         {
-                            "required": true,
                             "name": "networkDeviceId",
                             "type": "string",
-                            "description": "ID of network-device",
                             "allowMultiple": false,
                             "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "ALL",
-                            "paramType": "header"
+                            "paramType": "path",
+                            "description": "ID of network-device",
+                            "required": true
                         }
                     ],
                     "notes": "Get reachability info of the given device by ID",
                     "summary": "Retrieves reachability-info by ID",
+                    "nickname": "getNetworkReachabilityInfoById",
+                    "method": "GET",
                     "responseMessages": [
                         {
-                            "responseModel": "NetworkDeviceReachabilityInfoNIOResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceReachabilityInfoNIOResult"
                         },
                         {
                             "code": 403,
@@ -317,57 +286,48 @@
                     ]
                 }
             ],
-            "path": "/reachability-info/{networkDeviceId}"
+            "description": "getNetworkReachabilityInfoById"
         },
         {
-            "description": "getNetworkDeviceReachabilityInfoByRange",
+            "path": "/reachability-info/{startIndex}/{recordsToReturn}",
             "operations": [
                 {
                     "deprecated": "false",
-                    "nickname": "getNetworkDeviceReachabilityInfoByRange",
                     "type": "NetworkDeviceReachabilityInfoNIOListResult",
-                    "method": "GET",
                     "produces": [
                         "application/json"
                     ],
                     "parameters": [
                         {
-                            "required": true,
                             "name": "startIndex",
+                            "allowMultiple": false,
                             "type": "integer",
-                            "description": "Start index",
                             "format": "int32",
                             "defaultValue": "1",
-                            "allowMultiple": false,
-                            "paramType": "path"
+                            "paramType": "path",
+                            "description": "Start index",
+                            "required": true
                         },
                         {
-                            "required": true,
                             "name": "recordsToReturn",
+                            "allowMultiple": false,
                             "type": "integer",
-                            "description": "Number of records to return",
                             "format": "int32",
                             "defaultValue": "500",
-                            "allowMultiple": false,
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "ALL",
-                            "paramType": "header"
+                            "paramType": "path",
+                            "description": "Number of records to return",
+                            "required": true
                         }
                     ],
                     "notes": "Get reachability info of devices for the given range",
                     "summary": "Retrieves range of reachability-info",
+                    "nickname": "getNetworkDeviceReachabilityInfoByRange",
+                    "method": "GET",
                     "responseMessages": [
                         {
-                            "responseModel": "NetworkDeviceReachabilityInfoNIOListResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "NetworkDeviceReachabilityInfoNIOListResult"
                         },
                         {
                             "code": 403,
@@ -384,14 +344,7 @@
                     ]
                 }
             ],
-            "path": "/reachability-info/{startIndex}/{recordsToReturn}"
+            "description": "getNetworkDeviceReachabilityInfoByRange"
         }
-    ],
-    "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
-    "basePath": "/apic-em-network-discovery-service",
-    "produces": [
-        "application/json"
-    ],
-    "resourcePath": "/reachability-info"
+    ]
 }

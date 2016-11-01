@@ -1,38 +1,43 @@
 {
+    "produces": [
+        "application/json"
+    ],
     "resourcePath": "/relevance",
+    "basePath": "/policy-manager-service",
+    "apiVersion": "1.0",
     "apis": [
         {
             "operations": [
                 {
-                    "notes": "Get all Relevance(s)",
-                    "type": "RelevanceListResult",
-                    "parameters": [],
+                    "produces": [
+                        "application/json"
+                    ],
                     "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "message": "This Request is OK",
                             "code": 200,
+                            "message": "This Request is OK",
                             "responseModel": "RelevanceListResult"
                         },
                         {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
                         },
                         {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
                         },
                         {
-                            "message": "No Resource Found",
-                            "code": 404
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
-                    "deprecated": "false",
+                    "type": "RelevanceListResult",
                     "summary": "Lists all relevances",
                     "nickname": "getAllRelevanceLevels",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [],
+                    "notes": "Get all Relevance(s)"
                 }
             ],
             "description": "getAllRelevanceLevels",
@@ -41,26 +46,21 @@
     ],
     "models": {
         "RelevanceListResult": {
-            "description": "",
-            "id": "RelevanceListResult",
             "properties": {
-                "version": {
-                    "type": "string"
-                },
                 "response": {
+                    "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "type": "array"
+                    }
+                },
+                "version": {
+                    "type": "string"
                 }
             },
-            "extends": ""
+            "extends": "",
+            "id": "RelevanceListResult",
+            "description": ""
         }
     },
-    "swaggerVersion": "1.2",
-    "apiVersion": "1.0",
-    "produces": [
-        "application/json"
-    ],
-    "basePath": "/"
+    "swaggerVersion": "1.2"
 }

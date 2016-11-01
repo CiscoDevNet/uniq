@@ -1,0 +1,571 @@
+{
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "resourcePath": "/service-provider-profile",
+    "basePath": "/policy-manager-service",
+    "apiVersion": "1.0",
+    "apis": [
+        {
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "ServiceProviderProfileListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "ServiceProviderProfileListResult",
+                    "summary": "Retrieves ServiceProviderProfiles based on a given filter",
+                    "nickname": "getServiceProviderProfilesByFilters",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "Retrieve ServiceProviderProfile for a given name",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "name"
+                        },
+                        {
+                            "type": "string",
+                            "description": "Retrieve Default('true') or Custom('false') ServiceProviderProfiles",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "defaultModel"
+                        },
+                        {
+                            "type": "string",
+                            "description": "Retrieve ServiceProviderProfiles which have stale interfaces - only valid value is 'true'",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "interfaces.stale"
+                        },
+                        {
+                            "type": "string",
+                            "description": "Retrieve ServiceProviderProfiles which have stale interfaces within the policyScope",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "interfaces.policyScope"
+                        },
+                        {
+                            "type": "string",
+                            "description": "Starting index of the resources (1 based)",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "offset"
+                        },
+                        {
+                            "type": "string",
+                            "description": "Number of resources to return",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "name": "limit"
+                        }
+                    ],
+                    "notes": "Retrieves ServiceProviderProfiles based on a given filter"
+                }
+            ],
+            "description": "getServiceProviderProfilesByFilters",
+            "path": "/service-provider-profile"
+        },
+        {
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "summary": "Update ServiceProviderProfiles(s)",
+                    "nickname": "update",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "type": "array",
+                            "description": "ServiceProviderProfile Object(s)",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "ServiceProviderProfileDTO"
+                            },
+                            "name": "serviceProviderProfileDTOs"
+                        }
+                    ],
+                    "notes": "Update ServiceProviderProfiles(s)"
+                }
+            ],
+            "description": "update",
+            "path": "/service-provider-profile"
+        },
+        {
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "summary": "Create ServiceProviderProfiles(s)",
+                    "nickname": "add",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "type": "array",
+                            "description": "ServiceProviderProfile Object(s)",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "ServiceProviderProfileDTO"
+                            },
+                            "name": "serviceProviderProfileDTOs"
+                        }
+                    ],
+                    "notes": "Create ServiceProviderProfiles(s)"
+                }
+            ],
+            "description": "add",
+            "path": "/service-provider-profile"
+        },
+        {
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "CountResult",
+                    "summary": "Return total count of ServiceProviderProfile",
+                    "nickname": "getCount",
+                    "parameters": [],
+                    "notes": "Get total count of ServiceProviderProfiles"
+                }
+            ],
+            "description": "getCount",
+            "path": "/service-provider-profile/count"
+        },
+        {
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "ServiceProviderProfileResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "ServiceProviderProfileResult",
+                    "summary": "Retrieves a ServiceProviderProfile based on its id",
+                    "nickname": "getById",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "name": "id"
+                        }
+                    ],
+                    "notes": "Get a ServiceProviderProfile by id"
+                }
+            ],
+            "description": "getById",
+            "path": "/service-provider-profile/{id}"
+        },
+        {
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "summary": "Deletes a ServiceProviderProfile by its id",
+                    "nickname": "delete",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "name": "id"
+                        }
+                    ],
+                    "notes": "Delete ServiceProviderProfile by id"
+                }
+            ],
+            "description": "delete",
+            "path": "/service-provider-profile/{id}"
+        }
+    ],
+    "models": {
+        "ServiceProviderProfileInterfaceDTO": {
+            "properties": {
+                "createTime": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": "createTime"
+                },
+                "interfaceName": {
+                    "type": "string"
+                },
+                "serviceProviderProfileVersion": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "deviceName": {
+                    "type": "string"
+                },
+                "lastUpdateTime": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": "lastUpdateTime"
+                },
+                "deviceId": {
+                    "type": "string"
+                },
+                "stale": {
+                    "type": "boolean",
+                    "description": "Indicates whether the ServiceProviderProfile has been updated since the last time this interface was provisioned"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "policyScope": {
+                    "type": "string"
+                },
+                "interfaceId": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "required": [
+                "id"
+            ],
+            "id": "ServiceProviderProfileInterfaceDTO",
+            "description": ""
+        },
+        "ClassModelDTO": {
+            "properties": {
+                "admittedTrafficClasses": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "description": "Valid values are broadcast-video, bulk-data, multimedia-conferencing, multimedia-streaming, network-control, ops-admin-mgmt, real-time-interactive, signaling, transactional-data, voip-telephony, best-effort, scavenger"
+                },
+                "bandwidthPercentage": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "Valid values are from 1 to 100 inclusive"
+                },
+                "priority": {
+                    "type": "boolean",
+                    "description": "1 and Only 1 classModel in a given ServiceProviderProfile should have priority value as 'true'"
+                },
+                "dscp": {
+                    "type": "string",
+                    "description": "Valid values are from 0 to 63 inclusive"
+                },
+                "name": {
+                    "type": "string",
+                    "description": ""
+                }
+            },
+            "extends": "",
+            "required": [
+                "name",
+                "dscp",
+                "admittedTrafficClasses",
+                "bandwidthPercentage"
+            ],
+            "id": "ClassModelDTO",
+            "description": ""
+        },
+        "TaskIdResult": {
+            "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "TaskIdResult",
+            "description": ""
+        },
+        "ServiceProviderProfileListResult": {
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ServiceProviderProfileDTO"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "ServiceProviderProfileListResult",
+            "description": ""
+        },
+        "ServiceProviderProfileDTO": {
+            "properties": {
+                "currentVersion": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "vendor": {
+                    "type": "string"
+                },
+                "classModels": {
+                    "items": {
+                        "$ref": "ClassModelDTO"
+                    },
+                    "type": "array",
+                    "description": "classModels list size should match the modelType"
+                },
+                "createTime": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": "createTime"
+                },
+                "interfaces": {
+                    "items": {
+                        "$ref": "ServiceProviderProfileInterfaceDTO"
+                    },
+                    "type": "array",
+                    "description": "read only details of interfaces on which the ServiceProviderProfile has been provisioned"
+                },
+                "modelType": {
+                    "type": "string",
+                    "description": "Available options are: Three-Class, Four-Class, Five-Class, Six-Class, Eight-Class"
+                },
+                "defaultModel": {
+                    "type": "boolean",
+                    "description": "Read only attribute to indicate whether the ServiceProviderProfile is default('true') or custom('false')"
+                },
+                "lastUpdateTime": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": "lastUpdateTime"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "unique name for the ServiceProviderProfile"
+                }
+            },
+            "extends": "",
+            "required": [
+                "classModels",
+                "name",
+                "modelType",
+                "id"
+            ],
+            "id": "ServiceProviderProfileDTO",
+            "description": ""
+        },
+        "CountResult": {
+            "properties": {
+                "response": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "CountResult",
+            "description": ""
+        },
+        "ServiceProviderProfileResult": {
+            "properties": {
+                "response": {
+                    "$ref": "ServiceProviderProfileDTO"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "ServiceProviderProfileResult",
+            "description": ""
+        },
+        "TaskId": {
+            "properties": {},
+            "extends": "",
+            "id": "TaskId",
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "extends": "",
+            "id": "TaskIdResponse",
+            "description": ""
+        }
+    },
+    "swaggerVersion": "1.2"
+}

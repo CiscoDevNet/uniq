@@ -1,42 +1,13 @@
 {
-    "models": {
-        "VlanNamesResult": {
-            "id": "VlanNamesResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "uniqueItems": true
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        }
-    },
     "apis": [
         {
-            "description": "getVlanNames",
+            "path": "/topology/vlan/vlan-names",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "nickname": "getVlanNames",
-                    "type": "VlanNamesResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "notes": "This method is used to obtain the list of vlan names",
-                    "summary": "getVlanNames",
                     "responseMessages": [
                         {
-                            "responseModel": "VlanNamesResult",
                             "code": 200,
+                            "responseModel": "VlanNamesResult",
                             "message": "This Request is OK"
                         },
                         {
@@ -51,29 +22,29 @@
                             "code": 404,
                             "message": "No Resource Found"
                         }
-                    ]
+                    ],
+                    "summary": "getVlanNames",
+                    "nickname": "getVlanNames",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain the list of vlan names",
+                    "deprecated": "false",
+                    "parameters": [],
+                    "type": "VlanNamesResult"
                 }
             ],
-            "path": "/topology/vlan/vlan-names"
+            "description": "getVlanNames"
         },
         {
-            "description": "getVlanNames",
+            "path": "/vlan/vlan-names",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "nickname": "getVlanNames",
-                    "type": "VlanNamesResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "notes": "This method is used to obtain the list of vlan names",
-                    "summary": "getVlanNames",
                     "responseMessages": [
                         {
-                            "responseModel": "VlanNamesResult",
                             "code": 200,
+                            "responseModel": "VlanNamesResult",
                             "message": "This Request is OK"
                         },
                         {
@@ -88,17 +59,46 @@
                             "code": 404,
                             "message": "No Resource Found"
                         }
-                    ]
+                    ],
+                    "summary": "getVlanNames",
+                    "nickname": "getVlanNames",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain the list of vlan names",
+                    "deprecated": "false",
+                    "parameters": [],
+                    "type": "VlanNamesResult"
                 }
             ],
-            "path": "/vlan/vlan-names"
+            "description": "getVlanNames"
         }
     ],
-    "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
-    "basePath": "/",
+    "resourcePath": "/",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/"
+    "apiVersion": "1.0",
+    "basePath": "/topology-service",
+    "swaggerVersion": "1.2",
+    "models": {
+        "VlanNamesResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "VlanNamesResult",
+            "description": ""
+        }
+    }
 }

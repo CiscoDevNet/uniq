@@ -1,22 +1,9 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-GlobalcredentialApi.py
-    Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
 
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
-"""
 import sys
 import os
 import urllib.request, urllib.parse, urllib.error
@@ -29,27 +16,24 @@ class GlobalcredentialApi(object):
     def __init__(self, apiClient):
       self.apiClient = apiClient
 
-
-
+    
+    
     def getGlobalCredential(self, **kwargs):
-        """getGlobalCredential
+        """Retrieves global credential for the given credential sub type
 
         Args:
-
+            
             credentialSubType, str: Credential type as CLI / SNMPV2_READ_COMMUNITY / SNMPV2_WRITE_COMMUNITY / SNMPV3 (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            
+        
         Returns: GlobalCredentialListResult
         """
 
-        allParams = ['credentialSubType', 'scope']
+        allParams = ['credentialSubType']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getGlobalCredential" % key)
             params[key] = val
@@ -68,56 +52,50 @@ class GlobalcredentialApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
-
+        
         if ('credentialSubType' in params):
             queryParams['credentialSubType'] = self.apiClient.toPathValue(params['credentialSubType'])
+        
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
+        
 
-
-
-
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'GlobalCredentialListResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def addCliCredential(self, **kwargs):
-        """addCliCredential
+        """Creates global CLI credential
 
         Args:
-
-            globalCredentialNioList, list[CLICredentialDTO]: globalCredentialNioList (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            globalCredentialNioList, list[CLICredentialDTO]: List of CLI credentials (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['globalCredentialNioList', 'scope']
+        allParams = ['globalCredentialNioList']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method addCliCredential" % key)
             params[key] = val
@@ -136,56 +114,50 @@ class GlobalcredentialApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
+        
 
-
-
-
-
-
-
+        
         if ('globalCredentialNioList' in params):
             bodyParam = params['globalCredentialNioList']
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def addSnmpReadCommunity(self, **kwargs):
-        """addSnmpReadCommunity
+        """Creates global SNMP read community
 
         Args:
-
-            globalCredentialNioList, List[SNMPv2ReadCommunityDTO]: globalCredentialNioList (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            globalCredentialNioList, List[SNMPv2ReadCommunityDTO]: List of SNMP read communities (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['globalCredentialNioList', 'scope']
+        allParams = ['globalCredentialNioList']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method addSnmpReadCommunity" % key)
             params[key] = val
@@ -204,56 +176,50 @@ class GlobalcredentialApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
+        
 
-
-
-
-
-
-
+        
         if ('globalCredentialNioList' in params):
             bodyParam = params['globalCredentialNioList']
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def addSnmpWriteCommunity(self, **kwargs):
-        """addSnmpWriteCommunity
+        """Creates global SNMP write community
 
         Args:
-
-            globalCredentialNioList, List[SNMPv2WriteCommunityDTO]: globalCredentialNioList (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            globalCredentialNioList, List[SNMPv2WriteCommunityDTO]: List of SNMP write communities (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['globalCredentialNioList', 'scope']
+        allParams = ['globalCredentialNioList']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method addSnmpWriteCommunity" % key)
             params[key] = val
@@ -272,56 +238,50 @@ class GlobalcredentialApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
+        
 
-
-
-
-
-
-
+        
         if ('globalCredentialNioList' in params):
             bodyParam = params['globalCredentialNioList']
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def addSnmpv3Credential(self, **kwargs):
-        """addSnmpv3Credential
+        """Creates global SNMPv3 credential
 
         Args:
-
-            globalCredentialNioList, List[SNMPv3CredentialDTO]: globalCredentialNioList (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            globalCredentialNioList, List[SNMPv3CredentialDTO]: List of SNMPv3 credentials (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['globalCredentialNioList', 'scope']
+        allParams = ['globalCredentialNioList']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method addSnmpv3Credential" % key)
             params[key] = val
@@ -340,56 +300,50 @@ class GlobalcredentialApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
+        
 
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
+        
 
-
-
-
-
-
-
+        
         if ('globalCredentialNioList' in params):
             bodyParam = params['globalCredentialNioList']
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def deleteGlobalCredential(self, **kwargs):
-        """deleteGlobalCredential
+        """Retrieves global credential by ID
 
         Args:
-
-            globalCredentialId, str: globalCredentialId (required)
-
-
-            scope, str: Authorization Scope for RBAC (required)
-
-
-
+            
+            globalCredentialId, str: ID of global-credential (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = ['globalCredentialId', 'scope']
+        allParams = ['globalCredentialId']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method deleteGlobalCredential" % key)
             params[key] = val
@@ -408,39 +362,101 @@ class GlobalcredentialApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
-
-        if ('scope' in params):
-            headerParams['scope'] = params['scope']
-
-
-
+        
         if ('globalCredentialId' in params):
             replacement = str(self.apiClient.toPathValue(params['globalCredentialId']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'globalCredentialId' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
+        
+        
+        
+    
+    def getGlobalCredentialSubTypeByID(self, **kwargs):
+        """Retrieves credential sub type for the given credential Id
 
+        Args:
+            
+            id, str: Global Credential ID (required)
+            
+            
+        
+        Returns: GlobalCredentialSubTypeResult
+        """
 
+        allParams = ['id']
 
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getGlobalCredentialSubTypeByID" % key)
+            params[key] = val
+        del params['kwargs']
 
+        resourcePath = '/global-credential/{id}'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+        
+
+        
+
+        
+        if ('id' in params):
+            replacement = str(self.apiClient.toPathValue(params['id']))
+            replacement = urllib.parse.quote(replacement)
+            resourcePath = resourcePath.replace('{' + 'id' + '}',
+                                                replacement)
+        
+
+        
+
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'GlobalCredentialSubTypeResult')
+        return responseObject
+        
+        
+        
+    
 
 

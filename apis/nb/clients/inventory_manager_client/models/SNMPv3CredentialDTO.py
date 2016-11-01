@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 class SNMPv3CredentialDTO(object):
-
 
 
     def __init__(self):
@@ -27,90 +14,107 @@ class SNMPv3CredentialDTO(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
-            'username': 'str',
-
-
-            'authType': 'str',
-
-
-            'authPassword': 'str',
-
-
-            'privacyType': 'str',
-
-
-            'snmpMode': 'str',
-
-
+            
             'privacyPassword': 'str',
-
-
+            
+            
+            'privacyType': 'str',
+            
+            
+            'snmpMode': 'str',
+            
+            
+            'username': 'str',
+            
+            
+            'authType': 'str',
+            
+            
+            'authPassword': 'str',
+            
+            
             'description': 'str',
-
-
-            'comments': 'str',
-
-
+            
+            
             'credentialType': 'str',
-
-
-            'instanceUuid': 'str'
-
+            
+            
+            'comments': 'str',
+            
+            
+            'instanceUuid': 'str',
+            
+            
+            'id': 'str'
+            
         }
 
         self.attributeMap = {
-
-            'username': 'username',
-
-            'authType': 'authType',
-
-            'authPassword': 'authPassword',
-
-            'privacyType': 'privacyType',
-
-            'snmpMode': 'snmpMode',
-
+            
             'privacyPassword': 'privacyPassword',
-
+            
+            'privacyType': 'privacyType',
+            
+            'snmpMode': 'snmpMode',
+            
+            'username': 'username',
+            
+            'authType': 'authType',
+            
+            'authPassword': 'authPassword',
+            
             'description': 'description',
-
-            'comments': 'comments',
-
+            
             'credentialType': 'credentialType',
+            
+            'comments': 'comments',
+            
+            'instanceUuid': 'instanceUuid',
+            
+            'id': 'id'
+            
+        }       
 
-            'instanceUuid': 'instanceUuid'
-
-        }
-
-
-
-        self.username = None # str
-
-
-        self.authType = None # str
-
-
-        self.authPassword = None # str
-
-
-        self.privacyType = None # str
-
-
-        self.snmpMode = None # str
-
-
+        
+        #Privacy password is required if SNMP mode is AuthPriv
+        
         self.privacyPassword = None # str
-
-
+        
+        #Privacy type is required if SNMP mode is AuthPriv
+        
+        self.privacyType = None # str
+        
+        #SNMP mode
+        
+        self.snmpMode = None # str
+        
+        #SNMP user name
+        
+        self.username = None # str
+        
+        #Authentication type is required if SNMP mode is AuthPriv / AuthNoPriv
+        
+        self.authType = None # str
+        
+        #AuthPassword is required if SNMP mode is AuthPriv / AuthNoPriv
+        
+        self.authPassword = None # str
+        
+        #Description of the credential
+        
         self.description = None # str
-
-
-        self.comments = None # str
-
-
+        
+        #Credential type to identify the application that uses the credential
+        
         self.credentialType = None # str
-
-
+        
+        #Comments to identify the credential
+        
+        self.comments = None # str
+        
+        
         self.instanceUuid = None # str
-
+        
+        
+        self.id = None # str
+        

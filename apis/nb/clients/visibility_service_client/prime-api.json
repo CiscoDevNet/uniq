@@ -1,0 +1,336 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "models": {
+        "TaskIdResponse": {
+            "extends": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "id": "TaskId",
+            "properties": {},
+            "description": ""
+        }
+    },
+    "apis": [
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Pass through API to Prime - PUT",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "primeUrl",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": true,
+                            "description": "primeUrl",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "jsonStr",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "jsonStr",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "primePut",
+                    "notes": "primePut",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "primePut",
+            "path": "/iwan/prime-api"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "string",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Pass through API to Prime - GET",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "primeUrl",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": true,
+                            "description": "primeUrl",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "primeGet",
+                    "notes": "primeGet",
+                    "type": "string",
+                    "method": "GET"
+                }
+            ],
+            "description": "primeGet",
+            "path": "/iwan/prime-api"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "string",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Pass through API to Prime - POST",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "primeUrl",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": true,
+                            "description": "primeUrl",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "jsonStr",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "jsonStr",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "primePost",
+                    "notes": "primePost",
+                    "type": "string",
+                    "method": "POST"
+                }
+            ],
+            "description": "primePost",
+            "path": "/iwan/prime-api"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Pass through API to Prime - DELETE",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "primeUrl",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": true,
+                            "description": "primeUrl",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "primeDelete",
+                    "notes": "primeDelete",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "primeDelete",
+            "path": "/iwan/prime-api"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/iwan/prime-api"
+}

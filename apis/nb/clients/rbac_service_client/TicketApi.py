@@ -1,22 +1,9 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-TicketApi.py
-    Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
 
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
-"""
 import sys
 import os
 import urllib.request, urllib.parse, urllib.error
@@ -29,17 +16,17 @@ class TicketApi(object):
     def __init__(self, apiClient):
       self.apiClient = apiClient
 
-
-
+    
+    
     def addTicket(self, **kwargs):
         """addTicket
 
         Args:
-
+            
             user, User: user (required)
-
-
-
+            
+            
+        
         Returns: TicketRbacResult
         """
 
@@ -65,43 +52,43 @@ class TicketApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
+        
 
+        
 
-
-
-
-
-
+        
         if ('user' in params):
             bodyParam = params['user']
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TicketRbacResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def createTicketAttribute(self, **kwargs):
         """createTicketAttribute
 
         Args:
-
+            
             ticketAttribute, TicketAttribute: ticketAttribute (required)
-
-
-
+            
+            
+        
         Returns: SuccessResult
         """
 
@@ -127,40 +114,40 @@ class TicketApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
+        
 
+        
 
-
-
-
-
-
+        
         if ('ticketAttribute' in params):
             bodyParam = params['ticketAttribute']
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'SuccessResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def getIdleTimeout(self, **kwargs):
         """getIdleTimeout
 
         Args:
-
-
+            
+        
         Returns: TicketAttributeResult
         """
 
@@ -186,37 +173,37 @@ class TicketApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
+        
 
+        
 
-
-
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TicketAttributeResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def getSessionTimeout(self, **kwargs):
         """getSessionTimeout
 
         Args:
-
-
+            
+        
         Returns: TicketAttributeResult
         """
 
@@ -242,40 +229,40 @@ class TicketApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
+        
 
+        
 
-
-
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TicketAttributeResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def deleteTicketAttribute(self, **kwargs):
         """deleteTicketAttribute
 
         Args:
-
+            
             attribute, str: attribute (required)
-
-
-
+            
+            
+        
         Returns: SuccessResult
         """
 
@@ -301,46 +288,46 @@ class TicketApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
-
-
-
+        
         if ('attribute' in params):
             replacement = str(self.apiClient.toPathValue(params['attribute']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'attribute' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'SuccessResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
     def deleteTicket(self, **kwargs):
         """deleteTicket
 
         Args:
-
+            
             ticket, str: ticket (required)
-
-
-
+            
+            
+        
         Returns: SuccessResult
         """
 
@@ -366,36 +353,36 @@ class TicketApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
+        
 
+        
 
-
-
-
+        
         if ('ticket' in params):
             replacement = str(self.apiClient.toPathValue(params['ticket']))
             replacement = urllib.parse.quote(replacement)
             resourcePath = resourcePath.replace('{' + 'ticket' + '}',
                                                 replacement)
+        
 
+        
 
-
-
-
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'SuccessResult')
         return responseObject
-
-
-
-
+        
+        
+        
+    
 
 

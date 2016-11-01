@@ -1,18 +1,6 @@
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 import inspect
 
@@ -25,7 +13,6 @@ class ApiClient(object):
     def __init__(self, api_client, version_client_class_map, default_version,
                  similar_api_map_list=None):
         """ Initializer of ApiClient.
-
         Args:
             api_client (ClientManager): ClientManager instance.
             version_client_class_map (dict): key is version number, value is class of api client.
@@ -46,10 +33,8 @@ class ApiClient(object):
 
     def __getattr__(self, name):
         """ Get attribute based on name.
-
         Args:
             name (str): name of attribute.
-
         Returns:
             Wrapped api method(function) with additional argument api_verion.
         """
@@ -60,11 +45,9 @@ class ApiClient(object):
 
     def _collect_apis(self, similar_api_map_list=None):
         """ Collect all apis and make them accessible by name and version.
-
         This method will collect all apis from clients of different versions, deal with apis
         with different name but same feature, and wrap all api methods so that we can choose
         different version api call with argument 'api_version'.
-
         Args:
             similar_api_map_list (dict): list of map of apis with different name but same feature.
                                          Example: [{'v1': 'get', 'v2': 'getById'}]
@@ -95,17 +78,14 @@ class ApiClient(object):
 
     def _add_api_version_as_argument(self, version_function_map):
         """ Add api_version as an argument to all api method.
-
         Args:
             version_function_map (dict): key is version and value is function object.
-
         Returns:
             wrapper function which will decide which api to be call according to the version.
         """
 
         def wrapper(*args, **kwargs):
             """ Wrapper function.
-
                 If api_version is set, return corresponding method.
                 If not, and if there is only one method, return that method.
                 if there are more than one method, return the default version one.
@@ -125,4 +105,3 @@ class ApiClient(object):
             else:
                 return version_function_map[self.default_version](*args, **kwargs)
         return wrapper
-

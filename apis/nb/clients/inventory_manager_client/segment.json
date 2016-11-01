@@ -1,73 +1,55 @@
 {
-    "models": {
-        "SegmentNamesResult": {
-            "id": "SegmentNamesResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        }
-    },
     "apis": [
         {
-            "description": "getWlanNames",
+            "description": "getSegmentInfo",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "nickname": "getWlanNames",
-                    "type": "SegmentNamesResult",
-                    "method": "GET",
+                    "nickname": "getSegmentInfo",
+                    "notes": "Gets list of segment info based on policyTag",
+                    "summary": "list of segment info based on the policyTag",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "type",
-                            "type": "string",
-                            "description": "Type of segment",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "query"
-                        },
-                        {
-                            "required": true,
-                            "name": "policyTag",
-                            "type": "string",
-                            "description": "Policy tag",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "query"
-                        }
-                    ],
-                    "notes": "Gets list of wlan names based on policyTag",
-                    "summary": "list of unique wlan names based on the policyTag",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "SegmentNamesResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "SegmentResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "SegmentResult",
+                    "parameters": [
+                        {
+                            "name": "type",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string",
+                            "description": "Type of segment",
+                            "required": true,
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "policyTag",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string",
+                            "description": "Policy tag",
+                            "required": false,
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -77,6 +59,53 @@
     ],
     "apiVersion": "1.0",
     "swaggerVersion": "1.2",
+    "models": {
+        "NetworkDeviceBrief": {
+            "properties": {
+                "hostName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "NetworkDeviceBrief"
+        },
+        "SegmentDto": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "networkDevices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "NetworkDeviceBrief"
+                    }
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "SegmentDto"
+        },
+        "SegmentResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "SegmentDto"
+                    }
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "SegmentResult"
+        }
+    },
     "basePath": "/apic-em-inventory-manager-service",
     "produces": [
         "application/json"

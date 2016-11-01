@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 class NetworkDeviceManagementInfo(object):
-
 
 
     def __init__(self):
@@ -27,73 +14,73 @@ class NetworkDeviceManagementInfo(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
-            'family': 'str',
-
-
-            'hostname': 'str',
-
-
-            'credentials': 'dict',
-
-
-            'series': 'str',
-
-
-            'managementIpAddress': 'str',
-
-
+            
             'id': 'str',
-
-
-            'type': 'str'
-
+            
+            
+            'type': 'str',
+            
+            
+            'family': 'str',
+            
+            
+            'managementIpAddress': 'str',
+            
+            
+            'credentials': 'dict',
+            
+            
+            'series': 'str',
+            
+            
+            'hostname': 'str'
+            
         }
 
         self.attributeMap = {
-
-            'family': 'family',
-
-            'hostname': 'hostname',
-
-            'credentials': 'credentials',
-
-            'series': 'series',
-
-            'managementIpAddress': 'managementIpAddress',
-
+            
             'id': 'id',
+            
+            'type': 'type',
+            
+            'family': 'family',
+            
+            'managementIpAddress': 'managementIpAddress',
+            
+            'credentials': 'credentials',
+            
+            'series': 'series',
+            
+            'hostname': 'hostname'
+            
+        }       
 
-            'type': 'type'
-
-        }
-
-
-        #Family of device as switch, router, wireless lan controller, accesspoints
-
-        self.family = None # str
-
-        #Device name
-
-        self.hostname = None # str
-
-        #Credential info
-
-        self.credentials = None # dict
-
-        #Device series
-
-        self.series = None # str
-
-        #IP address of the device
-
-        self.managementIpAddress = None # str
-
+        
         #Unique identifier of device
-
+        
         self.id = None # str
-
+        
         #Type of device as switch, router, wireless lan controller, accesspoints
-
+        
         self.type = None # str
-
+        
+        #Family of device as switch, router, wireless lan controller, accesspoints
+        
+        self.family = None # str
+        
+        #IP address of the device
+        
+        self.managementIpAddress = None # str
+        
+        #Credential info
+        
+        self.credentials = None # dict
+        
+        #Device series
+        
+        self.series = None # str
+        
+        #Device name
+        
+        self.hostname = None # str
+        

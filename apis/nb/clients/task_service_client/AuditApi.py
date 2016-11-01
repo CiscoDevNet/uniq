@@ -1,22 +1,9 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-AuditApi.py
-    Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
 
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
-"""
 import sys
 import os
 import urllib.request, urllib.parse, urllib.error
@@ -29,21 +16,54 @@ class AuditApi(object):
     def __init__(self, apiClient):
       self.apiClient = apiClient
 
-
-
+    
+    
     def getAuditWithFilter(self, **kwargs):
         """Retrieve Audit by flexible search
 
         Args:
-
-
+            
+            auditRequestor, str: This is the user who triggered the event (required)
+            
+            
+            limit, str: This is the number of records fetched (required)
+            
+            
+            offset, str: This is the offset used for pagination (required)
+            
+            
+            auditRecordStartTime, str: This is the epoch start time from which audit records need to be fetched (required)
+            
+            
+            auditRecordEndTime, str: This is the epoch end time upto which audit records need to be fetched (required)
+            
+            
+            deviceIP, str: This is the device ip of the device (required)
+            
+            
+            siteName, str: This is the site name associated to the audit record (required)
+            
+            
+            deviceName, str: This is the device name assoicated to the audit (required)
+            
+            
+            applicationName, str: This is the applicaiton name that generated the audit (required)
+            
+            
+            tag, str: This is the tag defined for audit (required)
+            
+            
+            severity, str: This is the severity of the audit record (required)
+            
+            
+        
         Returns: ListAuditResourceDTOResponse
         """
 
-        allParams = ['auditParentId', 'auditParameters', 'auditId', 'deviceIP', 'instanceUuid', 'createdDateTime', 'auditDescription', 'hasChildren', 'tag','derivedParentId','state','persistDateTime','siteName','auditRequestor','hasParent','deviceName']
+        allParams = ['auditRequestor', 'limit', 'offset', 'auditRecordStartTime', 'auditRecordEndTime', 'deviceIP', 'siteName', 'deviceName', 'applicationName', 'tag', 'severity']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getAuditWithFilter" % key)
             params[key] = val
@@ -62,85 +82,214 @@ class AuditApi(object):
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
 
-        if ('auditParentId' in params):
-            queryParams['auditParentId'] = self.apiClient.toPathValue(params['auditParentId'])
-
-
-        if ('auditParameters' in params):
-            queryParams['auditParameters'] = self.apiClient.toPathValue(params['auditParameters'])
-
-        if ('auditId' in params):
-            queryParams['auditId'] = self.apiClient.toPathValue(params['auditId'])
-
-        if ('deviceIP' in params):
-            queryParams['deviceIP'] = self.apiClient.toPathValue(params['deviceIP'])
-
-        if ('instanceUuid' in params):
-            queryParams['instanceUuid'] = self.apiClient.toPathValue(params['instanceUuid'])
-
-        if ('createdDateTime' in params):
-            queryParams['createdDateTime'] = self.apiClient.toPathValue(params['createdDateTime'])
-
-        if ('auditDescription' in params):
-            queryParams['auditDescription'] = self.apiClient.toPathValue(params['auditDescription'])
-
-        if ('hasChildren' in params):
-            queryParams['hasChildren'] = self.apiClient.toPathValue(params['hasChildren'])
-
-        if ('auditDescription' in params):
-            queryParams['auditDescription'] = self.apiClient.toPathValue(params['auditDescription'])
-
-        if ('tag' in params):
-            queryParams['tag'] = self.apiClient.toPathValue(params['tag'])
-
-        if ('derivedParentId' in params):
-            queryParams['derivedParentId'] = self.apiClient.toPathValue(params['derivedParentId'])
-
-        if ('state' in params):
-            queryParams['state'] = self.apiClient.toPathValue(params['state'])
-
-        if ('persistDateTime' in params):
-            queryParams['persistDateTime'] = self.apiClient.toPathValue(params['persistDateTime'])
-
-        if ('siteName' in params):
-            queryParams['siteName'] = self.apiClient.toPathValue(params['siteName'])
-
+        
         if ('auditRequestor' in params):
             queryParams['auditRequestor'] = self.apiClient.toPathValue(params['auditRequestor'])
-
-        if ('hasParent' in params):
-            queryParams['hasParent'] = self.apiClient.toPathValue(params['hasParent'])
-
+        
+        if ('limit' in params):
+            queryParams['limit'] = self.apiClient.toPathValue(params['limit'])
+        
+        if ('offset' in params):
+            queryParams['offset'] = self.apiClient.toPathValue(params['offset'])
+        
+        if ('auditRecordStartTime' in params):
+            queryParams['auditRecordStartTime'] = self.apiClient.toPathValue(params['auditRecordStartTime'])
+        
+        if ('auditRecordEndTime' in params):
+            queryParams['auditRecordEndTime'] = self.apiClient.toPathValue(params['auditRecordEndTime'])
+        
+        if ('deviceIP' in params):
+            queryParams['deviceIP'] = self.apiClient.toPathValue(params['deviceIP'])
+        
+        if ('siteName' in params):
+            queryParams['siteName'] = self.apiClient.toPathValue(params['siteName'])
+        
         if ('deviceName' in params):
             queryParams['deviceName'] = self.apiClient.toPathValue(params['deviceName'])
+        
+        if ('applicationName' in params):
+            queryParams['applicationName'] = self.apiClient.toPathValue(params['applicationName'])
+        
+        if ('tag' in params):
+            queryParams['tag'] = self.apiClient.toPathValue(params['tag'])
+        
+        if ('severity' in params):
+            queryParams['severity'] = self.apiClient.toPathValue(params['severity'])
+        
+
+        
+
+        
+
+        
+
+        
 
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'ListAuditResourceDTOResponse')
         return responseObject
-        #return response
-
-
-    def downloadAuditLogs(self, **kwargs):
-        """Download Audit logs to a file.
+        
+        
+        
+    
+    def getAuditCountWithFilter(self, **kwargs):
+        """Retrieve Count of number of records to be fetched by flexible search
 
         Args:
+            
+            auditRequestor, str: This is the user who triggered the event (required)
+            
+            
+            auditRecordStartTime, str: This is the epoch start time from which audit records need to be fetched (required)
+            
+            
+            auditRecordEndTime, str: This is the epoch end time upto which audit records need to be fetched (required)
+            
+            
+            deviceIP, str: This is the device ip of the device (required)
+            
+            
+            siteName, str: This is the site name associated to the audit record (required)
+            
+            
+            deviceName, str: This is the device name assoicated to the audit (required)
+            
+            
+            applicationName, str: This is the applicaiton name that generated the audit (required)
+            
+            
+            tag, str: This is the tag defined for audit (required)
+            
+            
+            severity, str: This is the severity of the audit record (required)
+            
+            
+        
+        Returns: SuccessResult
+        """
 
+        allParams = ['auditRequestor', 'auditRecordStartTime', 'auditRecordEndTime', 'deviceIP', 'siteName', 'deviceName', 'applicationName', 'tag', 'severity']
 
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getAuditCountWithFilter" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/audit/count'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+        
+        if ('auditRequestor' in params):
+            queryParams['auditRequestor'] = self.apiClient.toPathValue(params['auditRequestor'])
+        
+        if ('auditRecordStartTime' in params):
+            queryParams['auditRecordStartTime'] = self.apiClient.toPathValue(params['auditRecordStartTime'])
+        
+        if ('auditRecordEndTime' in params):
+            queryParams['auditRecordEndTime'] = self.apiClient.toPathValue(params['auditRecordEndTime'])
+        
+        if ('deviceIP' in params):
+            queryParams['deviceIP'] = self.apiClient.toPathValue(params['deviceIP'])
+        
+        if ('siteName' in params):
+            queryParams['siteName'] = self.apiClient.toPathValue(params['siteName'])
+        
+        if ('deviceName' in params):
+            queryParams['deviceName'] = self.apiClient.toPathValue(params['deviceName'])
+        
+        if ('applicationName' in params):
+            queryParams['applicationName'] = self.apiClient.toPathValue(params['applicationName'])
+        
+        if ('tag' in params):
+            queryParams['tag'] = self.apiClient.toPathValue(params['tag'])
+        
+        if ('severity' in params):
+            queryParams['severity'] = self.apiClient.toPathValue(params['severity'])
+        
+
+        
+
+        
+
+        
+
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'SuccessResult')
+        return responseObject
+        
+        
+        
+    
+    def downloadAuditLogs(self, **kwargs):
+        """Download Audit logs to a file. 
+
+        Args:
+            
+            auditRequestor, str: This is the user who triggered the event (required)
+            
+            
+            auditRecordStartTime, str: This is the epoch start time from which audit records need to be fetched (required)
+            
+            
+            auditRecordEndTime, str: This is the epoch end time upto which audit records need to be fetched (required)
+            
+            
+            deviceIP, str: This is the device ip of the device (required)
+            
+            
+            siteName, str: This is the site name associated to the audit record (required)
+            
+            
+            deviceName, str: This is the device name assoicated to the audit (required)
+            
+            
+            applicationName, str: This is the applicaiton name that generated the audit (required)
+            
+            
+            tag, str: This is the tag defined for audit (required)
+            
+            
+            severity, str: This is the severity of the audit record (required)
+            
+            
+        
         Returns: TaskIdResult
         """
 
-        allParams = []
+        allParams = ['auditRequestor', 'auditRecordStartTime', 'auditRecordEndTime', 'deviceIP', 'siteName', 'deviceName', 'applicationName', 'tag', 'severity']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method downloadAuditLogs" % key)
             params[key] = val
@@ -158,32 +307,58 @@ class AuditApi(object):
 
         headerParams['Accept'] = 'application/json'
         headerParams['Content-Type'] = 'application/json'
+
+        
+        if ('auditRequestor' in params):
+            queryParams['auditRequestor'] = self.apiClient.toPathValue(params['auditRequestor'])
+        
+        if ('auditRecordStartTime' in params):
+            queryParams['auditRecordStartTime'] = self.apiClient.toPathValue(params['auditRecordStartTime'])
+        
+        if ('auditRecordEndTime' in params):
+            queryParams['auditRecordEndTime'] = self.apiClient.toPathValue(params['auditRecordEndTime'])
+        
+        if ('deviceIP' in params):
+            queryParams['deviceIP'] = self.apiClient.toPathValue(params['deviceIP'])
+        
+        if ('siteName' in params):
+            queryParams['siteName'] = self.apiClient.toPathValue(params['siteName'])
+        
+        if ('deviceName' in params):
+            queryParams['deviceName'] = self.apiClient.toPathValue(params['deviceName'])
+        
+        if ('applicationName' in params):
+            queryParams['applicationName'] = self.apiClient.toPathValue(params['applicationName'])
+        
+        if ('tag' in params):
+            queryParams['tag'] = self.apiClient.toPathValue(params['tag'])
+        
+        if ('severity' in params):
+            queryParams['severity'] = self.apiClient.toPathValue(params['severity'])
+        
+
+        
+
+        
+
+        
+
+        
+
         postData = (formParams if formParams else bodyParam)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
-
+        
         if not response:
             return None
 
         responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        
+        
+    
 
 

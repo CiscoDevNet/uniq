@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#pylint: skip-file
 """Add all of the modules in the current directory to __all__"""
 import os
 

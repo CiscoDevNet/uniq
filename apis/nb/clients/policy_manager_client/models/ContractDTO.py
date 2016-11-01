@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 class ContractDTO(object):
-
 
 
     def __init__(self):
@@ -27,64 +14,64 @@ class ContractDTO(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
-            'description': 'str',
-
-
+            
             'name': 'str',
-
-
+            
+            
+            'description': 'str',
+            
+            
             'accessClause': 'AccessClauseDTO',
-
-
+            
+            
             'id': 'str',
-
-
-            'createTime': 'int',
-
-
-            'lastUpdateTime': 'int'
-
+            
+            
+            'lastUpdateTime': 'int',
+            
+            
+            'createTime': 'int'
+            
         }
 
         self.attributeMap = {
-
-            'description': 'description',
-
+            
             'name': 'name',
-
+            
+            'description': 'description',
+            
             'accessClause': 'accessClause',
-
+            
             'id': 'id',
+            
+            'lastUpdateTime': 'lastUpdateTime',
+            
+            'createTime': 'createTime'
+            
+        }       
 
-            'createTime': 'createTime',
-
-            'lastUpdateTime': 'lastUpdateTime'
-
-        }
-
-
-        #description
-
-        self.description = None # str
-
+        
         #name
-
+        
         self.name = None # str
-
+        
+        #description
+        
+        self.description = None # str
+        
         #accessClause
-
+        
         self.accessClause = None # AccessClauseDTO
-
+        
         #id
-
+        
         self.id = None # str
-
-        #createTime
-
-        self.createTime = None # int
-
+        
         #lastUpdateTime
-
+        
         self.lastUpdateTime = None # int
-
+        
+        #createTime
+        
+        self.createTime = None # int
+        

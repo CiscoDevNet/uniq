@@ -1,584 +1,46 @@
 {
-    "models": {
-        "TaskId": {
-            "id": "TaskId",
-            "description": "",
-            "properties": {},
-            "extends": ""
-        },
-        "NetworkDeviceNIO": {
-            "id": "NetworkDeviceNIO",
-            "description": "",
-            "properties": {
-                "anchorWlcForAp": {
-                    "type": "string"
-                },
-                "upTime": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "imageName": {
-                    "type": "string"
-                },
-                "location": {
-                    "type": "string"
-                },
-                "lastUpdated": {
-                    "type": "string"
-                },
-                "snmpContact": {
-                    "type": "string"
-                },
-                "reachabilityStatus": {
-                    "type": "string"
-                },
-                "lineCardId": {
-                    "type": "string"
-                },
-                "bootDateTime": {
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "ingressQueueConfig": {
-                    "type": "string"
-                },
-                "vendor": {
-                    "type": "string"
-                },
-                "numUpdates": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "softwareVersion": {
-                    "type": "string"
-                },
-                "tag": {
-                    "type": "string"
-                },
-                "memorySize": {
-                    "type": "string"
-                },
-                "tagCount": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "macAddress": {
-                    "type": "string"
-                },
-                "duplicateDeviceId": {
-                    "type": "string"
-                },
-                "roleSource": {
-                    "type": "string"
-                },
-                "locationName": {
-                    "type": "string"
-                },
-                "family": {
-                    "type": "string"
-                },
-                "role": {
-                    "type": "string"
-                },
-                "snmpLocation": {
-                    "type": "string"
-                },
-                "managementIpAddress": {
-                    "type": "string"
-                },
-                "authModelId": {
-                    "type": "string"
-                },
-                "platformId": {
-                    "type": "string"
-                },
-                "serialNumber": {
-                    "type": "string"
-                },
-                "wlcApDeviceStatus": {
-                    "type": "string"
-                },
-                "reachabilityFailureReason": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "portRange": {
-                    "type": "string"
-                },
-                "lineCardCount": {
-                    "type": "string"
-                },
-                "hostname": {
-                    "type": "string"
-                },
-                "avgUpdateFrequency": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "interfaceCount": {
-                    "type": "string"
-                },
-                "qosStatus": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "Date": {
-            "id": "Date",
-            "description": "",
-            "properties": {
-                "year": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "minutes": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "time": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "month": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "date": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "hours": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "day": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "seconds": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "timezoneOffset": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "extends": ""
-        },
-        "DiscoveryNIOListResult": {
-            "id": "DiscoveryNIOListResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "DiscoveryNIO"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "DiscoveryNIOResult": {
-            "id": "DiscoveryNIOResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "$ref": "DiscoveryNIO"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "InventoryRequest": {
-            "id": "InventoryRequest",
-            "description": "",
-            "properties": {
-                "cdpLevel": {
-                    "description": "CDP level to which neighbor devices to be discovered",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "passwordList": {
-                    "description": "Password of the devices to be discovered",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "snmpAuthProtocol": {
-                    "description": "SNMP auth protocol. Available values:'SHA' or 'MD5'",
-                    "type": "string"
-                },
-                "snmpVersion": {
-                    "description": "Version of SNMP. Can be v2 or v3",
-                    "type": "string"
-                },
-                "snmpRWCommunity": {
-                    "description": "Snmp RW community of the devices to be discovered",
-                    "type": "string"
-                },
-                "snmpPrivProtocol": {
-                    "description": "SNMP privacy protocol. Available values:'DES' or 'AES128'",
-                    "type": "string"
-                },
-                "enablePasswordList": {
-                    "description": "Enable Password of the devices to be discovered",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "retry": {
-                    "description": "Number of times to try establishing connection to device",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "reDiscovery": {
-                    "description": "Flag to indicate is rediscovery or not",
-                    "type": "boolean"
-                },
-                "globalCredentialIdList": {
-                    "description": "List of global credential ids to be used",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "userNameList": {
-                    "description": "Username of the devices to be discovered",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "name": {
-                    "type": "string"
-                },
-                "snmpUserName": {
-                    "description": "SNMP username of the device",
-                    "type": "string"
-                },
-                "ipAddressList": {
-                    "description": "Ip address of the device to be discovered",
-                    "type": "string"
-                },
-                "snmpROCommunity": {
-                    "description": "Snmp RO community of the devices to be discovered",
-                    "type": "string"
-                },
-                "snmpPrivPassphrase": {
-                    "description": "Pass phrase for SNMP privacy",
-                    "type": "string"
-                },
-                "snmpAuthPassphrase": {
-                    "description": "Auth Pass phrase for SNMP",
-                    "type": "string"
-                },
-                "discoveryType": {
-                    "description": "Available types are: single, auto cdp discovery, range, multi range",
-                    "type": "string"
-                },
-                "protocolOrder": {
-                    "description": "Order of protocol in which device connection establishment to be tried",
-                    "type": "string"
-                },
-                "snmpMode": {
-                    "description": "Mode of SNMP. Available values:'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'",
-                    "type": "string"
-                },
-                "timeout": {
-                    "description": "Time to wait for device response",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "extends": "",
-            "required": [
-                "reDiscovery",
-                "timeout",
-                "snmpVersion",
-                "discoveryType",
-                "ipAddressList"
-            ]
-        },
-        "NetworkDeviceNIOListResult": {
-            "id": "NetworkDeviceNIOListResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "NetworkDeviceNIO"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "TaskIdResponse": {
-            "id": "TaskIdResponse",
-            "description": "",
-            "properties": {
-                "url": {
-                    "type": "string"
-                },
-                "taskId": {
-                    "$ref": "TaskId"
-                }
-            },
-            "extends": ""
-        },
-        "TaskIdResult": {
-            "id": "TaskIdResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "$ref": "TaskIdResponse"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "CountResult": {
-            "id": "CountResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "DiscoveryNIO": {
-            "id": "DiscoveryNIO",
-            "description": "",
-            "properties": {
-                "snmpRwCommunity": {
-                    "description": "Snmp RW community of the devices to be discovered",
-                    "type": "string"
-                },
-                "cdpLevel": {
-                    "description": "CDP level to which neighbor devices to be discovered",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "retryCount": {
-                    "description": "Number of times to try establishing connection to device",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "deviceIds": {
-                    "description": "Ids of the devices discovered in a discovery",
-                    "type": "string"
-                },
-                "attributeInfo": {
-                    "$ref": "object"
-                },
-                "parentDiscoveryId": {
-                    "description": "Parent Discovery Id from which the discovery initiated",
-                    "type": "string"
-                },
-                "userNameList": {
-                    "description": "Username of the devices to be discovered",
-                    "type": "string"
-                },
-                "snmpRoCommunity": {
-                    "description": "Snmp RO community of the devices to be discovered",
-                    "type": "string"
-                },
-                "enablePasswordList": {
-                    "description": "Enable Password of the devices to be discovered",
-                    "type": "string"
-                },
-                "passwordList": {
-                    "description": "Password of the devices to be discovered",
-                    "type": "string"
-                },
-                "discoveryStatus": {
-                    "description": "Available options are: active, inactive",
-                    "type": "string"
-                },
-                "discoveryCondition": {
-                    "description": "To indicate the discovery status. Available options: Complete or In Progress",
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "timeOut": {
-                    "description": "Time to wait for device response.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "numDevices": {
-                    "description": "Number of devices discovered in a discovery",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "ipAddressList": {
-                    "description": "Ip address of the device to be discovered",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "",
-                    "type": "string"
-                },
-                "discoveryType": {
-                    "description": "Available types are: single, auto cdp discovery, range, multi range",
-                    "type": "string"
-                },
-                "protocolOrder": {
-                    "description": "Order of protocol in which device connection establishment to be tried",
-                    "type": "string"
-                },
-                "isAutoCdp": {
-                    "description": "Flag to mention if CDP discovery or not",
-                    "type": "boolean"
-                }
-            },
-            "extends": "",
-            "required": [
-                "discoveryCondition",
-                "numDevices",
-                "isAutoCdp",
-                "id",
-                "timeOut",
-                "discoveryType",
-                "ipAddressList",
-                "discoveryStatus"
-            ]
-        }
-    },
     "apis": [
-        {
-            "description": "insertDiscovery",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "insertDiscovery",
-                    "type": "TaskIdResult",
-                    "method": "POST",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "request",
-                            "type": "InventoryRequest",
-                            "description": "Discovery request that holds the parameters required for discovery",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "body"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Initiates discovery with the given parameters",
-                    "summary": "Starts a new discovery process and returns a task-id",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery"
-        },
         {
             "description": "updateDiscovery",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "updateDiscovery",
-                    "type": "TaskIdResult",
-                    "method": "PUT",
+                    "notes": "Stops or starts an existing discovery",
+                    "summary": "Updates an existing discovery specified by id - only for starting/stopping the discovery",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "discovery",
-                            "type": "DiscoveryNIO",
-                            "description": "Discovery request that holds the status of discovery as active / inactive",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "body"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Stops or starts an existing discovery",
-                    "summary": "Updates an existing discovery specified by id - only for starting/stopping the discovery",
+                    "method": "PUT",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "TaskIdResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "name": "discovery",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "type": "DiscoveryNIO",
+                            "description": "Discovery request that holds the status of discovery as active / inactive",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -589,43 +51,84 @@
             "description": "deleteAllDiscovery",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "deleteAllDiscovery",
-                    "type": "TaskIdResult",
-                    "method": "DELETE",
+                    "notes": "Stops all the discoveries and removes them",
+                    "summary": "Deletes all discovery",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Stops all the discoveries and removes them",
-                    "summary": "Deletes all discovery",
+                    "method": "DELETE",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "TaskIdResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "parameters": []
+                }
+            ],
+            "path": "/discovery"
+        },
+        {
+            "description": "insertDiscovery",
+            "operations": [
+                {
+                    "nickname": "insertDiscovery",
+                    "notes": "Initiates discovery with the given parameters",
+                    "summary": "Starts a new discovery process and returns a task-id",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "POST",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This Request is Accepted",
+                            "code": 202
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "name": "request",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "type": "InventoryRequest",
+                            "description": "Discovery request that holds the parameters required for discovery",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -636,155 +139,147 @@
             "description": "getDiscoveryCount",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getDiscoveryCount",
-                    "type": "CountResult",
-                    "method": "GET",
+                    "notes": "Gets the count of all available discovery",
+                    "summary": "Retrieves the number of discovery",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the count of all available discovery",
-                    "summary": "Retrieves the number of discovery",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "CountResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "CountResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
                         }
-                    ]
+                    ],
+                    "type": "CountResult",
+                    "parameters": []
                 }
             ],
             "path": "/discovery/count"
         },
         {
-            "description": "getDiscoveryById",
+            "description": "getDiscoveryJobsByIp",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "nickname": "getDiscoveryById",
-                    "type": "DiscoveryNIOResult",
-                    "method": "GET",
+                    "nickname": "getDiscoveryJobsByIp",
+                    "notes": "Gets the list of discovery jobs for the given IP",
+                    "summary": "Retrieves the list of discovery jobs for the given IP",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "id",
-                            "type": "string",
-                            "description": "Discovery ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Retrieves discovery by ID",
-                    "summary": "Retrieves the discovery specified by id",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DiscoveryNIOResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DiscoveryJobNIOListResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "DiscoveryJobNIOListResult",
+                    "parameters": [
+                        {
+                            "name": "offset",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "integer",
+                            "description": "offset",
+                            "required": false,
+                            "format": "int32",
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "limit",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "integer",
+                            "description": "limit",
+                            "required": false,
+                            "format": "int32",
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "ipAddress",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string",
+                            "description": "ipAddress",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
             ],
-            "path": "/discovery/{id}"
+            "path": "/discovery/job"
         },
         {
             "description": "deleteDiscoveryById",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "deleteDiscoveryById",
-                    "type": "TaskIdResult",
-                    "method": "DELETE",
+                    "notes": "Stops the discovery for the given ID and removes it",
+                    "summary": "Deletes the discovery specified by id",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "id",
-                            "type": "string",
-                            "description": "Discovery ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Stops the discovery for the given ID and removes it",
-                    "summary": "Deletes the discovery specified by id",
+                    "method": "DELETE",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "TaskIdResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Discovery ID",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -792,55 +287,178 @@
             "path": "/discovery/{id}"
         },
         {
-            "description": "getNetworkDeviceByDiscoveryId",
+            "description": "getDiscoveryById",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "nickname": "getNetworkDeviceByDiscoveryId",
-                    "type": "NetworkDeviceNIOListResult",
-                    "method": "GET",
+                    "nickname": "getDiscoveryById",
+                    "notes": "Retrieves discovery by ID",
+                    "summary": "Retrieves the discovery specified by id",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "id",
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the network devices discovered for the given discovery",
-                    "summary": "Retrieves the network devices discovered in the discovery specified by id",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "NetworkDeviceNIOListResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DiscoveryNIOResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "DiscoveryNIOResult",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Discovery ID",
+                            "required": true,
+                            "defaultValue": ""
+                        }
+                    ]
+                }
+            ],
+            "path": "/discovery/{id}"
+        },
+        {
+            "description": "getDiscoveryJobsById",
+            "operations": [
+                {
+                    "nickname": "getDiscoveryJobsById",
+                    "notes": "Gets the list of discovery jobs for the given IP",
+                    "summary": "Retrieves the list of discovery jobs for the given IP",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "DiscoveryJobNIOListResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "DiscoveryJobNIOListResult",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Discovery ID",
+                            "required": true,
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "offset",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "integer",
+                            "description": "offset",
+                            "required": false,
+                            "format": "int32",
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "limit",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "integer",
+                            "description": "limit",
+                            "required": false,
+                            "format": "int32",
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "ipAddress",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string",
+                            "description": "ipAddress",
+                            "required": false,
+                            "defaultValue": ""
+                        }
+                    ]
+                }
+            ],
+            "path": "/discovery/{id}/job"
+        },
+        {
+            "description": "getNetworkDeviceByDiscoveryId",
+            "operations": [
+                {
+                    "nickname": "getNetworkDeviceByDiscoveryId",
+                    "notes": "Gets the network devices discovered for the given discovery",
+                    "summary": "Retrieves the network devices discovered in the discovery specified by id",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "NetworkDeviceNIOListResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "NetworkDeviceNIOListResult",
+                    "parameters": [
+                        {
+                            "name": "taskId",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string",
+                            "description": "taskId",
+                            "required": false,
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "id",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -851,52 +469,52 @@
             "description": "getNetworkDeviceCountByDiscoveryId",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getNetworkDeviceCountByDiscoveryId",
-                    "type": "CountResult",
-                    "method": "GET",
+                    "notes": "Gets the count of network devices discovered in the given discovery",
+                    "summary": "Retrieves the number of network devices discovered in the discovery specified by id",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "id",
-                            "type": "string",
-                            "description": "Discovery ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the count of network devices discovered in the given discovery",
-                    "summary": "Retrieves the number of network devices discovered in the discovery specified by id",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "CountResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "CountResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "CountResult",
+                    "parameters": [
+                        {
+                            "name": "taskId",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string",
+                            "description": "taskId",
+                            "required": false,
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Discovery ID",
+                            "required": true,
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -907,72 +525,72 @@
             "description": "getNetworkDeviceByDiscoveryIdByRange",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getNetworkDeviceByDiscoveryIdByRange",
-                    "type": "NetworkDeviceNIOListResult",
-                    "method": "GET",
+                    "notes": "Gets the network devices discovered for the given discovery and for the given range. The maximum number of records that could be retrieved is 500",
+                    "summary": "Retrieves the range of network devices discovered for the given discovery",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "id",
-                            "type": "string",
-                            "description": "Discovery ID",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "startIndex",
-                            "type": "integer",
-                            "description": "Start index",
-                            "format": "int32",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "recordsToReturn",
-                            "type": "integer",
-                            "description": "Number of records to return",
-                            "format": "int32",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the network devices discovered for the given discovery and for the given range. The maximum number of records that could be retrieved is 500",
-                    "summary": "Retrieves the range of network devices discovered for the given discovery",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "NetworkDeviceNIOListResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "NetworkDeviceNIOListResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "NetworkDeviceNIOListResult",
+                    "parameters": [
+                        {
+                            "name": "taskId",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string",
+                            "description": "taskId",
+                            "required": false,
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "id",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string",
+                            "description": "Discovery ID",
+                            "required": true,
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "startIndex",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "integer",
+                            "description": "Start index",
+                            "required": true,
+                            "format": "int32",
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "recordsToReturn",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "integer",
+                            "description": "Number of records to return",
+                            "required": true,
+                            "format": "int32",
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -983,63 +601,54 @@
             "description": "deleteDiscoveryByRange",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "deleteDiscoveryByRange",
-                    "type": "TaskIdResult",
-                    "method": "DELETE",
+                    "notes": "Stops discovery for the given range and removes them",
+                    "summary": "Deletes the discovery in the given range",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "startIndex",
-                            "type": "integer",
-                            "description": "Start index",
-                            "format": "int32",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "recordsToDelete",
-                            "type": "integer",
-                            "description": "Number of records to delete",
-                            "format": "int32",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Stops discovery for the given range and removes them",
-                    "summary": "Deletes the discovery in the given range",
+                    "method": "DELETE",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "TaskIdResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "name": "startIndex",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "integer",
+                            "description": "Start index",
+                            "required": true,
+                            "format": "int32",
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "recordsToDelete",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "integer",
+                            "description": "Number of records to delete",
+                            "required": true,
+                            "format": "int32",
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -1050,63 +659,54 @@
             "description": "getDiscoveryByRange",
             "operations": [
                 {
-                    "deprecated": "false",
                     "nickname": "getDiscoveryByRange",
-                    "type": "DiscoveryNIOListResult",
-                    "method": "GET",
+                    "notes": "Gets the discovery for the range specified",
+                    "summary": "Retrieves the discovery in the given range",
                     "produces": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "name": "startIndex",
-                            "type": "integer",
-                            "description": "Start index",
-                            "format": "int32",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "recordsToReturn",
-                            "type": "integer",
-                            "description": "Number of records to return",
-                            "format": "int32",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "paramType": "path"
-                        },
-                        {
-                            "required": true,
-                            "name": "scope",
-                            "type": "List",
-                            "description": "Authorization Scope for RBAC",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "paramType": "header"
-                        }
-                    ],
-                    "notes": "Gets the discovery for the range specified",
-                    "summary": "Retrieves the discovery in the given range",
+                    "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "DiscoveryNIOListResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "DiscoveryNIOListResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "DiscoveryNIOListResult",
+                    "parameters": [
+                        {
+                            "name": "startIndex",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "integer",
+                            "description": "Start index",
+                            "required": true,
+                            "format": "int32",
+                            "defaultValue": ""
+                        },
+                        {
+                            "name": "recordsToReturn",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "integer",
+                            "description": "Number of records to return",
+                            "required": true,
+                            "format": "int32",
+                            "defaultValue": ""
                         }
                     ]
                 }
@@ -1116,6 +716,682 @@
     ],
     "apiVersion": "1.0",
     "swaggerVersion": "1.2",
+    "models": {
+        "NetworkDeviceNIOListResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "NetworkDeviceNIO"
+                    }
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "NetworkDeviceNIOListResult"
+        },
+        "TaskId": {
+            "properties": {},
+            "description": "",
+            "extends": "",
+            "id": "TaskId"
+        },
+        "TaskIdResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "TaskIdResult"
+        },
+        "NetworkDeviceNIO": {
+            "required": [
+                "type",
+                "snmpStatus",
+                "cliStatus",
+                "inventoryReachabilityStatus",
+                "serialNumber",
+                "family",
+                "id",
+                "role",
+                "interfaceCount",
+                "lineCardCount",
+                "lineCardId",
+                "managementIpAddress",
+                "memorySize",
+                "platformId",
+                "reachabilityStatus",
+                "inventoryCollectionStatus",
+                "upTime",
+                "tagCount",
+                "hostname",
+                "lastUpdated",
+                "macAddress",
+                "softwareVersion"
+            ],
+            "properties": {
+                "reachabilityFailureReason": {
+                    "type": "string",
+                    "description": "Failure reason for unreachable devices"
+                },
+                "reachabilityStatus": {
+                    "type": "string",
+                    "description": "Device reachability status as Reachable / Unreachable"
+                },
+                "qosStatus": {
+                    "type": "string",
+                    "description": "Qos status on device"
+                },
+                "serialNumber": {
+                    "type": "string",
+                    "description": "Serial number of device"
+                },
+                "inventoryCollectionStatus": {
+                    "type": "string",
+                    "description": "Inventory status"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Tag ID that is associated with the device"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of network device"
+                },
+                "platformId": {
+                    "type": "string",
+                    "description": "Platform ID of device"
+                },
+                "inventoryReachabilityStatus": {
+                    "type": "string",
+                    "description": "Inventory reachablity status"
+                },
+                "cliStatus": {
+                    "type": "string",
+                    "description": "CLI status at the time of discovery"
+                },
+                "wlcApDeviceStatus": {
+                    "type": "string",
+                    "description": "Collection status of AP devices"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "Time when the network device info last got updated"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Device name"
+                },
+                "anchorWlcForAp": {
+                    "type": "string",
+                    "description": "Connected WLC device for AP"
+                },
+                "snmpLocation": {
+                    "type": "string",
+                    "description": "SNMP location on device"
+                },
+                "numUpdates": {
+                    "description": "Number of time network-device info got updated",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "ingressQueueConfig": {
+                    "type": "string",
+                    "description": "Ingress queue config on device"
+                },
+                "lineCardId": {
+                    "type": "string",
+                    "description": "IDs of linecards of the device"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "description": "Software version on the device"
+                },
+                "pingStatus": {
+                    "type": "string",
+                    "description": "Ping status at the time of discovery"
+                },
+                "tagCount": {
+                    "description": "Number of tags associated with the device",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Location ID that is associated with the device"
+                },
+                "upTime": {
+                    "type": "string",
+                    "description": "Time that shows for how long the device has been up"
+                },
+                "snmpStatus": {
+                    "type": "string",
+                    "description": "SNMP status at the time of discovery"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of device as switch, router, wireless lan controller, accesspoints"
+                },
+                "errorDescription": {
+                    "type": "string",
+                    "description": "Inventory status description"
+                },
+                "avgUpdateFrequency": {
+                    "description": "Frequency in which interface info gets updated",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "locationName": {
+                    "type": "string",
+                    "description": "Name of the associated location"
+                },
+                "portRange": {
+                    "type": "string",
+                    "description": "Range of ports on device"
+                },
+                "errorCode": {
+                    "type": "string",
+                    "description": "Inventory status error code"
+                },
+                "snmpContact": {
+                    "type": "string",
+                    "description": "SNMP contact on device"
+                },
+                "lineCardCount": {
+                    "type": "string",
+                    "description": "Number of linecards on the device"
+                },
+                "authModelId": {
+                    "type": "string",
+                    "description": "Authentication model Id on device"
+                },
+                "bootDateTime": {
+                    "description": "Device boot time",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "family": {
+                    "type": "string",
+                    "description": "Family of device as switch, router, wireless lan controller, accesspoints"
+                },
+                "roleSource": {
+                    "type": "string",
+                    "description": "Role source as manual / auto"
+                },
+                "imageName": {
+                    "type": "string",
+                    "description": "Image details on the device"
+                },
+                "duplicateDeviceId": {
+                    "type": "string",
+                    "description": "Identifier of the duplicate ip of the same device discovered"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role of device as access, distribution, border router, core"
+                },
+                "interfaceCount": {
+                    "type": "string",
+                    "description": "Number of interfaces on the device"
+                },
+                "memorySize": {
+                    "type": "string",
+                    "description": "Processor memory size"
+                },
+                "vendor": {
+                    "type": "string",
+                    "description": "Vendor information of the device"
+                },
+                "managementIpAddress": {
+                    "type": "string",
+                    "description": "IP address of the device"
+                },
+                "macAddress": {
+                    "type": "string",
+                    "description": "MAC address of device"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "NetworkDeviceNIO"
+        },
+        "DiscoveryNIO": {
+            "required": [
+                "id",
+                "discoveryStatus"
+            ],
+            "properties": {
+                "discoveryStatus": {
+                    "type": "string",
+                    "description": "Available options are: active, inactive, edit"
+                },
+                "passwordList": {
+                    "type": "string",
+                    "description": "Password of the devices to be discovered"
+                },
+                "deviceIds": {
+                    "type": "string",
+                    "description": "Ids of the devices discovered in a discovery"
+                },
+                "snmpRwCommunity": {
+                    "type": "string",
+                    "description": "Snmp RW community of the devices to be discovered"
+                },
+                "snmpAuthPassphrase": {
+                    "type": "string"
+                },
+                "snmpAuthProtocol": {
+                    "type": "string"
+                },
+                "discoveryCondition": {
+                    "type": "string",
+                    "description": "To indicate the discovery status. Available options: Complete or In Progress"
+                },
+                "cdpLevel": {
+                    "description": "CDP level to which neighbor devices to be discovered",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for discovery"
+                },
+                "userNameList": {
+                    "type": "string",
+                    "description": "Username of the devices to be discovered"
+                },
+                "enablePasswordList": {
+                    "type": "string",
+                    "description": "Enable Password of the devices to be discovered"
+                },
+                "ipAddressList": {
+                    "type": "string",
+                    "description": "Ip address of the device to be discovered"
+                },
+                "isAutoCdp": {
+                    "type": "boolean",
+                    "description": "Flag to mention if CDP discovery or not"
+                },
+                "snmpMode": {
+                    "type": "string"
+                },
+                "ipFilterList": {
+                    "type": "string",
+                    "description": "IP addresses of the devices to be filtered"
+                },
+                "numDevices": {
+                    "description": "Number of devices discovered in a discovery",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "parentDiscoveryId": {
+                    "type": "string",
+                    "description": "Parent Discovery Id from which the discovery initiated"
+                },
+                "snmpUserName": {
+                    "type": "string"
+                },
+                "retryCount": {
+                    "description": "Number of times to try establishing connection to device",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "snmpPrivProtocol": {
+                    "type": "string"
+                },
+                "discoveryType": {
+                    "type": "string",
+                    "description": "Available types are: single, auto cdp discovery, range, multi range"
+                },
+                "snmpRoCommunity": {
+                    "type": "string",
+                    "description": "Snmp RO community of the devices to be discovered"
+                },
+                "protocolOrder": {
+                    "type": "string",
+                    "description": "Order of protocol in which device connection establishment to be tried"
+                },
+                "globalCredentialIdList": {
+                    "type": "array",
+                    "description": "To get the list of global credential of the discovery",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the discovery"
+                },
+                "snmpPrivPassphrase": {
+                    "type": "string"
+                },
+                "timeOut": {
+                    "description": "Time to wait for device response.",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "DiscoveryNIO"
+        },
+        "CountResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "CountResult"
+        },
+        "DiscoveryJobNIOListResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "DiscoveryJobNIO"
+                    }
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "DiscoveryJobNIOListResult"
+        },
+        "DiscoveryJobNIO": {
+            "required": [
+                "startTime",
+                "name",
+                "pingStatus",
+                "snmpStatus",
+                "cliStatus",
+                "inventoryReachabilityStatus",
+                "taskId",
+                "discoveryStatus",
+                "inventoryCollectionStatus",
+                "ipAddress"
+            ],
+            "properties": {
+                "snmpStatus": {
+                    "type": "string",
+                    "description": "SNMP status for the IP during this job run"
+                },
+                "taskId": {
+                    "type": "string",
+                    "description": "Discovery job task id"
+                },
+                "discoveryStatus": {
+                    "type": "string",
+                    "description": "Discovery status for the IP"
+                },
+                "ipAddress": {
+                    "type": "string",
+                    "description": "IP Address"
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "Discovery job start time"
+                },
+                "jobStatus": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Discovery job name"
+                },
+                "attributeInfo": {
+                    "$ref": "object"
+                },
+                "inventoryCollectionStatus": {
+                    "type": "string",
+                    "description": "Last known inventory collection status of the device"
+                },
+                "pingStatus": {
+                    "type": "string",
+                    "description": "Ping status for the IP during this job run"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "inventoryReachabilityStatus": {
+                    "type": "string",
+                    "description": "Last known reachabilty status of the device"
+                },
+                "cliStatus": {
+                    "type": "string",
+                    "description": "CLI status for the IP during this job run"
+                },
+                "endTime": {
+                    "type": "string"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "DiscoveryJobNIO"
+        },
+        "DiscoveryNIOResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "DiscoveryNIO"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "DiscoveryNIOResult"
+        },
+        "InventoryRequest": {
+            "required": [
+                "name",
+                "snmpVersion",
+                "ipAddressList",
+                "discoveryType"
+            ],
+            "properties": {
+                "passwordList": {
+                    "type": "array",
+                    "description": "Password of the devices to be discovered",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "snmpAuthProtocol": {
+                    "type": "string",
+                    "description": "SNMP auth protocol. Available values:'SHA' or 'MD5'"
+                },
+                "cdpLevel": {
+                    "description": "CDP level to which neighbor devices to be discovered",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "userNameList": {
+                    "type": "array",
+                    "description": "Username of the devices to be discovered",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "enablePasswordList": {
+                    "type": "array",
+                    "description": "Enable Password of the devices to be discovered",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ipAddressList": {
+                    "type": "string",
+                    "description": "Ip address of the device to be discovered"
+                },
+                "snmpROCommunity": {
+                    "type": "string",
+                    "description": "Snmp RO community of the devices to be discovered"
+                },
+                "snmpMode": {
+                    "type": "string",
+                    "description": "Mode of SNMP. Available values:'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'"
+                },
+                "ipFilterList": {
+                    "type": "array",
+                    "description": "Username of the devices to be discovered",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "retry": {
+                    "description": "Number of times to try establishing connection to device",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "parentDiscoveryId": {
+                    "type": "string"
+                },
+                "snmpUserName": {
+                    "type": "string",
+                    "description": "SNMP username of the device"
+                },
+                "reDiscovery": {
+                    "type": "boolean",
+                    "description": "Flag to indicate is rediscovery or not"
+                },
+                "snmpVersion": {
+                    "type": "string",
+                    "description": "Version of SNMP. Can be v2 or v3"
+                },
+                "snmpPrivProtocol": {
+                    "type": "string",
+                    "description": "SNMP privacy protocol. Available values:'DES' or 'AES128'"
+                },
+                "snmpRWCommunity": {
+                    "type": "string",
+                    "description": "Snmp RW community of the devices to be discovered"
+                },
+                "discoveryType": {
+                    "type": "string",
+                    "description": "Available types are: single, auto cdp discovery, range, multi range"
+                },
+                "snmpAuthPassphrase": {
+                    "type": "string",
+                    "description": "Auth Pass phrase for SNMP"
+                },
+                "protocolOrder": {
+                    "type": "string",
+                    "description": "Order of protocol in which device connection establishment to be tried"
+                },
+                "globalCredentialIdList": {
+                    "type": "array",
+                    "description": "List of global credential ids to be used",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for discovery"
+                },
+                "snmpPrivPassphrase": {
+                    "type": "string",
+                    "description": "Pass phrase for SNMP privacy"
+                },
+                "timeout": {
+                    "description": "Time to wait for device response in seconds",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "InventoryRequest"
+        },
+        "DiscoveryNIOListResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "DiscoveryNIO"
+                    }
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "DiscoveryNIOListResult"
+        },
+        "Date": {
+            "properties": {
+                "hours": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "year": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "seconds": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "month": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "timezoneOffset": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "day": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "time": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minutes": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "date": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "Date"
+        },
+        "TaskIdResponse": {
+            "properties": {
+                "taskId": {
+                    "$ref": "TaskId"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "description": "",
+            "extends": "",
+            "id": "TaskIdResponse"
+        }
+    },
     "basePath": "/apic-em-inventory-manager-service",
     "produces": [
         "application/json"

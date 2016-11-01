@@ -1,0 +1,523 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "models": {
+        "SystemSettingsResult": {
+            "extends": "",
+            "id": "SystemSettingsResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "SystemSettingsDTO"
+                }
+            },
+            "description": ""
+        },
+        "SNMPSettingsDTO": {
+            "extends": "",
+            "id": "SNMPSettingsDTO",
+            "properties": {
+                "authPwd": {
+                    "type": "string"
+                },
+                "privacyPwd": {
+                    "type": "string"
+                },
+                "retry": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "readCommunity": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "trapReflectionDestIp": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "type": "string"
+                },
+                "authType": {
+                    "type": "string"
+                },
+                "mode": {
+                    "type": "string"
+                },
+                "writeCommunity": {
+                    "type": "string"
+                },
+                "privacyType": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "SystemSettingsDTO": {
+            "extends": "",
+            "id": "SystemSettingsDTO",
+            "properties": {
+                "snmp": {
+                    "$ref": "SNMPSettingsDTO"
+                },
+                "ntp": {
+                    "$ref": "NTPSettingsDTO"
+                },
+                "dhcp": {
+                    "$ref": "DHCPServerSettingsDTO"
+                },
+                "syslog": {
+                    "items": {
+                        "$ref": "SyslogSettingsDTO"
+                    },
+                    "type": "array"
+                },
+                "netflow": {
+                    "$ref": "NetflowSettingsDTO"
+                },
+                "dns": {
+                    "$ref": "DNSSettingsDTO"
+                },
+                "aaa": {
+                    "$ref": "AAASettingsDTO"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "ldap": {
+                    "$ref": "LDAPSettingsDTO"
+                },
+                "certifiedIOSRelease": {
+                    "items": {
+                        "$ref": "CertifiedImageDTO"
+                    },
+                    "uniqueItems": true,
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "AAASettingsDTO": {
+            "extends": "",
+            "id": "AAASettingsDTO",
+            "properties": {
+                "ipAddress": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "NetflowSettingsDTO": {
+            "extends": "",
+            "id": "NetflowSettingsDTO",
+            "properties": {
+                "port": {
+                    "type": "string"
+                },
+                "reflectionIp": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "DHCPServerSettingsDTO": {
+            "extends": "",
+            "id": "DHCPServerSettingsDTO",
+            "properties": {
+                "ipAddress": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "NTPSettingsDTO": {
+            "extends": "",
+            "id": "NTPSettingsDTO",
+            "properties": {
+                "serverIp": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "id": "TaskId",
+            "properties": {},
+            "description": ""
+        },
+        "LDAPSettingsDTO": {
+            "extends": "",
+            "id": "LDAPSettingsDTO",
+            "properties": {
+                "ldapServerUrl": {
+                    "type": "string"
+                },
+                "groupAttribute": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "securityPrincipal": {
+                    "type": "string"
+                },
+                "securityAuthentication": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "CertifiedImageDTO": {
+            "extends": "",
+            "id": "CertifiedImageDTO",
+            "properties": {
+                "imageId": {
+                    "type": "string"
+                },
+                "platform": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "DNSSettingsDTO": {
+            "extends": "",
+            "id": "DNSSettingsDTO",
+            "properties": {
+                "ipAddress": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "secondaryIpAddress": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "extends": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": ""
+        },
+        "SyslogSettingsDTO": {
+            "extends": "",
+            "id": "SyslogSettingsDTO",
+            "properties": {
+                "serverIp": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": ""
+        }
+    },
+    "apis": [
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "SystemSettingsResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get the network wide setting",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "get",
+                    "notes": "get",
+                    "type": "SystemSettingsResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "get",
+            "path": "/iwan/network-wide-setting"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to Provision Hub Device - API to save and apply the network wide  settings",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "networkWideSettingDto",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "networkWideSettingDto",
+                            "type": "SystemSettingsDTO"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "update",
+                    "notes": "update",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "update",
+            "path": "/iwan/network-wide-setting"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to Provision Hub Device - API to save and apply the network wide  settings",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "networkWideSettingDto",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "networkWideSettingDto",
+                            "type": "SystemSettingsDTO"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "create",
+                    "notes": "create",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "create",
+            "path": "/iwan/network-wide-setting"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Schedule update of NWS",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "networkWideSettingDto",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "networkWideSettingDto",
+                            "type": "SystemSettingsDTO"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scheduleTime",
+                            "allowMultiple": false,
+                            "format": "int64",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "scheduleTime",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "scheduleUpdateNWS",
+                    "notes": "Schedule update of NWS",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "scheduleUpdateNWS",
+            "path": "/iwan/network-wide-setting/{scheduleTime}"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/iwan/network-wide-setting"
+}

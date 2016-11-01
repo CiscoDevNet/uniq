@@ -1,0 +1,845 @@
+{
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "resourcePath": "/group",
+    "basePath": "/",
+    "models": {
+        "Entry\u00abstring,List\u00abstring\u00bb\u00bb": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "key": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "id": "Entry\u00abstring,List\u00abstring\u00bb\u00bb"
+        },
+        "TaskIdResponse": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "id": "TaskIdResponse"
+        },
+        "ResourceGroupListResult": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ResourceGroupDTO"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "ResourceGroupListResult"
+        },
+        "Resource": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "instanceUuid": {
+                    "type": "string"
+                }
+            },
+            "id": "Resource"
+        },
+        "CountResult": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "CountResult"
+        },
+        "GroupMembersResult": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Resource"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "GroupMembersResult"
+        },
+        "GroupTypesResult": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "GroupTypesResult"
+        },
+        "TaskId": {
+            "description": "",
+            "extends": "",
+            "properties": {},
+            "id": "TaskId"
+        },
+        "ResourceGroupResult": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "ResourceGroupDTO"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "ResourceGroupResult"
+        },
+        "ResourceGroupDTO": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "groupTypeList": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "id": "ResourceGroupDTO"
+        },
+        "TaskIdResult": {
+            "description": "",
+            "extends": "",
+            "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "TaskIdResult"
+        }
+    },
+    "produces": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "description": "createGroup",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "POST",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Creates a group( 'ALL' is a reserved group name and not allowed to be created by user).",
+                    "type": "TaskIdResult",
+                    "summary": "Creates a group with the information passed in the request",
+                    "parameters": [
+                        {
+                            "description": "Grouping request that holds the group information",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "groupDTO",
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "type": "ResourceGroupDTO"
+                        }
+                    ],
+                    "nickname": "createGroup"
+                }
+            ],
+            "path": "/group"
+        },
+        {
+            "description": "getGroup",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "ResourceGroupListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Returns the groups by name and/or type. If no parameter is provided, returns all the groups.",
+                    "type": "ResourceGroupListResult",
+                    "summary": "Returns groups by name and/or type",
+                    "parameters": [
+                        {
+                            "description": "groupType",
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "groupType",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "type": "string"
+                        },
+                        {
+                            "description": "groupName",
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "groupName",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "type": "string"
+                        }
+                    ],
+                    "nickname": "getGroup"
+                }
+            ],
+            "path": "/group"
+        },
+        {
+            "description": "updateGroup",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "PUT",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Updates the group( 'ALL' is a reserved group name and not allowed to be updated by user).",
+                    "type": "TaskIdResult",
+                    "summary": "Updates a group specified by id",
+                    "parameters": [
+                        {
+                            "description": "Grouping request that holds the group information",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "groupDTO",
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "type": "ResourceGroupDTO"
+                        }
+                    ],
+                    "nickname": "updateGroup"
+                }
+            ],
+            "path": "/group"
+        },
+        {
+            "description": "getGroupCount",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "CountResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Retrieves the number of groups",
+                    "type": "CountResult",
+                    "summary": "Returns the number of groups",
+                    "parameters": [
+                        {
+                            "description": "groupType",
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "groupType",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "type": "string"
+                        },
+                        {
+                            "description": "groupName",
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "groupName",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "type": "string"
+                        }
+                    ],
+                    "nickname": "getGroupCount"
+                }
+            ],
+            "path": "/group/count"
+        },
+        {
+            "description": "getSupportedClassNameAliases",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "GroupTypesResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Returns the names for supported resource types. The name for the respective resource type needs to be used to add any resource to a group.",
+                    "type": "GroupTypesResult",
+                    "summary": "Retrieves the names for supported resource types",
+                    "parameters": [],
+                    "nickname": "getSupportedClassNameAliases"
+                }
+            ],
+            "path": "/group/member/type"
+        },
+        {
+            "description": "getGroupsByMemberId",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "ResourceGroupListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Returns the groups containing the member specified by id.",
+                    "type": "ResourceGroupListResult",
+                    "summary": "Returns the groups containing the member",
+                    "parameters": [
+                        {
+                            "description": "Member ID",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "id",
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "type": "string"
+                        },
+                        {
+                            "description": "groupType",
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "groupType",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "type": "string"
+                        }
+                    ],
+                    "nickname": "getGroupsByMemberId"
+                }
+            ],
+            "path": "/group/member/{id}"
+        },
+        {
+            "description": "getGroupTypes",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "GroupTypesResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Retrieves the group types supported",
+                    "type": "GroupTypesResult",
+                    "summary": "Returns the group types supported",
+                    "parameters": [],
+                    "nickname": "getGroupTypes"
+                }
+            ],
+            "path": "/group/type"
+        },
+        {
+            "description": "getGroupById",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "ResourceGroupResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Returns the group specified by id",
+                    "type": "ResourceGroupResult",
+                    "summary": "Returns the group by id",
+                    "parameters": [
+                        {
+                            "description": "Group ID",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "id",
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "type": "string"
+                        }
+                    ],
+                    "nickname": "getGroupById"
+                }
+            ],
+            "path": "/group/{id}"
+        },
+        {
+            "description": "deleteGroup",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "DELETE",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Deletes the group",
+                    "type": "TaskIdResult",
+                    "summary": "Deletes a group specified by id",
+                    "parameters": [
+                        {
+                            "description": "Group ID",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "id",
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "type": "string"
+                        }
+                    ],
+                    "nickname": "deleteGroup"
+                }
+            ],
+            "path": "/group/{id}"
+        },
+        {
+            "description": "getMembersByGroupId",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "GroupMembersResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Returns members from a group",
+                    "type": "GroupMembersResult",
+                    "summary": "Returns the members from the group specified by id",
+                    "parameters": [
+                        {
+                            "description": "Group ID",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "id",
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "type": "string"
+                        },
+                        {
+                            "description": "offset",
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "offset",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "paramType": "query",
+                            "type": "integer"
+                        },
+                        {
+                            "description": "limit",
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "limit",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "paramType": "query",
+                            "type": "integer"
+                        },
+                        {
+                            "description": "memberType",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "memberType",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "type": "string"
+                        }
+                    ],
+                    "nickname": "getMembersByGroupId"
+                }
+            ],
+            "path": "/group/{id}/member"
+        },
+        {
+            "description": "removeMember",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "DELETE",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Removes members from a group",
+                    "type": "TaskIdResult",
+                    "summary": "Removes members from the group specified by id",
+                    "parameters": [
+                        {
+                            "description": "Group ID",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "id",
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "type": "string"
+                        },
+                        {
+                            "description": "Set of member ids to be removed from group",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "memberUuids",
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "type": "Set"
+                        }
+                    ],
+                    "nickname": "removeMember"
+                }
+            ],
+            "path": "/group/{id}/member"
+        },
+        {
+            "description": "addMember",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "POST",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Adds members to a group",
+                    "type": "TaskIdResult",
+                    "summary": "Adds members to the group specified by id",
+                    "parameters": [
+                        {
+                            "description": "Group ID",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "id",
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "type": "string"
+                        },
+                        {
+                            "description": "Map of member type and member ids, for example, {<br>\"networkdevice\":[\"803ccafc-3458-49a2-9eff-0b2e47e491f7\",\"203ccafc-3453-49a2-9eff-0b2e47e491f1\"]<br>}<br>Refer /group/member/type for the supported member types.",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "members",
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "type": "List[Entry\u00abstring,List\u00abstring\u00bb\u00bb]"
+                        }
+                    ],
+                    "nickname": "addMember"
+                }
+            ],
+            "path": "/group/{id}/member"
+        },
+        {
+            "description": "getGroupMemberCount",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "responseMessages": [
+                        {
+                            "responseModel": "CountResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "method": "GET",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Retrieves the number of members in group",
+                    "type": "CountResult",
+                    "summary": "Returns the number of members in a given group",
+                    "parameters": [
+                        {
+                            "description": "Group ID",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "id",
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "type": "string"
+                        },
+                        {
+                            "description": "memberType",
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "memberType",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "type": "string"
+                        }
+                    ],
+                    "nickname": "getGroupMemberCount"
+                }
+            ],
+            "path": "/group/{id}/member/count"
+        }
+    ]
+}

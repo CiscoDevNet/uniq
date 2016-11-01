@@ -1,33 +1,189 @@
 {
+    "swaggerVersion": "1.2",
     "apis": [
+        {
+            "description": "getAllFlowAnalysis",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "FlowAnalysisListOutput"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No correspoding flow analysis result for requested Id",
+                            "responseModel": "Void"
+                        }
+                    ],
+                    "notes": "Retrieves a summary of all flow analyses stored. Filters the results by given parameters.",
+                    "deprecated": "false",
+                    "type": "FlowAnalysisListOutput",
+                    "nickname": "getAllFlowAnalysis",
+                    "method": "GET",
+                    "parameters": [
+                        {
+                            "name": "periodicRefresh",
+                            "type": "boolean",
+                            "required": false,
+                            "description": "Is analysis periodically refreshed?",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "sourceIP",
+                            "type": "string",
+                            "required": false,
+                            "description": "Source IP address",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "destIP",
+                            "type": "string",
+                            "required": false,
+                            "description": "Destination IP adress",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "sourcePort",
+                            "type": "string",
+                            "required": false,
+                            "description": "Source port",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "destPort",
+                            "type": "string",
+                            "required": false,
+                            "description": "Destination port",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "gtCreateTime",
+                            "type": "string",
+                            "required": false,
+                            "description": "Analyses requested after this time",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "ltCreateTime",
+                            "type": "string",
+                            "required": false,
+                            "description": "Analyses requested before this time",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "protocol",
+                            "type": "string",
+                            "required": false,
+                            "description": "Protocol",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "required": false,
+                            "description": "Status",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "taskId",
+                            "type": "string",
+                            "required": false,
+                            "description": "Task ID",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "lastUpdateTime",
+                            "type": "string",
+                            "required": false,
+                            "description": "Last update time",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "limit",
+                            "type": "string",
+                            "required": false,
+                            "description": "Number of resources returned",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "offset",
+                            "type": "string",
+                            "required": false,
+                            "description": "Start index of resources returned (1-based)",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "order",
+                            "type": "string",
+                            "required": false,
+                            "description": "Order by this field",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        },
+                        {
+                            "name": "sortBy",
+                            "type": "string",
+                            "required": false,
+                            "description": "Sort by this field",
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "allowMultiple": false
+                        }
+                    ],
+                    "summary": "Retrieves a summary of all flow analyses stored",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ],
+            "path": "/flow-analysis"
+        },
         {
             "description": "initiateFlowAnalysis",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "summary": "Initiates a new flow analysis",
-                    "notes": "Initiates a new flow analysis with periodic refresh and stat collection options. Returns a request id and a task id to get results and follow progress.",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "flowAnalysisRequest",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "type": "FlowAnalysisRequest",
-                            "name": "flowAnalysisRequest"
-                        }
-                    ],
-                    "nickname": "initiateFlowAnalysis",
-                    "method": "POST",
                     "responseMessages": [
                         {
-                            "responseModel": "FlowAnalysisRequestResultOutput",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "FlowAnalysisRequestResultOutput"
                         },
                         {
                             "code": 202,
@@ -46,186 +202,29 @@
                             "message": "No Resource Found"
                         }
                     ],
+                    "notes": "Initiates a new flow analysis with periodic refresh and stat collection options. Returns a request id and a task id to get results and follow progress.",
+                    "deprecated": "false",
                     "type": "FlowAnalysisRequestResultOutput",
+                    "nickname": "initiateFlowAnalysis",
                     "consumes": [
                         "application/json"
-                    ]
-                }
-            ],
-            "path": "/flow-analysis"
-        },
-        {
-            "description": "getAllFlowAnalysis",
-            "operations": [
-                {
-                    "summary": "Retrieves a summary of all flow analyses stored",
-                    "notes": "Retrieves a summary of all flow analyses stored. Filters the results by given parameters.",
-                    "produces": [
-                        "application/json"
                     ],
+                    "method": "POST",
                     "parameters": [
                         {
+                            "name": "flowAnalysisRequest",
+                            "type": "FlowAnalysisRequest",
                             "required": false,
-                            "allowMultiple": false,
-                            "description": "Is analysis periodically refreshed?",
-                            "paramType": "query",
+                            "description": "flowAnalysisRequest",
                             "defaultValue": "",
-                            "type": "boolean",
-                            "name": "periodicRefresh"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Source IP address",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "sourceIP"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Destination IP adress",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "destIP"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Source port",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "sourcePort"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Destination port",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "destPort"
-                        },
-                        {
-                            "format": "int64",
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Analyses requested after this time",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "integer",
-                            "name": "gtCreateTime"
-                        },
-                        {
-                            "format": "int64",
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Analyses requested before this time",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "integer",
-                            "name": "ltCreateTime"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Protocol",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "protocol"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Status",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "status"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Task ID",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "taskId"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Last update time",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "lastUpdateTime"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Number of resources returned",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "limit"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Start index of resources returned (1-based)",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "offset"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Order by this field",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "order"
-                        },
-                        {
-                            "required": false,
-                            "allowMultiple": false,
-                            "description": "Sort by this field",
-                            "paramType": "query",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "sortBy"
+                            "paramType": "body",
+                            "allowMultiple": false
                         }
                     ],
-                    "nickname": "getAllFlowAnalysis",
-                    "method": "GET",
-                    "responseMessages": [
-                        {
-                            "responseModel": "FlowAnalysisListOutput",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "responseModel": "Void",
-                            "code": 404,
-                            "message": "No correspoding flow analysis result for requested Id"
-                        }
-                    ],
-                    "type": "FlowAnalysisListOutput",
-                    "deprecated": "false"
+                    "summary": "Initiates a new flow analysis",
+                    "produces": [
+                        "application/json"
+                    ]
                 }
             ],
             "path": "/flow-analysis"
@@ -234,29 +233,11 @@
             "description": "getFullFlowAnalysisResult",
             "operations": [
                 {
-                    "summary": "Retrieves result of a previously requested flow analysis",
-                    "notes": "Retrieves result of a previously requested flow analysis by its Flow Analysis id",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "allowMultiple": false,
-                            "description": "Flow analysis request id",
-                            "paramType": "path",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "flowAnalysisId"
-                        }
-                    ],
-                    "nickname": "getFullFlowAnalysisResult",
-                    "method": "GET",
                     "responseMessages": [
                         {
-                            "responseModel": "PathResponseResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "PathResponseResult"
                         },
                         {
                             "code": 403,
@@ -267,13 +248,31 @@
                             "message": "Not Authorized Yet, Credentials to be supplied"
                         },
                         {
-                            "responseModel": "Void",
                             "code": 404,
-                            "message": "No correspoding flow analysis result for requested Id"
+                            "message": "No correspoding flow analysis result for requested Id",
+                            "responseModel": "Void"
                         }
                     ],
+                    "notes": "Retrieves result of a previously requested flow analysis by its Flow Analysis id",
+                    "deprecated": "false",
                     "type": "PathResponseResult",
-                    "deprecated": "false"
+                    "nickname": "getFullFlowAnalysisResult",
+                    "method": "GET",
+                    "parameters": [
+                        {
+                            "name": "flowAnalysisId",
+                            "type": "string",
+                            "required": true,
+                            "description": "Flow analysis request id",
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "allowMultiple": false
+                        }
+                    ],
+                    "summary": "Retrieves result of a previously requested flow analysis",
+                    "produces": [
+                        "application/json"
+                    ]
                 }
             ],
             "path": "/flow-analysis/{flowAnalysisId}"
@@ -282,29 +281,11 @@
             "description": "deleteFlowAnalysis",
             "operations": [
                 {
-                    "summary": "Deletes a flow analysis request",
-                    "notes": "Deletes a flow analysis request by its id",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "required": true,
-                            "allowMultiple": false,
-                            "description": "Flow analysis request id",
-                            "paramType": "path",
-                            "defaultValue": "",
-                            "type": "string",
-                            "name": "flowAnalysisId"
-                        }
-                    ],
-                    "nickname": "deleteFlowAnalysis",
-                    "method": "DELETE",
                     "responseMessages": [
                         {
-                            "responseModel": "TaskIdResult",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
                         },
                         {
                             "code": 403,
@@ -319,229 +300,44 @@
                             "message": "No Resource Found"
                         }
                     ],
+                    "notes": "Deletes a flow analysis request by its id",
+                    "deprecated": "false",
                     "type": "TaskIdResult",
-                    "deprecated": "false"
+                    "nickname": "deleteFlowAnalysis",
+                    "method": "DELETE",
+                    "parameters": [
+                        {
+                            "name": "flowAnalysisId",
+                            "type": "string",
+                            "required": true,
+                            "description": "Flow analysis request id",
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "allowMultiple": false
+                        }
+                    ],
+                    "summary": "Deletes a flow analysis request",
+                    "produces": [
+                        "application/json"
+                    ]
                 }
             ],
             "path": "/flow-analysis/{flowAnalysisId}"
         }
     ],
-    "basePath": "/",
+    "resourcePath": "/flow-analysis",
+    "consumes": [
+        "application/json"
+    ],
+    "apiVersion": "1.0",
+    "basePath": "/policy-analysis-service",
+    "produces": [
+        "application/json"
+    ],
     "models": {
-        "FlowAnalysisRequest": {
-            "description": "",
-            "id": "FlowAnalysisRequest",
-            "extends": "",
-            "required": [
-                "sourceIP",
-                "destIP"
-            ],
-            "properties": {
-                "sourcePort": {
-                    "description": "Source Port",
-                    "type": "string"
-                },
-                "inclusions": {
-                    "description": "Subset of {INTERFACE-STATS, QOS-STATS, DEVICE-STATS, PERFORMANCE-STATS}",
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "destIP": {
-                    "description": "Destination IP address",
-                    "type": "string"
-                },
-                "sourceIP": {
-                    "description": "Source IP address",
-                    "type": "string"
-                },
-                "destPort": {
-                    "description": "Destination Port",
-                    "type": "string"
-                },
-                "periodicRefresh": {
-                    "description": "periodicRefresh of path for every 30 sec",
-                    "type": "boolean"
-                },
-                "protocol": {
-                    "description": "Protocol",
-                    "type": "string"
-                }
-            }
-        },
-        "TaskId": {
-            "description": "",
-            "id": "TaskId",
-            "extends": "",
-            "properties": {}
-        },
-        "FlowAnalysis": {
-            "description": "",
-            "id": "FlowAnalysis",
-            "extends": "",
-            "required": [
-                "status",
-                "createTime",
-                "lastUpdateTime",
-                "sourceIP",
-                "destIP"
-            ],
-            "properties": {
-                "failureReason": {
-                    "type": "string"
-                },
-                "inclusions": {
-                    "description": "Subset of {INTERFACE-STATS, QOS-STATS, DEVICE-STATS, PERFORMANCE-STATS}",
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "sourceIP": {
-                    "description": "Source IP address",
-                    "type": "string"
-                },
-                "periodicRefresh": {
-                    "description": "periodicRefresh of path for every 30 sec",
-                    "type": "boolean"
-                },
-                "protocol": {
-                    "description": "Protocol",
-                    "type": "string"
-                },
-                "sourcePort": {
-                    "description": "Source Port",
-                    "type": "string"
-                },
-                "createTime": {
-                    "format": "int64",
-                    "description": "Flow analysis request creation time",
-                    "type": "integer"
-                },
-                "destIP": {
-                    "description": "Destination IP address",
-                    "type": "string"
-                },
-                "destPort": {
-                    "description": "Destination Port",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "",
-                    "type": "string"
-                },
-                "status": {
-                    "description": "Aggregated status of flow-analysis request. Value from a set of [INPROGRESS, COMPLETED, FAILED] ",
-                    "type": "string"
-                },
-                "lastUpdateTime": {
-                    "format": "int64",
-                    "description": "Flow analysis request last update time",
-                    "type": "integer"
-                }
-            }
-        },
-        "InterfaceContainer": {
-            "description": "",
-            "id": "InterfaceContainer",
-            "extends": "",
-            "properties": {
-                "physicalInterface": {
-                    "description": "ID of Physical interface on a device",
-                    "$ref": "Interface"
-                },
-                "virtualInterface": {
-                    "description": "A list of Virtual interface IDs on a device",
-                    "type": "array",
-                    "items": {
-                        "$ref": "Interface"
-                    }
-                }
-            }
-        },
-        "PathResponseResult": {
-            "description": "",
-            "id": "PathResponseResult",
-            "extends": "",
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "$ref": "PathResponse"
-                }
-            }
-        },
-        "MemoryStatistics": {
-            "description": "",
-            "id": "MemoryStatistics",
-            "extends": "",
-            "properties": {
-                "memoryUsage": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "refreshedAt": {
-                    "format": "int64",
-                    "type": "integer"
-                }
-            }
-        },
-        "FlowAnalysisRequestResultOutput": {
-            "description": "",
-            "id": "FlowAnalysisRequestResultOutput",
-            "extends": "",
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "$ref": "FlowAnalysisRequestResult"
-                }
-            }
-        },
-        "DeviceStatistics": {
-            "description": "",
-            "id": "DeviceStatistics",
-            "extends": "",
-            "required": [
-                "memoryStatistics",
-                "cpuStatistics"
-            ],
-            "properties": {
-                "cpuStatistics": {
-                    "description": "Device CPU statistics",
-                    "$ref": "CpuStatistics"
-                },
-                "memoryStatistics": {
-                    "description": "Device Memory statistics",
-                    "$ref": "MemoryStatistics"
-                }
-            }
-        },
-        "AclMatchingPorts": {
-            "description": "",
-            "id": "AclMatchingPorts",
-            "extends": "",
-            "properties": {
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "AclPortInfo"
-                    }
-                },
-                "protocol": {
-                    "type": "string"
-                }
-            }
-        },
         "AclPortInfo": {
             "description": "",
             "id": "AclPortInfo",
-            "extends": "",
             "properties": {
                 "destPorts": {
                     "type": "array",
@@ -555,63 +351,394 @@
                         "type": "string"
                     }
                 }
-            }
+            },
+            "extends": ""
         },
-        "CpuStatistics": {
+        "FlowAnalysis": {
             "description": "",
-            "id": "CpuStatistics",
-            "extends": "",
+            "id": "FlowAnalysis",
             "properties": {
-                "oneMinUsageInPercentage": {
-                    "format": "float",
-                    "type": "number"
+                "failureReason": {
+                    "type": "string"
                 },
-                "fiveMinUsageInPercentage": {
-                    "format": "float",
-                    "type": "number"
+                "destIP": {
+                    "description": "Destination IP address",
+                    "type": "string"
+                },
+                "periodicRefresh": {
+                    "description": "periodicRefresh of path for every 30 sec",
+                    "type": "boolean"
+                },
+                "protocol": {
+                    "description": "Protocol",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Aggregated status of flow-analysis request. Value from a set of [INPROGRESS, COMPLETED, FAILED] ",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "",
+                    "type": "string"
+                },
+                "sourcePort": {
+                    "description": "Source Port",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Flow analysis request creation time",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "sourceIP": {
+                    "description": "Source IP address",
+                    "type": "string"
+                },
+                "lastUpdateTime": {
+                    "description": "Flow analysis request last update time",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "destPort": {
+                    "description": "Destination Port",
+                    "type": "string"
+                },
+                "inclusions": {
+                    "description": "Subset of {INTERFACE-STATS, QOS-STATS, DEVICE-STATS, PERFORMANCE-STATS, ACL-TRACE}",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "extends": "",
+            "required": [
+                "status",
+                "createTime",
+                "lastUpdateTime",
+                "destIP",
+                "sourceIP"
+            ]
+        },
+        "AclAce": {
+            "description": "",
+            "id": "AclAce",
+            "properties": {
+                "result": {
+                    "type": "string"
+                },
+                "matchingPorts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "AclMatchingPorts"
+                    }
+                },
+                "ace": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "Accuracy": {
+            "description": "",
+            "id": "Accuracy",
+            "properties": {
+                "percent": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "reason": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "InterfaceStatistics": {
+            "description": "",
+            "id": "InterfaceStatistics",
+            "properties": {
+                "outputQueueCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "inputPackets": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "outputDrop": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "outputRatebps": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "outputPackets": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "inputQueueMaxDepth": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "inputRatebps": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "inputQueueDrops": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "adminStatus": {
+                    "type": "string"
+                },
+                "inputQueueFlushes": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "inputQueueCount": {
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "refreshedAt": {
                     "format": "int64",
                     "type": "integer"
                 },
-                "fiveSecsUsageInPercentage": {
-                    "format": "float",
-                    "type": "number"
-                }
-            }
-        },
-        "DetailedStatus": {
-            "description": "",
-            "id": "DetailedStatus",
-            "extends": "",
-            "properties": {
-                "aclTraceCalculation": {
+                "operationalStatus": {
                     "type": "string"
                 },
-                "aclTraceCalculationFailureReason": {
+                "outputQueueDepth": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "extends": ""
+        },
+        "DeviceStatistics": {
+            "description": "",
+            "id": "DeviceStatistics",
+            "properties": {
+                "memoryStatistics": {
+                    "description": "Device Memory statistics",
+                    "$ref": "MemoryStatistics"
+                },
+                "cpuStatistics": {
+                    "description": "Device CPU statistics",
+                    "$ref": "CpuStatistics"
+                }
+            },
+            "extends": "",
+            "required": [
+                "cpuStatistics",
+                "memoryStatistics"
+            ]
+        },
+        "PathResponseResult": {
+            "description": "",
+            "id": "PathResponseResult",
+            "properties": {
+                "response": {
+                    "$ref": "PathResponse"
+                },
+                "version": {
                     "type": "string"
                 }
-            }
+            },
+            "extends": ""
+        },
+        "PathResponse": {
+            "description": "",
+            "id": "PathResponse",
+            "properties": {
+                "networkElementsInfo": {
+                    "description": "Nodes travesed along a path, including source and destination",
+                    "type": "array",
+                    "items": {
+                        "$ref": "NetworkElementInfo"
+                    }
+                },
+                "detailedStatus": {
+                    "description": "Detailed Status of the calculation of Path Trace with its inclusions",
+                    "$ref": "DetailedStatus"
+                },
+                "networkElements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "NetworkElement"
+                    }
+                },
+                "properties": {
+                    "description": "Properties for path trace",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "lastUpdate": {
+                    "description": "Last updated time",
+                    "type": "string"
+                },
+                "request": {
+                    "description": "Describes the source and destination for a path trace",
+                    "$ref": "FlowAnalysis"
+                }
+            },
+            "extends": "",
+            "required": [
+                "detailedStatus",
+                "networkElementsInfo",
+                "properties",
+                "request"
+            ]
+        },
+        "NetworkElementInfo": {
+            "description": "",
+            "id": "NetworkElementInfo",
+            "properties": {
+                "linkInformationSource": {
+                    "description": "The source of the link information to the next hop",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Network Device Type(can be switch,router,wired host or wireless host)",
+                    "type": "string"
+                },
+                "perfMonitorStatistics": {
+                    "description": "perf mon statistics on the device for give flow",
+                    "type": "array",
+                    "items": {
+                        "$ref": "PerfMonitorStatistics"
+                    }
+                },
+                "id": {
+                    "description": "Network Device ID",
+                    "type": "string"
+                },
+                "detailedStatus": {
+                    "$ref": "DetailedStatus"
+                },
+                "deviceStatsCollectionFailureReason": {
+                    "type": "string"
+                },
+                "deviceStatsCollection": {
+                    "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
+                    "type": "string"
+                },
+                "tunnels": {
+                    "description": "Tunnels this network element is in",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "perfMonCollection": {
+                    "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Network Device name",
+                    "type": "string"
+                },
+                "ingressInterface": {
+                    "description": "Ingress interface of the network device",
+                    "$ref": "InterfaceContainer"
+                },
+                "perfMonCollectionFailureReason": {
+                    "type": "string"
+                },
+                "deviceStatistics": {
+                    "description": "Device statistics",
+                    "$ref": "DeviceStatistics"
+                },
+                "accuracyList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Accuracy"
+                    }
+                },
+                "role": {
+                    "description": "Role of device in network(can be access,core,distribution or border router)",
+                    "type": "string"
+                },
+                "ip": {
+                    "description": "Network Device IP",
+                    "type": "string"
+                },
+                "egressInterface": {
+                    "description": "Egress interface of the network device",
+                    "$ref": "InterfaceContainer"
+                }
+            },
+            "extends": "",
+            "required": [
+                "deviceStatistics",
+                "deviceStatsCollection",
+                "tunnels",
+                "linkInformationSource",
+                "perfMonCollection",
+                "perfMonitorStatistics",
+                "name",
+                "id",
+                "type",
+                "role",
+                "egressInterface",
+                "ingressInterface",
+                "ip"
+            ]
+        },
+        "FlowAnalysisRequest": {
+            "description": "",
+            "id": "FlowAnalysisRequest",
+            "properties": {
+                "sourcePort": {
+                    "description": "Source Port",
+                    "type": "string"
+                },
+                "destIP": {
+                    "description": "Destination IP address",
+                    "type": "string"
+                },
+                "periodicRefresh": {
+                    "description": "periodicRefresh of path for every 30 sec",
+                    "type": "boolean"
+                },
+                "sourceIP": {
+                    "description": "Source IP address",
+                    "type": "string"
+                },
+                "protocol": {
+                    "description": "Protocol",
+                    "type": "string"
+                },
+                "destPort": {
+                    "description": "Destination Port",
+                    "type": "string"
+                },
+                "inclusions": {
+                    "description": "Subset of {INTERFACE-STATS, QOS-STATS, DEVICE-STATS, PERFORMANCE-STATS, ACL-TRACE}",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "extends": "",
+            "required": [
+                "destIP",
+                "sourceIP"
+            ]
         },
         "Interface": {
             "description": "",
             "id": "Interface",
-            "extends": "",
-            "required": [
-                "aclAnalysis",
-                "interfaceStatsCollection",
-                "qosStatsCollection"
-            ],
             "properties": {
-                "interfaceStatsCollectionFailureReason": {
-                    "type": "string"
-                },
                 "interfaceStatsCollection": {
                     "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
                     "type": "string"
-                },
-                "interfaceStatistics": {
-                    "$ref": "InterfaceStatistics"
                 },
                 "qosStatistics": {
                     "type": "array",
@@ -619,57 +746,284 @@
                         "$ref": "QosClassMapStatistics"
                     }
                 },
-                "vrfName": {
-                    "description": "Name of VRF that the interface on a device belongs to",
+                "name": {
+                    "description": "Name of interface on a device",
+                    "type": "string"
+                },
+                "qosStatsCollection": {
+                    "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
                     "type": "string"
                 },
                 "id": {
                     "description": "ID of interface on a device",
                     "type": "string"
                 },
-                "qosStatsCollectionFailureReason": {
-                    "type": "string"
-                },
                 "aclAnalysis": {
                     "description": "Analysis of ACLs on an interface of a device",
                     "$ref": "AclAnalysisResponse"
                 },
-                "qosStatsCollection": {
+                "interfaceStatsCollectionFailureReason": {
+                    "type": "string"
+                },
+                "qosStatsCollectionFailureReason": {
+                    "type": "string"
+                },
+                "interfaceStatistics": {
+                    "$ref": "InterfaceStatistics"
+                },
+                "vrfName": {
+                    "description": "Name of VRF that the interface on a device belongs to",
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "required": [
+                "interfaceStatsCollection",
+                "qosStatsCollection",
+                "aclAnalysis"
+            ]
+        },
+        "QosClassMapStatistics": {
+            "description": "",
+            "id": "QosClassMapStatistics",
+            "properties": {
+                "queueBandwidthbps": {
+                    "type": "string"
+                },
+                "queueDepth": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "numPackets": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "offeredRate": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "numBytes": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "queueNoBufferDrops": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "classMapName": {
+                    "type": "string"
+                },
+                "refreshedAt": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "queueTotalDrops": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "dropRate": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "extends": ""
+        },
+        "FlowAnalysisRequestResult": {
+            "description": "",
+            "id": "FlowAnalysisRequestResult",
+            "properties": {
+                "flowAnalysisId": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "NetworkElement": {
+            "description": "",
+            "id": "NetworkElement",
+            "properties": {
+                "perfMonStatistics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PerfMonitorStatistics"
+                    }
+                },
+                "linkInformationSource": {
+                    "description": "The source of the link information to the next hop",
+                    "type": "string"
+                },
+                "ingressPhysicalInterface": {
+                    "description": "Igress physical interface of the network device",
+                    "$ref": "Interface"
+                },
+                "type": {
+                    "description": "Network Device Type(can be switch,router,wired host or wireless host)",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Network Device ID",
+                    "type": "string"
+                },
+                "detailedStatus": {
+                    "$ref": "DetailedStatus"
+                },
+                "deviceStatsCollectionFailureReason": {
+                    "type": "string"
+                },
+                "egressPhysicalInterface": {
+                    "description": "Egress physical interface of the network device",
+                    "$ref": "Interface"
+                },
+                "deviceStatsCollection": {
+                    "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
+                    "type": "string"
+                },
+                "tunnels": {
+                    "description": "Tunnels this network element is in",
+                    "uniqueItems": true,
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "perfMonCollection": {
                     "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Name of interface on a device",
+                    "description": "Network Device name",
+                    "type": "string"
+                },
+                "perfMonCollectionFailureReason": {
+                    "type": "string"
+                },
+                "deviceStatistics": {
+                    "$ref": "DeviceStatistics"
+                },
+                "accuracyList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Accuracy"
+                    }
+                },
+                "ingressVirtualInterface": {
+                    "description": "Ingress virtual interface of the network device",
+                    "$ref": "Interface"
+                },
+                "role": {
+                    "description": "Role of device in network(can be access,core,distribution or border router)",
+                    "type": "string"
+                },
+                "egressVirtualInterface": {
+                    "description": "Egress virtual interface of the network device",
+                    "$ref": "Interface"
+                },
+                "ip": {
+                    "description": "Network Device IP",
                     "type": "string"
                 }
-            }
+            },
+            "extends": "",
+            "required": [
+                "deviceStatsCollection",
+                "tunnels",
+                "linkInformationSource",
+                "perfMonCollection",
+                "name",
+                "id",
+                "type",
+                "role",
+                "ip",
+                "egressPhysicalInterface",
+                "ingressPhysicalInterface"
+            ]
+        },
+        "DetailedStatus": {
+            "description": "",
+            "id": "DetailedStatus",
+            "properties": {
+                "aclTraceCalculationFailureReason": {
+                    "type": "string"
+                },
+                "aclTraceCalculation": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TaskIdResult": {
+            "description": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TaskId": {
+            "description": "",
+            "id": "TaskId",
+            "properties": {},
+            "extends": ""
+        },
+        "TaskIdResponse": {
+            "description": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "taskId": {
+                    "$ref": "TaskId"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "AclAnalysisResponse": {
+            "description": "",
+            "id": "AclAnalysisResponse",
+            "properties": {
+                "result": {
+                    "type": "string"
+                },
+                "aclName": {
+                    "type": "string"
+                },
+                "matchingAces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "AclAce"
+                    }
+                }
+            },
+            "extends": ""
         },
         "PerfMonitorStatistics": {
             "description": "",
             "id": "PerfMonitorStatistics",
-            "extends": "",
             "properties": {
-                "packetCount": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "outputInterface": {
-                    "type": "string"
-                },
-                "rtpJitterMean": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "inputInterface": {
-                    "type": "string"
-                },
-                "destPort": {
-                    "type": "string"
-                },
                 "sourceIpAddress": {
                     "type": "string"
                 },
+                "byteRate": {
+                    "format": "int64",
+                    "type": "integer"
+                },
                 "packetLoss": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "rtpJitterMean": {
                     "format": "int64",
                     "type": "integer"
                 },
@@ -687,17 +1041,7 @@
                     "format": "float",
                     "type": "number"
                 },
-                "sourcePort": {
-                    "type": "string"
-                },
-                "byteRate": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "ipv4DSCP": {
-                    "type": "string"
-                },
-                "rtpJitterMin": {
+                "packetCount": {
                     "format": "int64",
                     "type": "integer"
                 },
@@ -705,472 +1049,140 @@
                     "format": "int64",
                     "type": "integer"
                 },
-                "refreshedAt": {
+                "packetBytes": {
                     "format": "int64",
                     "type": "integer"
-                }
-            }
-        },
-        "PathResponse": {
-            "description": "",
-            "id": "PathResponse",
-            "extends": "",
-            "required": [
-                "request",
-                "networkElementsInfo",
-                "detailedStatus",
-                "properties"
-            ],
-            "properties": {
-                "detailedStatus": {
-                    "description": "Detailed Status of the calculation of Path Trace with its inclusions",
-                    "$ref": "DetailedStatus"
                 },
-                "lastUpdate": {
-                    "description": "Last updated time",
+                "sourcePort": {
                     "type": "string"
                 },
-                "properties": {
-                    "description": "Properties for path trace",
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string"
-                    }
+                "inputInterface": {
+                    "type": "string"
                 },
-                "networkElements": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "NetworkElement"
-                    }
-                },
-                "networkElementsInfo": {
-                    "description": "Nodes travesed along a path, including source and destination",
-                    "type": "array",
-                    "items": {
-                        "$ref": "NetworkElementInfo"
-                    }
-                },
-                "request": {
-                    "description": "Describes the source and destination for a path trace",
-                    "$ref": "FlowAnalysis"
-                }
-            }
-        },
-        "InterfaceStatistics": {
-            "description": "",
-            "id": "InterfaceStatistics",
-            "extends": "",
-            "properties": {
-                "inputQueueFlushes": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "inputQueueMaxDepth": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "inputQueueCount": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "adminStatus": {
+                "outputInterface": {
                     "type": "string"
                 },
                 "refreshedAt": {
                     "format": "int64",
                     "type": "integer"
                 },
-                "inputPackets": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "outputDrop": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "inputRatebps": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "outputRatebps": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "inputQueueDrops": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "outputQueueDepth": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "outputQueueCount": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "outputPackets": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "operationalStatus": {
+                "ipv4DSCP": {
                     "type": "string"
+                },
+                "destPort": {
+                    "type": "string"
+                },
+                "rtpJitterMin": {
+                    "format": "int64",
+                    "type": "integer"
                 }
-            }
+            },
+            "extends": ""
         },
-        "QosClassMapStatistics": {
+        "CpuStatistics": {
             "description": "",
-            "id": "QosClassMapStatistics",
-            "extends": "",
+            "id": "CpuStatistics",
             "properties": {
-                "classMapName": {
-                    "type": "string"
-                },
-                "queueBandwidthbps": {
-                    "type": "string"
-                },
-                "numBytes": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "queueTotalDrops": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "queueDepth": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "numPackets": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "offeredRate": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "dropRate": {
-                    "format": "int64",
-                    "type": "integer"
+                "oneMinUsageInPercentage": {
+                    "format": "float",
+                    "type": "number"
                 },
                 "refreshedAt": {
                     "format": "int64",
                     "type": "integer"
                 },
-                "queueNoBufferDrops": {
-                    "format": "int64",
-                    "type": "integer"
+                "fiveSecsUsageInPercentage": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "fiveMinUsageInPercentage": {
+                    "format": "float",
+                    "type": "number"
                 }
-            }
+            },
+            "extends": ""
         },
-        "NetworkElementInfo": {
+        "InterfaceContainer": {
             "description": "",
-            "id": "NetworkElementInfo",
-            "extends": "",
-            "required": [
-                "role",
-                "ip",
-                "linkInformationSource",
-                "tunnels",
-                "egressInterface",
-                "ingressInterface",
-                "deviceStatistics",
-                "perfMonCollection",
-                "deviceStatsCollection",
-                "perfMonitorStatistics",
-                "name",
-                "id",
-                "type"
-            ],
+            "id": "InterfaceContainer",
             "properties": {
-                "perfMonCollectionFailureReason": {
-                    "type": "string"
-                },
-                "detailedStatus": {
-                    "$ref": "DetailedStatus"
-                },
-                "deviceStatsCollection": {
-                    "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
-                    "type": "string"
-                },
-                "ip": {
-                    "description": "Network Device IP",
-                    "type": "string"
-                },
-                "accuracyList": {
+                "virtualInterface": {
+                    "description": "A list of Virtual interface IDs on a device",
                     "type": "array",
                     "items": {
-                        "$ref": "Accuracy"
+                        "$ref": "Interface"
                     }
                 },
-                "egressInterface": {
-                    "description": "Egress interface of the network device",
-                    "$ref": "InterfaceContainer"
-                },
-                "perfMonitorStatistics": {
-                    "description": "perf mon statistics on the device for give flow",
-                    "$ref": "PerfMonitorStatistics"
-                },
-                "linkInformationSource": {
-                    "description": "The source of the link information to the next hop",
-                    "type": "string"
-                },
-                "perfMonCollection": {
-                    "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
-                    "type": "string"
-                },
-                "ingressInterface": {
-                    "description": "Ingress interface of the network device",
-                    "$ref": "InterfaceContainer"
-                },
-                "id": {
-                    "description": "Network Device ID",
-                    "type": "string"
-                },
-                "deviceStatsCollectionFailureReason": {
-                    "type": "string"
-                },
-                "tunnels": {
-                    "description": "Tunnels this network element is in",
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "deviceStatistics": {
-                    "description": "Device statistics",
-                    "$ref": "DeviceStatistics"
-                },
-                "role": {
-                    "description": "Role of device in network(can be access,core,distribution or border router)",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "Network Device Type(can be switch,router,wired host or wireless host)",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Network Device name",
-                    "type": "string"
+                "physicalInterface": {
+                    "description": "ID of Physical interface on a device",
+                    "$ref": "Interface"
                 }
-            }
+            },
+            "extends": ""
         },
-        "TaskIdResult": {
+        "FlowAnalysisRequestResultOutput": {
             "description": "",
-            "id": "TaskIdResult",
-            "extends": "",
+            "id": "FlowAnalysisRequestResultOutput",
             "properties": {
+                "response": {
+                    "$ref": "FlowAnalysisRequestResult"
+                },
                 "version": {
                     "type": "string"
-                },
-                "response": {
-                    "$ref": "TaskIdResponse"
                 }
-            }
-        },
-        "AclAnalysisResponse": {
-            "description": "",
-            "id": "AclAnalysisResponse",
-            "extends": "",
-            "properties": {
-                "result": {
-                    "type": "string"
-                },
-                "aclName": {
-                    "type": "string"
-                },
-                "matchingAces": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "AclAce"
-                    }
-                }
-            }
-        },
-        "TaskIdResponse": {
-            "description": "",
-            "id": "TaskIdResponse",
-            "extends": "",
-            "properties": {
-                "url": {
-                    "type": "string"
-                },
-                "taskId": {
-                    "$ref": "TaskId"
-                }
-            }
-        },
-        "AclAce": {
-            "description": "",
-            "id": "AclAce",
-            "extends": "",
-            "properties": {
-                "result": {
-                    "type": "string"
-                },
-                "ace": {
-                    "type": "string"
-                },
-                "matchingPorts": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "AclMatchingPorts"
-                    }
-                }
-            }
-        },
-        "Accuracy": {
-            "description": "",
-            "id": "Accuracy",
-            "extends": "",
-            "properties": {
-                "percent": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "reason": {
-                    "type": "string"
-                }
-            }
-        },
-        "NetworkElement": {
-            "description": "",
-            "id": "NetworkElement",
-            "extends": "",
-            "required": [
-                "role",
-                "ip",
-                "ingressPhysicalInterface",
-                "egressPhysicalInterface",
-                "linkInformationSource",
-                "tunnels",
-                "perfMonCollection",
-                "deviceStatsCollection",
-                "name",
-                "id",
-                "type"
-            ],
-            "properties": {
-                "ingressPhysicalInterface": {
-                    "description": "Igress physical interface of the network device",
-                    "$ref": "Interface"
-                },
-                "perfMonCollectionFailureReason": {
-                    "type": "string"
-                },
-                "deviceStatistics": {
-                    "$ref": "DeviceStatistics"
-                },
-                "type": {
-                    "description": "Network Device Type(can be switch,router,wired host or wireless host)",
-                    "type": "string"
-                },
-                "perfMonStatistics": {
-                    "$ref": "PerfMonitorStatistics"
-                },
-                "detailedStatus": {
-                    "$ref": "DetailedStatus"
-                },
-                "deviceStatsCollection": {
-                    "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
-                    "type": "string"
-                },
-                "ip": {
-                    "description": "Network Device IP",
-                    "type": "string"
-                },
-                "egressPhysicalInterface": {
-                    "description": "Egress physical interface of the network device",
-                    "$ref": "Interface"
-                },
-                "accuracyList": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Accuracy"
-                    }
-                },
-                "linkInformationSource": {
-                    "description": "The source of the link information to the next hop",
-                    "type": "string"
-                },
-                "perfMonCollection": {
-                    "description": "A status value from [ INPROGRESS, SUCCESS, FAILED ] ",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "Network Device ID",
-                    "type": "string"
-                },
-                "deviceStatsCollectionFailureReason": {
-                    "type": "string"
-                },
-                "egressVirtualInterface": {
-                    "description": "Egress virtual interface of the network device",
-                    "$ref": "Interface"
-                },
-                "ingressVirtualInterface": {
-                    "description": "Ingress virtual interface of the network device",
-                    "$ref": "Interface"
-                },
-                "role": {
-                    "description": "Role of device in network(can be access,core,distribution or border router)",
-                    "type": "string"
-                },
-                "tunnels": {
-                    "description": "Tunnels this network element is in",
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "name": {
-                    "description": "Network Device name",
-                    "type": "string"
-                }
-            }
+            },
+            "extends": ""
         },
         "FlowAnalysisListOutput": {
             "description": "",
             "id": "FlowAnalysisListOutput",
-            "extends": "",
             "properties": {
-                "version": {
-                    "type": "string"
-                },
                 "response": {
                     "type": "array",
                     "items": {
                         "$ref": "FlowAnalysis"
                     }
+                },
+                "version": {
+                    "type": "string"
                 }
-            }
+            },
+            "extends": ""
         },
-        "FlowAnalysisRequestResult": {
+        "AclMatchingPorts": {
             "description": "",
-            "id": "FlowAnalysisRequestResult",
-            "extends": "",
+            "id": "AclMatchingPorts",
             "properties": {
-                "flowAnalysisId": {
+                "protocol": {
                     "type": "string"
                 },
-                "url": {
-                    "type": "string"
-                },
-                "taskId": {
-                    "type": "string"
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "AclPortInfo"
+                    }
                 }
-            }
+            },
+            "extends": ""
+        },
+        "MemoryStatistics": {
+            "description": "",
+            "id": "MemoryStatistics",
+            "properties": {
+                "totalMemory": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "memoryUsage": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "refreshedAt": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "extends": ""
         }
-    },
-    "produces": [
-        "application/json"
-    ],
-    "resourcePath": "/flow-analysis",
-    "swaggerVersion": "1.2",
-    "apiVersion": "1.0",
-    "consumes": [
-        "application/json"
-    ]
+    }
 }

@@ -1,0 +1,699 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "models": {
+        "TaskIdResponse": {
+            "extends": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": ""
+        },
+        "SiteDeviceLinkDTO": {
+            "extends": "",
+            "id": "SiteDeviceLinkDTO",
+            "properties": {
+                "wanName": {
+                    "type": "string"
+                },
+                "serviceProvider": {
+                    "type": "string"
+                },
+                "downloadBW": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "interfaceName": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "wanCloudUuid": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "bandwidth": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "deviceUuid": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "WanLinkDTO": {
+            "extends": "",
+            "id": "WanLinkDTO",
+            "properties": {
+                "natAddress": {
+                    "type": "string"
+                },
+                "downloadBW": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "serviceProvider": {
+                    "type": "string"
+                },
+                "tunnelId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "wanCloudUuid": {
+                    "type": "string"
+                },
+                "uploadBW": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "interfaceName": {
+                    "type": "string"
+                },
+                "wanAddressSubnetMask": {
+                    "type": "string"
+                },
+                "nextHopAddress": {
+                    "type": "string"
+                },
+                "wanAddress": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "deviceUuid": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "SiteDeviceDTO": {
+            "extends": "",
+            "id": "SiteDeviceDTO",
+            "properties": {
+                "unclaimedDeviceId": {
+                    "type": "string"
+                },
+                "links": {
+                    "items": {
+                        "$ref": "SiteDeviceLinkDTO"
+                    },
+                    "type": "array"
+                },
+                "platformType": {
+                    "type": "string"
+                },
+                "deviceId": {
+                    "type": "string"
+                },
+                "serialNumber": {
+                    "type": "string"
+                },
+                "deviceValidationStatusDetail": {
+                    "type": "string"
+                },
+                "deviceType": {
+                    "enum": [
+                        "HUB",
+                        "SPOKE",
+                        "MC_HUB",
+                        "TRANSIT_HUB",
+                        "MC_TRANSIT_HUB"
+                    ],
+                    "type": "string"
+                },
+                "coexistenceLoopbackName": {
+                    "type": "string"
+                },
+                "discoveryType": {
+                    "type": "string"
+                },
+                "brownFieldDevice": {
+                    "type": "boolean"
+                },
+                "mcDevice": {
+                    "type": "boolean"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "deviceValidationStatus": {
+                    "enum": [
+                        "SUCCESS",
+                        "WARNING",
+                        "FAILURE"
+                    ],
+                    "type": "string"
+                },
+                "lanInterfaceName": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "coexistenceLoopbackIpAddress": {
+                    "type": "string"
+                },
+                "defaultGW": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": ""
+        },
+        "WanLinkDTOListResult": {
+            "extends": "",
+            "id": "WanLinkDTOListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "WanLinkDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "SiteDeviceResult": {
+            "extends": "",
+            "id": "SiteDeviceResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "SiteDeviceDTO"
+                }
+            },
+            "description": ""
+        },
+        "SiteDeviceListResult": {
+            "extends": "",
+            "id": "SiteDeviceListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "SiteDeviceDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "id": "TaskId",
+            "properties": {},
+            "description": ""
+        }
+    },
+    "apis": [
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to create/associate device to the site ",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "deviceDto",
+                            "allowMultiple": true,
+                            "items": {
+                                "$ref": "SiteDeviceDTO"
+                            },
+                            "required": false,
+                            "paramType": "body",
+                            "description": "deviceDto",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "create",
+                    "notes": "create",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "create",
+            "path": "/iwan/network-device"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "SiteDeviceListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get list of unclaimed IWAN Devices  ",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "state",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": true,
+                            "description": "State of device UNCLAIMED",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getUnclaimedDevice",
+                    "notes": "getUnclaimedDevice",
+                    "type": "SiteDeviceListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getUnclaimedDevice",
+            "path": "/iwan/network-device/"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Validate a device brownfield configuration",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "ipAddress",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "ipAddress",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "isExternalMasterController",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "isExternalMasterController",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "HUB",
+                            "name": "siteType",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "siteType",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "lanInterface",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "lanInterface",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "wanInterface",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "wanInterface",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "validateDeviceForBrownfieldConfiguration",
+                    "notes": "validateDeviceForBrownfieldConfiguration",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "validateDeviceForBrownfieldConfiguration",
+            "path": "/iwan/network-device/validate/{ipAddress}/{isExternalMasterController}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "WanLinkDTOListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Get the wan links connected to a specific device",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "deviceId",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "deviceUuid",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getDeviceWanLinks",
+                    "notes": "getDeviceWanLinks",
+                    "type": "WanLinkDTOListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getDeviceWanLinks",
+            "path": "/iwan/network-device/{deviceId}/wan-link"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to delete the device in the site ",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "deviceInstanceUuid",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "deviceInstanceUuid",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "delete",
+                    "notes": "delete",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "delete",
+            "path": "/iwan/network-device/{deviceInstanceUuid}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "SiteDeviceResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get the Device based on device instance UUID  ",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "deviceInstanceUuid",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "deviceInstanceUuid",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getDevice",
+                    "notes": "getDevice",
+                    "type": "SiteDeviceResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getDevice",
+            "path": "/iwan/network-device/{deviceInstanceUuid}"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/iwan/network-device"
+}

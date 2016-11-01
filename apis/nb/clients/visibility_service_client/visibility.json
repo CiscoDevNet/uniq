@@ -1,0 +1,281 @@
+{
+    "produces": [
+        "application/json"
+    ],
+    "models": {
+        "IwanPhysicalServiceProviderDTO": {
+            "extends": "",
+            "id": "IwanPhysicalServiceProviderDTO",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "vendor": {
+                    "type": "string"
+                },
+                "classModels": {
+                    "items": {
+                        "$ref": "IwanPhysicalServiceProviderClassModelDTO"
+                    },
+                    "type": "array"
+                },
+                "wanType": {
+                    "type": "string"
+                },
+                "classModelType": {
+                    "enum": [
+                        "THREE_CLASS",
+                        "FOUR_CLASS",
+                        "FIVE_CLASS",
+                        "SIX_CLASS",
+                        "EIGHT_CLASS"
+                    ],
+                    "type": "string"
+                },
+                "defaultModel": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": ""
+        },
+        "IwanPhysicalServiceProviderListResult": {
+            "extends": "",
+            "id": "IwanPhysicalServiceProviderListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "IwanPhysicalServiceProviderDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "IwanApplicationCommonlyUsedLevel": {
+            "extends": "",
+            "id": "IwanApplicationCommonlyUsedLevel",
+            "properties": {
+                "applicationCommonlyUsedLevel": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "description": ""
+        },
+        "IwanPhysicalServiceProviderClassModelDTO": {
+            "extends": "",
+            "id": "IwanPhysicalServiceProviderClassModelDTO",
+            "properties": {
+                "priority": {
+                    "type": "string"
+                },
+                "dscp": {
+                    "type": "string"
+                },
+                "sla": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "className": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "extends": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "id": "TaskId",
+            "properties": {},
+            "description": ""
+        }
+    },
+    "apis": [
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IwanApplicationCommonlyUsedLevel",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getApplicationCommonlyUsedLevel",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getApplicationCommonlyUsedLevel",
+                    "notes": "getApplicationCommonlyUsedLevel",
+                    "type": "IwanApplicationCommonlyUsedLevel",
+                    "method": "GET"
+                }
+            ],
+            "description": "getApplicationCommonlyUsedLevel",
+            "path": "/visibility/application/commonly-used-level"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IwanPhysicalServiceProviderListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getPhysicalServiceProviderList",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getPhysicalServiceProviderList",
+                    "notes": "getPhysicalServiceProviderList",
+                    "type": "IwanPhysicalServiceProviderListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getPhysicalServiceProviderList",
+            "path": "/visibility/iwan-physical-service-provider"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "createPhysicalServiceProvider",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "psp",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": false,
+                            "description": "psp",
+                            "type": "IwanPhysicalServiceProviderDTO"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "createPhysicalServiceProvider",
+                    "notes": "createPhysicalServiceProvider",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "createPhysicalServiceProvider",
+            "path": "/visibility/iwan-physical-service-provider"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/visibility"
+}

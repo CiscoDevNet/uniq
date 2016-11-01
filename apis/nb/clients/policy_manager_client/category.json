@@ -1,38 +1,43 @@
 {
+    "produces": [
+        "application/json"
+    ],
     "resourcePath": "/category",
+    "basePath": "/policy-manager-service",
+    "apiVersion": "1.0",
     "apis": [
         {
             "operations": [
                 {
-                    "notes": "Get all categories",
-                    "type": "CategoryListResult",
-                    "parameters": [],
+                    "produces": [
+                        "application/json"
+                    ],
                     "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "message": "This Request is OK",
                             "code": 200,
+                            "message": "This Request is OK",
                             "responseModel": "CategoryListResult"
                         },
                         {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
                         },
                         {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
                         },
                         {
-                            "message": "No Resource Found",
-                            "code": 404
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
-                    "deprecated": "false",
+                    "type": "CategoryListResult",
                     "summary": "Lists all categories",
                     "nickname": "getAllCategories",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [],
+                    "notes": "Get all categories"
                 }
             ],
             "description": "getAllCategories",
@@ -41,35 +46,35 @@
         {
             "operations": [
                 {
-                    "notes": "Get total count for categories",
-                    "type": "CountResult",
-                    "parameters": [],
+                    "produces": [
+                        "application/json"
+                    ],
                     "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "message": "This Request is OK",
                             "code": 200,
+                            "message": "This Request is OK",
                             "responseModel": "CountResult"
                         },
                         {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
                         },
                         {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
                         },
                         {
-                            "message": "No Resource Found",
-                            "code": 404
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
-                    "deprecated": "false",
+                    "type": "CountResult",
                     "summary": "Return total count of categories",
                     "nickname": "getCategoryCount",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [],
+                    "notes": "Get total count for categories"
                 }
             ],
             "description": "getCategoryCount",
@@ -78,45 +83,45 @@
         {
             "operations": [
                 {
-                    "notes": "Get category by id",
-                    "type": "CategoryResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "allowMultiple": false,
-                            "description": "id",
-                            "type": "string"
-                        }
+                    "produces": [
+                        "application/json"
                     ],
                     "method": "GET",
+                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "message": "This Request is OK",
                             "code": 200,
+                            "message": "This Request is OK",
                             "responseModel": "CategoryResult"
                         },
                         {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
                         },
                         {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
                         },
                         {
-                            "message": "No Resource Found",
-                            "code": 404
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ],
-                    "deprecated": "false",
+                    "type": "CategoryResult",
                     "summary": "Retrieves a category based on their id",
                     "nickname": "getCategoryById",
-                    "produces": [
-                        "application/json"
-                    ]
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "name": "id"
+                        }
+                    ],
+                    "notes": "Get category by id"
                 }
             ],
             "description": "getCategoryById",
@@ -124,73 +129,68 @@
         }
     ],
     "models": {
+        "CountResult": {
+            "properties": {
+                "response": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "CountResult",
+            "description": ""
+        },
         "CategoryDTO": {
-            "description": "",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Category Name"
+                }
+            },
+            "extends": "",
             "required": [
                 "name",
                 "id"
             ],
             "id": "CategoryDTO",
-            "properties": {
-                "name": {
-                    "description": "Category Name",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        },
-        "CategoryListResult": {
-            "description": "",
-            "id": "CategoryListResult",
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "items": {
-                        "$ref": "CategoryDTO"
-                    },
-                    "type": "array"
-                }
-            },
-            "extends": ""
+            "description": ""
         },
         "CategoryResult": {
-            "description": "",
-            "id": "CategoryResult",
             "properties": {
-                "version": {
-                    "type": "string"
-                },
                 "response": {
                     "$ref": "CategoryDTO"
-                }
-            },
-            "extends": ""
-        },
-        "CountResult": {
-            "description": "",
-            "id": "CountResult",
-            "properties": {
+                },
                 "version": {
                     "type": "string"
-                },
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
-            "extends": ""
+            "extends": "",
+            "id": "CategoryResult",
+            "description": ""
+        },
+        "CategoryListResult": {
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "CategoryDTO"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "CategoryListResult",
+            "description": ""
         }
     },
-    "swaggerVersion": "1.2",
-    "apiVersion": "1.0",
-    "produces": [
-        "application/json"
-    ],
-    "basePath": "/"
+    "swaggerVersion": "1.2"
 }

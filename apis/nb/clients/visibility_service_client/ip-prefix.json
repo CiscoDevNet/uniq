@@ -1,0 +1,681 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "models": {
+        "DCPrefixDTOResult": {
+            "extends": "",
+            "id": "DCPrefixDTOResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "DCPrefixDTO"
+                }
+            },
+            "description": ""
+        },
+        "DCPrefixDTO": {
+            "extends": "",
+            "id": "DCPrefixDTO",
+            "properties": {
+                "dataCenterNetworkIp": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "dataCenterNetworkLength": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "id": "TaskId",
+            "properties": {},
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "extends": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": ""
+        },
+        "DCPrefixDTOListResult": {
+            "extends": "",
+            "id": "DCPrefixDTOListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "DCPrefixDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": ""
+        }
+    },
+    "apis": [
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Creates ip-prefix(s) in site",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "dcPrefixDtos",
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "DCPrefixDTO"
+                            },
+                            "required": true,
+                            "paramType": "body",
+                            "description": "Prefix Object",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "create",
+                    "notes": "Create a list of ip-prefixes",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "create",
+            "path": "/ip-prefix"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Deletes ip-prefix(s) by id",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "ids",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": true,
+                            "description": "Prefix Object",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "delete",
+                    "notes": "Delete a list of ip-prefixes by id",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "delete",
+            "path": "/ip-prefix"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Updates prefix(s) in site",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "dcPrefixDtos",
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "DCPrefixDTO"
+                            },
+                            "required": true,
+                            "paramType": "body",
+                            "description": "Prefix Object",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "update",
+                    "notes": "Update a list of prefixes",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "update",
+            "path": "/ip-prefix"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "DCPrefixDTOListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Get list of ip-prefixes (Pagination)",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "limit",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "limit",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "offset",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "offset",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getAllPrefixes",
+                    "notes": "Get a list of ip-prefixes",
+                    "type": "DCPrefixDTOListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getAllPrefixes",
+            "path": "/ip-prefix"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "DCPrefixDTOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Get an ip-prefix by id",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "prefixId",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "prefixUuid",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getPrefixById",
+                    "notes": "Get an ip-prefix by id",
+                    "type": "DCPrefixDTOResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getPrefixById",
+            "path": "/ip-prefix/{prefixId}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Schedule deletion of ip-prefix(s) by id",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "ids",
+                            "allowMultiple": false,
+                            "paramType": "body",
+                            "required": true,
+                            "description": "Prefix Object",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scheduleTime",
+                            "allowMultiple": false,
+                            "format": "int64",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "Schedule Time",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "scheduleDelete",
+                    "notes": "Schedule deletion of a list of ip-prefixes by id",
+                    "type": "TaskIdResult",
+                    "method": "DELETE"
+                }
+            ],
+            "description": "scheduleDelete",
+            "path": "/ip-prefix/{scheduleTime}"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Schedule Creation of ip-prefix(s) in site",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "dcPrefixDtos",
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "DCPrefixDTO"
+                            },
+                            "required": true,
+                            "paramType": "body",
+                            "description": "Prefix Object",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scheduleTime",
+                            "allowMultiple": false,
+                            "format": "int64",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "Schedule Time",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "scheduleCreate",
+                    "notes": "Schedule creation of a list of ip-prefixes",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "scheduleCreate",
+            "path": "/ip-prefix/{scheduleTime}"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Schedule update of list of prefix(s) in site",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "dcPrefixDtos",
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "DCPrefixDTO"
+                            },
+                            "required": true,
+                            "paramType": "body",
+                            "description": "Prefix Object",
+                            "type": "array"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scheduleTime",
+                            "allowMultiple": false,
+                            "format": "int64",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "Schedule Time",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "scheduleUpdate",
+                    "notes": "Schedule update of a list of prefixes",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "scheduleUpdate",
+            "path": "/ip-prefix/{scheduleTime}"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/ip-prefix"
+}

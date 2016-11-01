@@ -1,0 +1,451 @@
+{
+    "apis": [
+        {
+            "path": "/shard/dcache/clear-shard-repository",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "clearShardOwnerships",
+                    "nickname": "clearShardOwnerships",
+                    "method": "POST",
+                    "notes": "This method is used to clear entire shard repository",
+                    "deprecated": "false",
+                    "parameters": [],
+                    "type": "SuccessResult"
+                }
+            ],
+            "description": "clearShardOwnerships"
+        },
+        {
+            "path": "/shard/dcache/service-instance",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "ServiceInstancesResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getServiceInstances",
+                    "nickname": "getServiceInstances",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to get all service instances registered in the system",
+                    "deprecated": "false",
+                    "parameters": [],
+                    "type": "ServiceInstancesResult"
+                }
+            ],
+            "description": "getServiceInstances"
+        },
+        {
+            "path": "/shard/dcache/service-instance/{serviceInstance}/shard-category",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "ShardCategoriesForServiceInstanceResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getShardCategoriesRegisteredForServiceInstance",
+                    "nickname": "getShardCategoriesRegisteredForServiceInstance",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to get all shard categories registered for a service instance in the system",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "serviceInstance",
+                            "name": "serviceInstance",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "ShardCategoriesForServiceInstanceResult"
+                }
+            ],
+            "description": "getShardCategoriesRegisteredForServiceInstance"
+        },
+        {
+            "path": "/shard/dcache/shard-category",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "ShardCategoriesResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getShardCategories",
+                    "nickname": "getShardCategories",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to get all shard categories registered in the system",
+                    "deprecated": "false",
+                    "parameters": [],
+                    "type": "ShardCategoriesResult"
+                }
+            ],
+            "description": "getShardCategories"
+        },
+        {
+            "path": "/shard/dcache/shard-category/{shardCategory}/service-instance",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "ServiceInstancesForShardCategoryResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getServiceInstancesRegisteredForShardCategory",
+                    "nickname": "getServiceInstancesRegisteredForShardCategory",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to get all service instances registered for a shard category in the system",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "shardCategory",
+                            "name": "shardCategory",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "ServiceInstancesForShardCategoryResult"
+                }
+            ],
+            "description": "getServiceInstancesRegisteredForShardCategory"
+        },
+        {
+            "path": "/shard/dcache/shard-category/{shardCategory}/service-instance/count",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "ServiceInstanceOwnershipCountResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getServiceInstanceCountsRegisteredForShardCategory",
+                    "nickname": "getServiceInstanceCountsRegisteredForShardCategory",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to get all service instance counts registered for a shard category in the system",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "shardCategory",
+                            "name": "shardCategory",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "ServiceInstanceOwnershipCountResult"
+                }
+            ],
+            "description": "getServiceInstanceCountsRegisteredForShardCategory"
+        },
+        {
+            "path": "/shard/dcache/shard-category/{shardCategory}/service-instance/{serviceInstance}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "KnownResourcesResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getKnownResourcesForShardCategoryOwnedByServiceInstance",
+                    "nickname": "getKnownResourcesForShardCategoryOwnedByServiceInstance",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to get all known resources registered for a service instance under a shard category in the system",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "shardCategory",
+                            "name": "shardCategory",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "required": true,
+                            "allowMultiple": false,
+                            "description": "serviceInstance",
+                            "name": "serviceInstance",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "KnownResourcesResult"
+                }
+            ],
+            "description": "getKnownResourcesForShardCategoryOwnedByServiceInstance"
+        }
+    ],
+    "resourcePath": "/shard/dcache",
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0",
+    "basePath": "/topology-service",
+    "swaggerVersion": "1.2",
+    "models": {
+        "ServiceInstancesResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "ServiceInstancesResult",
+            "description": ""
+        },
+        "ShardCategoriesForServiceInstanceResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "ShardCategoriesForServiceInstanceResult",
+            "description": ""
+        },
+        "ServiceInstancesForShardCategoryResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "ServiceInstancesForShardCategoryResult",
+            "description": ""
+        },
+        "ShardCategoriesResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "ShardCategoriesResult",
+            "description": ""
+        },
+        "ServiceInstanceOwnershipCountResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "ServiceInstanceOwnershipCountPairDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "ServiceInstanceOwnershipCountResult",
+            "description": ""
+        },
+        "ServiceInstanceOwnershipCountPairDTO": {
+            "properties": {
+                "serviceInstance": {
+                    "type": "string"
+                },
+                "ownershipCount": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "extends": "",
+            "id": "ServiceInstanceOwnershipCountPairDTO",
+            "description": ""
+        },
+        "SuccessResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "SuccessResult",
+            "description": ""
+        },
+        "KnownResourcesResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "KnownResourcesResult",
+            "description": ""
+        }
+    }
+}

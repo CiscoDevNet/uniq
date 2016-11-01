@@ -1,70 +1,389 @@
 {
-    "models": {
-        "TaskId": {
-            "id": "TaskId",
-            "description": "",
-            "properties": {},
-            "extends": ""
-        },
-        "AugmentedAuditResourceDTO": {
-            "id": "AugmentedAuditResourceDTO",
-            "description": "See: http://apic-em/wiki/Audit_Design",
-            "properties": {
-                "auditParentId": {
-                    "type": "string"
-                },
-                "auditParameters": {
-                    "type": "string"
-                },
-                "auditId": {
-                    "type": "string"
-                },
-                "deviceIP": {
-                    "type": "string"
-                },
-                "instanceUuid": {
-                    "description": "This field is deprecated. Use 'id' instead.",
-                    "type": "string"
-                },
-                "createdDateTime": {
-                    "$ref": "date-time"
-                },
-                "auditDescription": {
-                    "type": "string"
-                },
-                "hasChildren": {
-                    "type": "boolean"
-                },
-                "tag": {
-                    "type": "string"
-                },
-                "derivedParentId": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                },
-                "persistDateTime": {
-                    "$ref": "date-time"
-                },
-                "siteName": {
-                    "type": "string"
-                },
-                "auditRequestor": {
-                    "type": "string"
-                },
-                "hasParent": {
-                    "type": "boolean"
-                },
-                "deviceName": {
-                    "type": "string"
+    "apis": [
+        {
+            "path": "/audit",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "ListAuditResourceDTOResponse",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "ListAuditResourceDTOResponse",
+                    "summary": "Retrieve Audit by flexible search",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "This is the user who triggered the event",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "auditRequestor"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the number of records fetched",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "limit"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the offset used for pagination",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "offset"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the epoch start time from which audit records need to be fetched",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "auditRecordStartTime"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the epoch end time upto which audit records need to be fetched",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "auditRecordEndTime"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the device ip of the device",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "deviceIP"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the site name associated to the audit record",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "siteName"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the device name assoicated to the audit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "deviceName"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the applicaiton name that generated the audit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "applicationName"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the tag defined for audit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "tag"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the severity of the audit record",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "severity"
+                        }
+                    ],
+                    "method": "GET",
+                    "notes": "Free search on any atomic attributes passed as request parameter. <br/>For example: '/audit?auditRecordStartTime=10&auditRecordEndTime=1529152597971&auditRequestor=123a1&auditRequestor=some_other_value'. <br/>Request parameter is case sensitive, so '/audit?device<b>IP</b>=10.1.1.0' will search for deviceIP equals to 10.1.1.0. '/audit?device<b>ip</b>=10.1.1.0' will be ignored. <br/>Operation supports offset, limit: '/audit?limit=100&offset=40' will retrieve 100 records starts from position 40 <br/>Wildcards are supported using %25 as a wildcard, for example: '/audit?auditDescription=%25success%25' will retrieve all records matching success, successful, successive, etc.<br/>Request values are not case sensitive, so '/audit?auditRequestor=ADMIN' will retrieve all records with auditRequestor of 'admin', 'Admin', 'ADMIN', etc.",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getAuditWithFilter"
                 }
-            },
-            "extends": ""
+            ],
+            "description": "getAuditWithFilter"
         },
+        {
+            "path": "/audit/count",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "SuccessResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "SuccessResult",
+                    "summary": "Retrieve Count of number of records to be fetched by flexible search",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "This is the user who triggered the event",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "auditRequestor"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the epoch start time from which audit records need to be fetched",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "auditRecordStartTime"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the epoch end time upto which audit records need to be fetched",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "auditRecordEndTime"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the device ip of the device",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "deviceIP"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the site name associated to the audit record",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "siteName"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the device name assoicated to the audit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "deviceName"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the applicaiton name that generated the audit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "applicationName"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the tag defined for audit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "tag"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the severity of the audit record",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "severity"
+                        }
+                    ],
+                    "method": "GET",
+                    "notes": "Same parameters as search should be passed.. <br/>For example: '/audit/count?auditRecordStartTime=10&auditRecordEndTime=1529152597971&auditRequestor=123a1&auditRequestor=some_other_value'. <br/>Request parameter is case sensitive, so '/audit/count?device<b>IP</b>=10.1.1.0' will search for deviceIP equals to 10.1.1.0. '/audit?device<b>ip</b>=10.1.1.0' will be ignored. <br/>Wildcards are supported using %25 as a wildcard, for example: '/audit/count?auditDescription=%25success%25' will retrieve all records matching success, successful, successive, etc.<br/>Request values are not case sensitive, so '/audit/count?auditRequestor=ADMIN' will retrieve all records with auditRequestor of 'admin', 'Admin', 'ADMIN', etc.",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getAuditCountWithFilter"
+                }
+            ],
+            "description": "getAuditCountWithFilter"
+        },
+        {
+            "path": "/audit/download",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "summary": "Download Audit logs to a file. ",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "This is the user who triggered the event",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "auditRequestor"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the epoch start time from which audit records need to be fetched",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "auditRecordStartTime"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the epoch end time upto which audit records need to be fetched",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "auditRecordEndTime"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the device ip of the device",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "deviceIP"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the site name associated to the audit record",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "siteName"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the device name assoicated to the audit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "deviceName"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the applicaiton name that generated the audit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "applicationName"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the tag defined for audit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "tag"
+                        },
+                        {
+                            "type": "string",
+                            "description": "This is the severity of the audit record",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "name": "severity"
+                        }
+                    ],
+                    "method": "GET",
+                    "notes": "API returns a taskId that should be polled using task API to get the URL for downloading the file. <br/>For example: '/audit?auditRecordStartTime=10&auditRecordEndTime=1529152597971&auditRequestor=123a1&auditRequestor=some_other_value'. <br/>Request parameter is case sensitive, so '/audit?device<b>IP</b>=10.1.1.0' will search for deviceIP equals to 10.1.1.0. '/audit?device<b>ip</b>=10.1.1.0' will be ignored. <br/>Operation supports offset, limit: '/audit?limit=100&offset=40' will retrieve 100 records starts from position 40 <br/>Wildcards are supported using %25 as a wildcard, for example: '/audit?auditDescription=%25success%25' will retrieve all records matching success, successful, successive, etc.<br/>Request values are not case sensitive, so '/audit?auditRequestor=ADMIN' will retrieve all records with auditRequestor of 'admin', 'Admin', 'ADMIN', etc.",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "downloadAuditLogs"
+                }
+            ],
+            "description": "downloadAuditLogs"
+        }
+    ],
+    "apiVersion": "1.0",
+    "basePath": "/task-service",
+    "swaggerVersion": "1.2",
+    "produces": [
+        "application/json"
+    ],
+    "models": {
         "TaskIdResult": {
-            "id": "TaskIdResult",
-            "description": "",
             "properties": {
                 "response": {
                     "$ref": "TaskIdResponse"
@@ -73,11 +392,96 @@
                     "type": "string"
                 }
             },
+            "id": "TaskIdResult",
+            "description": "",
+            "extends": ""
+        },
+        "AugmentedAuditResourceDTO": {
+            "properties": {
+                "auditRequestor": {
+                    "type": "string"
+                },
+                "auditParentId": {
+                    "type": "string"
+                },
+                "createdDateTime": {
+                    "$ref": "date-time"
+                },
+                "derivedParentId": {
+                    "type": "string"
+                },
+                "applicationName": {
+                    "type": "string"
+                },
+                "auditParameters": {
+                    "$ref": "object"
+                },
+                "auditDescription": {
+                    "type": "string"
+                },
+                "deviceIP": {
+                    "type": "string"
+                },
+                "hasParent": {
+                    "type": "boolean"
+                },
+                "persistDateTime": {
+                    "$ref": "date-time"
+                },
+                "auditId": {
+                    "type": "string"
+                },
+                "instanceUuid": {
+                    "type": "string",
+                    "description": "This field is deprecated. Use 'id' instead."
+                },
+                "severity": {
+                    "type": "string"
+                },
+                "hasChildren": {
+                    "type": "boolean"
+                },
+                "siteName": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "deviceName": {
+                    "type": "string"
+                }
+            },
+            "id": "AugmentedAuditResourceDTO",
+            "description": "See: http://apic-em/wiki/Audit_Design",
+            "extends": ""
+        },
+        "TaskIdResponse": {
+            "properties": {
+                "taskId": {
+                    "$ref": "TaskId"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "id": "TaskIdResponse",
+            "description": "",
+            "extends": ""
+        },
+        "SuccessResult": {
+            "properties": {
+                "response": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "SuccessResult",
+            "description": "",
             "extends": ""
         },
         "ListAuditResourceDTOResponse": {
-            "id": "ListAuditResourceDTOResponse",
-            "description": "",
             "properties": {
                 "response": {
                     "type": "array",
@@ -89,103 +493,16 @@
                     "type": "string"
                 }
             },
+            "id": "ListAuditResourceDTOResponse",
+            "description": "",
             "extends": ""
         },
-        "TaskIdResponse": {
-            "id": "TaskIdResponse",
+        "TaskId": {
+            "properties": {},
+            "id": "TaskId",
             "description": "",
-            "properties": {
-                "url": {
-                    "type": "string"
-                },
-                "taskId": {
-                    "$ref": "TaskId"
-                }
-            },
             "extends": ""
         }
     },
-    "apis": [
-        {
-            "description": "getAuditWithFilter",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "getAuditWithFilter",
-                    "type": "ListAuditResourceDTOResponse",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "notes": "Free search on any atomic attributes passed as request parameter. <br/>For example: '/audit?auditRecordStartTime=10&auditRecordEndTime=1529152597971&auditRequestor=123a1&auditRequestor=some_other_value'. <br/>Request parameter is case sensitive, so '/audit?device<b>IP</b>=10.1.1.0' will search for deviceIP equals to 10.1.1.0. '/audit?device<b>ip</b>=10.1.1.0' will be ignored. <br/>Operation supports offset, limit: '/audit?limit=100&offset=40' will retrieve 100 records starts from position 40 <br/>Wildcards are supported using %25 as a wildcard, for example: '/audit?auditDescription=%25success%25' will retrieve all records matching success, successful, successive, etc.<br/>Request values are not case sensitive, so '/audit?auditRequestor=ADMIN' will retrieve all records with auditRequestor of 'admin', 'Admin', 'ADMIN', etc.",
-                    "summary": "Retrieve Audit by flexible search",
-                    "responseMessages": [
-                        {
-                            "responseModel": "ListAuditResourceDTOResponse",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/audit"
-        },
-        {
-            "description": "downloadAuditLogs",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "nickname": "downloadAuditLogs",
-                    "type": "TaskIdResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "notes": "Free search on any atomic attributes passed as request parameter. <br/>For example: '/audit?auditRecordStartTime=10&auditRecordEndTime=1529152597971&auditRequestor=123a1&auditRequestor=some_other_value'. <br/>Request parameter is case sensitive, so '/audit?device<b>IP</b>=10.1.1.0' will search for deviceIP equals to 10.1.1.0. '/audit?device<b>ip</b>=10.1.1.0' will be ignored. <br/>Operation supports offset, limit: '/audit?limit=100&offset=40' will retrieve 100 records starts from position 40 <br/>Wildcards are supported using %25 as a wildcard, for example: '/audit?auditDescription=%25success%25' will retrieve all records matching success, successful, successive, etc.<br/>Request values are not case sensitive, so '/audit?auditRequestor=ADMIN' will retrieve all records with auditRequestor of 'admin', 'Admin', 'ADMIN', etc.",
-                    "summary": "Download Audit logs in Syslog format",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ]
-                }
-            ],
-            "path": "/audit/downloadAuditLogs"
-        }
-    ],
-    "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
-    "basePath": "/",
-    "produces": [
-        "application/json"
-    ],
     "resourcePath": "/audit"
 }

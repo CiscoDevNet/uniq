@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 class CertificateBrief(object):
-
 
 
     def __init__(self):
@@ -27,98 +14,89 @@ class CertificateBrief(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
-            'issuer': 'str',
-
-
+            
             'commonName': 'str',
-
-
+            
+            
+            'issuer': 'str',
+            
+            
             'serialNumber': 'str',
-
-
-            'proxyEnabled': 'str',
-
-
-            'selfSigned': 'str',
-
-
+            
+            
             'gvSerialId': 'str',
-
-
+            
+            
+            'selfSigned': 'str',
+            
+            
+            'proxyEnabled': 'str',
+            
+            
             'expiry': 'str',
-
-
-            'filePath': 'str',
-
-
-            'lastCertFilePath': 'str',
-
-
-            'attributeInfo': 'object',
-
-
+            
+            
+            'attributeInfo': 'dict',
+            
+            
             'id': 'str'
-
+            
         }
 
         self.attributeMap = {
-
-            'issuer': 'issuer',
-
+            
             'commonName': 'commonName',
-
+            
+            'issuer': 'issuer',
+            
             'serialNumber': 'serialNumber',
-
-            'proxyEnabled': 'proxyEnabled',
-
-            'selfSigned': 'selfSigned',
-
+            
             'gvSerialId': 'gvSerialId',
-
+            
+            'selfSigned': 'selfSigned',
+            
+            'proxyEnabled': 'proxyEnabled',
+            
             'expiry': 'expiry',
-
-            'filePath': 'filePath',
-
-            'lastCertFilePath': 'lastCertFilePath',
-
+            
             'attributeInfo': 'attributeInfo',
-
+            
             'id': 'id'
+            
+        }       
 
-        }
-
-
-
-        self.issuer = None # str
-
-
+        
+        #Certificate common name
+        
         self.commonName = None # str
-
-
+        
+        #Certificate issuer
+        
+        self.issuer = None # str
+        
+        #Certificate serial-number
+        
         self.serialNumber = None # str
-
-
-        self.proxyEnabled = None # str
-
-
-        self.selfSigned = None # str
-
-
+        
+        #Grapevine certificate serial identification
+        
         self.gvSerialId = None # str
-
-
+        
+        #Set if this is a self-signed certificate
+        
+        self.selfSigned = None # str
+        
+        #Set if this is a proxy certificate
+        
+        self.proxyEnabled = None # str
+        
+        #Certificate expiry
+        
         self.expiry = None # str
-
-
-        self.filePath = None # str
-
-
-        self.lastCertFilePath = None # str
-
-
-        self.attributeInfo = None # object
-
-
+        
+        
+        self.attributeInfo = None # dict
+        
+        
         self.id = None # str
-
+        

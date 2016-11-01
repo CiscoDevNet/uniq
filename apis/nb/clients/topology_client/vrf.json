@@ -1,42 +1,13 @@
 {
-    "models": {
-        "VrfNamesResult": {
-            "id": "VrfNamesResult",
-            "description": "",
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "uniqueItems": true
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": ""
-        }
-    },
     "apis": [
         {
-            "description": "getVlanNames",
+            "path": "/topology/vrf/vrf-name",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "nickname": "getVlanNames",
-                    "type": "VrfNamesResult",
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "notes": "This method is used to obtain the list of vrf names",
-                    "summary": "getVrfNames",
                     "responseMessages": [
                         {
-                            "responseModel": "VrfNamesResult",
                             "code": 200,
+                            "responseModel": "VrfNamesResult",
                             "message": "This Request is OK"
                         },
                         {
@@ -51,17 +22,46 @@
                             "code": 404,
                             "message": "No Resource Found"
                         }
-                    ]
+                    ],
+                    "summary": "getVrfNames",
+                    "nickname": "getVrfNames",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "GET",
+                    "notes": "This method is used to obtain the list of vrf names",
+                    "deprecated": "false",
+                    "parameters": [],
+                    "type": "VrfNamesResult"
                 }
             ],
-            "path": "/topology/vrf/vrf-name"
+            "description": "getVrfNames"
         }
     ],
-    "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
-    "basePath": "/",
+    "resourcePath": "/topology/vrf/vrf-name",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/topology/vrf/vrf-name"
+    "apiVersion": "1.0",
+    "basePath": "/topology-service",
+    "swaggerVersion": "1.2",
+    "models": {
+        "VrfNamesResult": {
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "id": "VrfNamesResult",
+            "description": ""
+        }
+    }
 }

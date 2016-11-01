@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 class PerfMonitorStatistics(object):
-
 
 
     def __init__(self):
@@ -27,146 +14,154 @@ class PerfMonitorStatistics(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
+            
             'destIpAddress': 'str',
-
-
-            'sourcePort': 'str',
-
-
-            'destPort': 'str',
-
-
-            'sourceIpAddress': 'str',
-
-
+            
+            
+            'packetBytes': 'int',
+            
+            
+            'protocol': 'str',
+            
+            
             'byteRate': 'int',
-
-
+            
+            
             'inputInterface': 'str',
-
-
+            
+            
             'ipv4DSCP': 'str',
-
-
+            
+            
             'ipv4TTL': 'int',
-
-
+            
+            
             'outputInterface': 'str',
-
-
+            
+            
             'packetCount': 'int',
-
-
+            
+            
             'packetLoss': 'int',
-
-
+            
+            
             'packetLossPercentage': 'float',
-
-
+            
+            
             'refreshedAt': 'int',
-
-
+            
+            
             'rtpJitterMax': 'int',
-
-
+            
+            
             'rtpJitterMean': 'int',
-
-
+            
+            
             'rtpJitterMin': 'int',
-
-
-            'protocol': 'str'
-
+            
+            
+            'sourcePort': 'str',
+            
+            
+            'sourceIpAddress': 'str',
+            
+            
+            'destPort': 'str'
+            
         }
 
         self.attributeMap = {
-
+            
             'destIpAddress': 'destIpAddress',
-
-            'sourcePort': 'sourcePort',
-
-            'destPort': 'destPort',
-
-            'sourceIpAddress': 'sourceIpAddress',
-
+            
+            'packetBytes': 'packetBytes',
+            
+            'protocol': 'protocol',
+            
             'byteRate': 'byteRate',
-
+            
             'inputInterface': 'inputInterface',
-
+            
             'ipv4DSCP': 'ipv4DSCP',
-
+            
             'ipv4TTL': 'ipv4TTL',
-
+            
             'outputInterface': 'outputInterface',
-
+            
             'packetCount': 'packetCount',
-
+            
             'packetLoss': 'packetLoss',
-
+            
             'packetLossPercentage': 'packetLossPercentage',
-
+            
             'refreshedAt': 'refreshedAt',
-
+            
             'rtpJitterMax': 'rtpJitterMax',
-
+            
             'rtpJitterMean': 'rtpJitterMean',
-
+            
             'rtpJitterMin': 'rtpJitterMin',
+            
+            'sourcePort': 'sourcePort',
+            
+            'sourceIpAddress': 'sourceIpAddress',
+            
+            'destPort': 'destPort'
+            
+        }       
 
-            'protocol': 'protocol'
-
-        }
-
-
-
+        
+        
         self.destIpAddress = None # str
-
-
-        self.sourcePort = None # str
-
-
-        self.destPort = None # str
-
-
-        self.sourceIpAddress = None # str
-
-
-        self.byteRate = None # int
-
-
-        self.inputInterface = None # str
-
-
-        self.ipv4DSCP = None # str
-
-
-        self.ipv4TTL = None # int
-
-
-        self.outputInterface = None # str
-
-
-        self.packetCount = None # int
-
-
-        self.packetLoss = None # int
-
-
-        self.packetLossPercentage = None # float
-
-
-        self.refreshedAt = None # int
-
-
-        self.rtpJitterMax = None # int
-
-
-        self.rtpJitterMean = None # int
-
-
-        self.rtpJitterMin = None # int
-
-
+        
+        
+        self.packetBytes = None # int
+        
+        
         self.protocol = None # str
-
+        
+        
+        self.byteRate = None # int
+        
+        
+        self.inputInterface = None # str
+        
+        
+        self.ipv4DSCP = None # str
+        
+        
+        self.ipv4TTL = None # int
+        
+        
+        self.outputInterface = None # str
+        
+        
+        self.packetCount = None # int
+        
+        
+        self.packetLoss = None # int
+        
+        
+        self.packetLossPercentage = None # float
+        
+        
+        self.refreshedAt = None # int
+        
+        
+        self.rtpJitterMax = None # int
+        
+        
+        self.rtpJitterMean = None # int
+        
+        
+        self.rtpJitterMin = None # int
+        
+        
+        self.sourcePort = None # str
+        
+        
+        self.sourceIpAddress = None # str
+        
+        
+        self.destPort = None # str
+        

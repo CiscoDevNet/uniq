@@ -1,0 +1,2472 @@
+{
+    "consumes": [
+        "application/octet-stream"
+    ],
+    "produces": [
+        "application/json",
+        "application/octet-stream"
+    ],
+    "models": {
+        "HubSiteDTO": {
+            "extends": "",
+            "id": "HubSiteDTO",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "lanRoutingQualifier": {
+                    "type": "string"
+                },
+                "hubSiteWanDTOs": {
+                    "items": {
+                        "$ref": "HubSiteWanDTO"
+                    },
+                    "type": "array"
+                },
+                "siteType": {
+                    "enum": [
+                        "HUB",
+                        "BRANCH",
+                        "TRANSIT_HUB"
+                    ],
+                    "type": "string"
+                },
+                "lanRoutingProtocol": {
+                    "type": "string"
+                },
+                "dcPrefixDTOs": {
+                    "items": {
+                        "$ref": "DCPrefixDTO"
+                    },
+                    "type": "array"
+                },
+                "apicSiteId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "errorHandleCondition": {
+                    "type": "string"
+                },
+                "popId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "taskId": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "IwanSpokeWanBandwidthListResult": {
+            "extends": "",
+            "id": "IwanSpokeWanBandwidthListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "IwanSpokeWanBandwidthDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "SiteDTOResult": {
+            "extends": "",
+            "id": "SiteDTOResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "SiteDTO"
+                }
+            },
+            "description": ""
+        },
+        "IPPoolAllocationSuggestionDTO": {
+            "extends": "",
+            "id": "IPPoolAllocationSuggestionDTO",
+            "properties": {
+                "genericPoolSubnetPrefix": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "vlanSingleSubnetPrefix": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "totalNumberOfVlanIPs": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "description": ""
+        },
+        "NetworkWideSettingsDTO": {
+            "extends": "",
+            "id": "NetworkWideSettingsDTO",
+            "properties": {
+                "snmp": {
+                    "$ref": "SNMPSettingsDTO"
+                },
+                "dhcp": {
+                    "$ref": "DHCPServerSettingsDTO"
+                },
+                "ntp": {
+                    "$ref": "NTPSettingsDTO"
+                },
+                "configurationType": {
+                    "type": "string"
+                },
+                "dns": {
+                    "$ref": "DNSSettingsDTO"
+                },
+                "ipAddressPoolWrapperDTO": {
+                    "$ref": "IpAddressPoolWrapperDTO"
+                },
+                "errorHandleCondition": {
+                    "type": "string"
+                },
+                "ldap": {
+                    "$ref": "LDAPSettingsDTO"
+                },
+                "ipPoolGlobalDTO": {
+                    "$ref": "IpAddressGlobalDTO"
+                },
+                "systemSettingsDTO": {
+                    "$ref": "SystemSettingsDTO"
+                },
+                "syslog": {
+                    "items": {
+                        "$ref": "SyslogSettingsDTO"
+                    },
+                    "type": "array"
+                },
+                "netflow": {
+                    "$ref": "NetflowSettingsDTO"
+                },
+                "aaa": {
+                    "$ref": "AAASettingsDTO"
+                },
+                "hubSiteDTO": {
+                    "items": {
+                        "$ref": "HubSiteDTO"
+                    },
+                    "type": "array"
+                },
+                "certifiedIOSRelease": {
+                    "items": {
+                        "$ref": "CertifiedImageDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "IWANSiteNameDTO": {
+            "extends": "",
+            "id": "IWANSiteNameDTO",
+            "properties": {
+                "siteName": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "UnclaimedDeviceDTO": {
+            "extends": "",
+            "id": "UnclaimedDeviceDTO",
+            "properties": {
+                "siteLocation": {
+                    "type": "string"
+                },
+                "longitude": {
+                    "type": "string"
+                },
+                "siteName": {
+                    "type": "string"
+                },
+                "siteDevice": {
+                    "$ref": "SiteDeviceDTO"
+                },
+                "latitude": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "IPPoolAllocationListResult": {
+            "extends": "",
+            "id": "IPPoolAllocationListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "IPPoolAllocationDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "IpAddressGlobalDTO": {
+            "extends": "",
+            "id": "IpAddressGlobalDTO",
+            "properties": {
+                "numberOfSites": {
+                    "type": "string"
+                },
+                "numberOfSPs": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "DCRoutingInfoDTO": {
+            "extends": "",
+            "id": "DCRoutingInfoDTO",
+            "properties": {
+                "managementIps": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "dcPrefixDTOs": {
+                    "items": {
+                        "$ref": "DCPrefixDTO"
+                    },
+                    "type": "array"
+                },
+                "asProtocolDTOs": {
+                    "items": {
+                        "$ref": "ASProtocolDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "HubSiteWanDTO": {
+            "extends": "",
+            "id": "HubSiteWanDTO",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "vspWanLebel": {
+                    "type": "string"
+                },
+                "downloadBW": {
+                    "type": "string"
+                },
+                "wanLabel": {
+                    "type": "string"
+                },
+                "bandwidth": {
+                    "type": "string"
+                },
+                "geoLocation": {
+                    "type": "string"
+                },
+                "deviceType": {
+                    "enum": [
+                        "HUB",
+                        "SPOKE",
+                        "MC_HUB",
+                        "TRANSIT_HUB",
+                        "MC_TRANSIT_HUB"
+                    ],
+                    "type": "string"
+                },
+                "wanType": {
+                    "type": "string"
+                },
+                "wanIp": {
+                    "type": "string"
+                },
+                "wanInterfaceName": {
+                    "type": "string"
+                },
+                "coexistenceLoopbackInterfaceName": {
+                    "type": "string"
+                },
+                "wanCloud": {
+                    "$ref": "WanCloudDTO"
+                },
+                "dhcpEnabled": {
+                    "type": "boolean"
+                },
+                "vspWanType": {
+                    "type": "string"
+                },
+                "serviceProvider": {
+                    "type": "string"
+                },
+                "deviceId": {
+                    "type": "string"
+                },
+                "vspEnabled": {
+                    "type": "boolean"
+                },
+                "pathId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "managementIpAddress": {
+                    "type": "string"
+                },
+                "coexistenceLoopbackInterfaceIpAddress": {
+                    "type": "string"
+                },
+                "lanInterfaceName": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "mcDevice": {
+                    "type": "boolean"
+                },
+                "natIp": {
+                    "type": "string"
+                },
+                "capacity": {
+                    "type": "string"
+                },
+                "defaultGW": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "SiteDeviceDTO": {
+            "extends": "",
+            "id": "SiteDeviceDTO",
+            "properties": {
+                "unclaimedDeviceId": {
+                    "type": "string"
+                },
+                "deviceValidationStatusDetail": {
+                    "type": "string"
+                },
+                "platformType": {
+                    "type": "string"
+                },
+                "deviceId": {
+                    "type": "string"
+                },
+                "serialNumber": {
+                    "type": "string"
+                },
+                "links": {
+                    "items": {
+                        "$ref": "SiteDeviceLinkDTO"
+                    },
+                    "type": "array"
+                },
+                "deviceType": {
+                    "enum": [
+                        "HUB",
+                        "SPOKE",
+                        "MC_HUB",
+                        "TRANSIT_HUB",
+                        "MC_TRANSIT_HUB"
+                    ],
+                    "type": "string"
+                },
+                "coexistenceLoopbackName": {
+                    "type": "string"
+                },
+                "discoveryType": {
+                    "type": "string"
+                },
+                "brownFieldDevice": {
+                    "type": "boolean"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "defaultGW": {
+                    "type": "string"
+                },
+                "deviceValidationStatus": {
+                    "enum": [
+                        "SUCCESS",
+                        "WARNING",
+                        "FAILURE"
+                    ],
+                    "type": "string"
+                },
+                "lanInterfaceName": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "mcDevice": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "coexistenceLoopbackIpAddress": {
+                    "type": "string"
+                },
+                "hostName": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "SystemSettingsDTO": {
+            "extends": "",
+            "id": "SystemSettingsDTO",
+            "properties": {
+                "snmp": {
+                    "$ref": "SNMPSettingsDTO"
+                },
+                "dhcp": {
+                    "$ref": "DHCPServerSettingsDTO"
+                },
+                "ntp": {
+                    "$ref": "NTPSettingsDTO"
+                },
+                "syslog": {
+                    "items": {
+                        "$ref": "SyslogSettingsDTO"
+                    },
+                    "type": "array"
+                },
+                "netflow": {
+                    "$ref": "NetflowSettingsDTO"
+                },
+                "dns": {
+                    "$ref": "DNSSettingsDTO"
+                },
+                "aaa": {
+                    "$ref": "AAASettingsDTO"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "ldap": {
+                    "$ref": "LDAPSettingsDTO"
+                },
+                "certifiedIOSRelease": {
+                    "items": {
+                        "$ref": "CertifiedImageDTO"
+                    },
+                    "uniqueItems": true,
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "ASProtocolDTO": {
+            "extends": "",
+            "id": "ASProtocolDTO",
+            "properties": {
+                "protocolName": {
+                    "type": "string"
+                },
+                "asNumber": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "NetworkWideSettingsResult": {
+            "extends": "",
+            "id": "NetworkWideSettingsResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "NetworkWideSettingsDTO"
+                }
+            },
+            "description": ""
+        },
+        "DCRoutingInfoDTOResult": {
+            "extends": "",
+            "id": "DCRoutingInfoDTOResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "DCRoutingInfoDTO"
+                }
+            },
+            "description": ""
+        },
+        "WanCloudDTO": {
+            "extends": "",
+            "id": "WanCloudDTO",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "meterType": {
+                    "type": "string"
+                },
+                "wanType": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "DHCPServerSettingsDTO": {
+            "extends": "",
+            "id": "DHCPServerSettingsDTO",
+            "properties": {
+                "ipAddress": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "Void": {
+            "extends": "",
+            "id": "Void",
+            "properties": {},
+            "description": ""
+        },
+        "UnclaimedDeviceListResult": {
+            "extends": "",
+            "id": "UnclaimedDeviceListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "UnclaimedDeviceDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "IWANSiteNamesDTOResult": {
+            "extends": "",
+            "id": "IWANSiteNamesDTOResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "IWANSiteNameDTO"
+                    },
+                    "uniqueItems": true,
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "SyslogSettingsDTO": {
+            "extends": "",
+            "id": "SyslogSettingsDTO",
+            "properties": {
+                "serverIp": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "extends": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": ""
+        },
+        "SiteDeviceLinkDTO": {
+            "extends": "",
+            "id": "SiteDeviceLinkDTO",
+            "properties": {
+                "wanName": {
+                    "type": "string"
+                },
+                "deviceUuid": {
+                    "type": "string"
+                },
+                "downloadBW": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "serviceProvider": {
+                    "type": "string"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "wanCloudUuid": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "bandwidth": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "interfaceName": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "IWANTaggedDevicesResult": {
+            "extends": "",
+            "id": "IWANTaggedDevicesResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "SNMPSettingsDTO": {
+            "extends": "",
+            "id": "SNMPSettingsDTO",
+            "properties": {
+                "authPwd": {
+                    "type": "string"
+                },
+                "privacyPwd": {
+                    "type": "string"
+                },
+                "retry": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "readCommunity": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "trapReflectionDestIp": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "type": "string"
+                },
+                "authType": {
+                    "type": "string"
+                },
+                "mode": {
+                    "type": "string"
+                },
+                "writeCommunity": {
+                    "type": "string"
+                },
+                "privacyType": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "IwanSpokeWanBandwidthDTO": {
+            "extends": "",
+            "id": "IwanSpokeWanBandwidthDTO",
+            "properties": {
+                "bandwidth": {
+                    "format": "float",
+                    "type": "number"
+                }
+            },
+            "description": ""
+        },
+        "NTPSettingsDTO": {
+            "extends": "",
+            "id": "NTPSettingsDTO",
+            "properties": {
+                "serverIp": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "CertifiedImageDTO": {
+            "extends": "",
+            "id": "CertifiedImageDTO",
+            "properties": {
+                "imageId": {
+                    "type": "string"
+                },
+                "platform": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "IPPoolAllocationDTO": {
+            "extends": "",
+            "id": "IPPoolAllocationDTO",
+            "properties": {
+                "deviceId": {
+                    "type": "string"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "deviceName": {
+                    "type": "string"
+                },
+                "ipSubnet": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "networkFeature": {
+                    "type": "string"
+                },
+                "siteName": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "GenericIpAddressPoolDTO": {
+            "extends": "",
+            "id": "GenericIpAddressPoolDTO",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "usagePercentage": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "addressPoolType": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "IPPoolAllocationSuggestionResult": {
+            "extends": "",
+            "id": "IPPoolAllocationSuggestionResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "IPPoolAllocationSuggestionDTO"
+                }
+            },
+            "description": ""
+        },
+        "IpAddressPoolWrapperDTO": {
+            "extends": "",
+            "id": "IpAddressPoolWrapperDTO",
+            "properties": {
+                "skipOverlapCheck": {
+                    "type": "boolean"
+                },
+                "siteSpecificPools": {
+                    "items": {
+                        "$ref": "SiteIPAddressPoolDTO"
+                    },
+                    "type": "array"
+                },
+                "genericPools": {
+                    "items": {
+                        "$ref": "GenericIpAddressPoolDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "AAASettingsDTO": {
+            "extends": "",
+            "id": "AAASettingsDTO",
+            "properties": {
+                "ipAddress": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "SiteDTO": {
+            "extends": "",
+            "id": "SiteDTO",
+            "properties": {
+                "lanRoutingQualifier": {
+                    "type": "string"
+                },
+                "devices": {
+                    "items": {
+                        "$ref": "SiteDeviceDTO"
+                    },
+                    "type": "array"
+                },
+                "vlans": {
+                    "items": {
+                        "$ref": "SiteVLANDTO"
+                    },
+                    "type": "array"
+                },
+                "preferredPopName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "errorHandleCondition": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "siteConfigurationType": {
+                    "enum": [
+                        "SINGLE",
+                        "DUAL"
+                    ],
+                    "type": "string"
+                },
+                "brownFieldSite": {
+                    "type": "boolean"
+                },
+                "lanRoutingProtocol": {
+                    "type": "string"
+                },
+                "layer2Site": {
+                    "type": "boolean"
+                },
+                "apicSiteIdentifier": {
+                    "type": "string"
+                },
+                "siteType": {
+                    "enum": [
+                        "HUB",
+                        "BRANCH",
+                        "TRANSIT_HUB"
+                    ],
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "NetflowSettingsDTO": {
+            "extends": "",
+            "id": "NetflowSettingsDTO",
+            "properties": {
+                "port": {
+                    "type": "string"
+                },
+                "reflectionIp": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "WANLabelsDTOResult": {
+            "extends": "",
+            "id": "WANLabelsDTOResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "WANLabelDTO"
+                    },
+                    "uniqueItems": true,
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "SiteVLANDTO": {
+            "extends": "",
+            "id": "SiteVLANDTO",
+            "properties": {
+                "numberOfIPs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "vlanType": {
+                    "type": "string"
+                },
+                "dhcpEnabled": {
+                    "type": "boolean"
+                },
+                "vlanId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "dhcpMask": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "string"
+                },
+                "dhcpIp": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "SiteIPAddressPoolDTO": {
+            "extends": "",
+            "id": "SiteIPAddressPoolDTO",
+            "properties": {
+                "deviceSerialNumber": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "siteName": {
+                    "type": "string"
+                },
+                "vlanType": {
+                    "type": "string"
+                },
+                "layer3Site": {
+                    "type": "boolean"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "string"
+                },
+                "isBrownFieldSite": {
+                    "type": "boolean"
+                },
+                "ipAddressType": {
+                    "type": "string"
+                },
+                "vlanId": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "id": "TaskId",
+            "properties": {},
+            "description": ""
+        },
+        "InterfaceInfoDTOResult": {
+            "extends": "",
+            "id": "InterfaceInfoDTOResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "InterfaceInfoDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "LDAPSettingsDTO": {
+            "extends": "",
+            "id": "LDAPSettingsDTO",
+            "properties": {
+                "ldapServerUrl": {
+                    "type": "string"
+                },
+                "groupAttribute": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "securityPrincipal": {
+                    "type": "string"
+                },
+                "securityAuthentication": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "WANLabelDTO": {
+            "extends": "",
+            "id": "WANLabelDTO",
+            "properties": {
+                "wanLabel": {
+                    "type": "string"
+                },
+                "wanType": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "InterfaceInfoDTO": {
+            "extends": "",
+            "id": "InterfaceInfoDTO",
+            "properties": {
+                "networkAddress": {
+                    "type": "string"
+                },
+                "subnetMask": {
+                    "type": "string"
+                },
+                "trunkPort": {
+                    "type": "boolean"
+                },
+                "switchPort": {
+                    "type": "boolean"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "nextHop": {
+                    "type": "string"
+                },
+                "interfaceName": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "DNSSettingsDTO": {
+            "extends": "",
+            "id": "DNSSettingsDTO",
+            "properties": {
+                "ipAddress": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "secondaryIpAddress": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": ""
+        },
+        "SiteVLANDTOResult": {
+            "extends": "",
+            "id": "SiteVLANDTOResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "$ref": "SiteVLANDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": ""
+        },
+        "DCPrefixDTO": {
+            "extends": "",
+            "id": "DCPrefixDTO",
+            "properties": {
+                "dataCenterNetworkIp": {
+                    "type": "string"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "dataCenterNetworkLength": {
+                    "type": "string"
+                }
+            },
+            "description": ""
+        }
+    },
+    "apis": [
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Adds the device to the site on click of ignore of config validation errors",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "ipAddress",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "ipAddress",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "siteName",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "siteName",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "addDeviceToSiteOnIgnoreValidation",
+                    "notes": "addDeviceToSiteOnIgnoreValidation",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "addDeviceToSiteOnIgnoreValidation",
+            "path": "/iwan/add-device-on-ignoring-config-warnings/{ipAddress}/{siteName}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Validates a device's credentials and adds the device to the site",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "ipAddress",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "ipAddress",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "isExternalMasterController",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "isExternalMasterController",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "siteName",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": false,
+                            "description": "Site Name",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "addDeviceToSite",
+                    "notes": "addDeviceToSite",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "addDeviceToSite",
+            "path": "/iwan/add-device/{ipAddress}/{isExternalMasterController}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "boolean",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Check if lock is acquired for given workflow",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "workflowName",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "workflowName",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "isLockAcquired",
+                    "notes": "isLockAcquired",
+                    "type": "boolean",
+                    "method": "GET"
+                }
+            ],
+            "description": "isLockAcquired",
+            "path": "/iwan/check-lock/{workflowName}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getIPPoolAllocationForDownload",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getIPPoolAllocationForDownload",
+                    "notes": "getIPPoolAllocationForDownload",
+                    "type": "void",
+                    "method": "GET"
+                }
+            ],
+            "description": "getIPPoolAllocationForDownload",
+            "path": "/iwan/export-dhcp-addr-pools"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "InterfaceInfoDTOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get the Interface Information",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "deviceIP",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "deviceIP",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getInterfaceInfo",
+                    "notes": "getInterfaceInfo",
+                    "type": "InterfaceInfoDTOResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getInterfaceInfo",
+            "path": "/iwan/interface-info/{deviceIP}"
+        },
+        {
+            "operations": [
+                {
+                    "consumes": [
+                        "application/octet-stream"
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "Array",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get CSV file with IP address allocation details for the network",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "Accept",
+                            "allowMultiple": true,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "accept",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/octet-stream"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "exportIPPoolAllocationForNetwork",
+                    "notes": "exportIPPoolAllocationForNetwork",
+                    "items": {
+                        "format": "byte",
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "method": "GET"
+                }
+            ],
+            "description": "exportIPPoolAllocationForNetwork",
+            "path": "/iwan/ippool-allocation"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IPPoolAllocationListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get IP address allocation details for the network",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getIPPoolAllocationForNetwork",
+                    "notes": "getIPPoolAllocationForNetwork",
+                    "type": "IPPoolAllocationListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getIPPoolAllocationForNetwork",
+            "path": "/iwan/ippool-allocation"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IPPoolAllocationSuggestionResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get the suggestion for the subnet allocation for Overlay/Loopback and VLAN",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "numberOfSites",
+                            "allowMultiple": false,
+                            "format": "int32",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "numberOfSites",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "numberOfSPs",
+                            "allowMultiple": false,
+                            "format": "int32",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "numberOfSPs",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "numberOfIPsPerVLAN",
+                            "allowMultiple": false,
+                            "format": "int32",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "numberOfIPsPerVLAN",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "numberOfVLANs",
+                            "allowMultiple": false,
+                            "format": "int32",
+                            "required": true,
+                            "paramType": "path",
+                            "description": "numberOfVLANs",
+                            "type": "integer"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getIppoolAllocationSuggestion",
+                    "notes": "getIppoolAllocationSuggestion",
+                    "type": "IPPoolAllocationSuggestionResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getIppoolAllocationSuggestion",
+            "path": "/iwan/ippool-allocation-suggestion/{numberOfSites}/{numberOfSPs}/{numberOfIPsPerVLAN}/{numberOfVLANs}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IPPoolAllocationListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get IP address allocation details for a site",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "siteId",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "siteId",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getIPPoolAllocationForSite",
+                    "notes": "getIPPoolAllocationForSite",
+                    "type": "IPPoolAllocationListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getIPPoolAllocationForSite",
+            "path": "/iwan/ippool-allocation/{siteId}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IWANSiteNamesDTOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get the List of IWAN Configured Site Names",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getIWANSiteNames",
+                    "notes": "getIWANSiteNames",
+                    "type": "IWANSiteNamesDTOResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getIWANSiteNames",
+            "path": "/iwan/iwan-site-names"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "NetworkWideSettingsResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get the network wide settings",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getNetworkWideSettings",
+                    "notes": "getNetworkWideSettings",
+                    "type": "NetworkWideSettingsResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getNetworkWideSettings",
+            "path": "/iwan/network-wide-settings"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Recover's site from failure's",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "apicSiteId",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "apicSiteId",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "username",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "requestorUsername",
+                            "type": "string"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "siteRecovery",
+                    "notes": "siteRecovery",
+                    "type": "TaskIdResult",
+                    "method": "POST"
+                }
+            ],
+            "description": "siteRecovery",
+            "path": "/iwan/recovery/{apicSiteId}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "DCRoutingInfoDTOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to Get DC Prefix and AS number for site using managementIps",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "managementIps",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "required": true,
+                            "description": "managementIps",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getSiteRoutingInfo",
+                    "notes": "getSiteRoutingInfo",
+                    "type": "DCRoutingInfoDTOResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getSiteRoutingInfo",
+            "path": "/iwan/routing-info"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "DCRoutingInfoDTOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to Get DC Prefix and AS number for site using sitename",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "siteName",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "siteName",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getSiteDCPrefix",
+                    "notes": "getSiteDCPrefix",
+                    "type": "DCRoutingInfoDTOResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getSiteDCPrefix",
+            "path": "/iwan/routing-info/{siteName}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IwanSpokeWanBandwidthListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Gets the list of supported bandwidth values for a spoke.",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getSpokeBandwidthList",
+                    "notes": "getSpokeBandwidthList",
+                    "type": "IwanSpokeWanBandwidthListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getSpokeBandwidthList",
+            "path": "/iwan/site-bandwidths"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "string",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Check if Configuration is changed OOB for all Sites",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getAllSitesConfigStatus",
+                    "notes": "getAllSitesConfigStatus",
+                    "type": "string",
+                    "method": "GET"
+                }
+            ],
+            "description": "getAllSitesConfigStatus",
+            "path": "/iwan/site-cfg-status"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "string",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Check if Site Configuration is changed OOB for a given Site",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "siteName",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "siteName",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getSiteConfigStatus",
+                    "notes": "getSiteConfigStatus",
+                    "type": "string",
+                    "method": "GET"
+                }
+            ],
+            "description": "getSiteConfigStatus",
+            "path": "/iwan/site-cfg-status/{siteName}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "SiteDTOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to Get Site Device Data",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "siteName",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "siteName",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getSiteProvisionSettings",
+                    "notes": "getSiteProvisionSettings",
+                    "type": "SiteDTOResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getSiteProvisionSettings",
+            "path": "/iwan/site-provision/{siteName}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "SiteVLANDTOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get the List of VLAN Data for a particular spoke Site",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "serialNumbers",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "serialNumbers",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getSiteVLANData",
+                    "notes": "getSiteVLANData",
+                    "type": "SiteVLANDTOResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getSiteVLANData",
+            "path": "/iwan/site-vlan-data/{serialNumbers}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "IWANTaggedDevicesResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "getIwanTaggedDevices",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getIwanTaggedDevices",
+                    "notes": "getIwanTaggedDevices",
+                    "type": "IWANTaggedDevicesResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getIwanTaggedDevices",
+            "path": "/iwan/tagged-devices"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "UnclaimedDeviceListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get unclaimed devices",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getUnclaimedDevices",
+                    "notes": "getUnclaimedDevices",
+                    "type": "UnclaimedDeviceListResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getUnclaimedDevices",
+            "path": "/iwan/unclaimed-devices"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "Validates a device's credentials and adds the device to the hub site",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "ipAddress",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "required": true,
+                            "description": "ipAddress",
+                            "type": "string"
+                        },
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "validateDeviceAndAddToHub",
+                    "notes": "validateDeviceAndAddToHub",
+                    "type": "TaskIdResult",
+                    "method": "PUT"
+                }
+            ],
+            "description": "validateDeviceAndAddToHub",
+            "path": "/iwan/validate-and-add/{ipAddress}"
+        },
+        {
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "responseModel": "WANLabelsDTOResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "summary": "API to get the List of WAN Labels",
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "name": "scope",
+                            "allowMultiple": false,
+                            "paramType": "header",
+                            "required": true,
+                            "description": "Authorization Scope for RBAC",
+                            "type": "List"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getWANLabels",
+                    "notes": "getWANLabels",
+                    "type": "WANLabelsDTOResult",
+                    "method": "GET"
+                }
+            ],
+            "description": "getWANLabels",
+            "path": "/iwan/wan-labels"
+        }
+    ],
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "basePath": "/",
+    "resourcePath": "/iwan"
+}

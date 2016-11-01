@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 #pylint: skip-file
-"""
-Copyright 2016 Cisco Systems
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
 
 class ApplicationDTO(object):
-
 
 
     def __init__(self):
@@ -27,370 +14,379 @@ class ApplicationDTO(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
-            'name': 'str',
-
-
-            'id': 'str',
-
-
+            
             'trafficClass': 'str',
-
-
-            'rank': 'int',
-
-
-            'status': 'str',
-
-
-            'categoryId': 'str',
-
-
-            'instanceUuid': 'str',
-
-
-            'subCategory': 'str',
-
-
-            'globalId': 'str',
-
-
-            'engineId': 'str',
-
-
-            'selectorId': 'str',
-
-
-            'helpString': 'str',
-
-
-            'references': 'str',
-
-
-            'applicationGroup': 'str',
-
-
-            'encrypted': 'str',
-
-
-            'tunnel': 'str',
-
-
+            
+            
+            'applicationIpPortClassifiers': 'list[ApplicationIpPortClassifierDTO]',
+            
+            
             'category': 'str',
-
-
+            
+            
+            'name': 'str',
+            
+            
+            'id': 'str',
+            
+            
+            'status': 'str',
+            
+            
+            'rank': 'int',
+            
+            
             'longDescription': 'str',
-
-
-            'appProtocol': 'str',
-
-
-            'tcpPorts': 'str',
-
-
-            'indicativeTcpPorts': 'str',
-
-
-            'udpPorts': 'str',
-
-
-            'indicativeUdpPorts': 'str',
-
-
-            'ipPorts': 'str',
-
-
+            
+            
+            'instanceUuid': 'str',
+            
+            
             'url': 'str',
-
-
-            'enabled': 'str',
-
-
-            'indicativeIpPorts': 'str',
-
-
-            'isRepresentativeApp': 'bool',
-
-
-            'nbarId': 'str',
-
-
-            'p2pTechnology': 'str',
-
-
-            'pfrThresholdJitterPriority': 'int',
-
-
-            'pfrThresholdLossRatePriority': 'int',
-
-
-            'pfrThresholdOneWayDelayPriority': 'int',
-
-
+            
+            
+            'references': 'str',
+            
+            
             'dscp': 'str',
-
-
+            
+            
+            'ipPorts': 'str',
+            
+            
+            'engineId': 'str',
+            
+            
+            'globalId': 'str',
+            
+            
+            'helpString': 'str',
+            
+            
+            'ignoreConflict': 'bool',
+            
+            
+            'indicativeIpPorts': 'str',
+            
+            
+            'indicativeTcpPorts': 'str',
+            
+            
+            'indicativeUdpPorts': 'str',
+            
+            
+            'isRepresentativeApp': 'bool',
+            
+            
+            'nbarId': 'str',
+            
+            
+            'p2pTechnology': 'str',
+            
+            
             'pfrThresholdJitter': 'int',
-
-
+            
+            
+            'pfrThresholdJitterPriority': 'int',
+            
+            
             'pfrThresholdLossRate': 'int',
-
-
+            
+            
+            'pfrThresholdLossRatePriority': 'int',
+            
+            
             'pfrThresholdOneWayDelay': 'int',
-
-
+            
+            
+            'pfrThresholdOneWayDelayPriority': 'int',
+            
+            
             'popularity': 'int',
-
-
+            
+            
+            'selectorId': 'str',
+            
+            
+            'subCategory': 'str',
+            
+            
+            'tcpPorts': 'str',
+            
+            
             'transportIps': 'str',
-
-
-            'ignoreConflict': 'bool'
-
+            
+            
+            'tunnel': 'str',
+            
+            
+            'udpPorts': 'str',
+            
+            
+            'appProtocol': 'str',
+            
+            
+            'applicationGroup': 'str',
+            
+            
+            'categoryId': 'str',
+            
+            
+            'enabled': 'str',
+            
+            
+            'encrypted': 'str'
+            
         }
 
         self.attributeMap = {
-
-            'name': 'name',
-
-            'id': 'id',
-
+            
             'trafficClass': 'trafficClass',
-
-            'rank': 'rank',
-
-            'status': 'status',
-
-            'categoryId': 'categoryId',
-
-            'instanceUuid': 'instanceUuid',
-
-            'subCategory': 'subCategory',
-
-            'globalId': 'globalId',
-
-            'engineId': 'engineId',
-
-            'selectorId': 'selectorId',
-
-            'helpString': 'helpString',
-
-            'references': 'references',
-
-            'applicationGroup': 'applicationGroup',
-
-            'encrypted': 'encrypted',
-
-            'tunnel': 'tunnel',
-
+            
+            'applicationIpPortClassifiers': 'applicationIpPortClassifiers',
+            
             'category': 'category',
-
+            
+            'name': 'name',
+            
+            'id': 'id',
+            
+            'status': 'status',
+            
+            'rank': 'rank',
+            
             'longDescription': 'longDescription',
-
-            'appProtocol': 'appProtocol',
-
-            'tcpPorts': 'tcpPorts',
-
-            'indicativeTcpPorts': 'indicativeTcpPorts',
-
-            'udpPorts': 'udpPorts',
-
-            'indicativeUdpPorts': 'indicativeUdpPorts',
-
-            'ipPorts': 'ipPorts',
-
+            
+            'instanceUuid': 'instanceUuid',
+            
             'url': 'url',
-
-            'enabled': 'enabled',
-
-            'indicativeIpPorts': 'indicativeIpPorts',
-
-            'isRepresentativeApp': 'isRepresentativeApp',
-
-            'nbarId': 'nbarId',
-
-            'p2pTechnology': 'p2pTechnology',
-
-            'pfrThresholdJitterPriority': 'pfrThresholdJitterPriority',
-
-            'pfrThresholdLossRatePriority': 'pfrThresholdLossRatePriority',
-
-            'pfrThresholdOneWayDelayPriority': 'pfrThresholdOneWayDelayPriority',
-
+            
+            'references': 'references',
+            
             'dscp': 'dscp',
-
+            
+            'ipPorts': 'ipPorts',
+            
+            'engineId': 'engineId',
+            
+            'globalId': 'globalId',
+            
+            'helpString': 'helpString',
+            
+            'ignoreConflict': 'ignoreConflict',
+            
+            'indicativeIpPorts': 'indicativeIpPorts',
+            
+            'indicativeTcpPorts': 'indicativeTcpPorts',
+            
+            'indicativeUdpPorts': 'indicativeUdpPorts',
+            
+            'isRepresentativeApp': 'isRepresentativeApp',
+            
+            'nbarId': 'nbarId',
+            
+            'p2pTechnology': 'p2pTechnology',
+            
             'pfrThresholdJitter': 'pfrThresholdJitter',
-
+            
+            'pfrThresholdJitterPriority': 'pfrThresholdJitterPriority',
+            
             'pfrThresholdLossRate': 'pfrThresholdLossRate',
-
+            
+            'pfrThresholdLossRatePriority': 'pfrThresholdLossRatePriority',
+            
             'pfrThresholdOneWayDelay': 'pfrThresholdOneWayDelay',
-
+            
+            'pfrThresholdOneWayDelayPriority': 'pfrThresholdOneWayDelayPriority',
+            
             'popularity': 'popularity',
-
+            
+            'selectorId': 'selectorId',
+            
+            'subCategory': 'subCategory',
+            
+            'tcpPorts': 'tcpPorts',
+            
             'transportIps': 'transportIps',
+            
+            'tunnel': 'tunnel',
+            
+            'udpPorts': 'udpPorts',
+            
+            'appProtocol': 'appProtocol',
+            
+            'applicationGroup': 'applicationGroup',
+            
+            'categoryId': 'categoryId',
+            
+            'enabled': 'enabled',
+            
+            'encrypted': 'encrypted'
+            
+        }       
 
-            'ignoreConflict': 'ignoreConflict'
-
-        }
-
-
-        #App Name
-
-        self.name = None # str
-
-        #id
-
-        self.id = None # str
-
+        
         #Traffic class to which the app belongs
-
+        
         self.trafficClass = None # str
-
-        #rank
-
-        self.rank = None # int
-
-        #Gives status of the app
-
-        self.status = None # str
-
-        #Category id
-
-        self.categoryId = None # str
-
-        #
-
-        self.instanceUuid = None # str
-
-        #Sub-Category Id
-
-        self.subCategory = None # str
-
-        #global id
-
-        self.globalId = None # str
-
-        #engine id
-
-        self.engineId = None # str
-
-        #selector id
-
-        self.selectorId = None # str
-
-        #help string to describe the app
-
-        self.helpString = None # str
-
-        #references of the app
-
-        self.references = None # str
-
-        #App group name
-
-        self.applicationGroup = None # str
-
-        #If the app is encrypted
-
-        self.encrypted = None # str
-
-        #If the app is a tunnel
-
-        self.tunnel = None # str
-
+        
+        #IP Port classifiers for the application
+        
+        self.applicationIpPortClassifiers = None # list[ApplicationIpPortClassifierDTO]
+        
         #Category name
-
+        
         self.category = None # str
-
+        
+        #App Name
+        
+        self.name = None # str
+        
+        #id
+        
+        self.id = None # str
+        
+        #Gives status of the app
+        
+        self.status = None # str
+        
+        #rank
+        
+        self.rank = None # int
+        
         #Long description of the app
-
+        
         self.longDescription = None # str
-
-        #protocol of the app. Valid values are tcp, udp, tcp/udp, ip or it could be empty. Values are case sensitive.
-
-        self.appProtocol = None # str
-
-        #list of tcp ports
-
-        self.tcpPorts = None # str
-
-        #Indicative tcp ports
-
-        self.indicativeTcpPorts = None # str
-
-        #list of udp ports
-
-        self.udpPorts = None # str
-
-        #Indicative udp ports
-
-        self.indicativeUdpPorts = None # str
-
-        #list of ip ports
-
-        self.ipPorts = None # str
-
+        
+        #
+        
+        self.instanceUuid = None # str
+        
         #url of the app
-
+        
         self.url = None # str
-
-        #If the app enabled
-
-        self.enabled = None # str
-
-        #Indicative ip ports
-
-        self.indicativeIpPorts = None # str
-
-        #If the app is representative
-
-        self.isRepresentativeApp = None # bool
-
-        #nbar id
-
-        self.nbarId = None # str
-
-        #If the app is a p2p technology
-
-        self.p2pTechnology = None # str
-
-        #PfR Threshold Jitter Priority
-
-        self.pfrThresholdJitterPriority = None # int
-
-        #PfR Threshold Loss Rate Priority
-
-        self.pfrThresholdLossRatePriority = None # int
-
-        #PfR Threshold One Way Delay Priority
-
-        self.pfrThresholdOneWayDelayPriority = None # int
-
+        
+        #references of the app
+        
+        self.references = None # str
+        
         #dscp value
-
+        
         self.dscp = None # str
-
-        #PfR Threshold Jitter
-
-        self.pfrThresholdJitter = None # int
-
-        #PfR Threshold Loss Rate
-
-        self.pfrThresholdLossRate = None # int
-
-        #PfR Threshold One Way Delay
-
-        self.pfrThresholdOneWayDelay = None # int
-
-        #popularity of the app
-
-        self.popularity = None # int
-
-        #Transport IP of the app
-
-        self.transportIps = None # str
-
+        
+        #list of ip ports
+        
+        self.ipPorts = None # str
+        
+        #engine id
+        
+        self.engineId = None # str
+        
+        #global id
+        
+        self.globalId = None # str
+        
+        #help string to describe the app
+        
+        self.helpString = None # str
+        
         #If true ignore conflicts with other Applications
-
+        
         self.ignoreConflict = None # bool
-
+        
+        #Indicative ip ports
+        
+        self.indicativeIpPorts = None # str
+        
+        #Indicative tcp ports
+        
+        self.indicativeTcpPorts = None # str
+        
+        #Indicative udp ports
+        
+        self.indicativeUdpPorts = None # str
+        
+        #If the app is representative
+        
+        self.isRepresentativeApp = None # bool
+        
+        #nbar id
+        
+        self.nbarId = None # str
+        
+        #If the app is a p2p technology
+        
+        self.p2pTechnology = None # str
+        
+        #PfR Threshold Jitter
+        
+        self.pfrThresholdJitter = None # int
+        
+        #PfR Threshold Jitter Priority
+        
+        self.pfrThresholdJitterPriority = None # int
+        
+        #PfR Threshold Loss Rate
+        
+        self.pfrThresholdLossRate = None # int
+        
+        #PfR Threshold Loss Rate Priority
+        
+        self.pfrThresholdLossRatePriority = None # int
+        
+        #PfR Threshold One Way Delay
+        
+        self.pfrThresholdOneWayDelay = None # int
+        
+        #PfR Threshold One Way Delay Priority
+        
+        self.pfrThresholdOneWayDelayPriority = None # int
+        
+        #popularity of the app
+        
+        self.popularity = None # int
+        
+        #selector id
+        
+        self.selectorId = None # str
+        
+        #Sub-Category Id
+        
+        self.subCategory = None # str
+        
+        #list of tcp ports
+        
+        self.tcpPorts = None # str
+        
+        #Transport IP of the app
+        
+        self.transportIps = None # str
+        
+        #If the app is a tunnel
+        
+        self.tunnel = None # str
+        
+        #list of udp ports
+        
+        self.udpPorts = None # str
+        
+        #protocol of the app. Valid values are tcp, udp, tcp/udp, ip or it could be empty. Values are case sensitive.
+        
+        self.appProtocol = None # str
+        
+        #App group name
+        
+        self.applicationGroup = None # str
+        
+        #Category id
+        
+        self.categoryId = None # str
+        
+        #If the app enabled
+        
+        self.enabled = None # str
+        
+        #If the app is encrypted
+        
+        self.encrypted = None # str
+        
