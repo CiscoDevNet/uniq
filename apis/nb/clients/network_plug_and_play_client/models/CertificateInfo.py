@@ -7,7 +7,6 @@
 class CertificateInfo(object):
 
 
-
     def __init__(self):
         """
         Attributes:
@@ -15,74 +14,90 @@ class CertificateInfo(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
+            
             'keySize': 'int',
-
-
-            'signature': 'str',
-
-
+            
+            
             'serialNumber': 'str',
-
-
+            
+            
             'issuerDN': 'str',
-
-
+            
+            
             'subjectDN': 'str',
-
-
+            
+            
             'keyType': 'str',
-
-
+            
+            
+            'noAfterDateISO8601': 'str',
+            
+            
+            'noAfterDate': 'str',
+            
+            
+            'beginDateISO8601': 'str',
+            
+            
             'beginDate': 'str',
-
-
-            'noAfterDate': 'str'
-
+            
+            
+            'signature': 'str'
+            
         }
 
         self.attributeMap = {
-
+            
             'keySize': 'keySize',
-
-            'signature': 'signature',
-
+            
             'serialNumber': 'serialNumber',
-
+            
             'issuerDN': 'issuerDN',
-
+            
             'subjectDN': 'subjectDN',
-
+            
             'keyType': 'keyType',
-
+            
+            'noAfterDateISO8601': 'noAfterDateISO8601',
+            
+            'noAfterDate': 'noAfterDate',
+            
+            'beginDateISO8601': 'beginDateISO8601',
+            
             'beginDate': 'beginDate',
+            
+            'signature': 'signature'
+            
+        }       
 
-            'noAfterDate': 'noAfterDate'
-
-        }
-
-
-
+        
+        
         self.keySize = None # int
-
-
-        self.signature = None # str
-
-
+        
+        
         self.serialNumber = None # str
-
-
+        
+        
         self.issuerDN = None # str
-
-
+        
+        
         self.subjectDN = None # str
-
-
+        
+        
         self.keyType = None # str
-
-
-        self.beginDate = None # str
-
-
+        
+        
+        self.noAfterDateISO8601 = None # str
+        
+        
         self.noAfterDate = None # str
-
+        
+        
+        self.beginDateISO8601 = None # str
+        
+        
+        self.beginDate = None # str
+        
+        
+        self.signature = None # str
+        

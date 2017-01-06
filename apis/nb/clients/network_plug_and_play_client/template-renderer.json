@@ -1,0 +1,282 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "/template-renderer",
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/template-renderer",
+      "description": "createPnpTemplateRenderer",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Renderer for pnp template",
+          "notes": "This API is used to render template config",
+          "type": "TaskIdResult",
+          "nickname": "createPnpTemplateRenderer",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "templaterenderer",
+              "description": "fileId and configProperty is mandatory",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdTemplateRenderer"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/template-renderer",
+      "description": "getAllPnpTemplateRenderer",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves all the active rendered template in cache",
+          "notes": "This API is used to retrieve the all the active rendered templates in the cache",
+          "type": "ZtdTemplateRendererResult",
+          "nickname": "getAllPnpTemplateRenderer",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdTemplateRendererListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/template-renderer/{templateRendererId}",
+      "description": "getPnpTemplateRendererById",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a rendered template",
+          "notes": "This API is used to retrieve the rendered template content",
+          "type": "ZtdTemplateRendererResult",
+          "nickname": "getPnpTemplateRendererById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "templateRendererId",
+              "description": "Template Renderer ID is mandatory",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdTemplateRendererResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "TaskId": {
+      "id": "TaskId",
+      "description": "",
+      "extends": "",
+      "properties": {}
+    },
+    "ZtdTemplateRenderer": {
+      "id": "ZtdTemplateRenderer",
+      "description": "ZTD Template redender for template preview",
+      "required": [
+        "id"
+      ],
+      "extends": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Template Renderer ID"
+        },
+        "fileId": {
+          "type": "string"
+        },
+        "configProperty": {
+          "$ref": "object"
+        },
+        "generatedContent": {
+          "type": "string"
+        }
+      }
+    },
+    "ZtdTemplateRendererResult": {
+      "id": "ZtdTemplateRendererResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "ZtdTemplateRenderer"
+        }
+      }
+    },
+    "TaskIdResponse": {
+      "id": "TaskIdResponse",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "taskId": {
+          "$ref": "TaskId"
+        }
+      }
+    },
+    "TaskIdResult": {
+      "id": "TaskIdResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "TaskIdResponse"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,2426 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "/pnp-project",
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json",
+    "multipart/form-data"
+  ],
+  "apis": [
+    {
+      "path": "/pnp-project",
+      "description": "getPnpSiteByRange",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of projects",
+          "notes": "This API is used to retrieve a list of projects (Pagination)",
+          "type": "ZtdSiteListResult",
+          "nickname": "getPnpSiteByRange",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "siteName",
+              "description": "Project Name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State of a project. Allowed states are PRE_PROVISIONED,IN_PROGRESS,ERROR,ls.",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "provisionedOn",
+              "description": "Provisioned date.",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "provisionedBy",
+              "description": "User who provisioned the project.",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "sortBy",
+              "description": "Sort response based on field",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "order",
+              "description": "Order response in ascending (asc) or descending (des) order",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSiteListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project",
+      "description": "createPnpSite",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Creates a new project",
+          "notes": "This API is used to create a new project",
+          "type": "TaskIdResult",
+          "nickname": "createPnpSite",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "project",
+              "description": "PnP project. Project name is mandatory.",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdSite"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "source",
+              "description": "Project ID to clone from. Only the new project name is required in the request body for clone",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project",
+      "description": "updatePnpSite",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Updates a project with its ID",
+          "notes": "This API is used to update a project with its ID",
+          "type": "TaskIdResult",
+          "nickname": "updatePnpSite",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "project",
+              "description": "PnP project. Site ID is mandatory",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdSite"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/count",
+      "description": "getPnpSiteCount",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a count of projects",
+          "notes": "This API is used to retrieve a count of projects",
+          "type": "string",
+          "nickname": "getPnpSiteCount",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "siteName",
+              "description": "Project Name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State of a project.  Allowed states are PRE_PROVISIONED, IN_PROGRESS, ERROR, PROVISIONED.",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "provisionedOn",
+              "description": "Provisioned date.",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "provisionedBy",
+              "description": "User who provisioned the project.",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "SuccessResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/seed-file",
+      "description": "importPnpSitesAndDevices",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Imports projects and associated rules in bulk",
+          "notes": "This API is used to import projects and associated rules in bulk",
+          "type": "TaskIdResult",
+          "nickname": "importPnpSitesAndDevices",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "parameters": [
+            {
+              "name": "seedFile",
+              "description": "Seed file",
+              "defaultValue": "",
+              "required": true,
+              "type": "File",
+              "paramType": "form",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/seed-file",
+      "description": "exportPnpSitesAndDevices",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves the projects and their associated rules in a file of the given format",
+          "notes": "This API is used to retrieve the projects and their associated rules in a file of the given format",
+          "type": "void",
+          "nickname": "exportPnpSitesAndDevices",
+          "parameters": [
+            {
+              "name": "format",
+              "description": "Format of the file. Currently only csv is supported",
+              "defaultValue": "csv",
+              "required": true,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/seed-file/status",
+      "description": "getAllPnpBulkImportJobs",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves the status of previous import jobs",
+          "notes": "This API is used to retrieve the status of previous import jobs. Only the last 10 jobs are preserved",
+          "type": "ZtdBulkStatusListResult",
+          "nickname": "getAllPnpBulkImportJobs",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdBulkStatusListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/seed-file/{importId}/status",
+      "description": "getPnpBulkStatus",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves the status of an import job with its ID",
+          "notes": "This API is used to retrieve the status of an import job with its ID",
+          "type": "ZtdBulkStatusResult",
+          "nickname": "getPnpBulkStatus",
+          "parameters": [
+            {
+              "name": "importId",
+              "description": "Import ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdBulkStatusResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/seed-file/{importId}/status/report",
+      "description": "getPnpBulkReport",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves the report of an import job with its ID",
+          "notes": "This API is used to retrieve the report (as a file) of an import job with its ID",
+          "type": "void",
+          "nickname": "getPnpBulkReport",
+          "parameters": [
+            {
+              "name": "importId",
+              "description": "Import ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/template-file",
+      "description": "getPnpTemplate",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a template file for an import job",
+          "notes": "This API is used to retrieve a template file in the given format for an import job",
+          "type": "void",
+          "nickname": "getPnpTemplate",
+          "parameters": [
+            {
+              "name": "format",
+              "description": "Format of the file. Currently only csv is supported",
+              "defaultValue": "csv",
+              "required": true,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/{projectId}",
+      "description": "getPnpSiteById",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a project with its ID",
+          "notes": "This API is used to retrieve a project with its ID",
+          "type": "ZtdSiteResult",
+          "nickname": "getPnpSiteById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "projectId",
+              "description": "Project ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSiteResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/{projectId}",
+      "description": "deletePnpSiteByID",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Deletes a project with its ID",
+          "notes": "This API is used to delete a project with its ID",
+          "type": "TaskIdResult",
+          "nickname": "deletePnpSiteByID",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "projectId",
+              "description": "Project ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "deleteRule",
+              "description": "Delete project rules (true) or not (false)",
+              "defaultValue": "0",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "deleteDevice",
+              "description": "Delete project devices (true) or not (false)",
+              "defaultValue": "0",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/{projectId}/device",
+      "description": "createPnpSiteDevice",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Creates a new device under a given project",
+          "notes": "This API is used to create a new device under a given project",
+          "type": "TaskIdResult",
+          "nickname": "createPnpSiteDevice",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "projectId",
+              "description": "Project ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "rule",
+              "description": "PnP rule. Host name, Platform ID are mandatory",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdRule"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/{projectId}/device",
+      "description": "getPnpSiteDevicesBySiteNameAndRange",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of devices under a given project",
+          "notes": "This API is used to retrieve a list of devices under a given project (Pagination)",
+          "type": "ZtdSiteDeviceListResult",
+          "nickname": "getPnpSiteDevicesBySiteNameAndRange",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "projectId",
+              "description": "Project ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "serialNumber",
+              "description": "Serial number",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "hostName",
+              "description": "Host name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "configId",
+              "description": "Configuration Id",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "templateConfigId",
+              "description": "Template Configuration Id",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "imageId",
+              "description": "Image Id",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "pkiEnabled",
+              "description": "Device certificate provisioned (true) or not (false)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State of device. PENDING, PROVISIONED, IN_PROGRES, ERROR. Accepts a list of states",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "authStatus",
+              "description": "Authentication status of device: authenticated, error, unsupported",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "startLastStateTransitionTime",
+              "description": "Start of last state transition time (format: yyyy-MM-dd HH:mm:ss)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "endLastStateTransitionTime",
+              "description": "End of last state transition time (format: yyyy-MM-dd HH:mm:ss)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "sortBy",
+              "description": "Sort response based on field",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "order",
+              "description": "Order response in ascending (asc) or descending (des) order",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSiteDeviceListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/{projectId}/device",
+      "description": "updatePnpSiteDevice",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Updates a device under a given project with its ID",
+          "notes": "This API is used to update a device under a given project with its ID",
+          "type": "TaskIdResult",
+          "nickname": "updatePnpSiteDevice",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "projectId",
+              "description": "Project ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "rule",
+              "description": "PnP rule. Rule ID is mandatory",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdRule"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/{projectId}/device-bootstrap/{fileId}",
+      "description": "downloadPnpBootStrap",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves the device bootstrap file under a given project",
+          "notes": "This API is used to retrieve the device bootstrap file under a given project",
+          "type": "void",
+          "nickname": "downloadPnpBootStrap",
+          "parameters": [
+            {
+              "name": "projectId",
+              "description": "Project ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "fileId",
+              "description": "File ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/{projectId}/device/count",
+      "description": "getPnpSiteDeviceCount",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a count of devices under a given project",
+          "notes": "This API is used to retrieve a count of devices under a given project",
+          "type": "string",
+          "nickname": "getPnpSiteDeviceCount",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "projectId",
+              "description": "Project ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "serialNumber",
+              "description": "Serial number",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "hostName",
+              "description": "Host name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "configId",
+              "description": "Configuration Id",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "templateConfigId",
+              "description": "Template configuration Id",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "imageId",
+              "description": "Image Id",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "pkiEnabled",
+              "description": "Device certificate provisioned (true) or not (false)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State of device. PENDING, PROVISIONED, IN_PROGRESS, ERROR. Accepts a list of states",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "authStatus",
+              "description": "Authentication status of device: authenticated, error, unsupported",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "startLastStateTransitionTime",
+              "description": "Start of last state transition time (format: yyyy-MM-dd HH:mm:ss)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "endLastStateTransitionTime",
+              "description": "End of last state transition time (format: yyyy-MM-dd HH:mm:ss)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "SuccessResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-project/{projectId}/device/{deviceId}",
+      "description": "deletePnpSiteDeviceById",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Deletes a device under a given project with its ID",
+          "notes": "This API is used to delete a device under a given project with its ID",
+          "type": "TaskIdResult",
+          "nickname": "deletePnpSiteDeviceById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "projectId",
+              "description": "Project ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "deviceId",
+              "description": "Device ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "ZtdSiteListResult": {
+      "id": "ZtdSiteListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdSite"
+          }
+        }
+      }
+    },
+    "ZtdRule": {
+      "id": "ZtdRule",
+      "description": "ZTD Rule representation",
+      "required": [
+        "serialNumber",
+        "id",
+        "platformId"
+      ],
+      "extends": "",
+      "properties": {
+        "serialNumber": {
+          "type": "string",
+          "description": "Serial number"
+        },
+        "id": {
+          "type": "string",
+          "description": "ID of device"
+        },
+        "site": {
+          "type": "string",
+          "description": "Site to which device belongs if auto-provisioned"
+        },
+        "imageId": {
+          "type": "string",
+          "description": "Image file ID"
+        },
+        "platformId": {
+          "type": "string",
+          "description": "Platform ID"
+        },
+        "templateConfigId": {
+          "type": "string",
+          "description": "Template config ID"
+        },
+        "licenseString": {
+          "type": "string",
+          "description": "License string"
+        },
+        "apCount": {
+          "type": "string",
+          "description": "Wireless AP count"
+        },
+        "isMobilityController": {
+          "type": "string",
+          "description": "Specify if device is a wireless mobility controller"
+        },
+        "pkiEnabled": {
+          "type": "boolean",
+          "description": "Configure PKCS#12 trust point during PNP workflow if true"
+        },
+        "configId": {
+          "type": "string",
+          "description": "Configuration file id"
+        },
+        "hostName": {
+          "type": "string",
+          "description": "Host name"
+        },
+        "bootStrapId": {
+          "type": "string",
+          "description": "Bootstrap file id"
+        },
+        "sudiRequired": {
+          "type": "boolean"
+        },
+        "deviceDiscoveryInfo": {
+          "$ref": "ZtdDeviceDiscoveryInfo",
+          "description": "Device discovery info"
+        },
+        "licenseLevel": {
+          "type": "string",
+          "description": "CLI execution license level"
+        },
+        "memberCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Count of members in a stack switch excluding master"
+        },
+        "eulaAccepted": {
+          "type": "boolean",
+          "description": "CLI execution EULA accepted or not"
+        },
+        "memberDetail": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdMemberDetail"
+          }
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "connectedToDeviceId": {
+          "type": "string"
+        },
+        "connectedToPortId": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string",
+          "description": "Tag of device"
+        },
+        "connetedToLocationGeoAddr": {
+          "type": "string"
+        },
+        "configPreference": {
+          "type": "string"
+        },
+        "imagePreference": {
+          "type": "string"
+        },
+        "connectedToDeviceHostName": {
+          "type": "string"
+        },
+        "connectedToPortName": {
+          "type": "string"
+        },
+        "connetedToLocationCivicAddr": {
+          "type": "string"
+        }
+      }
+    },
+    "ZtdBulkStatusResult": {
+      "id": "ZtdBulkStatusResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "ZtdBulkStatus"
+        }
+      }
+    },
+    "ZtdMemberDetail": {
+      "id": "ZtdMemberDetail",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "port": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdPort"
+          }
+        },
+        "serialNumber": {
+          "type": "string"
+        },
+        "rank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "role": {
+          "type": "string"
+        },
+        "macAddress": {
+          "type": "string"
+        },
+        "licenseInUse": {
+          "type": "string"
+        },
+        "hardwareVersion": {
+          "type": "string"
+        },
+        "imageVersion": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "state": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "TaskId": {
+      "id": "TaskId",
+      "description": "",
+      "extends": "",
+      "properties": {}
+    },
+    "ZtdDeviceDiscoveryInfo": {
+      "id": "ZtdDeviceDiscoveryInfo",
+      "description": "",
+      "required": [
+        "name"
+      ],
+      "extends": "",
+      "properties": {
+        "timeout": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Time to wait for device response in seconds"
+        },
+        "userNameList": {
+          "type": "array",
+          "description": "Username of the devices to be discovered",
+          "items": {
+            "type": "string"
+          }
+        },
+        "passwordList": {
+          "type": "array",
+          "description": "Password of the devices to be discovered",
+          "items": {
+            "type": "string"
+          }
+        },
+        "discoveryType": {
+          "type": "string",
+          "description": "Available types are: single, auto cdp discovery, range, multi range"
+        },
+        "ipAddressList": {
+          "type": "string",
+          "description": "Ip address of the device to be discovered"
+        },
+        "snmpVersion": {
+          "type": "string",
+          "description": "Version of SNMP. Can be v2 or v3"
+        },
+        "snmpMode": {
+          "type": "string",
+          "description": "Mode of SNMP. Available values:'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'"
+        },
+        "cdpLevel": {
+          "type": "integer",
+          "format": "int32",
+          "description": "CDP level to which neighbor devices to be discovered"
+        },
+        "enablePasswordList": {
+          "type": "array",
+          "description": "Enable Password of the devices to be discovered",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ipFilterList": {
+          "type": "array",
+          "description": "Username of the devices to be discovered",
+          "items": {
+            "type": "string"
+          }
+        },
+        "protocolOrder": {
+          "type": "string",
+          "description": "Order of protocol in which device connection establishment to be tried"
+        },
+        "reDiscovery": {
+          "type": "boolean",
+          "description": "Flag to indicate is rediscovery or not"
+        },
+        "retry": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of times to try establishing connection to device"
+        },
+        "snmpAuthPassphrase": {
+          "type": "string",
+          "description": "Auth Pass phrase for SNMP"
+        },
+        "snmpAuthProtocol": {
+          "type": "string",
+          "description": "SNMP auth protocol. Available values:'SHA' or 'MD5'"
+        },
+        "snmpPrivPassphrase": {
+          "type": "string",
+          "description": "Pass phrase for SNMP privacy"
+        },
+        "snmpPrivProtocol": {
+          "type": "string",
+          "description": "SNMP privacy protocol. Available values:'DES' or 'AES128'"
+        },
+        "snmpROCommunity": {
+          "type": "string",
+          "description": "Snmp RO community of the devices to be discovered"
+        },
+        "snmpRWCommunity": {
+          "type": "string",
+          "description": "Snmp RW community of the devices to be discovered"
+        },
+        "snmpUserName": {
+          "type": "string",
+          "description": "SNMP username of the device"
+        },
+        "globalCredentialIdList": {
+          "type": "array",
+          "description": "List of global credential ids to be used",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for discovery"
+        }
+      }
+    },
+    "ZtdBulkStatus": {
+      "id": "ZtdBulkStatus",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "format": {
+          "type": "string"
+        },
+        "date": {
+          "$ref": "date-time"
+        },
+        "status": {
+          "type": "string"
+        },
+        "report": {
+          "type": "string"
+        },
+        "siteAdded": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "siteFailed": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "siteSkipped": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "username": {
+          "type": "string"
+        },
+        "deviceAdded": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "deviceFailed": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "deviceSkipped": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "requestFilename": {
+          "type": "string"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ZtdSiteDeviceListResult": {
+      "id": "ZtdSiteDeviceListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdSiteDevice"
+          }
+        }
+      }
+    },
+    "ZtdSiteDevice": {
+      "id": "ZtdSiteDevice",
+      "description": "PnP project device representation",
+      "required": [
+        "serialNumber",
+        "id",
+        "platformId"
+      ],
+      "extends": "",
+      "properties": {
+        "authStatus": {
+          "$ref": "DeviceAuthState"
+        },
+        "lastContact": {
+          "type": "string"
+        },
+        "deviceId": {
+          "type": "string"
+        },
+        "lastStateTransitionTime": {
+          "type": "string"
+        },
+        "stateDisplay": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "serialNumber": {
+          "type": "string",
+          "description": "Serial number"
+        },
+        "tag": {
+          "type": "string",
+          "description": "Tag of device"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "string",
+          "description": "ID of device"
+        },
+        "platformId": {
+          "type": "string",
+          "description": "Platform ID"
+        },
+        "site": {
+          "type": "string",
+          "description": "Site to which device belongs if auto-provisioned"
+        },
+        "imageId": {
+          "type": "string",
+          "description": "Image file ID"
+        },
+        "eulaAccepted": {
+          "type": "boolean",
+          "description": "CLI execution EULA accepted or not"
+        },
+        "memberCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Count of members in a stack switch excluding master"
+        },
+        "templateConfigId": {
+          "type": "string",
+          "description": "Template config ID"
+        },
+        "licenseLevel": {
+          "type": "string",
+          "description": "CLI execution license level"
+        },
+        "bootStrapId": {
+          "type": "string",
+          "description": "Bootstrap file id"
+        },
+        "licenseString": {
+          "type": "string",
+          "description": "License string"
+        },
+        "apCount": {
+          "type": "string",
+          "description": "Wireless AP count"
+        },
+        "isMobilityController": {
+          "type": "string",
+          "description": "Specify if device is a wireless mobility controller"
+        },
+        "sudiRequired": {
+          "type": "boolean"
+        },
+        "deviceDiscoveryInfo": {
+          "$ref": "ZtdDeviceDiscoveryInfo",
+          "description": "Device discovery info"
+        },
+        "configId": {
+          "type": "string",
+          "description": "Configuration file id"
+        },
+        "pkiEnabled": {
+          "type": "boolean",
+          "description": "Configure PKCS#12 trust point during PNP workflow if true"
+        },
+        "memberDetail": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdMemberDetail"
+          }
+        },
+        "connectedToDeviceId": {
+          "type": "string"
+        },
+        "connectedToPortId": {
+          "type": "string"
+        },
+        "imagePreference": {
+          "type": "string"
+        },
+        "connectedToDeviceHostName": {
+          "type": "string"
+        },
+        "connectedToPortName": {
+          "type": "string"
+        },
+        "connetedToLocationCivicAddr": {
+          "type": "string"
+        },
+        "connetedToLocationGeoAddr": {
+          "type": "string"
+        },
+        "configPreference": {
+          "type": "string"
+        },
+        "hostName": {
+          "type": "string",
+          "description": "Host name"
+        }
+      }
+    },
+    "TaskIdResponse": {
+      "id": "TaskIdResponse",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "taskId": {
+          "$ref": "TaskId"
+        }
+      }
+    },
+    "ZtdBulkStatusListResult": {
+      "id": "ZtdBulkStatusListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdBulkStatus"
+          }
+        }
+      }
+    },
+    "ZtdSiteResult": {
+      "id": "ZtdSiteResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "ZtdSite"
+        }
+      }
+    },
+    "TaskIdResult": {
+      "id": "TaskIdResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "TaskIdResponse"
+        }
+      }
+    },
+    "ZtdSite": {
+      "id": "ZtdSite",
+      "description": "PnP project representation",
+      "required": [
+        "id",
+        "siteName"
+      ],
+      "extends": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Project ID"
+        },
+        "tftpServer": {
+          "type": "string",
+          "description": "TFTP server host name or IP address"
+        },
+        "siteName": {
+          "type": "string",
+          "description": "Project name"
+        },
+        "deviceCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of devices under the project"
+        },
+        "tftpPath": {
+          "type": "string",
+          "description": "TFTP server path"
+        },
+        "installerUserID": {
+          "type": "string",
+          "description": "Installer user ID"
+        },
+        "note": {
+          "type": "string",
+          "description": "Project notes. Any file can be attached"
+        },
+        "deviceLastUpdate": {
+          "type": "string",
+          "description": "Last contact time among all devices in this project"
+        },
+        "provisionedOn": {
+          "type": "string",
+          "description": "Creation time for project"
+        },
+        "provisionedBy": {
+          "type": "string",
+          "description": "User creating the project"
+        },
+        "pendingDeviceCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of devices in pending state"
+        },
+        "state": {
+          "type": "string",
+          "description": "Project state"
+        }
+      }
+    },
+    "ZtdPort": {
+      "id": "ZtdPort",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "neighborRank": {
+          "type": "string"
+        }
+      }
+    },
+    "DeviceAuthState": {
+      "id": "DeviceAuthState",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "timestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "None",
+            "Unsupported",
+            "Error",
+            "Pending",
+            "Authenticated"
+          ]
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "certInfo": {
+          "$ref": "CertificateInfo"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Unsupported",
+            "SUDI"
+          ]
+        }
+      }
+    },
+    "CertificateInfo": {
+      "id": "CertificateInfo",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "keySize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "serialNumber": {
+          "type": "string"
+        },
+        "issuerDN": {
+          "type": "string"
+        },
+        "subjectDN": {
+          "type": "string"
+        },
+        "keyType": {
+          "type": "string"
+        },
+        "noAfterDateISO8601": {
+          "type": "string"
+        },
+        "noAfterDate": {
+          "type": "string"
+        },
+        "beginDateISO8601": {
+          "type": "string"
+        },
+        "beginDate": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        }
+      }
+    },
+    "Void": {
+      "id": "Void",
+      "description": "",
+      "extends": "",
+      "properties": {}
+    }
+  }
+}

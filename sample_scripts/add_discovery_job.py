@@ -17,12 +17,11 @@ def wait_for_discovery_complete(discovery_id):
     def query_discovery_status():
         """ Get discovery condition """
 
-        discovery_job = client.discovery.getDiscoveryById(id=discovery_id, scope="all").response
+        discovery_job = client.discovery.getDiscoveryById(id=discovery_id).response
 
         if discovery_job.discoveryCondition == "Complete":
             devices_found = client.discovery.getNetworkDeviceCountByDiscoveryId(
-                id=discovery_id,
-                scope="all").response
+                id=discovery_id).response
             print("No. of devices found in discovery job: '{0}' are: {1}".format(discovery_id,
                                                                                  devices_found))
             return "Complete"
@@ -66,7 +65,7 @@ request = {
 }
 
 print("Creating discovery job '{}'.".format(request["name"]))
-task_id_result = client.discovery.insertDiscovery(request=request, scope="All")
+task_id_result = client.discovery.insertDiscovery(request=request)
 task_id = task_id_result.response.taskId
 print("Task ID - {}".format(task_id))
 

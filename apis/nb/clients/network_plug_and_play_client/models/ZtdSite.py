@@ -7,7 +7,6 @@
 class ZtdSite(object):
 
 
-
     def __init__(self):
         """
         Attributes:
@@ -15,118 +14,118 @@ class ZtdSite(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
-            'state': 'str',
-
-
+            
             'id': 'str',
-
-
-            'provisionedBy': 'str',
-
-
-            'provisionedOn': 'str',
-
-
-            'siteName': 'str',
-
-
+            
+            
             'tftpServer': 'str',
-
-
-            'tftpPath': 'str',
-
-
-            'note': 'str',
-
-
+            
+            
+            'siteName': 'str',
+            
+            
             'deviceCount': 'int',
-
-
-            'pendingDeviceCount': 'int',
-
-
+            
+            
+            'tftpPath': 'str',
+            
+            
+            'installerUserID': 'str',
+            
+            
+            'note': 'str',
+            
+            
             'deviceLastUpdate': 'str',
-
-
-            'installerUserID': 'str'
-
+            
+            
+            'provisionedOn': 'str',
+            
+            
+            'provisionedBy': 'str',
+            
+            
+            'pendingDeviceCount': 'int',
+            
+            
+            'state': 'str'
+            
         }
 
         self.attributeMap = {
-
-            'state': 'state',
-
+            
             'id': 'id',
-
-            'provisionedBy': 'provisionedBy',
-
-            'provisionedOn': 'provisionedOn',
-
-            'siteName': 'siteName',
-
+            
             'tftpServer': 'tftpServer',
-
-            'tftpPath': 'tftpPath',
-
-            'note': 'note',
-
+            
+            'siteName': 'siteName',
+            
             'deviceCount': 'deviceCount',
-
-            'pendingDeviceCount': 'pendingDeviceCount',
-
+            
+            'tftpPath': 'tftpPath',
+            
+            'installerUserID': 'installerUserID',
+            
+            'note': 'note',
+            
             'deviceLastUpdate': 'deviceLastUpdate',
+            
+            'provisionedOn': 'provisionedOn',
+            
+            'provisionedBy': 'provisionedBy',
+            
+            'pendingDeviceCount': 'pendingDeviceCount',
+            
+            'state': 'state'
+            
+        }       
 
-            'installerUserID': 'installerUserID'
-
-        }
-
-
-        #Project state
-
-        self.state = None # str
-
+        
         #Project ID
-
+        
         self.id = None # str
-
-        #User creating the project
-
-        self.provisionedBy = None # str
-
-        #Creation time for project
-
-        self.provisionedOn = None # str
-
-        #Project name
-
-        self.siteName = None # str
-
+        
         #TFTP server host name or IP address
-
+        
         self.tftpServer = None # str
-
-        #TFTP server path
-
-        self.tftpPath = None # str
-
-        #Project notes. Any file can be attached
-
-        self.note = None # str
-
+        
+        #Project name
+        
+        self.siteName = None # str
+        
         #Number of devices under the project
-
+        
         self.deviceCount = None # int
-
-        #Number of devices in pending state
-
-        self.pendingDeviceCount = None # int
-
-        #Last contact time among all devices in this project
-
-        self.deviceLastUpdate = None # str
-
+        
+        #TFTP server path
+        
+        self.tftpPath = None # str
+        
         #Installer user ID
-
+        
         self.installerUserID = None # str
-
+        
+        #Project notes. Any file can be attached
+        
+        self.note = None # str
+        
+        #Last contact time among all devices in this project
+        
+        self.deviceLastUpdate = None # str
+        
+        #Creation time for project
+        
+        self.provisionedOn = None # str
+        
+        #User creating the project
+        
+        self.provisionedBy = None # str
+        
+        #Number of devices in pending state
+        
+        self.pendingDeviceCount = None # int
+        
+        #Project state
+        
+        self.state = None # str
+        

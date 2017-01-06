@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this project.
 
 
-class ZtdSiteDeviceListResult(object):
+class ZtdSearchListResult(object):
 
 
     def __init__(self):
@@ -18,7 +18,7 @@ class ZtdSiteDeviceListResult(object):
             'version': 'str',
             
             
-            'response': 'list[ZtdSiteDevice]'
+            'response': 'list[ZtdSearch]'
             
         }
 
@@ -35,5 +35,5 @@ class ZtdSiteDeviceListResult(object):
         self.version = None # str
         
         
-        self.response = None # list[ZtdSiteDevice]
+        self.response = None # list[ZtdSearch]
         

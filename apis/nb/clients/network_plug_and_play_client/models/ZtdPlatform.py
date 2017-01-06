@@ -39,4 +39,3 @@ class ZtdPlatform(object):
         #Product IDs under a platform
 
         self.productId = None # list[str]
-
