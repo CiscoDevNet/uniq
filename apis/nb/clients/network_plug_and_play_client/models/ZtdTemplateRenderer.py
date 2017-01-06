@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this project.
 
 
-class ZtdSiteDeviceListResult(object):
+class ZtdTemplateRenderer(object):
 
 
     def __init__(self):
@@ -15,25 +15,42 @@ class ZtdSiteDeviceListResult(object):
         """
         self.swaggerTypes = {
             
-            'version': 'str',
+            'id': 'str',
             
             
-            'response': 'list[ZtdSiteDevice]'
+            'fileId': 'str',
+            
+            
+            'configProperty': 'dict',
+            
+            
+            'generatedContent': 'str'
             
         }
 
         self.attributeMap = {
             
-            'version': 'version',
+            'id': 'id',
             
-            'response': 'response'
+            'fileId': 'fileId',
+            
+            'configProperty': 'configProperty',
+            
+            'generatedContent': 'generatedContent'
             
         }       
 
         
+        #Template Renderer ID
         
-        self.version = None # str
+        self.id = None # str
         
         
-        self.response = None # list[ZtdSiteDevice]
+        self.fileId = None # str
+        
+        
+        self.configProperty = None # dict
+        
+        
+        self.generatedContent = None # str
         

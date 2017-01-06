@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this project.
 
 
-class ZtdSiteDeviceListResult(object):
+class ZtdSearch(object):
 
 
     def __init__(self):
@@ -15,25 +15,33 @@ class ZtdSiteDeviceListResult(object):
         """
         self.swaggerTypes = {
             
-            'version': 'str',
+            'projectDevice': 'list[ZtdSiteDevice]',
             
             
-            'response': 'list[ZtdSiteDevice]'
+            'attributeInfo': 'dict',
+            
+            
+            'id': 'str'
             
         }
 
         self.attributeMap = {
             
-            'version': 'version',
+            'projectDevice': 'projectDevice',
             
-            'response': 'response'
+            'attributeInfo': 'attributeInfo',
+            
+            'id': 'id'
             
         }       
 
         
         
-        self.version = None # str
+        self.projectDevice = None # list[ZtdSiteDevice]
         
         
-        self.response = None # list[ZtdSiteDevice]
+        self.attributeInfo = None # dict
+        
+        
+        self.id = None # str
         

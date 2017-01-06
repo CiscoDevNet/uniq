@@ -7,7 +7,6 @@
 class ZtdPlatformImage(object):
 
 
-
     def __init__(self):
         """
         Attributes:
@@ -15,54 +14,54 @@ class ZtdPlatformImage(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
-            'imageName': 'str',
-
-
+            
             'imageId': 'str',
-
-
+            
+            
+            'imageName': 'str',
+            
+            
             'platform': 'list[ZtdPlatform]',
-
-
-            'imageVersion': 'str',
-
-
-            'imageSize': 'str'
-
+            
+            
+            'imageSize': 'str',
+            
+            
+            'imageVersion': 'str'
+            
         }
 
         self.attributeMap = {
-
-            'imageName': 'imageName',
-
+            
             'imageId': 'imageId',
-
+            
+            'imageName': 'imageName',
+            
             'platform': 'platform',
+            
+            'imageSize': 'imageSize',
+            
+            'imageVersion': 'imageVersion'
+            
+        }       
 
-            'imageVersion': 'imageVersion',
-
-            'imageSize': 'imageSize'
-
-        }
-
-
-        #Image name
-
-        self.imageName = None # str
-
+        
         #Image ID
-
+        
         self.imageId = None # str
-
-
+        
+        #Image name
+        
+        self.imageName = None # str
+        
+        
         self.platform = None # list[ZtdPlatform]
-
-        #Image version
-
-        self.imageVersion = None # str
-
+        
         #Image size in bytes
-
+        
         self.imageSize = None # str
-
+        
+        #Image version
+        
+        self.imageVersion = None # str
+        

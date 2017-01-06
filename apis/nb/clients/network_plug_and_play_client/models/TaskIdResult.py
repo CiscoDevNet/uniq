@@ -7,7 +7,6 @@
 class TaskIdResult(object):
 
 
-
     def __init__(self):
         """
         Attributes:
@@ -15,26 +14,26 @@ class TaskIdResult(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
+            
             'version': 'str',
-
-
+            
+            
             'response': 'TaskIdResponse'
-
+            
         }
 
         self.attributeMap = {
-
+            
             'version': 'version',
-
+            
             'response': 'response'
+            
+        }       
 
-        }
-
-
-
+        
+        
         self.version = None # str
-
-
+        
+        
         self.response = None # TaskIdResponse
-
+        

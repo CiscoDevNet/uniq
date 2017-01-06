@@ -7,7 +7,6 @@
 class ZtdDefaultImage(object):
 
 
-
     def __init__(self):
         """
         Attributes:
@@ -15,34 +14,34 @@ class ZtdDefaultImage(object):
           attributeMap (dict): The key is attribute name and the value is json key in definition.
         """
         self.swaggerTypes = {
-
+            
             'imageName': 'str',
-
-
+            
+            
             'platformId': 'str',
-
-
+            
+            
             'imageId': 'str'
-
+            
         }
 
         self.attributeMap = {
-
+            
             'imageName': 'imageName',
-
+            
             'platformId': 'platformId',
-
+            
             'imageId': 'imageId'
+            
+        }       
 
-        }
-
-
-
+        
+        
         self.imageName = None # str
-
-
+        
+        
         self.platformId = None # str
-
-
+        
+        
         self.imageId = None # str
-
+        

@@ -38,6 +38,15 @@ class PnpdeviceApi(object):
             hostName, str: Host name (required)
 
 
+            configId, str: Configuration ID (required)
+
+
+            templateConfigId, str: Template Configuration ID (required)
+
+
+            imageId, str: Image ID (required)
+
+
             pkiEnabled, str: Device certificate provisioned (true) or not (false) (required)
 
 
@@ -84,10 +93,10 @@ class PnpdeviceApi(object):
         Returns: ZtdDeviceListResult
         """
 
-        allParams = ['serialNumber', 'macAddress', 'ipAddress', 'productId', 'hostName', 'pkiEnabled', 'provisioningType', 'deviceType', 'state', 'authStatus', 'startLastStateTransitionTime', 'endLastStateTransitionTime', 'matchDeviceState', 'deviceMatchesARule', 'sortBy', 'order', 'offset', 'limit', 'scope']
+        allParams = ['serialNumber', 'macAddress', 'ipAddress', 'productId', 'hostName', 'configId', 'templateConfigId', 'imageId', 'pkiEnabled', 'provisioningType', 'deviceType', 'state', 'authStatus', 'startLastStateTransitionTime', 'endLastStateTransitionTime', 'matchDeviceState', 'deviceMatchesARule', 'sortBy', 'order', 'offset', 'limit', 'scope']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getPnpDevices" % key)
             params[key] = val
@@ -121,6 +130,15 @@ class PnpdeviceApi(object):
 
         if ('hostName' in params):
             queryParams['hostName'] = self.apiClient.toPathValue(params['hostName'])
+
+        if ('configId' in params):
+            queryParams['configId'] = self.apiClient.toPathValue(params['configId'])
+
+        if ('templateConfigId' in params):
+            queryParams['templateConfigId'] = self.apiClient.toPathValue(params['templateConfigId'])
+
+        if ('imageId' in params):
+            queryParams['imageId'] = self.apiClient.toPathValue(params['imageId'])
 
         if ('pkiEnabled' in params):
             queryParams['pkiEnabled'] = self.apiClient.toPathValue(params['pkiEnabled'])
@@ -206,7 +224,7 @@ class PnpdeviceApi(object):
         allParams = ['device', 'scope']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method updatePnpDevice" % key)
             params[key] = val
@@ -283,7 +301,7 @@ class PnpdeviceApi(object):
         allParams = ['serialNumber', 'order', 'offset', 'limit', 'scope']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getPnpDeviceHistory" % key)
             params[key] = val
@@ -354,13 +372,13 @@ class PnpdeviceApi(object):
 
 
 
-        Returns: CountResult
+        Returns: str
         """
 
         allParams = ['serialNumber', 'scope']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getPnpDeviceHistoryCount" % key)
             params[key] = val
@@ -404,7 +422,7 @@ class PnpdeviceApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'CountResult')
+        responseObject = self.apiClient.deserialize(response, 'str')
         return responseObject
 
 
@@ -425,7 +443,7 @@ class PnpdeviceApi(object):
         allParams = ['scope']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getPnpDeviceStateMap" % key)
             params[key] = val
@@ -492,6 +510,15 @@ class PnpdeviceApi(object):
             hostName, str: Host name (required)
 
 
+            configId, str: Configuration ID (required)
+
+
+            templateConfigId, str: Template configuration ID (required)
+
+
+            imageId, str: Image ID (required)
+
+
             pkiEnabled, str: Device certificate provisioned (true) or not (false) (required)
 
 
@@ -523,13 +550,13 @@ class PnpdeviceApi(object):
 
 
 
-        Returns: CountResult
+        Returns: str
         """
 
-        allParams = ['serialNumber', 'macAddress', 'ipAddress', 'productId', 'hostName', 'pkiEnabled', 'provisioningType', 'deviceType', 'state', 'authStatus', 'startLastStateTransitionTime', 'endLastStateTransitionTime', 'matchDeviceState', 'deviceMatchesARule', 'scope']
+        allParams = ['serialNumber', 'macAddress', 'ipAddress', 'productId', 'hostName', 'configId', 'templateConfigId', 'imageId', 'pkiEnabled', 'provisioningType', 'deviceType', 'state', 'authStatus', 'startLastStateTransitionTime', 'endLastStateTransitionTime', 'matchDeviceState', 'deviceMatchesARule', 'scope']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getPnpDeviceCount" % key)
             params[key] = val
@@ -563,6 +590,15 @@ class PnpdeviceApi(object):
 
         if ('hostName' in params):
             queryParams['hostName'] = self.apiClient.toPathValue(params['hostName'])
+
+        if ('configId' in params):
+            queryParams['configId'] = self.apiClient.toPathValue(params['configId'])
+
+        if ('templateConfigId' in params):
+            queryParams['templateConfigId'] = self.apiClient.toPathValue(params['templateConfigId'])
+
+        if ('imageId' in params):
+            queryParams['imageId'] = self.apiClient.toPathValue(params['imageId'])
 
         if ('pkiEnabled' in params):
             queryParams['pkiEnabled'] = self.apiClient.toPathValue(params['pkiEnabled'])
@@ -612,7 +648,7 @@ class PnpdeviceApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'CountResult')
+        responseObject = self.apiClient.deserialize(response, 'str')
         return responseObject
 
 
@@ -636,7 +672,7 @@ class PnpdeviceApi(object):
         allParams = ['deviceId', 'scope']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method getPnpDeviceByDeviceId" % key)
             params[key] = val
@@ -707,7 +743,7 @@ class PnpdeviceApi(object):
         allParams = ['deviceId', 'scope']
 
         params = locals()
-        for (key, val) in params['kwargs'].items():
+        for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
                 raise TypeError("Got an unexpected keyword argument '%s' to method deletePnpDeviceByDeviceId" % key)
             params[key] = val

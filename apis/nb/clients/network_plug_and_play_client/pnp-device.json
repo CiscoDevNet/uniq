@@ -1,0 +1,1554 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "/",
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/pnp-device",
+      "description": "getPnpDevices",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of devices",
+          "notes": "This API is used to retrieve a list of devices (Pagination)",
+          "type": "ZtdDeviceListResult",
+          "nickname": "getPnpDevices",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "serialNumber",
+              "description": "Serial number",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "macAddress",
+              "description": "MAC address",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "ipAddress",
+              "description": "IP address",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "hostName",
+              "description": "Host name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "configId",
+              "description": "Configuration ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "templateConfigId",
+              "description": "Template Configuration ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "imageId",
+              "description": "Image ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "pkiEnabled",
+              "description": "Device certificate provisioned (true) or not (false)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "provisioningType",
+              "description": "Provisioning type. Can be one of: new-device-adhoc, new-device-auto-provision, replacement-device",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "deviceType",
+              "description": "Type of device. Currently only AP (Access Point) is supported",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State of device. UNCLAIMED, IGNORED, PROVISIONED etc. Accepts a list of states",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "authStatus",
+              "description": "Authentication status of device: authenticated, error, unsupported",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "startLastStateTransitionTime",
+              "description": "Start of last state transition time (format: yyyy-MM-dd HH:mm:ss)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "endLastStateTransitionTime",
+              "description": "End of last state transition time (format: yyyy-MM-dd HH:mm:ss)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "matchDeviceState",
+              "description": "Match device state. Boolean to match the given state (true) or not (false)",
+              "defaultValue": "true",
+              "required": false,
+              "type": "boolean",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "deviceMatchesARule",
+              "description": "Should device match a rule (true) or not (false)",
+              "defaultValue": "",
+              "required": false,
+              "type": "boolean",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "sortBy",
+              "description": "Sort response based on field",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "order",
+              "description": "Order response in ascending (asc) or descending (des) order",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdDeviceListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-device",
+      "description": "updatePnpDevice",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Updates a device with its ID",
+          "notes": "This API is used to update a device with its ID",
+          "type": "TaskIdResult",
+          "nickname": "updatePnpDevice",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "device",
+              "description": "PnP Device. The only modifiable properties are 1) state 2) configId and 3) imageId. Following are the only allowed combinations: 1) state = START_PROVISIONING, imageId = <> and/or configId = <>. 2) state = IGNORED 3) state = UNCLAIMED. Any other combinations of user input are rejected. ",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdDevice"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-device-history",
+      "description": "getPnpDeviceHistory",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a device's history with its serial number",
+          "notes": "This API is used to retrieve a device's history with its serial number",
+          "type": "ZtdHistoryListResult",
+          "nickname": "getPnpDeviceHistory",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "serialNumber",
+              "description": "Serial number",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "order",
+              "description": "Order response in ascending (asc) or descending (des) order of serial number",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdHistoryListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-device-history/count",
+      "description": "getPnpDeviceHistoryCount",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a count of a device's history with its serial number",
+          "notes": "This API is used to retrieve a count of a device's history with its serial number",
+          "type": "string",
+          "nickname": "getPnpDeviceHistoryCount",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "serialNumber",
+              "description": "Serial number",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "SuccessResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-device-state-map",
+      "description": "getPnpDeviceStateMap",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a map of internal and external device states",
+          "notes": "This API is used to retrieve a map of internal and external device statesReturns a list of external states. For each external state, a list of internal states represented by it.",
+          "type": "ZtdDeviceStateMapResult",
+          "nickname": "getPnpDeviceStateMap",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdDeviceStateMapResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-device/count",
+      "description": "getPnpDeviceCount",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a count of devices",
+          "notes": "This API is used to retrieve a count of devices",
+          "type": "string",
+          "nickname": "getPnpDeviceCount",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "serialNumber",
+              "description": "Serial number",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "macAddress",
+              "description": "MAC address",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "ipAddress",
+              "description": "IP address",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "hostName",
+              "description": "Host name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "configId",
+              "description": "Configuration ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "templateConfigId",
+              "description": "Template configuration ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "imageId",
+              "description": "Image ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "pkiEnabled",
+              "description": "Device certificate provisioned (true) or not (false)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "provisioningType",
+              "description": "Provisioning type. Can be one of: new-device-adhoc, new-device-auto-provision, replacement-device",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "deviceType",
+              "description": "Type of device. Currently only AP (Access Point) is supported",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State of device. UNCLAIMED, IGNORED, PROVISIONED. Accepts a list of states",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "authStatus",
+              "description": "Authentication status of device: authenticated, error, unsupported",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "startLastStateTransitionTime",
+              "description": "Start of last state transition time (format: yyyy-MM-dd HH:mm:ss)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "endLastStateTransitionTime",
+              "description": "End of last state transition time (format: yyyy-MM-dd HH:mm:ss)",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "matchDeviceState",
+              "description": "Match device state. Boolean to match the given state (true) or not (false)",
+              "defaultValue": "true",
+              "required": false,
+              "type": "boolean",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "deviceMatchesARule",
+              "description": "Should device match a rule (true) or not (false)",
+              "defaultValue": "",
+              "required": false,
+              "type": "boolean",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "SuccessResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-device/{deviceId}",
+      "description": "getPnpDeviceByDeviceId",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a device with its ID",
+          "notes": "This API is used to retrieve a device with its ID",
+          "type": "ZtdDeviceResult",
+          "nickname": "getPnpDeviceByDeviceId",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "deviceId",
+              "description": "Device ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdDeviceResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-device/{deviceId}",
+      "description": "deletePnpDeviceByDeviceId",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Deletes a device with its ID",
+          "notes": "This API is used to delete a device with its ID. Device can be deleted only if its in a terminal/error state",
+          "type": "TaskIdResult",
+          "nickname": "deletePnpDeviceByDeviceId",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "deviceId",
+              "description": "Device ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "This Request is OK",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "ZtdMemberDetail": {
+      "id": "ZtdMemberDetail",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "serialNumber": {
+          "type": "string"
+        },
+        "rank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "role": {
+          "type": "string"
+        },
+        "macAddress": {
+          "type": "string"
+        },
+        "licenseInUse": {
+          "type": "string"
+        },
+        "hardwareVersion": {
+          "type": "string"
+        },
+        "imageVersion": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "state": {
+          "type": "string"
+        },
+        "port": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdPort"
+          }
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "ZtdDeviceResult": {
+      "id": "ZtdDeviceResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "ZtdDevice"
+        }
+      }
+    },
+    "ZtdDeviceListResult": {
+      "id": "ZtdDeviceListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdDevice"
+          }
+        }
+      }
+    },
+    "TaskId": {
+      "id": "TaskId",
+      "description": "",
+      "extends": "",
+      "properties": {}
+    },
+    "ZtdDeviceDiscoveryInfo": {
+      "id": "ZtdDeviceDiscoveryInfo",
+      "description": "",
+      "required": [
+        "name"
+      ],
+      "extends": "",
+      "properties": {
+        "timeout": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Time to wait for device response in seconds"
+        },
+        "userNameList": {
+          "type": "array",
+          "description": "Username of the devices to be discovered",
+          "items": {
+            "type": "string"
+          }
+        },
+        "passwordList": {
+          "type": "array",
+          "description": "Password of the devices to be discovered",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enablePasswordList": {
+          "type": "array",
+          "description": "Enable Password of the devices to be discovered",
+          "items": {
+            "type": "string"
+          }
+        },
+        "snmpAuthPassphrase": {
+          "type": "string",
+          "description": "Auth Pass phrase for SNMP"
+        },
+        "snmpPrivPassphrase": {
+          "type": "string",
+          "description": "Pass phrase for SNMP privacy"
+        },
+        "ipAddressList": {
+          "type": "string",
+          "description": "Ip address of the device to be discovered"
+        },
+        "snmpVersion": {
+          "type": "string",
+          "description": "Version of SNMP. Can be v2 or v3"
+        },
+        "snmpMode": {
+          "type": "string",
+          "description": "Mode of SNMP. Available values:'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'"
+        },
+        "cdpLevel": {
+          "type": "integer",
+          "format": "int32",
+          "description": "CDP level to which neighbor devices to be discovered"
+        },
+        "discoveryType": {
+          "type": "string",
+          "description": "Available types are: single, auto cdp discovery, range, multi range"
+        },
+        "ipFilterList": {
+          "type": "array",
+          "description": "Username of the devices to be discovered",
+          "items": {
+            "type": "string"
+          }
+        },
+        "protocolOrder": {
+          "type": "string",
+          "description": "Order of protocol in which device connection establishment to be tried"
+        },
+        "retry": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of times to try establishing connection to device"
+        },
+        "snmpAuthProtocol": {
+          "type": "string",
+          "description": "SNMP auth protocol. Available values:'SHA' or 'MD5'"
+        },
+        "snmpPrivProtocol": {
+          "type": "string",
+          "description": "SNMP privacy protocol. Available values:'DES' or 'AES128'"
+        },
+        "snmpROCommunity": {
+          "type": "string",
+          "description": "Snmp RO community of the devices to be discovered"
+        },
+        "snmpRWCommunity": {
+          "type": "string",
+          "description": "Snmp RW community of the devices to be discovered"
+        },
+        "snmpUserName": {
+          "type": "string",
+          "description": "SNMP username of the device"
+        },
+        "globalCredentialIdList": {
+          "type": "array",
+          "description": "List of global credential ids to be used",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for discovery"
+        }
+      }
+    },
+    "ZtdDevice": {
+      "id": "ZtdDevice",
+      "description": "PnP device representation",
+      "required": [
+        "serialNumber",
+        "id",
+        "platformId",
+        "site"
+      ],
+      "extends": "",
+      "properties": {
+        "serialNumber": {
+          "type": "string",
+          "description": "Serial number"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "description": "Device ID"
+        },
+        "platformId": {
+          "type": "string",
+          "description": "Platform ID"
+        },
+        "site": {
+          "type": "string",
+          "description": "Project to which device belongs if pre-provisioned"
+        },
+        "imageId": {
+          "type": "string",
+          "description": "Image file ID"
+        },
+        "eulaAccepted": {
+          "type": "boolean",
+          "description": "CLI execution EULA accepted or not"
+        },
+        "templateConfigId": {
+          "type": "string",
+          "description": "Template config ID"
+        },
+        "licenseLevel": {
+          "type": "string",
+          "description": "CLI execution license level"
+        },
+        "licenseString": {
+          "type": "string",
+          "description": "License information"
+        },
+        "apCount": {
+          "type": "string",
+          "description": "Wireless AP count"
+        },
+        "isMobilityController": {
+          "type": "string",
+          "description": "Specify if device is a wireless mobility controller"
+        },
+        "sudiRequired": {
+          "type": "boolean"
+        },
+        "memberUdi": {
+          "type": "string",
+          "description": "Unique device ID of redundant/stack switches"
+        },
+        "deviceDiscoveryInfo": {
+          "$ref": "ZtdDeviceDiscoveryInfo",
+          "description": "Device discovery info"
+        },
+        "macAddress": {
+          "type": "string"
+        },
+        "configId": {
+          "type": "string",
+          "description": "Configuration file ID"
+        },
+        "pkiEnabled": {
+          "type": "boolean",
+          "description": "Configure PKCS#12 trust point during PNP workflow if true"
+        },
+        "fileDestination": {
+          "type": "string",
+          "description": "Location on device to which image/config files will be copied"
+        },
+        "backoffTimer": {
+          "type": "string",
+          "description": "Backoff timer"
+        },
+        "provisioningType": {
+          "type": "string",
+          "description": "Type of device"
+        },
+        "unclaimedHint": {
+          "type": "string",
+          "description": "Hint whether device might be RMA"
+        },
+        "bootstrapId": {
+          "type": "string",
+          "description": "Bootstrap file ID"
+        },
+        "oldNetworkDeviceId": {
+          "type": "string",
+          "description": "Inventory device of which this device is the replacement"
+        },
+        "hwRevision": {
+          "type": "string",
+          "description": "HW revision"
+        },
+        "mainMemSize": {
+          "type": "string",
+          "description": "Main memory size"
+        },
+        "boardId": {
+          "type": "string",
+          "description": "Board ID"
+        },
+        "boardReworkId": {
+          "type": "string",
+          "description": "Board rework ID"
+        },
+        "midplaneVersion": {
+          "type": "string",
+          "description": "Mid plane version"
+        },
+        "versionString": {
+          "type": "string",
+          "description": "IOS Version"
+        },
+        "imageFile": {
+          "type": "string",
+          "description": "Image ID"
+        },
+        "returnToRomReason": {
+          "type": "string",
+          "description": "Return to rom reason"
+        },
+        "bootVariable": {
+          "type": "string",
+          "description": "Boot variable"
+        },
+        "bootLdrVariable": {
+          "type": "string",
+          "description": "Boot ldr variable"
+        },
+        "configVariable": {
+          "type": "string",
+          "description": "Config variable"
+        },
+        "configReg": {
+          "type": "string",
+          "description": "Config reg"
+        },
+        "configRegNext": {
+          "type": "string",
+          "description": "Config reg next"
+        },
+        "topologyInfo": {
+          "type": "string",
+          "description": "Information about topology"
+        },
+        "filesystemInfo": {
+          "type": "string",
+          "description": "Information about filesystem"
+        },
+        "deviceDetailsLastUpdate": {
+          "type": "string",
+          "description": "Timestamp when the device details were last read"
+        },
+        "slotNumber": {
+          "type": "string",
+          "description": "Slot number"
+        },
+        "certificateNeededState": {
+          "type": "string",
+          "description": "State which is detected as happening over http instead of https"
+        },
+        "pnpProfileUsedAddr": {
+          "type": "string",
+          "description": "PnP server ipv4 address used by pnp profile"
+        },
+        "pnpProfileUsedHost": {
+          "type": "string",
+          "description": "PnP server hostname used by pnp profile"
+        },
+        "authStatus": {
+          "$ref": "DeviceAuthState"
+        },
+        "deviceCertificate": {
+          "type": "string"
+        },
+        "deviceType": {
+          "type": "string"
+        },
+        "memberDetail": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdMemberDetail"
+          }
+        },
+        "firstContact": {
+          "type": "string",
+          "description": "First contact time of device"
+        },
+        "lastContact": {
+          "type": "string",
+          "description": "Last contact time of device"
+        },
+        "cleanup": {
+          "type": "boolean"
+        },
+        "lastStateTransitionTime": {
+          "type": "string",
+          "description": "Last state transition time of device"
+        },
+        "stateDisplay": {
+          "type": "string"
+        },
+        "versionCompatible": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "description": "Device state"
+        },
+        "hostName": {
+          "type": "string",
+          "description": "Host name"
+        }
+      }
+    },
+    "ZtdHistoryListResult": {
+      "id": "ZtdHistoryListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdHistory"
+          }
+        }
+      }
+    },
+    "Entry«string,List«string»»": {
+      "id": "Entry«string,List«string»»",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "key": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ZtdDeviceStateMapResult": {
+      "id": "ZtdDeviceStateMapResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "Entry«string,List«string»»"
+          }
+        }
+      }
+    },
+    "ZtdHistory": {
+      "id": "ZtdHistory",
+      "description": "",
+      "required": [
+        "serialNumber"
+      ],
+      "extends": "",
+      "properties": {
+        "serialNumber": {
+          "type": "string",
+          "description": "Serial number"
+        },
+        "log": {
+          "type": "string",
+          "description": "Log message from device"
+        },
+        "id": {
+          "type": "string"
+        },
+        "platformId": {
+          "type": "string",
+          "description": "Platform ID"
+        },
+        "transactionTime": {
+          "type": "string",
+          "description": "Last contact time of device"
+        }
+      }
+    },
+    "TaskIdResponse": {
+      "id": "TaskIdResponse",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "taskId": {
+          "$ref": "TaskId"
+        }
+      }
+    },
+    "TaskIdResult": {
+      "id": "TaskIdResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "TaskIdResponse"
+        }
+      }
+    },
+    "ZtdPort": {
+      "id": "ZtdPort",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "neighborRank": {
+          "type": "string"
+        }
+      }
+    },
+    "DeviceAuthState": {
+      "id": "DeviceAuthState",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "timestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "None",
+            "Unsupported",
+            "Error",
+            "Pending",
+            "Authenticated"
+          ]
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "certInfo": {
+          "$ref": "CertificateInfo"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Unsupported",
+            "SUDI"
+          ]
+        }
+      }
+    },
+    "CertificateInfo": {
+      "id": "CertificateInfo",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "keySize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "serialNumber": {
+          "type": "string"
+        },
+        "issuerDN": {
+          "type": "string"
+        },
+        "subjectDN": {
+          "type": "string"
+        },
+        "keyType": {
+          "type": "string"
+        },
+        "noAfterDateISO8601": {
+          "type": "string"
+        },
+        "noAfterDate": {
+          "type": "string"
+        },
+        "beginDateISO8601": {
+          "type": "string"
+        },
+        "beginDate": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

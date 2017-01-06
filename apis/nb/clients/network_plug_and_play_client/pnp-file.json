@@ -1,0 +1,1515 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "/pnp-file",
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/pnp-file/config",
+      "description": "getConfigs",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of config records",
+          "notes": "This API is used to retrieve a list of config records (Pagination)",
+          "type": "FileObjectListResult",
+          "nickname": "getConfigs",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "name",
+              "description": "File name pattern",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "extension",
+              "description": "Ext. txt, json, gen, vm. Use \"\" for no extension.  Accepts a list of extensions.",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "matchExtension",
+              "description": "Match extension. Boolean to match the given extension (true) or not (false)",
+              "defaultValue": "true",
+              "required": false,
+              "type": "boolean",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "FileObjectListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/config/count",
+      "description": "getConfigCount",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Returns number of CLI config files",
+          "notes": "This API is used to retrieve number of CLI config files",
+          "type": "string",
+          "nickname": "getConfigCount",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "description": "File name pattern",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "extension",
+              "description": "Ext. txt, json, gen, vm. Use \"\" for no extension.  Accepts a list of extensions.",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "matchExtension",
+              "description": "Match extension. Boolean to match the given extension (true) or not (false)",
+              "defaultValue": "true",
+              "required": false,
+              "type": "boolean",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "SuccessResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/config/{configId}",
+      "description": "deleteConfigById",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Deletes a configuration with its ID",
+          "notes": "This API is used to delete a configuration with its ID ",
+          "type": "TaskIdResult",
+          "nickname": "deleteConfigById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "configId",
+              "description": "Config ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/image",
+      "description": "updatePnpImageDetails",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Updates an image and the platforms for which it is default with its ID",
+          "notes": "This API is used to update an image and the platforms for which it is default with its ID ",
+          "type": "TaskIdResult",
+          "nickname": "updatePnpImageDetails",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "image",
+              "description": "PnP Image",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdPlatformImage"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/image",
+      "description": "getPnpImageBySearch",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of images and the platforms for which they are a default",
+          "notes": "This API is used to retrieve a list of images and the platforms for which they are a default (Pagination)",
+          "type": "ZtdPlatformImageListResult",
+          "nickname": "getPnpImageBySearch",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "description": "Image name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "platform",
+              "description": "Platform name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "match",
+              "description": "Match all or any parameters",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "order",
+              "description": "Order response in ascending (asc) or descending (des) order of image name.",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdPlatformImageListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/image/count",
+      "description": "getPnpImageBySearchCount",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a count of images",
+          "notes": "This API is used to retrieve a count of images",
+          "type": "string",
+          "nickname": "getPnpImageBySearchCount",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "description": "Image name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "platform",
+              "description": "Platform name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "match",
+              "description": "Match all or any parameters",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "SuccessResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/image/default",
+      "description": "getPnpDefaultImages",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves the default image for a given platform or product ID",
+          "notes": "This API is used to retrieve the default image for a given platform or product ID",
+          "type": "ZtdDefaultImageListResult",
+          "nickname": "getPnpDefaultImages",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "platform",
+              "description": "Platform name. Provide either platform name or product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID. Provide either platform name or product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdDefaultImageListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/image/valid-extension",
+      "description": "getPnpValidImageExtensions",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves the valid image extensions supported",
+          "notes": "This API is used to retrieve the valid image extensions supported",
+          "type": "ZtdValidExtensionsResult",
+          "nickname": "getPnpValidImageExtensions",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdValidExtensionsResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/image/{imageId}",
+      "description": "deletePnpImageById",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Deletes an image and default platform assiciations with its ID",
+          "notes": "This API is used to delete an image and default platform assiciations with its ID ",
+          "type": "TaskIdResult",
+          "nickname": "deletePnpImageById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "imageId",
+              "description": "Image ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/image/{imageId}",
+      "description": "getPnpImageById",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves an image and the platforms for which it is a default with its ID",
+          "notes": "This API is used to retrieve an image and the platforms for which it is a default with its ID",
+          "type": "ZtdPlatformImageResult",
+          "nickname": "getPnpImageById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "imageId",
+              "description": "Image ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdPlatformImageResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/image/{imageId}/recommended-platform",
+      "description": "getPnpRecommendedPlatform",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves the recommended platforms for a given image",
+          "notes": "This API is used to retrieve the recommended platforms for a given image",
+          "type": "ZtdPlatformListResult",
+          "nickname": "getPnpRecommendedPlatform",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "imageId",
+              "description": "Image ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdPlatformListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/platform",
+      "description": "getPnpPlatforms",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of platforms",
+          "notes": "This API is used to retrieve a list of platforms (Pagination)",
+          "type": "ZtdPlatformListResult",
+          "nickname": "getPnpPlatforms",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "platformName",
+              "description": "Platform name",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdPlatformListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/template",
+      "description": "getTemplates",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of template records",
+          "notes": "This API is used to retrieve a list of template records (Pagination)",
+          "type": "FileObjectListResult",
+          "nickname": "getTemplates",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "name",
+              "description": "File name pattern",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "extension",
+              "description": "Ext. txt, json, vm. Use \"\" for no extension.  Accepts a list of extensions.",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "matchExtension",
+              "description": "Match extension. Boolean to match the given extension (true) or not (false)",
+              "defaultValue": "true",
+              "required": false,
+              "type": "boolean",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "FileObjectListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/template/count",
+      "description": "getTemplateCount",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Returns number of CLI template files",
+          "notes": "This API is used to retrieve number of CLI Template files",
+          "type": "string",
+          "nickname": "getTemplateCount",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "description": "File name pattern",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "extension",
+              "description": "Ext. txt, json, vm. Use \"\" for no extension.  Accepts a list of extensions.",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "matchExtension",
+              "description": "Match extension. Boolean to match the given extension (true) or not (false)",
+              "defaultValue": "true",
+              "required": false,
+              "type": "boolean",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "SuccessResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "No Resource Found"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-file/template/{templateFileId}",
+      "description": "deleteTemplateById",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Deletes a template with its ID",
+          "notes": "This API is used to delete a template with its ID ",
+          "type": "TaskIdResult",
+          "nickname": "deleteTemplateById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "templateFileId",
+              "description": "Template File ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "TaskId": {
+      "id": "TaskId",
+      "description": "",
+      "extends": "",
+      "properties": {}
+    },
+    "ZtdPlatformImage": {
+      "id": "ZtdPlatformImage",
+      "description": "PnP image representation",
+      "extends": "",
+      "properties": {
+        "imageId": {
+          "type": "string",
+          "description": "Image ID"
+        },
+        "imageName": {
+          "type": "string",
+          "description": "Image name"
+        },
+        "platform": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdPlatform"
+          }
+        },
+        "imageSize": {
+          "type": "string",
+          "description": "Image size in bytes"
+        },
+        "imageVersion": {
+          "type": "string",
+          "description": "Image version"
+        }
+      }
+    },
+    "ZtdDefaultImageListResult": {
+      "id": "ZtdDefaultImageListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdDefaultImage"
+          }
+        }
+      }
+    },
+    "ZtdPlatformImageListResult": {
+      "id": "ZtdPlatformImageListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "ZtdPlatformImageList"
+        }
+      }
+    },
+    "ZtdPlatform": {
+      "id": "ZtdPlatform",
+      "description": "PnP platform representation",
+      "extends": "",
+      "properties": {
+        "platformName": {
+          "type": "string",
+          "description": "Platform name"
+        },
+        "productId": {
+          "type": "array",
+          "description": "Product IDs under a platform",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ZtdPlatformImageList": {
+      "id": "ZtdPlatformImageList",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdPlatformImage"
+          }
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "ZtdValidExtensionsResult": {
+      "id": "ZtdValidExtensionsResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "FileObject": {
+      "id": "FileObject",
+      "description": "",
+      "required": [
+        "id",
+        "fileSize",
+        "nameSpace",
+        "fileFormat",
+        "sha1Checksum",
+        "md5Checksum",
+        "downloadPath",
+        "name"
+      ],
+      "extends": "",
+      "properties": {
+        "encrypted": {
+          "type": "boolean",
+          "description": "isEncrypted of the file"
+        },
+        "id": {
+          "type": "string",
+          "description": "file indentification number"
+        },
+        "fileSize": {
+          "type": "string",
+          "description": "Size of the file in bytes"
+        },
+        "nameSpace": {
+          "type": "string",
+          "description": "A group of file IDs contained in a common nameSpace"
+        },
+        "fileFormat": {
+          "type": "string",
+          "description": "MIME Type of the File. e.g. text/plain, application/xml, audio/mpeg"
+        },
+        "sha1Checksum": {
+          "type": "string",
+          "description": "sha1Checksum of the file"
+        },
+        "md5Checksum": {
+          "type": "string",
+          "description": "md5Checksum of the file"
+        },
+        "downloadPath": {
+          "type": "string",
+          "description": "Absolute path of the file"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the file"
+        },
+        "attributeInfo": {
+          "$ref": "object"
+        }
+      }
+    },
+    "ZtdDefaultImage": {
+      "id": "ZtdDefaultImage",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "imageName": {
+          "type": "string"
+        },
+        "platformId": {
+          "type": "string"
+        },
+        "imageId": {
+          "type": "string"
+        }
+      }
+    },
+    "FileObjectListResult": {
+      "id": "FileObjectListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "FileObject"
+          }
+        }
+      }
+    },
+    "TaskIdResponse": {
+      "id": "TaskIdResponse",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "taskId": {
+          "$ref": "TaskId"
+        }
+      }
+    },
+    "ZtdPlatformListResult": {
+      "id": "ZtdPlatformListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdPlatform"
+          }
+        }
+      }
+    },
+    "ZtdPlatformImageResult": {
+      "id": "ZtdPlatformImageResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "ZtdPlatformImage"
+        }
+      }
+    },
+    "TaskIdResult": {
+      "id": "TaskIdResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "TaskIdResponse"
+        }
+      }
+    }
+  }
+}
