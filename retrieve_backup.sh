@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This source code is licensed under the Apache license found in the
+# LICENSE file in the root directory of this project.
+
 # This script will trigger backup on specific cluster, wait for backup being done, and download it
 # to local directory.
 # In local directory, it only keep 10 latest backup files.
