@@ -212,8 +212,10 @@ class FileApi(object):
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams, files=files)
 
+        if not response:
+            return None
 
-
+        return response
 
 
     def deleteFile(self, **kwargs):
