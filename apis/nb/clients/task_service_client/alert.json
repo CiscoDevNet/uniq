@@ -1,171 +1,508 @@
 {
-    "apis": [
-        {
-            "path": "/alarm",
-            "operations": [
-                {
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "responseModel": "ListAlarmDTOResponse",
-                            "code": 200
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "ListAlarmDTOResponse",
-                    "summary": "Retrieve Alarms",
-                    "parameters": [],
-                    "method": "GET",
-                    "notes": "getAlarmWithFilter",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "deprecated": "false",
-                    "nickname": "getAlarmWithFilter"
-                }
-            ],
-            "description": "getAlarmWithFilter"
-        },
-        {
-            "path": "/alarm/count",
-            "operations": [
-                {
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult",
-                            "code": 200
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "integer",
-                    "parameters": [],
-                    "summary": "Retrieve Count of number of alarms",
-                    "format": "int32",
-                    "method": "GET",
-                    "notes": "Get alarm count",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "deprecated": "false",
-                    "nickname": "getAlarmCountWithFilter"
-                }
-            ],
-            "description": "getAlarmCountWithFilter"
-        },
-        {
-            "path": "/alarm/{alertUUID}",
-            "operations": [
-                {
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult",
-                            "code": 200
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "SuccessResult",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "alertUUID",
-                            "paramType": "path",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "required": true,
-                            "name": "alertUUID"
-                        },
-                        {
-                            "type": "AlarmDTO",
-                            "description": "alarmDTO",
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "allowMultiple": false,
-                            "required": false,
-                            "name": "alarmDTO"
-                        }
-                    ],
-                    "summary": "Acknowledge an Alarm by UUID",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "method": "PUT",
-                    "notes": "This method is used to acknowledge an Alarm by UUID",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "deprecated": "false",
-                    "nickname": "acknowledgeAlarm"
-                }
-            ],
-            "description": "acknowledgeAlarm"
-        }
-    ],
-    "apiVersion": "1.0",
-    "basePath": "/task-service",
     "consumes": [
         "application/json"
     ],
-    "swaggerVersion": "1.2",
-    "produces": [
-        "application/json"
-    ],
     "models": {
-        "ClassLoader": {
+        "Constructor": {
+            "id": "Constructor",
             "properties": {
-                "parent": {
-                    "$ref": "ClassLoader"
+                "modifiers": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "accessible": {
+                    "type": "boolean"
+                },
+                "annotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Annotation"
+                    }
+                },
+                "declaredAnnotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Annotation"
+                    }
+                },
+                "synthetic": {
+                    "type": "boolean"
+                },
+                "varArgs": {
+                    "type": "boolean"
+                },
+                "genericParameterTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Type"
+                    }
+                },
+                "exceptionTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Class"
+                    }
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "typeParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "TypeVariable"
+                    }
+                },
+                "genericExceptionTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Type"
+                    }
+                },
+                "parameterAnnotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Array"
+                    }
+                },
+                "parameterTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Class"
+                    }
                 }
             },
-            "id": "ClassLoader",
             "description": "",
             "extends": ""
         },
-        "Iterator\u00abstring\u00bb": {
+        "Principal": {
+            "id": "Principal",
             "properties": {},
-            "id": "Iterator\u00abstring\u00bb",
+            "description": "",
+            "extends": ""
+        },
+        "ProtectionDomain": {
+            "id": "ProtectionDomain",
+            "properties": {
+                "permissions": {
+                    "$ref": "PermissionCollection"
+                },
+                "principals": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Principal"
+                    }
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "Timestamp": {
+            "id": "Timestamp",
+            "properties": {
+                "signerCertPath": {
+                    "$ref": "CertPath"
+                },
+                "timestamp": {
+                    "$ref": "date-time"
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "GenericDeclaration": {
+            "id": "GenericDeclaration",
+            "properties": {
+                "typeParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "TypeVariable"
+                    }
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "PublicKey": {
+            "id": "PublicKey",
+            "properties": {
+                "format": {
+                    "type": "string"
+                },
+                "algorithm": {
+                    "type": "string"
+                },
+                "encoded": {
+                    "type": "array",
+                    "items": {
+                        "type": "byte"
+                    }
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "Class": {
+            "id": "Class",
+            "properties": {
+                "annotation": {
+                    "type": "boolean"
+                },
+                "memberClass": {
+                    "type": "boolean"
+                },
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Field"
+                    }
+                },
+                "enclosingConstructor": {
+                    "$ref": "Constructor\u00abobject\u00bb"
+                },
+                "enclosingMethod": {
+                    "$ref": "Method"
+                },
+                "constructors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Constructor"
+                    }
+                },
+                "declaredMethods": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Method"
+                    }
+                },
+                "package": {
+                    "$ref": "Package"
+                },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Class"
+                    }
+                },
+                "enumConstants": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "declaredFields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Field"
+                    }
+                },
+                "methods": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Method"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "declaredClasses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Class"
+                    }
+                },
+                "enum": {
+                    "type": "boolean"
+                },
+                "protectionDomain": {
+                    "$ref": "ProtectionDomain"
+                },
+                "genericSuperclass": {
+                    "$ref": "Type"
+                },
+                "signers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "localClass": {
+                    "type": "boolean"
+                },
+                "modifiers": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "array": {
+                    "type": "boolean"
+                },
+                "canonicalName": {
+                    "type": "string"
+                },
+                "annotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Annotation"
+                    }
+                },
+                "simpleName": {
+                    "type": "string"
+                },
+                "componentType": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "declaredConstructors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Constructor"
+                    }
+                },
+                "classLoader": {
+                    "$ref": "ClassLoader"
+                },
+                "enclosingClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "synthetic": {
+                    "type": "boolean"
+                },
+                "typeParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "TypeVariable"
+                    }
+                },
+                "genericInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Type"
+                    }
+                },
+                "primitive": {
+                    "type": "boolean"
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "superclass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "declaredAnnotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Annotation"
+                    }
+                },
+                "classes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Class"
+                    }
+                },
+                "anonymousClass": {
+                    "type": "boolean"
+                },
+                "interface": {
+                    "type": "boolean"
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "AlarmDTO": {
+            "id": "AlarmDTO",
+            "properties": {
+                "lastModifiedTimestamp": {
+                    "$ref": "date-time"
+                },
+                "isDeviceMaster": {
+                    "type": "boolean"
+                },
+                "ownerID": {
+                    "type": "string"
+                },
+                "subclassName": {
+                    "type": "string"
+                },
+                "srcObjectClassId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "applicationSpecificAlarmID": {
+                    "type": "string"
+                },
+                "eventType": {
+                    "$ref": "EventTypeEnum"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "applicationCategoryData": {
+                    "type": "string"
+                },
+                "isAcknowledged": {
+                    "type": "boolean"
+                },
+                "eventAlarmDetailsUrl": {
+                    "type": "string"
+                },
+                "reportingEntityAddress": {
+                    "$ref": "InetAddress"
+                },
+                "eventCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "deviceTimestamp": {
+                    "$ref": "date-time"
+                },
+                "notificationDeliveryMechanism": {
+                    "enum": [
+                        "UNKNOWN",
+                        "OTHER",
+                        "SNMP_TRAP",
+                        "SYSLOG",
+                        "SYNTHETIC_EVENT",
+                        "NMS_POLLING",
+                        "TL1"
+                    ],
+                    "type": "string"
+                },
+                "srcObjectId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "pendingUntil": {
+                    "$ref": "date-time"
+                },
+                "severity": {
+                    "enum": [
+                        "CRITICAL",
+                        "MAJOR",
+                        "MINOR",
+                        "WARNING",
+                        "CLEARED",
+                        "INFORMATION"
+                    ],
+                    "type": "string"
+                },
+                "instanceUuid": {
+                    "type": "string"
+                },
+                "sourceMacAddress": {
+                    "$ref": "MacAddress"
+                },
+                "category": {
+                    "$ref": "EventAlarmCategoryEnum"
+                },
+                "mayBeAutoCleared": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "alarmCreationTime": {
+                    "$ref": "date-time"
+                },
+                "previousSeverity": {
+                    "enum": [
+                        "CRITICAL",
+                        "MAJOR",
+                        "MINOR",
+                        "WARNING",
+                        "CLEARED",
+                        "INFORMATION"
+                    ],
+                    "type": "string"
+                },
+                "causedAlarms": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "IdRef"
+                    }
+                },
+                "causingAlarmUrl": {
+                    "type": "string"
+                },
+                "transientNameValue": {
+                    "$ref": "object"
+                },
+                "causingAlarm": {
+                    "$ref": "IdRef"
+                },
+                "alarmDisplayable": {
+                    "type": "boolean"
+                },
+                "causedAlarmsUrl": {
+                    "type": "string"
+                },
+                "eventAlarmDetails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "IdRef"
+                    }
+                },
+                "stability": {
+                    "enum": [
+                        "OK",
+                        "FLAPPING",
+                        "REPEATED_RESTART"
+                    ],
+                    "type": "string"
+                },
+                "notificationState": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "InetAddress": {
+            "id": "InetAddress",
+            "properties": {
+                "addressType": {
+                    "enum": [
+                        "UNKNOWN",
+                        "IP_V4",
+                        "IP_V6",
+                        "IP_V4Z",
+                        "IP_V6Z",
+                        "DNS"
+                    ],
+                    "type": "string"
+                },
+                "cachedOctets": {
+                    "type": "array",
+                    "items": {
+                        "type": "byte"
+                    }
+                },
+                "palIceDualIpAddress": {
+                    "type": "string"
+                },
+                "palIceDualIpAddressType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "paddedAddress": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                }
+            },
             "description": "",
             "extends": ""
         },
         "CodeSource": {
+            "id": "CodeSource",
             "properties": {
-                "location": {
-                    "$ref": "URL"
-                },
                 "certificates": {
                     "type": "array",
                     "items": {
@@ -177,390 +514,67 @@
                     "items": {
                         "$ref": "CodeSigner"
                     }
+                },
+                "location": {
+                    "$ref": "URL"
                 }
             },
-            "id": "CodeSource",
             "description": "",
             "extends": ""
         },
-        "Constructor": {
+        "IdRef": {
+            "id": "IdRef",
             "properties": {
-                "genericParameterTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Type"
-                    }
-                },
-                "declaringClass": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "annotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "modifiers": {
+                "id": {
                     "type": "integer",
-                    "format": "int32"
+                    "format": "int64"
                 },
-                "accessible": {
-                    "type": "boolean"
-                },
-                "parameterTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "parameterAnnotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Array"
-                    }
-                },
-                "name": {
+                "type": {
                     "type": "string"
                 },
-                "exceptionTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
+                "longType": {
+                    "$ref": "Class\u00abobject\u00bb"
                 },
-                "genericExceptionTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Type"
-                    }
-                },
-                "typeParameters": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TypeVariable"
-                    }
-                },
-                "declaredAnnotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "synthetic": {
-                    "type": "boolean"
-                },
-                "varArgs": {
-                    "type": "boolean"
+                "url": {
+                    "type": "string"
                 }
             },
-            "id": "Constructor",
             "description": "",
             "extends": ""
         },
-        "ProtectionDomain": {
-            "properties": {
-                "principals": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Principal"
-                    }
-                },
-                "permissions": {
-                    "$ref": "PermissionCollection"
-                },
-                "classLoader": {
-                    "$ref": "ClassLoader"
-                },
-                "codeSource": {
-                    "$ref": "CodeSource"
-                }
-            },
-            "id": "ProtectionDomain",
+        "Type": {
+            "id": "Type",
+            "properties": {},
             "description": "",
             "extends": ""
         },
-        "Method": {
+        "MacAddress": {
+            "id": "MacAddress",
             "properties": {
-                "genericParameterTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Type"
-                    }
-                },
-                "declaringClass": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "annotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "modifiers": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "returnType": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "bridge": {
-                    "type": "boolean"
-                },
-                "parameterTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "parameterAnnotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Array"
-                    }
-                },
-                "name": {
-                    "type": "string"
-                },
-                "exceptionTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "genericExceptionTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Type"
-                    }
-                },
-                "typeParameters": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TypeVariable"
-                    }
-                },
-                "genericReturnType": {
-                    "$ref": "Type"
-                },
-                "defaultValue": {
-                    "$ref": "object"
-                },
-                "declaredAnnotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "accessible": {
-                    "type": "boolean"
-                },
-                "synthetic": {
-                    "type": "boolean"
-                },
-                "varArgs": {
-                    "type": "boolean"
-                }
-            },
-            "id": "Method",
-            "description": "",
-            "extends": ""
-        },
-        "Class": {
-            "properties": {
-                "anonymousClass": {
-                    "type": "boolean"
-                },
-                "annotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "interfaces": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "package": {
-                    "$ref": "Package"
-                },
-                "enum": {
-                    "type": "boolean"
-                },
-                "simpleName": {
-                    "type": "string"
-                },
-                "genericSuperclass": {
-                    "$ref": "Type"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "componentType": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "genericInterfaces": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Type"
-                    }
-                },
-                "classes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "protectionDomain": {
-                    "$ref": "ProtectionDomain"
-                },
-                "fields": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Field"
-                    }
-                },
-                "canonicalName": {
-                    "type": "string"
-                },
-                "enclosingMethod": {
-                    "$ref": "Method"
-                },
-                "declaringClass": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "constructors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Constructor"
-                    }
-                },
-                "classLoader": {
-                    "$ref": "ClassLoader"
-                },
-                "modifiers": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "enumConstants": {
-                    "type": "array",
-                    "items": {
-                        "type": "object"
-                    }
-                },
-                "declaredAnnotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "signers": {
-                    "type": "array",
-                    "items": {
-                        "type": "object"
-                    }
-                },
-                "memberClass": {
-                    "type": "boolean"
-                },
-                "superclass": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "declaredFields": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Field"
-                    }
-                },
-                "declaredClasses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "declaredMethods": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Method"
-                    }
-                },
-                "declaredConstructors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Constructor"
-                    }
-                },
-                "typeParameters": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TypeVariable"
-                    }
-                },
-                "enclosingClass": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "primitive": {
-                    "type": "boolean"
-                },
-                "interface": {
-                    "type": "boolean"
-                },
-                "annotation": {
-                    "type": "boolean"
-                },
-                "localClass": {
-                    "type": "boolean"
-                },
-                "methods": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Method"
-                    }
-                },
-                "array": {
-                    "type": "boolean"
-                },
-                "synthetic": {
-                    "type": "boolean"
-                },
-                "enclosingConstructor": {
-                    "$ref": "Constructor\u00abobject\u00bb"
-                }
-            },
-            "id": "Class",
-            "description": "",
-            "extends": ""
-        },
-        "PublicKey": {
-            "properties": {
-                "encoded": {
+                "octets": {
                     "type": "array",
                     "items": {
                         "type": "byte"
                     }
-                },
-                "algorithm": {
-                    "type": "string"
-                },
-                "format": {
-                    "type": "string"
                 }
             },
-            "id": "PublicKey",
             "description": "",
             "extends": ""
         },
-        "Constructor\u00abobject\u00bb": {
+        "Package": {
+            "id": "Package",
             "properties": {
-                "genericParameterTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Type"
-                    }
+                "implementationVendor": {
+                    "type": "string"
                 },
-                "declaringClass": {
-                    "$ref": "Class\u00abobject\u00bb"
+                "implementationVersion": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "implementationTitle": {
+                    "type": "string"
                 },
                 "annotations": {
                     "type": "array",
@@ -568,45 +582,8 @@
                         "$ref": "Annotation"
                     }
                 },
-                "modifiers": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "accessible": {
-                    "type": "boolean"
-                },
-                "parameterTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "parameterAnnotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Array"
-                    }
-                },
-                "name": {
+                "specificationVersion": {
                     "type": "string"
-                },
-                "exceptionTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "genericExceptionTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Type"
-                    }
-                },
-                "typeParameters": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TypeVariable"
-                    }
                 },
                 "declaredAnnotations": {
                     "type": "array",
@@ -614,18 +591,35 @@
                         "$ref": "Annotation"
                     }
                 },
-                "synthetic": {
+                "sealed": {
                     "type": "boolean"
                 },
-                "varArgs": {
-                    "type": "boolean"
+                "specificationVendor": {
+                    "type": "string"
+                },
+                "specificationTitle": {
+                    "type": "string"
                 }
             },
-            "id": "Constructor\u00abobject\u00bb",
+            "description": "",
+            "extends": ""
+        },
+        "EventAlarmCategoryEnum": {
+            "id": "EventAlarmCategoryEnum",
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "ordinal": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
             "description": "",
             "extends": ""
         },
         "CodeSigner": {
+            "id": "CodeSigner",
             "properties": {
                 "signerCertPath": {
                     "$ref": "CertPath"
@@ -634,57 +628,118 @@
                     "$ref": "Timestamp"
                 }
             },
-            "id": "CodeSigner",
             "description": "",
             "extends": ""
         },
-        "InetAddress": {
+        "SuccessResult": {
+            "id": "SuccessResult",
             "properties": {
-                "addressType": {
-                    "type": "string",
-                    "enum": [
-                        "UNKNOWN",
-                        "IP_V4",
-                        "IP_V6",
-                        "IP_V4Z",
-                        "IP_V6Z",
-                        "DNS"
-                    ]
-                },
-                "allZeros": {
-                    "type": "boolean"
-                },
-                "paddedAddress": {
+                "response": {
                     "type": "string"
                 },
-                "octets": {
+                "version": {
+                    "type": "string"
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "EventTypeEnum": {
+            "id": "EventTypeEnum",
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "ordinal": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "ClassLoader": {
+            "id": "ClassLoader",
+            "properties": {
+                "parent": {
+                    "$ref": "ClassLoader"
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "ListAlarmDTOResponse": {
+            "id": "ListAlarmDTOResponse",
+            "properties": {
+                "response": {
                     "type": "array",
                     "items": {
-                        "type": "byte"
+                        "$ref": "AlarmDTO"
                     }
                 },
-                "address": {
+                "version": {
                     "type": "string"
-                },
-                "allOnes": {
-                    "type": "boolean"
                 }
             },
-            "id": "InetAddress",
             "description": "",
             "extends": ""
         },
-        "Principal": {
+        "URL": {
+            "id": "URL",
             "properties": {
-                "name": {
+                "path": {
                     "type": "string"
+                },
+                "ref": {
+                    "type": "string"
+                },
+                "authority": {
+                    "type": "string"
+                },
+                "query": {
+                    "type": "string"
+                },
+                "protocol": {
+                    "type": "string"
+                },
+                "content": {
+                    "$ref": "object"
+                },
+                "defaultPort": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "file": {
+                    "type": "string"
+                },
+                "userInfo": {
+                    "type": "string"
+                },
+                "host": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "integer",
+                    "format": "int32"
                 }
             },
-            "id": "Principal",
+            "description": "",
+            "extends": ""
+        },
+        "Iterator\u00abstring\u00bb": {
+            "id": "Iterator\u00abstring\u00bb",
+            "properties": {},
+            "description": "",
+            "extends": ""
+        },
+        "Annotation": {
+            "id": "Annotation",
+            "properties": {},
             "description": "",
             "extends": ""
         },
         "TypeVariable": {
+            "id": "TypeVariable",
             "properties": {
                 "genericDeclaration": {
                     "$ref": "GenericDeclaration"
@@ -699,104 +754,40 @@
                     }
                 }
             },
-            "id": "TypeVariable",
             "description": "",
             "extends": ""
         },
-        "Annotation": {
-            "properties": {},
-            "id": "Annotation",
-            "description": "",
-            "extends": ""
-        },
-        "GenericDeclaration": {
+        "Class\u00abobject\u00bb": {
+            "id": "Class\u00abobject\u00bb",
             "properties": {
-                "typeParameters": {
+                "protectionDomain0": {
+                    "$ref": "ProtectionDomain"
+                },
+                "signers": {
                     "type": "array",
                     "items": {
-                        "$ref": "TypeVariable"
+                        "type": "object"
                     }
                 }
             },
-            "id": "GenericDeclaration",
-            "description": "",
-            "extends": ""
-        },
-        "URL": {
-            "properties": {
-                "path": {
-                    "type": "string"
-                },
-                "content": {
-                    "$ref": "object"
-                },
-                "port": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "authority": {
-                    "type": "string"
-                },
-                "query": {
-                    "type": "string"
-                },
-                "defaultPort": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "host": {
-                    "type": "string"
-                },
-                "userInfo": {
-                    "type": "string"
-                },
-                "file": {
-                    "type": "string"
-                },
-                "protocol": {
-                    "type": "string"
-                },
-                "ref": {
-                    "type": "string"
-                }
-            },
-            "id": "URL",
-            "description": "",
-            "extends": ""
-        },
-        "IdRef": {
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "longType": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "url": {
-                    "type": "string"
-                }
-            },
-            "id": "IdRef",
             "description": "",
             "extends": ""
         },
         "Field": {
+            "id": "Field",
             "properties": {
                 "accessible": {
                     "type": "boolean"
                 },
-                "enumConstant": {
-                    "type": "boolean"
+                "modifiers": {
+                    "type": "integer",
+                    "format": "int32"
                 },
-                "declaredAnnotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "name": {
+                    "type": "string"
                 },
                 "annotations": {
                     "type": "array",
@@ -804,228 +795,219 @@
                         "$ref": "Annotation"
                     }
                 },
-                "modifiers": {
-                    "type": "integer",
-                    "format": "int32"
+                "type": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "declaredAnnotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Annotation"
+                    }
                 },
                 "genericType": {
                     "$ref": "Type"
                 },
-                "type": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "declaringClass": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
                 "synthetic": {
                     "type": "boolean"
                 },
-                "name": {
-                    "type": "string"
+                "enumConstant": {
+                    "type": "boolean"
                 }
             },
-            "id": "Field",
-            "description": "",
-            "extends": ""
-        },
-        "Type": {
-            "properties": {},
-            "id": "Type",
-            "description": "",
-            "extends": ""
-        },
-        "AlarmDTO": {
-            "properties": {
-                "deviceTimestamp": {
-                    "$ref": "date-time"
-                },
-                "eventAlarmDetails": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "IdRef"
-                    }
-                },
-                "instanceUuid": {
-                    "type": "string"
-                },
-                "ownerID": {
-                    "type": "string"
-                },
-                "alarmDisplayable": {
-                    "type": "boolean"
-                },
-                "alarmCreationTime": {
-                    "$ref": "date-time"
-                },
-                "applicationCategoryData": {
-                    "type": "string"
-                },
-                "sourceMacAddress": {
-                    "$ref": "MacAddress"
-                },
-                "pendingUntil": {
-                    "$ref": "date-time"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "applicationSpecificAlarmID": {
-                    "type": "string"
-                },
-                "source": {
-                    "type": "string"
-                },
-                "notificationState": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "isDeviceMaster": {
-                    "type": "boolean"
-                },
-                "subclassName": {
-                    "type": "string"
-                },
-                "causedAlarmsUrl": {
-                    "type": "string"
-                },
-                "eventAlarmDetailsUrl": {
-                    "type": "string"
-                },
-                "lastModifiedTimestamp": {
-                    "$ref": "date-time"
-                },
-                "isAcknowledged": {
-                    "type": "boolean"
-                },
-                "stability": {
-                    "type": "string",
-                    "enum": [
-                        "OK",
-                        "FLAPPING",
-                        "REPEATED_RESTART"
-                    ]
-                },
-                "category": {
-                    "$ref": "EventAlarmCategoryEnum"
-                },
-                "previousSeverity": {
-                    "type": "string",
-                    "enum": [
-                        "CRITICAL",
-                        "MAJOR",
-                        "MINOR",
-                        "WARNING",
-                        "CLEARED",
-                        "INFORMATION"
-                    ]
-                },
-                "transientNameValue": {
-                    "$ref": "object"
-                },
-                "causingAlarm": {
-                    "$ref": "IdRef"
-                },
-                "eventCount": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "notificationDeliveryMechanism": {
-                    "type": "string",
-                    "enum": [
-                        "UNKNOWN",
-                        "OTHER",
-                        "SNMP_TRAP",
-                        "SYSLOG",
-                        "SYNTHETIC_EVENT",
-                        "NMS_POLLING",
-                        "TL1"
-                    ]
-                },
-                "reportingEntityAddress": {
-                    "$ref": "InetAddress"
-                },
-                "mayBeAutoCleared": {
-                    "type": "boolean"
-                },
-                "causingAlarmUrl": {
-                    "type": "string"
-                },
-                "srcObjectClassId": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "eventType": {
-                    "$ref": "EventTypeEnum"
-                },
-                "severity": {
-                    "type": "string",
-                    "enum": [
-                        "CRITICAL",
-                        "MAJOR",
-                        "MINOR",
-                        "WARNING",
-                        "CLEARED",
-                        "INFORMATION"
-                    ]
-                },
-                "causedAlarms": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "IdRef"
-                    }
-                },
-                "srcObjectId": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "id": {
-                    "type": "string"
-                }
-            },
-            "id": "AlarmDTO",
-            "description": "",
-            "extends": ""
-        },
-        "SuccessResult": {
-            "properties": {
-                "response": {
-                    "type": "string"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "id": "SuccessResult",
             "description": "",
             "extends": ""
         },
         "PermissionCollection": {
+            "id": "PermissionCollection",
             "properties": {
                 "readOnly": {
                     "type": "boolean"
                 }
             },
-            "id": "PermissionCollection",
             "description": "",
             "extends": ""
         },
-        "ListAlarmDTOResponse": {
+        "Constructor\u00abobject\u00bb": {
+            "id": "Constructor\u00abobject\u00bb",
             "properties": {
-                "response": {
+                "modifiers": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "accessible": {
+                    "type": "boolean"
+                },
+                "annotations": {
                     "type": "array",
                     "items": {
-                        "$ref": "AlarmDTO"
+                        "$ref": "Annotation"
                     }
                 },
-                "version": {
+                "declaredAnnotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Annotation"
+                    }
+                },
+                "synthetic": {
+                    "type": "boolean"
+                },
+                "varArgs": {
+                    "type": "boolean"
+                },
+                "genericParameterTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Type"
+                    }
+                },
+                "exceptionTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Class"
+                    }
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "name": {
                     "type": "string"
+                },
+                "typeParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "TypeVariable"
+                    }
+                },
+                "genericExceptionTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Type"
+                    }
+                },
+                "parameterAnnotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Array"
+                    }
+                },
+                "parameterTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Class"
+                    }
                 }
             },
-            "id": "ListAlarmDTOResponse",
+            "description": "",
+            "extends": ""
+        },
+        "Method": {
+            "id": "Method",
+            "properties": {
+                "modifiers": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "accessible": {
+                    "type": "boolean"
+                },
+                "annotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Annotation"
+                    }
+                },
+                "returnType": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "declaredAnnotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Annotation"
+                    }
+                },
+                "genericReturnType": {
+                    "$ref": "Type"
+                },
+                "synthetic": {
+                    "type": "boolean"
+                },
+                "typeParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "TypeVariable"
+                    }
+                },
+                "genericParameterTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Type"
+                    }
+                },
+                "exceptionTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Class"
+                    }
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "varArgs": {
+                    "type": "boolean"
+                },
+                "genericExceptionTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Type"
+                    }
+                },
+                "defaultValue": {
+                    "$ref": "object"
+                },
+                "parameterAnnotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Array"
+                    }
+                },
+                "parameterTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Class"
+                    }
+                },
+                "bridge": {
+                    "type": "boolean"
+                }
+            },
+            "description": "",
+            "extends": ""
+        },
+        "Certificate": {
+            "id": "Certificate",
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "encoded": {
+                    "type": "array",
+                    "items": {
+                        "type": "byte"
+                    }
+                },
+                "publicKey": {
+                    "$ref": "PublicKey"
+                }
+            },
             "description": "",
             "extends": ""
         },
         "CertPath": {
+            "id": "CertPath",
             "properties": {
                 "certificates": {
                     "type": "array",
@@ -1046,299 +1028,151 @@
                     "$ref": "Iterator\u00abstring\u00bb"
                 }
             },
-            "id": "CertPath",
-            "description": "",
-            "extends": ""
-        },
-        "Certificate": {
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "encoded": {
-                    "type": "array",
-                    "items": {
-                        "type": "byte"
-                    }
-                },
-                "publicKey": {
-                    "$ref": "PublicKey"
-                }
-            },
-            "id": "Certificate",
-            "description": "",
-            "extends": ""
-        },
-        "EventAlarmCategoryEnum": {
-            "properties": {
-                "value": {
-                    "type": "string"
-                },
-                "ordinal": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "id": "EventAlarmCategoryEnum",
-            "description": "",
-            "extends": ""
-        },
-        "Package": {
-            "properties": {
-                "declaredAnnotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "annotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "implementationTitle": {
-                    "type": "string"
-                },
-                "implementationVersion": {
-                    "type": "string"
-                },
-                "sealed": {
-                    "type": "boolean"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "specificationVendor": {
-                    "type": "string"
-                },
-                "specificationTitle": {
-                    "type": "string"
-                },
-                "implementationVendor": {
-                    "type": "string"
-                },
-                "specificationVersion": {
-                    "type": "string"
-                }
-            },
-            "id": "Package",
-            "description": "",
-            "extends": ""
-        },
-        "Class\u00abobject\u00bb": {
-            "properties": {
-                "anonymousClass": {
-                    "type": "boolean"
-                },
-                "annotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "interfaces": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "package": {
-                    "$ref": "Package"
-                },
-                "enum": {
-                    "type": "boolean"
-                },
-                "simpleName": {
-                    "type": "string"
-                },
-                "genericSuperclass": {
-                    "$ref": "Type"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "componentType": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "genericInterfaces": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Type"
-                    }
-                },
-                "classes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "protectionDomain": {
-                    "$ref": "ProtectionDomain"
-                },
-                "fields": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Field"
-                    }
-                },
-                "canonicalName": {
-                    "type": "string"
-                },
-                "enclosingMethod": {
-                    "$ref": "Method"
-                },
-                "declaringClass": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "constructors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Constructor"
-                    }
-                },
-                "classLoader": {
-                    "$ref": "ClassLoader"
-                },
-                "modifiers": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "enumConstants": {
-                    "type": "array",
-                    "items": {
-                        "type": "object"
-                    }
-                },
-                "declaredAnnotations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Annotation"
-                    }
-                },
-                "signers": {
-                    "type": "array",
-                    "items": {
-                        "type": "object"
-                    }
-                },
-                "memberClass": {
-                    "type": "boolean"
-                },
-                "superclass": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "declaredFields": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Field"
-                    }
-                },
-                "declaredClasses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Class"
-                    }
-                },
-                "declaredMethods": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Method"
-                    }
-                },
-                "declaredConstructors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Constructor"
-                    }
-                },
-                "typeParameters": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TypeVariable"
-                    }
-                },
-                "enclosingClass": {
-                    "$ref": "Class\u00abobject\u00bb"
-                },
-                "primitive": {
-                    "type": "boolean"
-                },
-                "interface": {
-                    "type": "boolean"
-                },
-                "annotation": {
-                    "type": "boolean"
-                },
-                "localClass": {
-                    "type": "boolean"
-                },
-                "methods": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Method"
-                    }
-                },
-                "array": {
-                    "type": "boolean"
-                },
-                "synthetic": {
-                    "type": "boolean"
-                },
-                "enclosingConstructor": {
-                    "$ref": "Constructor\u00abobject\u00bb"
-                }
-            },
-            "id": "Class\u00abobject\u00bb",
-            "description": "",
-            "extends": ""
-        },
-        "EventTypeEnum": {
-            "properties": {
-                "value": {
-                    "type": "string"
-                },
-                "ordinal": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "id": "EventTypeEnum",
-            "description": "",
-            "extends": ""
-        },
-        "Timestamp": {
-            "properties": {
-                "signerCertPath": {
-                    "$ref": "CertPath"
-                },
-                "timestamp": {
-                    "$ref": "date-time"
-                }
-            },
-            "id": "Timestamp",
-            "description": "",
-            "extends": ""
-        },
-        "MacAddress": {
-            "properties": {
-                "allZeros": {
-                    "type": "boolean"
-                },
-                "octets": {
-                    "type": "array",
-                    "items": {
-                        "type": "byte"
-                    }
-                },
-                "allOnes": {
-                    "type": "boolean"
-                }
-            },
-            "id": "MacAddress",
             "description": "",
             "extends": ""
         }
     },
-    "resourcePath": "/alarm"
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0",
+    "apis": [
+        {
+            "path": "/alarm",
+            "description": "getAlarmWithFilter",
+            "operations": [
+                {
+                    "parameters": [],
+                    "summary": "Retrieve Alarms",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "getAlarmWithFilter",
+                    "type": "ListAlarmDTOResponse",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "ListAlarmDTOResponse"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "nickname": "getAlarmWithFilter",
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "path": "/alarm/count",
+            "description": "getAlarmCountWithFilter",
+            "operations": [
+                {
+                    "parameters": [],
+                    "summary": "Retrieve Count of number of alarms",
+                    "deprecated": "false",
+                    "format": "int32",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Get alarm count",
+                    "method": "GET",
+                    "nickname": "getAlarmCountWithFilter",
+                    "type": "integer",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "SuccessResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/alarm/{alertUUID}",
+            "description": "acknowledgeAlarm",
+            "operations": [
+                {
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "summary": "Acknowledge an Alarm by UUID",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "This method is used to acknowledge an Alarm by UUID",
+                    "type": "SuccessResult",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "SuccessResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "nickname": "acknowledgeAlarm",
+                    "method": "PUT",
+                    "parameters": [
+                        {
+                            "description": "alertUUID",
+                            "name": "alertUUID",
+                            "defaultValue": "",
+                            "type": "string",
+                            "paramType": "path",
+                            "required": true,
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "alarmDTO",
+                            "name": "alarmDTO",
+                            "defaultValue": "",
+                            "type": "AlarmDTO",
+                            "paramType": "body",
+                            "required": false,
+                            "allowMultiple": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "swaggerVersion": "1.2",
+    "resourcePath": "/alarm",
+    "basePath": "/"
 }

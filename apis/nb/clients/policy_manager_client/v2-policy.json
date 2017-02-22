@@ -1,383 +1,25 @@
 {
+    "resourcePath": "/v2/policy",
     "produces": [
         "application/json"
     ],
+    "basePath": "/",
     "consumes": [
         "application/json"
-    ],
-    "resourcePath": "/v2/policy",
-    "basePath": "/policy-manager-service",
-    "apiVersion": "1.0",
-    "apis": [
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "PolicyDTOListResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "PolicyDTOListResult",
-                    "summary": "Retrieves policies based on a given filter",
-                    "nickname": "getPolicyByFilters",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given name",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "name"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given contract name",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "contract+name"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given producer scalable group name",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "producer+scalableGroupName"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given consumer scalable group name",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "consumer+scalableGroupName"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given scalable group name (used within producer or consumer)",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "scalableGroupName"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Starting index of the resources (1 based)",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "offset"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Number of resources to return",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "limit"
-                        }
-                    ],
-                    "notes": "Retrieves policies based on a given filter"
-                }
-            ],
-            "description": "getPolicyByFilters",
-            "path": "/v2/policy"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Create Policy(s)",
-                    "nickname": "add",
-                    "parameters": [
-                        {
-                            "paramType": "body",
-                            "type": "array",
-                            "description": "Policy Object(s)",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "items": {
-                                "$ref": "PolicyDTO"
-                            },
-                            "name": "policyDTOs"
-                        }
-                    ],
-                    "notes": "Create Policy(s)"
-                }
-            ],
-            "description": "add",
-            "path": "/v2/policy"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "PUT",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Update Policy(s)",
-                    "nickname": "update",
-                    "parameters": [
-                        {
-                            "paramType": "body",
-                            "type": "array",
-                            "description": "Policy Object(s)",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "items": {
-                                "$ref": "PolicyDTO"
-                            },
-                            "name": "policyDTOs"
-                        }
-                    ],
-                    "notes": "Update Policy(s)"
-                }
-            ],
-            "description": "update",
-            "path": "/v2/policy"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "CountResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "CountResult",
-                    "summary": "Return total count of policies",
-                    "nickname": "getCount",
-                    "parameters": [],
-                    "notes": "Get total count of policies"
-                }
-            ],
-            "description": "getCount",
-            "path": "/v2/policy/count"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Deletes a policy by its id",
-                    "nickname": "delete",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "name": "id"
-                        }
-                    ],
-                    "notes": "Delete a policy by id"
-                }
-            ],
-            "description": "delete",
-            "path": "/v2/policy/{id}"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "PolicyDTOResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "PolicyDTOResult",
-                    "summary": "Retrieves a policy based on its id",
-                    "nickname": "getById",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "name": "id"
-                        }
-                    ],
-                    "notes": "Get a policy by id"
-                }
-            ],
-            "description": "getById",
-            "path": "/v2/policy/{id}"
-        }
     ],
     "models": {
         "ProducerDTO": {
             "properties": {
                 "scalableGroups": {
-                    "type": "array",
                     "items": {
                         "$ref": "ScalableGroupDTO"
-                    }
+                    },
+                    "type": "array"
                 }
             },
-            "extends": "",
+            "description": "",
             "id": "ProducerDTO",
-            "description": ""
-        },
-        "ConsumerDTO": {
-            "properties": {
-                "scalableGroups": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "ScalableGroupDTO"
-                    }
-                }
-            },
-            "extends": "",
-            "id": "ConsumerDTO",
-            "description": ""
+            "extends": ""
         },
         "TaskIdResult": {
             "properties": {
@@ -388,9 +30,42 @@
                     "type": "string"
                 }
             },
-            "extends": "",
+            "description": "",
             "id": "TaskIdResult",
-            "description": ""
+            "extends": ""
+        },
+        "ConsumerDTO": {
+            "properties": {
+                "scalableGroups": {
+                    "items": {
+                        "$ref": "ScalableGroupDTO"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": "",
+            "id": "ConsumerDTO",
+            "extends": ""
+        },
+        "TaskId": {
+            "properties": {},
+            "description": "",
+            "id": "TaskId",
+            "extends": ""
+        },
+        "CountResult": {
+            "properties": {
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "description": "",
+            "id": "CountResult",
+            "extends": ""
         },
         "PolicyDTOResult": {
             "properties": {
@@ -401,41 +76,15 @@
                     "type": "string"
                 }
             },
-            "extends": "",
+            "description": "",
             "id": "PolicyDTOResult",
-            "description": ""
-        },
-        "CountResult": {
-            "properties": {
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "CountResult",
-            "description": ""
-        },
-        "PolicyDTOListResult": {
-            "properties": {
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "PolicyDTO"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "PolicyDTOListResult",
-            "description": ""
+            "extends": ""
         },
         "PolicyContractDTO": {
+            "required": [
+                "name",
+                "id"
+            ],
             "properties": {
                 "id": {
                     "type": "string",
@@ -446,75 +95,97 @@
                     "description": "name"
                 }
             },
-            "extends": "",
-            "required": [
-                "name",
-                "id"
-            ],
+            "description": "",
             "id": "PolicyContractDTO",
-            "description": ""
+            "extends": ""
         },
-        "TaskId": {
-            "properties": {},
-            "extends": "",
-            "id": "TaskId",
-            "description": ""
+        "TaskIdResponse": {
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": "",
+            "id": "TaskIdResponse",
+            "extends": ""
         },
         "PolicyDTO": {
+            "required": [
+                "name",
+                "priority",
+                "contract",
+                "producer",
+                "consumer",
+                "id"
+            ],
             "properties": {
-                "consumer": {
-                    "$ref": "ConsumerDTO",
-                    "description": "consumer"
+                "priority": {
+                    "type": "integer",
+                    "description": "priority",
+                    "format": "int32"
                 },
                 "contract": {
                     "$ref": "PolicyContractDTO",
                     "description": "contract"
                 },
+                "createTime": {
+                    "type": "integer",
+                    "description": "createTime",
+                    "format": "int64"
+                },
+                "consumer": {
+                    "$ref": "ConsumerDTO",
+                    "description": "consumer"
+                },
                 "producer": {
                     "$ref": "ProducerDTO",
                     "description": "producer"
                 },
-                "description": {
+                "name": {
                     "type": "string",
-                    "description": "description"
+                    "description": "name"
                 },
                 "lastUpdateTime": {
-                    "format": "int64",
                     "type": "integer",
-                    "description": "lastUpdateTime"
-                },
-                "createTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "createTime"
+                    "description": "lastUpdateTime",
+                    "format": "int64"
                 },
                 "id": {
                     "type": "string",
                     "description": "id"
                 },
-                "priority": {
-                    "format": "int32",
-                    "type": "integer",
-                    "description": "priority"
-                },
-                "name": {
+                "description": {
                     "type": "string",
-                    "description": "name"
+                    "description": "description"
                 }
             },
-            "extends": "",
-            "required": [
-                "priority",
-                "name",
-                "contract",
-                "consumer",
-                "producer",
-                "id"
-            ],
+            "description": "",
             "id": "PolicyDTO",
-            "description": ""
+            "extends": ""
+        },
+        "PolicyDTOListResult": {
+            "properties": {
+                "response": {
+                    "items": {
+                        "$ref": "PolicyDTO"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "description": "",
+            "id": "PolicyDTOListResult",
+            "extends": ""
         },
         "ScalableGroupDTO": {
+            "required": [
+                "id"
+            ],
             "properties": {
                 "state": {
                     "type": "string",
@@ -529,26 +200,355 @@
                     "description": "name"
                 }
             },
-            "extends": "",
-            "required": [
-                "id"
-            ],
+            "description": "",
             "id": "ScalableGroupDTO",
-            "description": ""
-        },
-        "TaskIdResponse": {
-            "properties": {
-                "url": {
-                    "type": "string"
-                },
-                "taskId": {
-                    "$ref": "TaskId"
-                }
-            },
-            "extends": "",
-            "id": "TaskIdResponse",
-            "description": ""
+            "extends": ""
         }
     },
-    "swaggerVersion": "1.2"
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "apis": [
+        {
+            "operations": [
+                {
+                    "notes": "Retrieves policies based on a given filter",
+                    "nickname": "getPolicyByFilters",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "method": "GET",
+                    "parameters": [
+                        {
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "name",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "type": "string",
+                            "description": "Retrieve policies for a given name"
+                        },
+                        {
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "contract+name",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "type": "string",
+                            "description": "Retrieve policies for a given contract name"
+                        },
+                        {
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "producer+scalableGroupName",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "type": "string",
+                            "description": "Retrieve policies for a given producer scalable group name"
+                        },
+                        {
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "consumer+scalableGroupName",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "type": "string",
+                            "description": "Retrieve policies for a given consumer scalable group name"
+                        },
+                        {
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "scalableGroupName",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "type": "string",
+                            "description": "Retrieve policies for a given scalable group name (used within producer or consumer)"
+                        },
+                        {
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "offset",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "type": "string",
+                            "description": "Starting index of the resources (1 based)"
+                        },
+                        {
+                            "required": false,
+                            "allowMultiple": false,
+                            "name": "limit",
+                            "paramType": "query",
+                            "defaultValue": "",
+                            "type": "string",
+                            "description": "Number of resources to return"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "PolicyDTOListResult",
+                            "message": "This Request is OK",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "PolicyDTOListResult",
+                    "summary": "Retrieves policies based on a given filter"
+                }
+            ],
+            "description": "getPolicyByFilters",
+            "path": "/v2/policy"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Create Policy(s)",
+                    "nickname": "add",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "method": "POST",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "PolicyDTO"
+                            },
+                            "name": "policyDTOs",
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "type": "array",
+                            "description": "Policy Object(s)"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK",
+                            "code": 200
+                        },
+                        {
+                            "message": "This Request is Accepted",
+                            "code": 202
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "summary": "Create Policy(s)"
+                }
+            ],
+            "description": "add",
+            "path": "/v2/policy"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Update Policy(s)",
+                    "nickname": "update",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "method": "PUT",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "allowMultiple": false,
+                            "items": {
+                                "$ref": "PolicyDTO"
+                            },
+                            "name": "policyDTOs",
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "type": "array",
+                            "description": "Policy Object(s)"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "summary": "Update Policy(s)"
+                }
+            ],
+            "description": "update",
+            "path": "/v2/policy"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Get total count of policies",
+                    "nickname": "getCount",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "method": "GET",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "responseModel": "CountResult",
+                            "message": "This Request is OK",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "CountResult",
+                    "summary": "Return total count of policies"
+                }
+            ],
+            "description": "getCount",
+            "path": "/v2/policy/count"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Delete a policy by id",
+                    "nickname": "delete",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "method": "DELETE",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "type": "string",
+                            "description": "id"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "summary": "Deletes a policy by its id"
+                }
+            ],
+            "description": "delete",
+            "path": "/v2/policy/{id}"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Get a policy by id",
+                    "nickname": "getById",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "method": "GET",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "type": "string",
+                            "description": "id"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "responseModel": "PolicyDTOResult",
+                            "message": "This Request is OK",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "PolicyDTOResult",
+                    "summary": "Retrieves a policy based on its id"
+                }
+            ],
+            "description": "getById",
+            "path": "/v2/policy/{id}"
+        }
+    ]
 }

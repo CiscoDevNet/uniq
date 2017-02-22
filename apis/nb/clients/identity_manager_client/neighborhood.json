@@ -1,16 +1,28 @@
 {
-    "consumes": [
-        "application/json"
-    ],
     "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
     "produces": [
         "application/json"
     ],
+    "resourcePath": "/v2/neighborhood",
+    "basePath": "/",
     "apis": [
         {
             "operations": [
                 {
-                    "consumes": [
+                    "parameters": [
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "required": true,
+                            "name": "nbr",
+                            "type": "NeighborhoodDTO",
+                            "description": "Neighborhood Object"
+                        }
+                    ],
+                    "nickname": "updateNeighbor",
+                    "produces": [
                         "application/json"
                     ],
                     "responseMessages": [
@@ -33,25 +45,13 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "Neighborhood Object",
-                            "name": "nbr",
-                            "type": "NeighborhoodDTO",
-                            "paramType": "body",
-                            "required": true,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "nickname": "updateNeighbor",
                     "summary": "Update Neighbor(s)",
+                    "notes": "Update a Neighborhood",
                     "method": "PUT",
-                    "notes": "Update a Neighborhood"
+                    "type": "TaskIdResult",
+                    "consumes": [
+                        "application/json"
+                    ]
                 }
             ],
             "path": "/v2/neighborhood",
@@ -60,6 +60,11 @@
         {
             "operations": [
                 {
+                    "parameters": [],
+                    "nickname": "getAllNeighbors",
+                    "produces": [
+                        "application/json"
+                    ],
                     "responseMessages": [
                         {
                             "code": 200,
@@ -80,15 +85,10 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "type": "NeighborhoodListResult",
-                    "nickname": "getAllNeighbors",
                     "summary": "Lists all neighborhood",
+                    "notes": "Get all Neighborhood(s)",
                     "method": "GET",
-                    "notes": "Get all Neighborhood(s)"
+                    "type": "NeighborhoodListResult"
                 }
             ],
             "path": "/v2/neighborhood",
@@ -97,7 +97,19 @@
         {
             "operations": [
                 {
-                    "consumes": [
+                    "parameters": [
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "required": true,
+                            "name": "nbr",
+                            "type": "NeighborhoodDTO",
+                            "description": "Neighborhood Object"
+                        }
+                    ],
+                    "nickname": "addNeighbor",
+                    "produces": [
                         "application/json"
                     ],
                     "responseMessages": [
@@ -124,25 +136,13 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "Neighborhood Object",
-                            "name": "nbr",
-                            "type": "NeighborhoodDTO",
-                            "paramType": "body",
-                            "required": true,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "nickname": "addNeighbor",
                     "summary": "Create Neighbor(s)",
+                    "notes": "Create a Neighborhood",
                     "method": "POST",
-                    "notes": "Create a Neighborhood"
+                    "type": "TaskIdResult",
+                    "consumes": [
+                        "application/json"
+                    ]
                 }
             ],
             "path": "/v2/neighborhood",
@@ -151,6 +151,21 @@
         {
             "operations": [
                 {
+                    "parameters": [
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "required": true,
+                            "name": "id",
+                            "type": "string",
+                            "description": "Retrieve Neighborhood for a given UUID"
+                        }
+                    ],
+                    "nickname": "getNeighbor",
+                    "produces": [
+                        "application/json"
+                    ],
                     "responseMessages": [
                         {
                             "code": 200,
@@ -171,25 +186,10 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "Retrieve Neighborhood for a given UUID",
-                            "name": "id",
-                            "type": "string",
-                            "paramType": "path",
-                            "required": true,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "NeighborhoodResult",
-                    "nickname": "getNeighbor",
                     "summary": "List a neighborhood",
+                    "notes": "Get specific Neighborhood",
                     "method": "GET",
-                    "notes": "Get specific Neighborhood"
+                    "type": "NeighborhoodResult"
                 }
             ],
             "path": "/v2/neighborhood/{id}",
@@ -198,6 +198,21 @@
         {
             "operations": [
                 {
+                    "parameters": [
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "required": true,
+                            "name": "id",
+                            "type": "string",
+                            "description": "Delete Neighborhood for a given UUID"
+                        }
+                    ],
+                    "nickname": "deleteNeighbor",
+                    "produces": [
+                        "application/json"
+                    ],
                     "responseMessages": [
                         {
                             "code": 200,
@@ -218,97 +233,34 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "Delete Neighborhood for a given UUID",
-                            "name": "id",
-                            "type": "string",
-                            "paramType": "path",
-                            "required": true,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "nickname": "deleteNeighbor",
                     "summary": "Delete neighborhood",
+                    "notes": "Delete specific Neighborhood",
                     "method": "DELETE",
-                    "notes": "Delete specific Neighborhood"
+                    "type": "TaskIdResult"
                 }
             ],
             "path": "/v2/neighborhood/{id}",
             "description": "deleteNeighbor"
         }
     ],
-    "apiVersion": "1.0",
+    "consumes": [
+        "application/json"
+    ],
     "models": {
-        "TaskIdResponse": {
-            "id": "TaskIdResponse",
-            "properties": {
-                "url": {
-                    "type": "string"
-                },
-                "taskId": {
-                    "$ref": "TaskId"
-                }
-            },
-            "description": "",
-            "extends": ""
-        },
-        "NeighborhoodDTO": {
-            "id": "NeighborhoodDTO",
-            "properties": {
-                "listofScalableGroups": {
-                    "description": "List of Scalable Groups",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "description": {
-                    "description": "Description of the group",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Neighborhood Name",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "UUID of the Neighborhood",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "Isolation Property",
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": ""
-        },
-        "NeighborhoodResult": {
-            "id": "NeighborhoodResult",
+        "TaskIdResult": {
             "properties": {
                 "response": {
-                    "$ref": "NeighborhoodDTO"
+                    "$ref": "TaskIdResponse"
                 },
                 "version": {
                     "type": "string"
                 }
             },
-            "description": "",
-            "extends": ""
-        },
-        "TaskId": {
-            "id": "TaskId",
-            "properties": {},
-            "description": "",
-            "extends": ""
+            "id": "TaskIdResult",
+            "extends": "",
+            "description": ""
         },
         "NeighborhoodListResult": {
-            "id": "NeighborhoodListResult",
             "properties": {
                 "response": {
                     "items": {
@@ -320,23 +272,71 @@
                     "type": "string"
                 }
             },
-            "description": "",
-            "extends": ""
+            "id": "NeighborhoodListResult",
+            "extends": "",
+            "description": ""
         },
-        "TaskIdResult": {
-            "id": "TaskIdResult",
+        "TaskIdResponse": {
+            "properties": {
+                "taskId": {
+                    "$ref": "TaskId"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "id": "TaskIdResponse",
+            "extends": "",
+            "description": ""
+        },
+        "NeighborhoodDTO": {
+            "properties": {
+                "listofScalableGroups": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "description": "List of Scalable Groups"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Neighborhood Name"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Isolation Property"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "UUID of the Neighborhood"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the group"
+                }
+            },
+            "id": "NeighborhoodDTO",
+            "extends": "",
+            "description": ""
+        },
+        "TaskId": {
+            "properties": {},
+            "id": "TaskId",
+            "extends": "",
+            "description": ""
+        },
+        "NeighborhoodResult": {
             "properties": {
                 "response": {
-                    "$ref": "TaskIdResponse"
+                    "$ref": "NeighborhoodDTO"
                 },
                 "version": {
                     "type": "string"
                 }
             },
-            "description": "",
-            "extends": ""
+            "id": "NeighborhoodResult",
+            "extends": "",
+            "description": ""
         }
-    },
-    "resourcePath": "/v2/neighborhood",
-    "basePath": "/identity-manager-pxgrid-service"
+    }
 }

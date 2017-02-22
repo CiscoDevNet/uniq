@@ -1,16 +1,31 @@
 {
-    "consumes": [
-        "application/json"
-    ],
     "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
     "produces": [
         "application/json"
     ],
+    "resourcePath": "/v2/scalable-group",
+    "basePath": "/",
     "apis": [
         {
             "operations": [
                 {
-                    "consumes": [
+                    "parameters": [
+                        {
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "items": {
+                                "$ref": "ScalableGroupDTO"
+                            },
+                            "required": false,
+                            "name": "scalableGroupDtos",
+                            "type": "array",
+                            "description": "scalableGroupDtos"
+                        }
+                    ],
+                    "nickname": "updateScalableGroups",
+                    "produces": [
                         "application/json"
                     ],
                     "responseMessages": [
@@ -33,28 +48,13 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "scalableGroupDtos",
-                            "name": "scalableGroupDtos",
-                            "items": {
-                                "$ref": "ScalableGroupDTO"
-                            },
-                            "type": "array",
-                            "paramType": "body",
-                            "required": false,
-                            "allowMultiple": true,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "nickname": "updateScalableGroups",
                     "summary": "Updates existing scalable group.",
+                    "notes": "updateScalableGroups",
                     "method": "PUT",
-                    "notes": "updateScalableGroups"
+                    "type": "TaskIdResult",
+                    "consumes": [
+                        "application/json"
+                    ]
                 }
             ],
             "path": "/v2/scalable-group",
@@ -63,7 +63,22 @@
         {
             "operations": [
                 {
-                    "consumes": [
+                    "parameters": [
+                        {
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "items": {
+                                "$ref": "ScalableGroupDTO"
+                            },
+                            "required": false,
+                            "name": "scalableGroupDtos",
+                            "type": "array",
+                            "description": "scalableGroupDtos"
+                        }
+                    ],
+                    "nickname": "addScalableGroups",
+                    "produces": [
                         "application/json"
                     ],
                     "responseMessages": [
@@ -90,28 +105,13 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "scalableGroupDtos",
-                            "name": "scalableGroupDtos",
-                            "items": {
-                                "$ref": "ScalableGroupDTO"
-                            },
-                            "type": "array",
-                            "paramType": "body",
-                            "required": false,
-                            "allowMultiple": true,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "nickname": "addScalableGroups",
                     "summary": "Creates scalable group inheriting properties from an existing scalable group.",
+                    "notes": "addScalableGroups",
                     "method": "POST",
-                    "notes": "addScalableGroups"
+                    "type": "TaskIdResult",
+                    "consumes": [
+                        "application/json"
+                    ]
                 }
             ],
             "path": "/v2/scalable-group",
@@ -120,6 +120,39 @@
         {
             "operations": [
                 {
+                    "parameters": [
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "required": false,
+                            "name": "name",
+                            "type": "string",
+                            "description": "Retrieve policies for a given name"
+                        },
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "required": false,
+                            "name": "offset",
+                            "type": "string",
+                            "description": "Starting index of the resources (1 based)"
+                        },
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query",
+                            "required": false,
+                            "name": "limit",
+                            "type": "string",
+                            "description": "Number of resources to return"
+                        }
+                    ],
+                    "nickname": "getScalableGroupByFilters",
+                    "produces": [
+                        "application/json"
+                    ],
                     "responseMessages": [
                         {
                             "code": 200,
@@ -140,43 +173,10 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "Retrieve policies for a given name",
-                            "name": "name",
-                            "type": "string",
-                            "paramType": "query",
-                            "required": false,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        },
-                        {
-                            "description": "Starting index of the resources (1 based)",
-                            "name": "offset",
-                            "type": "string",
-                            "paramType": "query",
-                            "required": false,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        },
-                        {
-                            "description": "Number of resources to return",
-                            "name": "limit",
-                            "type": "string",
-                            "paramType": "query",
-                            "required": false,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "ScalableGroupListResult",
-                    "nickname": "getScalableGroupByFilters",
                     "summary": "Retrieves scalable group based on a given filter",
+                    "notes": "Retrieves scalable group based on a given filter",
                     "method": "GET",
-                    "notes": "Retrieves scalable group based on a given filter"
+                    "type": "ScalableGroupListResult"
                 }
             ],
             "path": "/v2/scalable-group",
@@ -185,6 +185,11 @@
         {
             "operations": [
                 {
+                    "parameters": [],
+                    "nickname": "getCount",
+                    "produces": [
+                        "application/json"
+                    ],
                     "responseMessages": [
                         {
                             "code": 200,
@@ -205,15 +210,10 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "type": "CountResult",
-                    "nickname": "getCount",
                     "summary": "getCount",
+                    "notes": "This method is used to obtain the number of scalable groups known to APIC-EM",
                     "method": "GET",
-                    "notes": "This method is used to obtain the number of scalable groups known to APIC-EM"
+                    "type": "CountResult"
                 }
             ],
             "path": "/v2/scalable-group/count",
@@ -222,6 +222,21 @@
         {
             "operations": [
                 {
+                    "parameters": [
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "required": true,
+                            "name": "id",
+                            "type": "string",
+                            "description": "id"
+                        }
+                    ],
+                    "nickname": "deleteScalableGroup",
+                    "produces": [
+                        "application/json"
+                    ],
                     "responseMessages": [
                         {
                             "code": 200,
@@ -242,25 +257,10 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "id",
-                            "name": "id",
-                            "type": "string",
-                            "paramType": "path",
-                            "required": true,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "nickname": "deleteScalableGroup",
                     "summary": "Delete a scalable group by its id.",
+                    "notes": "Delete a scalable group by its id. Only scalable groups created in APIC-EM can be deleted.",
                     "method": "DELETE",
-                    "notes": "Delete a scalable group by its id. Only scalable groups created in APIC-EM can be deleted."
+                    "type": "TaskIdResult"
                 }
             ],
             "path": "/v2/scalable-group/{id}",
@@ -269,6 +269,21 @@
         {
             "operations": [
                 {
+                    "parameters": [
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "required": true,
+                            "name": "id",
+                            "type": "string",
+                            "description": "id"
+                        }
+                    ],
+                    "nickname": "getEndPointGroupbyId",
+                    "produces": [
+                        "application/json"
+                    ],
                     "responseMessages": [
                         {
                             "code": 200,
@@ -289,25 +304,10 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "id",
-                            "name": "id",
-                            "type": "string",
-                            "paramType": "path",
-                            "required": true,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "ScalableGroupResult",
-                    "nickname": "getEndPointGroupbyId",
                     "summary": "List scalable group based on id",
+                    "notes": "Get Scalable group based on id",
                     "method": "GET",
-                    "notes": "Get Scalable group based on id"
+                    "type": "ScalableGroupResult"
                 }
             ],
             "path": "/v2/scalable-group/{id}",
@@ -316,6 +316,21 @@
         {
             "operations": [
                 {
+                    "parameters": [
+                        {
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "required": true,
+                            "name": "id",
+                            "type": "string",
+                            "description": "id"
+                        }
+                    ],
+                    "nickname": "getUserByScalableGroupId",
+                    "produces": [
+                        "application/json"
+                    ],
                     "responseMessages": [
                         {
                             "code": 200,
@@ -336,229 +351,21 @@
                         }
                     ],
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "description": "id",
-                            "name": "id",
-                            "type": "string",
-                            "paramType": "path",
-                            "required": true,
-                            "allowMultiple": false,
-                            "defaultValue": ""
-                        }
-                    ],
-                    "type": "ApicEmUserListResult",
-                    "nickname": "getUserByScalableGroupId",
                     "summary": "List scalable group based on id",
+                    "notes": "Get Scalable group based on id",
                     "method": "GET",
-                    "notes": "Get Scalable group based on id"
+                    "type": "ApicEmUserListResult"
                 }
             ],
             "path": "/v2/scalable-group/{id}/users",
             "description": "getUserByScalableGroupId"
         }
     ],
-    "apiVersion": "1.0",
+    "consumes": [
+        "application/json"
+    ],
     "models": {
-        "HostBriefDTO": {
-            "id": "HostBriefDTO",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "hostIp": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": ""
-        },
-        "TaskIdResponse": {
-            "id": "TaskIdResponse",
-            "properties": {
-                "url": {
-                    "type": "string"
-                },
-                "taskId": {
-                    "$ref": "TaskId"
-                }
-            },
-            "description": "",
-            "extends": ""
-        },
-        "TaskIdResult": {
-            "id": "TaskIdResult",
-            "properties": {
-                "response": {
-                    "$ref": "TaskIdResponse"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": ""
-        },
-        "ScalableGroupBriefDTO": {
-            "id": "ScalableGroupBriefDTO",
-            "required": [
-                "id"
-            ],
-            "description": "",
-            "extends": "",
-            "properties": {
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "name",
-                    "type": "string"
-                },
-                "state": {
-                    "description": "state",
-                    "type": "string"
-                }
-            }
-        },
-        "CountResult": {
-            "id": "CountResult",
-            "properties": {
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": ""
-        },
-        "ScalableGroupDTO": {
-            "id": "ScalableGroupDTO",
-            "required": [
-                "name"
-            ],
-            "description": "",
-            "extends": "",
-            "properties": {
-                "applicationGroups": {
-                    "description": "applicationGroups that belong to the scalable group.",
-                    "items": {
-                        "$ref": "ApplicationGroupDTOBrief"
-                    },
-                    "type": "array"
-                },
-                "description": {
-                    "description": "description",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "name",
-                    "type": "string"
-                },
-                "parentScalableGroup": {
-                    "description": "parentScalableGroup from which user, user groups are inherited.",
-                    "$ref": "ScalableGroupBriefDTO"
-                },
-                "applications": {
-                    "description": "applications that belong to the scalable group.",
-                    "items": {
-                        "$ref": "ApplicationV2DTOBrief"
-                    },
-                    "type": "array"
-                },
-                "state": {
-                    "description": "state",
-                    "type": "string"
-                },
-                "scalableGroupExternalHandle": {
-                    "description": "scalableGroupExternalHandle",
-                    "type": "string"
-                },
-                "createTime": {
-                    "format": "int64",
-                    "description": "createTime",
-                    "type": "integer"
-                },
-                "identitySourceType": {
-                    "description": "identitySourceType",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "id",
-                    "type": "string"
-                },
-                "identitySourceId": {
-                    "description": "identitySourceId",
-                    "type": "string"
-                },
-                "lastUpdateTime": {
-                    "format": "int64",
-                    "description": "lastUpdateTime",
-                    "type": "integer"
-                },
-                "identitySourceIpAddress": {
-                    "description": "identitySourceIpAddress",
-                    "type": "string"
-                }
-            }
-        },
-        "ApicEmUserDTO": {
-            "id": "ApicEmUserDTO",
-            "properties": {
-                "hosts": {
-                    "uniqueItems": true,
-                    "items": {
-                        "$ref": "HostBriefDTO"
-                    },
-                    "type": "array"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": ""
-        },
-        "ScalableGroupResult": {
-            "id": "ScalableGroupResult",
-            "properties": {
-                "response": {
-                    "$ref": "ScalableGroupDTO"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": ""
-        },
-        "ApicEmUserListResult": {
-            "id": "ApicEmUserListResult",
-            "properties": {
-                "response": {
-                    "items": {
-                        "$ref": "ApicEmUserDTO"
-                    },
-                    "type": "array"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": ""
-        },
         "ScalableGroupListResult": {
-            "id": "ScalableGroupListResult",
             "properties": {
                 "response": {
                     "items": {
@@ -570,42 +377,235 @@
                     "type": "string"
                 }
             },
-            "description": "",
-            "extends": ""
+            "id": "ScalableGroupListResult",
+            "extends": "",
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "properties": {
+                "taskId": {
+                    "$ref": "TaskId"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "id": "TaskIdResponse",
+            "extends": "",
+            "description": ""
+        },
+        "HostBriefDTO": {
+            "properties": {
+                "hostIp": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "id": "HostBriefDTO",
+            "extends": "",
+            "description": ""
+        },
+        "ApicEmUserDTO": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "hosts": {
+                    "items": {
+                        "$ref": "HostBriefDTO"
+                    },
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "id": "ApicEmUserDTO",
+            "extends": "",
+            "description": ""
+        },
+        "ScalableGroupBriefDTO": {
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "state"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                }
+            },
+            "id": "ScalableGroupBriefDTO",
+            "extends": "",
+            "description": ""
         },
         "TaskId": {
-            "id": "TaskId",
             "properties": {},
-            "description": "",
-            "extends": ""
+            "id": "TaskId",
+            "extends": "",
+            "description": ""
         },
-        "ApplicationV2DTOBrief": {
-            "id": "ApplicationV2DTOBrief",
+        "ScalableGroupDTO": {
+            "required": [
+                "name"
+            ],
             "properties": {
+                "createTime": {
+                    "type": "integer",
+                    "description": "createTime",
+                    "format": "int64"
+                },
+                "applications": {
+                    "items": {
+                        "$ref": "ApplicationV2DTOBrief"
+                    },
+                    "type": "array",
+                    "description": "applications that belong to the scalable group."
+                },
+                "identitySourceIpAddress": {
+                    "type": "string",
+                    "description": "identitySourceIpAddress"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "state"
+                },
+                "lastUpdateTime": {
+                    "type": "integer",
+                    "description": "lastUpdateTime",
+                    "format": "int64"
+                },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "id"
+                },
+                "parentScalableGroup": {
+                    "$ref": "ScalableGroupBriefDTO",
+                    "description": "parentScalableGroup from which user, user groups are inherited."
+                },
+                "applicationGroups": {
+                    "items": {
+                        "$ref": "ApplicationGroupDTOBrief"
+                    },
+                    "type": "array",
+                    "description": "applicationGroups that belong to the scalable group."
+                },
+                "identitySourceType": {
+                    "type": "string",
+                    "description": "identitySourceType"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "name"
+                },
+                "identitySourceId": {
+                    "type": "string",
+                    "description": "identitySourceId"
+                },
+                "scalableGroupExternalHandle": {
+                    "type": "string",
+                    "description": "scalableGroupExternalHandle"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description"
                 }
             },
-            "description": "",
-            "extends": ""
+            "id": "ScalableGroupDTO",
+            "extends": "",
+            "description": ""
         },
         "ApplicationGroupDTOBrief": {
-            "id": "ApplicationGroupDTOBrief",
             "properties": {
-                "id": {
+                "name": {
                     "type": "string"
                 },
-                "name": {
+                "id": {
                     "type": "string"
                 }
             },
-            "description": "",
-            "extends": ""
+            "id": "ApplicationGroupDTOBrief",
+            "extends": "",
+            "description": ""
+        },
+        "TaskIdResult": {
+            "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "TaskIdResult",
+            "extends": "",
+            "description": ""
+        },
+        "CountResult": {
+            "properties": {
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "CountResult",
+            "extends": "",
+            "description": ""
+        },
+        "ApicEmUserListResult": {
+            "properties": {
+                "response": {
+                    "items": {
+                        "$ref": "ApicEmUserDTO"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "ApicEmUserListResult",
+            "extends": "",
+            "description": ""
+        },
+        "ApplicationV2DTOBrief": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "id": "ApplicationV2DTOBrief",
+            "extends": "",
+            "description": ""
+        },
+        "ScalableGroupResult": {
+            "properties": {
+                "response": {
+                    "$ref": "ScalableGroupDTO"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "id": "ScalableGroupResult",
+            "extends": "",
+            "description": ""
         }
-    },
-    "resourcePath": "/v2/scalable-group",
-    "basePath": "/identity-manager-pxgrid-service"
+    }
 }

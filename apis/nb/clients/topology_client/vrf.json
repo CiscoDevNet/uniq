@@ -1,67 +1,67 @@
 {
     "apis": [
         {
+            "description": "getVrfNames",
             "path": "/topology/vrf/vrf-name",
             "operations": [
                 {
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "responseModel": "VrfNamesResult",
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
                     "summary": "getVrfNames",
                     "nickname": "getVrfNames",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "GET",
+                    "type": "VrfNamesResult",
                     "notes": "This method is used to obtain the list of vrf names",
-                    "deprecated": "false",
-                    "parameters": [],
-                    "type": "VrfNamesResult"
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "VrfNamesResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": []
                 }
-            ],
-            "description": "getVrfNames"
+            ]
         }
     ],
     "resourcePath": "/topology/vrf/vrf-name",
     "produces": [
         "application/json"
     ],
-    "apiVersion": "1.0",
-    "basePath": "/topology-service",
     "swaggerVersion": "1.2",
     "models": {
         "VrfNamesResult": {
+            "description": "",
             "properties": {
-                "version": {
-                    "type": "string"
-                },
                 "response": {
-                    "uniqueItems": true,
                     "items": {
                         "type": "string"
                     },
+                    "uniqueItems": true,
                     "type": "array"
+                },
+                "version": {
+                    "type": "string"
                 }
             },
             "extends": "",
-            "id": "VrfNamesResult",
-            "description": ""
+            "id": "VrfNamesResult"
         }
-    }
+    },
+    "apiVersion": "1.0",
+    "basePath": "/"
 }

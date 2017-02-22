@@ -1,116 +1,896 @@
 {
-    "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
-    "resourcePath": "/group",
-    "basePath": "/",
     "models": {
-        "Entry\u00abstring,List\u00abstring\u00bb\u00bb": {
-            "description": "",
+        "TaskId": {
+            "id": "TaskId",
+            "properties": {},
             "extends": "",
-            "properties": {
-                "key": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            },
-            "id": "Entry\u00abstring,List\u00abstring\u00bb\u00bb"
+            "description": ""
         },
-        "TaskIdResponse": {
-            "description": "",
+        "Type": {
+            "id": "Type",
+            "properties": {},
             "extends": "",
+            "description": ""
+        },
+        "Field": {
+            "id": "Field",
             "properties": {
-                "url": {
+                "accessible": {
+                    "type": "boolean"
+                },
+                "modifiers": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "name": {
                     "type": "string"
                 },
-                "taskId": {
-                    "$ref": "TaskId"
+                "annotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "declaredAnnotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "synthetic": {
+                    "type": "boolean"
+                },
+                "genericType": {
+                    "$ref": "Type"
+                },
+                "enumConstant": {
+                    "type": "boolean"
                 }
             },
-            "id": "TaskIdResponse"
+            "extends": "",
+            "description": ""
+        },
+        "PropertyNameAndStringValue": {
+            "id": "PropertyNameAndStringValue",
+            "properties": {
+                "stringValue": {
+                    "type": "string"
+                },
+                "instanceId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "instanceUuid": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "propertyName": {
+                    "type": "string"
+                },
+                "attributeMetadata": {
+                    "items": {
+                        "$ref": "Entry\u00abstring,AttributeMetadata\u00bb"
+                    },
+                    "type": "array"
+                },
+                "instanceVersion": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "Method": {
+            "id": "Method",
+            "properties": {
+                "parameterTypes": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "modifiers": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "typeParameters": {
+                    "items": {
+                        "$ref": "TypeVariable"
+                    },
+                    "type": "array"
+                },
+                "varArgs": {
+                    "type": "boolean"
+                },
+                "annotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "genericExceptionTypes": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "declaredAnnotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "parameterAnnotations": {
+                    "items": {
+                        "$ref": "Array"
+                    },
+                    "type": "array"
+                },
+                "bridge": {
+                    "type": "boolean"
+                },
+                "returnType": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "exceptionTypes": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "genericParameterTypes": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "genericReturnType": {
+                    "$ref": "Type"
+                },
+                "accessible": {
+                    "type": "boolean"
+                },
+                "defaultValue": {
+                    "$ref": "object"
+                },
+                "synthetic": {
+                    "type": "boolean"
+                }
+            },
+            "extends": "",
+            "description": ""
         },
         "ResourceGroupListResult": {
-            "description": "",
-            "extends": "",
+            "id": "ResourceGroupListResult",
             "properties": {
                 "response": {
-                    "type": "array",
                     "items": {
                         "$ref": "ResourceGroupDTO"
-                    }
+                    },
+                    "type": "array"
                 },
                 "version": {
                     "type": "string"
                 }
             },
-            "id": "ResourceGroupListResult"
+            "extends": "",
+            "description": ""
+        },
+        "GroupTypesResult": {
+            "id": "GroupTypesResult",
+            "properties": {
+                "response": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "CodeSigner": {
+            "id": "CodeSigner",
+            "properties": {
+                "timestamp": {
+                    "$ref": "Timestamp"
+                },
+                "signerCertPath": {
+                    "$ref": "CertPath"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "TaskIdResponse": {
+            "id": "TaskIdResponse",
+            "properties": {
+                "taskId": {
+                    "$ref": "TaskId"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "description": ""
         },
         "Resource": {
-            "description": "",
-            "extends": "",
+            "id": "Resource",
             "properties": {
                 "instanceUuid": {
                     "type": "string"
                 }
             },
-            "id": "Resource"
-        },
-        "CountResult": {
-            "description": "",
             "extends": "",
+            "description": ""
+        },
+        "CertPath": {
+            "id": "CertPath",
             "properties": {
-                "response": {
-                    "type": "integer",
-                    "format": "int32"
+                "type": {
+                    "type": "string"
                 },
-                "version": {
+                "encoded": {
+                    "items": {
+                        "type": "byte"
+                    },
+                    "type": "array"
+                },
+                "encodings": {
+                    "$ref": "Iterator\u00abstring\u00bb"
+                },
+                "certificates": {
+                    "items": {
+                        "$ref": "Certificate"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "Certificate": {
+            "id": "Certificate",
+            "properties": {
+                "publicKey": {
+                    "$ref": "PublicKey"
+                },
+                "encoded": {
+                    "items": {
+                        "type": "byte"
+                    },
+                    "type": "array"
+                },
+                "type": {
                     "type": "string"
                 }
             },
-            "id": "CountResult"
+            "extends": "",
+            "description": ""
+        },
+        "ClassLoader": {
+            "id": "ClassLoader",
+            "properties": {
+                "parent": {
+                    "$ref": "ClassLoader"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "Package": {
+            "id": "Package",
+            "properties": {
+                "implementationVendor": {
+                    "type": "string"
+                },
+                "specificationVendor": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "annotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "specificationTitle": {
+                    "type": "string"
+                },
+                "sealed": {
+                    "type": "boolean"
+                },
+                "declaredAnnotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "specificationVersion": {
+                    "type": "string"
+                },
+                "implementationVersion": {
+                    "type": "string"
+                },
+                "implementationTitle": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "Annotation": {
+            "id": "Annotation",
+            "properties": {},
+            "extends": "",
+            "description": ""
+        },
+        "Constructor": {
+            "id": "Constructor",
+            "properties": {
+                "parameterTypes": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "modifiers": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "typeParameters": {
+                    "items": {
+                        "$ref": "TypeVariable"
+                    },
+                    "type": "array"
+                },
+                "varArgs": {
+                    "type": "boolean"
+                },
+                "annotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "genericExceptionTypes": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "synthetic": {
+                    "type": "boolean"
+                },
+                "parameterAnnotations": {
+                    "items": {
+                        "$ref": "Array"
+                    },
+                    "type": "array"
+                },
+                "exceptionTypes": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "genericParameterTypes": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "accessible": {
+                    "type": "boolean"
+                },
+                "declaredAnnotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "AttributeMetadata": {
+            "id": "AttributeMetadata",
+            "properties": {
+                "minCardinality": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "collectionInterfaceType": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "collectionImplType": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "collection": {
+                    "type": "boolean"
+                },
+                "ordered": {
+                    "type": "boolean"
+                },
+                "attribute": {
+                    "type": "boolean"
+                },
+                "stereotypes": {
+                    "items": {
+                        "$ref": "AbstractStereotype"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "$ref": "Class"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "maxCardinality": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "associationEnd": {
+                    "type": "boolean"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "defaultValue": {
+                    "$ref": "object"
+                },
+                "unique": {
+                    "type": "boolean"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "ProtectionDomain": {
+            "id": "ProtectionDomain",
+            "properties": {
+                "codeSource": {
+                    "$ref": "CodeSource"
+                },
+                "classLoader": {
+                    "$ref": "ClassLoader"
+                },
+                "principals": {
+                    "items": {
+                        "$ref": "Principal"
+                    },
+                    "type": "array"
+                },
+                "permissions": {
+                    "$ref": "PermissionCollection"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "AbstractStereotype": {
+            "id": "AbstractStereotype",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "CodeSource": {
+            "id": "CodeSource",
+            "properties": {
+                "location": {
+                    "$ref": "URL"
+                },
+                "codeSigners": {
+                    "items": {
+                        "$ref": "CodeSigner"
+                    },
+                    "type": "array"
+                },
+                "certificates": {
+                    "items": {
+                        "$ref": "Certificate"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "description": ""
         },
         "GroupMembersResult": {
-            "description": "",
-            "extends": "",
+            "id": "GroupMembersResult",
             "properties": {
                 "response": {
-                    "type": "array",
                     "items": {
                         "$ref": "Resource"
-                    }
+                    },
+                    "type": "array"
                 },
                 "version": {
                     "type": "string"
                 }
             },
-            "id": "GroupMembersResult"
-        },
-        "GroupTypesResult": {
-            "description": "",
             "extends": "",
+            "description": ""
+        },
+        "CountResult": {
+            "id": "CountResult",
             "properties": {
                 "response": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "version": {
                     "type": "string"
                 }
             },
-            "id": "GroupTypesResult"
-        },
-        "TaskId": {
-            "description": "",
             "extends": "",
+            "description": ""
+        },
+        "Iterator\u00abstring\u00bb": {
+            "id": "Iterator\u00abstring\u00bb",
             "properties": {},
-            "id": "TaskId"
+            "extends": "",
+            "description": ""
+        },
+        "Class\u00abobject\u00bb": {
+            "id": "Class\u00abobject\u00bb",
+            "properties": {
+                "package": {
+                    "$ref": "Package"
+                },
+                "declaredConstructors": {
+                    "items": {
+                        "$ref": "Constructor"
+                    },
+                    "type": "array"
+                },
+                "superclass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "declaredMethods": {
+                    "items": {
+                        "$ref": "Method"
+                    },
+                    "type": "array"
+                },
+                "annotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "interface": {
+                    "type": "boolean"
+                },
+                "signers": {
+                    "items": {
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "genericInterfaces": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "enclosingClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "enclosingConstructor": {
+                    "$ref": "Constructor\u00abobject\u00bb"
+                },
+                "genericSuperclass": {
+                    "$ref": "Type"
+                },
+                "declaredFields": {
+                    "items": {
+                        "$ref": "Field"
+                    },
+                    "type": "array"
+                },
+                "anonymousClass": {
+                    "type": "boolean"
+                },
+                "declaredClasses": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "synthetic": {
+                    "type": "boolean"
+                },
+                "primitive": {
+                    "type": "boolean"
+                },
+                "simpleName": {
+                    "type": "string"
+                },
+                "annotation": {
+                    "type": "boolean"
+                },
+                "memberClass": {
+                    "type": "boolean"
+                },
+                "modifiers": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "typeParameters": {
+                    "items": {
+                        "$ref": "TypeVariable"
+                    },
+                    "type": "array"
+                },
+                "array": {
+                    "type": "boolean"
+                },
+                "classes": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "componentType": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "enum": {
+                    "type": "boolean"
+                },
+                "declaredAnnotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "enclosingMethod": {
+                    "$ref": "Method"
+                },
+                "methods": {
+                    "items": {
+                        "$ref": "Method"
+                    },
+                    "type": "array"
+                },
+                "fields": {
+                    "items": {
+                        "$ref": "Field"
+                    },
+                    "type": "array"
+                },
+                "canonicalName": {
+                    "type": "string"
+                },
+                "constructors": {
+                    "items": {
+                        "$ref": "Constructor"
+                    },
+                    "type": "array"
+                },
+                "enumConstants": {
+                    "items": {
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "interfaces": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "protectionDomain": {
+                    "$ref": "ProtectionDomain"
+                },
+                "localClass": {
+                    "type": "boolean"
+                },
+                "classLoader": {
+                    "$ref": "ClassLoader"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "Timestamp": {
+            "id": "Timestamp",
+            "properties": {
+                "timestamp": {
+                    "$ref": "date-time"
+                },
+                "signerCertPath": {
+                    "$ref": "CertPath"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "IdRef": {
+            "id": "IdRef",
+            "properties": {
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "longType": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "TypeVariable": {
+            "id": "TypeVariable",
+            "properties": {
+                "bounds": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "genericDeclaration": {
+                    "$ref": "GenericDeclaration"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "Constructor\u00abobject\u00bb": {
+            "id": "Constructor\u00abobject\u00bb",
+            "properties": {
+                "parameterTypes": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "modifiers": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "typeParameters": {
+                    "items": {
+                        "$ref": "TypeVariable"
+                    },
+                    "type": "array"
+                },
+                "varArgs": {
+                    "type": "boolean"
+                },
+                "annotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "genericExceptionTypes": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "synthetic": {
+                    "type": "boolean"
+                },
+                "parameterAnnotations": {
+                    "items": {
+                        "$ref": "Array"
+                    },
+                    "type": "array"
+                },
+                "exceptionTypes": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "genericParameterTypes": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "accessible": {
+                    "type": "boolean"
+                },
+                "declaredAnnotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "GenericDeclaration": {
+            "id": "GenericDeclaration",
+            "properties": {
+                "typeParameters": {
+                    "items": {
+                        "$ref": "TypeVariable"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "PermissionCollection": {
+            "id": "PermissionCollection",
+            "properties": {
+                "readOnly": {
+                    "type": "boolean"
+                }
+            },
+            "extends": "",
+            "description": ""
         },
         "ResourceGroupResult": {
-            "description": "",
-            "extends": "",
+            "id": "ResourceGroupResult",
             "properties": {
                 "response": {
                     "$ref": "ResourceGroupDTO"
@@ -119,31 +899,320 @@
                     "type": "string"
                 }
             },
-            "id": "ResourceGroupResult"
+            "extends": "",
+            "description": ""
         },
         "ResourceGroupDTO": {
-            "description": "",
-            "extends": "",
+            "id": "ResourceGroupDTO",
             "properties": {
-                "groupTypeList": {
-                    "type": "array",
+                "groupMember": {
                     "items": {
-                        "type": "string"
+                        "$ref": "IdRef"
                     },
-                    "uniqueItems": true
+                    "type": "array"
+                },
+                "additionalInfo": {
+                    "items": {
+                        "$ref": "PropertyNameAndStringValue"
+                    },
+                    "uniqueItems": true,
+                    "type": "array"
                 },
                 "name": {
                     "type": "string"
                 },
+                "groupTypeList": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "type": "array"
+                },
+                "subGroupUrl": {
+                    "type": "string"
+                },
+                "subGroup": {
+                    "items": {
+                        "$ref": "IdRef"
+                    },
+                    "type": "array"
+                },
+                "instanceUuid": {
+                    "type": "string"
+                },
                 "id": {
+                    "type": "string"
+                },
+                "groupMemberUrl": {
                     "type": "string"
                 }
             },
-            "id": "ResourceGroupDTO"
+            "extends": "",
+            "description": ""
+        },
+        "Entry\u00abstring,List\u00abstring\u00bb\u00bb": {
+            "id": "Entry\u00abstring,List\u00abstring\u00bb\u00bb",
+            "properties": {
+                "key": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "Principal": {
+            "id": "Principal",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "Class": {
+            "id": "Class",
+            "properties": {
+                "package": {
+                    "$ref": "Package"
+                },
+                "declaredConstructors": {
+                    "items": {
+                        "$ref": "Constructor"
+                    },
+                    "type": "array"
+                },
+                "superclass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "declaredMethods": {
+                    "items": {
+                        "$ref": "Method"
+                    },
+                    "type": "array"
+                },
+                "annotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "interface": {
+                    "type": "boolean"
+                },
+                "signers": {
+                    "items": {
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "genericInterfaces": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "enclosingClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "declaringClass": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "enclosingConstructor": {
+                    "$ref": "Constructor\u00abobject\u00bb"
+                },
+                "genericSuperclass": {
+                    "$ref": "Type"
+                },
+                "declaredFields": {
+                    "items": {
+                        "$ref": "Field"
+                    },
+                    "type": "array"
+                },
+                "anonymousClass": {
+                    "type": "boolean"
+                },
+                "declaredClasses": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "synthetic": {
+                    "type": "boolean"
+                },
+                "primitive": {
+                    "type": "boolean"
+                },
+                "simpleName": {
+                    "type": "string"
+                },
+                "annotation": {
+                    "type": "boolean"
+                },
+                "memberClass": {
+                    "type": "boolean"
+                },
+                "modifiers": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "typeParameters": {
+                    "items": {
+                        "$ref": "TypeVariable"
+                    },
+                    "type": "array"
+                },
+                "array": {
+                    "type": "boolean"
+                },
+                "classes": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "componentType": {
+                    "$ref": "Class\u00abobject\u00bb"
+                },
+                "enum": {
+                    "type": "boolean"
+                },
+                "declaredAnnotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "enclosingMethod": {
+                    "$ref": "Method"
+                },
+                "methods": {
+                    "items": {
+                        "$ref": "Method"
+                    },
+                    "type": "array"
+                },
+                "fields": {
+                    "items": {
+                        "$ref": "Field"
+                    },
+                    "type": "array"
+                },
+                "canonicalName": {
+                    "type": "string"
+                },
+                "constructors": {
+                    "items": {
+                        "$ref": "Constructor"
+                    },
+                    "type": "array"
+                },
+                "enumConstants": {
+                    "items": {
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "interfaces": {
+                    "items": {
+                        "$ref": "Class"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "protectionDomain": {
+                    "$ref": "ProtectionDomain"
+                },
+                "localClass": {
+                    "type": "boolean"
+                },
+                "classLoader": {
+                    "$ref": "ClassLoader"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "Entry\u00abstring,AttributeMetadata\u00bb": {
+            "id": "Entry\u00abstring,AttributeMetadata\u00bb",
+            "properties": {
+                "key": {
+                    "$ref": "AttributeMetadata"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "PublicKey": {
+            "id": "PublicKey",
+            "properties": {
+                "format": {
+                    "type": "string"
+                },
+                "algorithm": {
+                    "type": "string"
+                },
+                "encoded": {
+                    "items": {
+                        "type": "byte"
+                    },
+                    "type": "array"
+                }
+            },
+            "extends": "",
+            "description": ""
+        },
+        "URL": {
+            "id": "URL",
+            "properties": {
+                "ref": {
+                    "type": "string"
+                },
+                "file": {
+                    "type": "string"
+                },
+                "port": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "userInfo": {
+                    "type": "string"
+                },
+                "host": {
+                    "type": "string"
+                },
+                "defaultPort": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "query": {
+                    "type": "string"
+                },
+                "content": {
+                    "$ref": "object"
+                },
+                "protocol": {
+                    "type": "string"
+                },
+                "authority": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "description": ""
         },
         "TaskIdResult": {
-            "description": "",
-            "extends": "",
+            "id": "TaskIdResult",
             "properties": {
                 "response": {
                     "$ref": "TaskIdResponse"
@@ -152,693 +1221,830 @@
                     "type": "string"
                 }
             },
-            "id": "TaskIdResult"
+            "extends": "",
+            "description": ""
         }
     },
+    "resourcePath": "/group",
+    "basePath": "/",
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
     "produces": [
         "application/json"
     ],
     "apis": [
         {
-            "description": "createGroup",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "method": "POST",
-                    "produces": [
-                        "application/json"
-                    ],
                     "notes": "Creates a group( 'ALL' is a reserved group name and not allowed to be created by user).",
-                    "type": "TaskIdResult",
                     "summary": "Creates a group with the information passed in the request",
+                    "method": "POST",
+                    "deprecated": "false",
+                    "nickname": "createGroup",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This Request is Accepted",
+                            "code": 202
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
                     "parameters": [
                         {
-                            "description": "Grouping request that holds the group information",
-                            "required": true,
-                            "allowMultiple": false,
                             "name": "groupDTO",
+                            "required": true,
+                            "description": "Grouping request that holds the group information",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "body",
                             "type": "ResourceGroupDTO"
                         }
                     ],
-                    "nickname": "createGroup"
+                    "type": "TaskIdResult"
                 }
             ],
+            "description": "createGroup",
             "path": "/group"
         },
         {
-            "description": "getGroup",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "ResourceGroupListResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
                     "notes": "Returns the groups by name and/or type. If no parameter is provided, returns all the groups.",
-                    "type": "ResourceGroupListResult",
                     "summary": "Returns groups by name and/or type",
-                    "parameters": [
-                        {
-                            "description": "groupType",
-                            "required": false,
-                            "allowMultiple": false,
-                            "name": "groupType",
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "type": "string"
-                        },
-                        {
-                            "description": "groupName",
-                            "required": false,
-                            "allowMultiple": false,
-                            "name": "groupName",
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "type": "string"
-                        }
-                    ],
-                    "nickname": "getGroup"
-                }
-            ],
-            "path": "/group"
-        },
-        {
-            "description": "updateGroup",
-            "operations": [
-                {
+                    "method": "GET",
                     "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "method": "PUT",
+                    "nickname": "getGroup",
                     "produces": [
                         "application/json"
                     ],
-                    "notes": "Updates the group( 'ALL' is a reserved group name and not allowed to be updated by user).",
-                    "type": "TaskIdResult",
-                    "summary": "Updates a group specified by id",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "ResourceGroupListResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
                     "parameters": [
                         {
-                            "description": "Grouping request that holds the group information",
-                            "required": true,
-                            "allowMultiple": false,
-                            "name": "groupDTO",
+                            "name": "groupType",
+                            "required": false,
+                            "description": "groupType",
                             "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string"
+                        },
+                        {
+                            "name": "groupName",
+                            "required": false,
+                            "description": "groupName",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "ResourceGroupListResult"
+                }
+            ],
+            "description": "getGroup",
+            "path": "/group"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Updates the group( 'ALL' is a reserved group name and not allowed to be updated by user).",
+                    "summary": "Updates a group specified by id",
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "nickname": "updateGroup",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "name": "groupDTO",
+                            "required": true,
+                            "description": "Grouping request that holds the group information",
+                            "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "body",
                             "type": "ResourceGroupDTO"
                         }
                     ],
-                    "nickname": "updateGroup"
+                    "type": "TaskIdResult"
                 }
             ],
+            "description": "updateGroup",
             "path": "/group"
         },
         {
-            "description": "getGroupCount",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "CountResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
+                    "notes": "Retrieves the number of groups",
+                    "summary": "Returns the number of groups",
                     "method": "GET",
+                    "deprecated": "false",
+                    "nickname": "getGroupCount",
                     "produces": [
                         "application/json"
                     ],
-                    "notes": "Retrieves the number of groups",
-                    "type": "CountResult",
-                    "summary": "Returns the number of groups",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
                     "parameters": [
                         {
-                            "description": "groupType",
-                            "required": false,
-                            "allowMultiple": false,
                             "name": "groupType",
+                            "required": false,
+                            "description": "groupType",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "query",
                             "type": "string"
                         },
                         {
-                            "description": "groupName",
-                            "required": false,
-                            "allowMultiple": false,
                             "name": "groupName",
+                            "required": false,
+                            "description": "groupName",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "query",
                             "type": "string"
                         }
                     ],
-                    "nickname": "getGroupCount"
+                    "type": "CountResult"
                 }
             ],
+            "description": "getGroupCount",
             "path": "/group/count"
         },
         {
-            "description": "getSupportedClassNameAliases",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "GroupTypesResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
+                    "notes": "Returns the names for supported resource types. The name for the respective resource type needs to be used to add any resource to a group.",
+                    "summary": "Retrieves the names for supported resource types",
                     "method": "GET",
+                    "deprecated": "false",
+                    "nickname": "getSupportedClassNameAliases",
                     "produces": [
                         "application/json"
                     ],
-                    "notes": "Returns the names for supported resource types. The name for the respective resource type needs to be used to add any resource to a group.",
-                    "type": "GroupTypesResult",
-                    "summary": "Retrieves the names for supported resource types",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "GroupTypesResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
                     "parameters": [],
-                    "nickname": "getSupportedClassNameAliases"
+                    "type": "GroupTypesResult"
                 }
             ],
+            "description": "getSupportedClassNameAliases",
             "path": "/group/member/type"
         },
         {
-            "description": "getGroupsByMemberId",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "ResourceGroupListResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
+                    "notes": "Returns the groups containing the member specified by id.",
+                    "summary": "Returns the groups containing the member",
                     "method": "GET",
+                    "deprecated": "false",
+                    "nickname": "getGroupsByMemberId",
                     "produces": [
                         "application/json"
                     ],
-                    "notes": "Returns the groups containing the member specified by id.",
-                    "type": "ResourceGroupListResult",
-                    "summary": "Returns the groups containing the member",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "ResourceGroupListResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
                     "parameters": [
                         {
-                            "description": "Member ID",
-                            "required": true,
-                            "allowMultiple": false,
                             "name": "id",
+                            "required": true,
+                            "description": "Member ID",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "path",
                             "type": "string"
                         },
                         {
-                            "description": "groupType",
-                            "required": false,
-                            "allowMultiple": false,
                             "name": "groupType",
+                            "required": false,
+                            "description": "groupType",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "query",
                             "type": "string"
                         }
                     ],
-                    "nickname": "getGroupsByMemberId"
+                    "type": "ResourceGroupListResult"
                 }
             ],
+            "description": "getGroupsByMemberId",
             "path": "/group/member/{id}"
         },
         {
-            "description": "getGroupTypes",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "GroupTypesResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
+                    "notes": "Retrieves the group types supported",
+                    "summary": "Returns the group types supported",
                     "method": "GET",
+                    "deprecated": "false",
+                    "nickname": "getGroupTypes",
                     "produces": [
                         "application/json"
                     ],
-                    "notes": "Retrieves the group types supported",
-                    "type": "GroupTypesResult",
-                    "summary": "Returns the group types supported",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "GroupTypesResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
                     "parameters": [],
-                    "nickname": "getGroupTypes"
+                    "type": "GroupTypesResult"
                 }
             ],
+            "description": "getGroupTypes",
             "path": "/group/type"
         },
         {
-            "description": "getGroupById",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "ResourceGroupResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
+                    "notes": "getUnassignedMembers",
+                    "summary": "getUnassignedMembers",
                     "method": "GET",
+                    "deprecated": "false",
+                    "nickname": "getUnassignedMembers",
                     "produces": [
                         "application/json"
                     ],
-                    "notes": "Returns the group specified by id",
-                    "type": "ResourceGroupResult",
-                    "summary": "Returns the group by id",
-                    "parameters": [
-                        {
-                            "description": "Group ID",
-                            "required": true,
-                            "allowMultiple": false,
-                            "name": "id",
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "type": "string"
-                        }
-                    ],
-                    "nickname": "getGroupById"
-                }
-            ],
-            "path": "/group/{id}"
-        },
-        {
-            "description": "deleteGroup",
-            "operations": [
-                {
-                    "deprecated": "false",
                     "responseMessages": [
                         {
-                            "responseModel": "TaskIdResult",
+                            "message": "This Request is OK",
                             "code": 200,
-                            "message": "This Request is OK"
+                            "responseModel": "GroupMembersResult"
                         },
                         {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
                         },
                         {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
                         },
                         {
-                            "code": 404,
-                            "message": "No Resource Found"
+                            "message": "No Resource Found",
+                            "code": 404
                         }
                     ],
-                    "method": "DELETE",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "notes": "Deletes the group",
-                    "type": "TaskIdResult",
-                    "summary": "Deletes a group specified by id",
                     "parameters": [
                         {
-                            "description": "Group ID",
-                            "required": true,
-                            "allowMultiple": false,
-                            "name": "id",
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "type": "string"
-                        }
-                    ],
-                    "nickname": "deleteGroup"
-                }
-            ],
-            "path": "/group/{id}"
-        },
-        {
-            "description": "getMembersByGroupId",
-            "operations": [
-                {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "GroupMembersResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "method": "GET",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "notes": "Returns members from a group",
-                    "type": "GroupMembersResult",
-                    "summary": "Returns the members from the group specified by id",
-                    "parameters": [
-                        {
-                            "description": "Group ID",
-                            "required": true,
-                            "allowMultiple": false,
-                            "name": "id",
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "type": "string"
-                        },
-                        {
-                            "description": "offset",
-                            "required": false,
-                            "allowMultiple": false,
+                            "format": "int32",
                             "name": "offset",
-                            "defaultValue": "",
-                            "format": "int32",
-                            "paramType": "query",
-                            "type": "integer"
-                        },
-                        {
-                            "description": "limit",
                             "required": false,
-                            "allowMultiple": false,
-                            "name": "limit",
+                            "description": "offset",
                             "defaultValue": "",
-                            "format": "int32",
+                            "allowMultiple": false,
                             "paramType": "query",
                             "type": "integer"
                         },
                         {
-                            "description": "memberType",
-                            "required": true,
-                            "allowMultiple": false,
-                            "name": "memberType",
+                            "format": "int32",
+                            "name": "limit",
+                            "required": false,
+                            "description": "limit",
                             "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "groupType",
+                            "required": true,
+                            "description": "groupType",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string"
+                        },
+                        {
+                            "name": "memberType",
+                            "required": true,
+                            "description": "memberType",
+                            "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "query",
                             "type": "string"
                         }
                     ],
-                    "nickname": "getMembersByGroupId"
+                    "type": "GroupMembersResult"
                 }
             ],
+            "description": "getUnassignedMembers",
+            "path": "/group/unassigned"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "getUnassignedMemberCount",
+                    "summary": "getUnassignedMemberCount",
+                    "method": "GET",
+                    "deprecated": "false",
+                    "nickname": "getUnassignedMemberCount",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "name": "groupType",
+                            "required": true,
+                            "description": "groupType",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string"
+                        },
+                        {
+                            "name": "memberType",
+                            "required": true,
+                            "description": "memberType",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "CountResult"
+                }
+            ],
+            "description": "getUnassignedMemberCount",
+            "path": "/group/unassigned/count"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Returns the group specified by id",
+                    "summary": "Returns the group by id",
+                    "method": "GET",
+                    "deprecated": "false",
+                    "nickname": "getGroupById",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "ResourceGroupResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "required": true,
+                            "description": "Group ID",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "ResourceGroupResult"
+                }
+            ],
+            "description": "getGroupById",
+            "path": "/group/{id}"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Deletes the group",
+                    "summary": "Deletes a group specified by id",
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "nickname": "deleteGroup",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "required": true,
+                            "description": "Group ID",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "TaskIdResult"
+                }
+            ],
+            "description": "deleteGroup",
+            "path": "/group/{id}"
+        },
+        {
+            "operations": [
+                {
+                    "notes": "Returns members from a group",
+                    "summary": "Returns the members from the group specified by id",
+                    "method": "GET",
+                    "deprecated": "false",
+                    "nickname": "getMembersByGroupId",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "GroupMembersResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "required": true,
+                            "description": "Group ID",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "type": "string"
+                        },
+                        {
+                            "format": "int32",
+                            "name": "offset",
+                            "required": false,
+                            "description": "offset",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "integer"
+                        },
+                        {
+                            "format": "int32",
+                            "name": "limit",
+                            "required": false,
+                            "description": "limit",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "memberType",
+                            "required": true,
+                            "description": "memberType",
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "paramType": "query",
+                            "type": "string"
+                        }
+                    ],
+                    "type": "GroupMembersResult"
+                }
+            ],
+            "description": "getMembersByGroupId",
             "path": "/group/{id}/member"
         },
         {
-            "description": "removeMember",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
+                    "notes": "Removes members from a group",
+                    "summary": "Removes members from the group specified by id",
                     "method": "DELETE",
+                    "deprecated": "false",
+                    "nickname": "removeMember",
                     "produces": [
                         "application/json"
                     ],
-                    "notes": "Removes members from a group",
-                    "type": "TaskIdResult",
-                    "summary": "Removes members from the group specified by id",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
                     "parameters": [
                         {
-                            "description": "Group ID",
-                            "required": true,
-                            "allowMultiple": false,
                             "name": "id",
+                            "required": true,
+                            "description": "Group ID",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "path",
                             "type": "string"
                         },
                         {
-                            "description": "Set of member ids to be removed from group",
-                            "required": true,
-                            "allowMultiple": false,
                             "name": "memberUuids",
+                            "required": true,
+                            "description": "Set of member ids to be removed from group",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "body",
                             "type": "Set"
                         }
                     ],
-                    "nickname": "removeMember"
+                    "type": "TaskIdResult"
                 }
             ],
+            "description": "removeMember",
             "path": "/group/{id}/member"
         },
         {
-            "description": "addMember",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
+                    "notes": "Adds members to a group",
+                    "summary": "Adds members to the group specified by id",
                     "method": "POST",
+                    "deprecated": "false",
+                    "nickname": "addMember",
                     "produces": [
                         "application/json"
                     ],
-                    "notes": "Adds members to a group",
-                    "type": "TaskIdResult",
-                    "summary": "Adds members to the group specified by id",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This Request is Accepted",
+                            "code": 202
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
                     "parameters": [
                         {
-                            "description": "Group ID",
-                            "required": true,
-                            "allowMultiple": false,
                             "name": "id",
+                            "required": true,
+                            "description": "Group ID",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "path",
                             "type": "string"
                         },
                         {
-                            "description": "Map of member type and member ids, for example, {<br>\"networkdevice\":[\"803ccafc-3458-49a2-9eff-0b2e47e491f7\",\"203ccafc-3453-49a2-9eff-0b2e47e491f1\"]<br>}<br>Refer /group/member/type for the supported member types.",
-                            "required": true,
-                            "allowMultiple": false,
                             "name": "members",
+                            "required": true,
+                            "description": "Map of member type and member ids, for example, {<br>\"networkdevice\":[\"803ccafc-3458-49a2-9eff-0b2e47e491f7\",\"203ccafc-3453-49a2-9eff-0b2e47e491f1\"]<br>}<br>Refer /group/member/type for the supported member types.",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "body",
                             "type": "List[Entry\u00abstring,List\u00abstring\u00bb\u00bb]"
                         }
                     ],
-                    "nickname": "addMember"
+                    "type": "TaskIdResult"
                 }
             ],
+            "description": "addMember",
             "path": "/group/{id}/member"
         },
         {
-            "description": "getGroupMemberCount",
             "operations": [
                 {
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "responseModel": "CountResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
+                    "notes": "Retrieves the number of members in group",
+                    "summary": "Returns the number of members in a given group",
                     "method": "GET",
+                    "deprecated": "false",
+                    "nickname": "getGroupMemberCount",
                     "produces": [
                         "application/json"
                     ],
-                    "notes": "Retrieves the number of members in group",
-                    "type": "CountResult",
-                    "summary": "Returns the number of members in a given group",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
                     "parameters": [
                         {
-                            "description": "Group ID",
-                            "required": true,
-                            "allowMultiple": false,
                             "name": "id",
+                            "required": true,
+                            "description": "Group ID",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "path",
                             "type": "string"
                         },
                         {
-                            "description": "memberType",
-                            "required": true,
-                            "allowMultiple": false,
                             "name": "memberType",
+                            "required": true,
+                            "description": "memberType",
                             "defaultValue": "",
+                            "allowMultiple": false,
                             "paramType": "query",
                             "type": "string"
                         }
                     ],
-                    "nickname": "getGroupMemberCount"
+                    "type": "CountResult"
                 }
             ],
+            "description": "getGroupMemberCount",
             "path": "/group/{id}/member/count"
         }
     ]

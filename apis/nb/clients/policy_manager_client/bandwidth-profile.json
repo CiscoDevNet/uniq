@@ -1,0 +1,437 @@
+{
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0",
+    "models": {
+        "InterfaceTrafficClassBandwidthSettingsDTO": {
+            "required": [
+                "trafficClassBandwidthSettingDTOList",
+                "interfaceSpeed"
+            ],
+            "extends": "",
+            "description": "",
+            "id": "InterfaceTrafficClassBandwidthSettingsDTO",
+            "properties": {
+                "interfaceSpeed": {
+                    "type": "string",
+                    "description": "Interface Speed. Allowed values are: 1 Mbps, 10 Mbps, 100 Mbps, 1 Gbps, 10 Gbps, 100 Gbps"
+                },
+                "trafficClassBandwidthSettingDTOList": {
+                    "type": "array",
+                    "description": "List of Traffic Class Bandwidth Settings for the interface speed",
+                    "items": {
+                        "$ref": "TrafficClassBandwidthSettingDTO"
+                    }
+                }
+            }
+        },
+        "BandwidthProfileAssociatedPolicyScopeDTO": {
+            "required": [
+                "stale",
+                "policyScope"
+            ],
+            "extends": "",
+            "description": "",
+            "id": "BandwidthProfileAssociatedPolicyScopeDTO",
+            "properties": {
+                "policyScope": {
+                    "type": "string",
+                    "description": "Policy scope using this BandwidthProfile"
+                },
+                "stale": {
+                    "type": "boolean",
+                    "description": "Flag indicating whether the BandwidthProfile has been updated since the last time its associated policies were provisioned"
+                }
+            }
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "description": "",
+            "id": "TaskIdResult"
+        },
+        "BandwidthProfileDTO": {
+            "required": [
+                "interfaceTrafficClassBandwidthSettingsList",
+                "name",
+                "defaultProfile",
+                "id"
+            ],
+            "extends": "",
+            "description": "",
+            "id": "BandwidthProfileDTO",
+            "properties": {
+                "version": {
+                    "format": "int32",
+                    "type": "integer",
+                    "description": "Incremental number representing the version of the BandwidthProfile"
+                },
+                "interfaceTrafficClassBandwidthSettingsList": {
+                    "type": "array",
+                    "description": "List of Traffic Class Bandwidth Settings for the different interface speeds supported",
+                    "items": {
+                        "$ref": "InterfaceTrafficClassBandwidthSettingsDTO"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "unique name for the BandwidthProfile"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "lastUpdateTime": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": "lastUpdateTime"
+                },
+                "defaultProfile": {
+                    "type": "boolean",
+                    "description": "A flag to indicate if the BandwidthProfile is a default/user-defined one"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for the BandwidthProfile"
+                },
+                "createTime": {
+                    "format": "int64",
+                    "type": "integer",
+                    "description": "createTime"
+                },
+                "bandwidthProfileAssociatedPolicyScopes": {
+                    "type": "array",
+                    "description": "read only list of policy scopes using the BandwidthProfile",
+                    "items": {
+                        "$ref": "BandwidthProfileAssociatedPolicyScopeDTO"
+                    }
+                }
+            }
+        },
+        "TaskId": {
+            "extends": "",
+            "properties": {},
+            "description": "",
+            "id": "TaskId"
+        },
+        "TaskIdResponse": {
+            "extends": "",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "description": "",
+            "id": "TaskIdResponse"
+        },
+        "TrafficClassBandwidthSettingDTO": {
+            "required": [
+                "trafficClass",
+                "bandwidthPercentage"
+            ],
+            "extends": "",
+            "description": "",
+            "id": "TrafficClassBandwidthSettingDTO",
+            "properties": {
+                "bandwidthPercentage": {
+                    "format": "byte",
+                    "type": "string",
+                    "description": "Bandwidth percentage to assign to the traffic class"
+                },
+                "trafficClass": {
+                    "type": "string",
+                    "description": "Traffic Class name. Valid values are broadcast-video, bulk-data, multimedia-conferencing, multimedia-streaming, network-control, ops-admin-mgmt, real-time-interactive, signaling, transactional-data, voip-telephony, best-effort, scavenger"
+                }
+            }
+        },
+        "BandwidthProfileResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "BandwidthProfileDTO"
+                }
+            },
+            "description": "",
+            "id": "BandwidthProfileResult"
+        },
+        "BandwidthProfileListResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "BandwidthProfileDTO"
+                    }
+                }
+            },
+            "description": "",
+            "id": "BandwidthProfileListResult"
+        }
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "swaggerVersion": "1.2",
+    "basePath": "/policy-manager-service",
+    "apis": [
+        {
+            "path": "/bandwidth-profile",
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Get all BandwidthProfiles",
+                    "summary": "Retrieve all BandwidthProfiles",
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "BandwidthProfileListResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "BandwidthProfileListResult",
+                    "parameters": [],
+                    "deprecated": "false",
+                    "nickname": "getAllBandwidthProfiles"
+                }
+            ],
+            "description": "getAllBandwidthProfiles"
+        },
+        {
+            "path": "/bandwidth-profile",
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Create BandwidthProfile(s)",
+                    "summary": "Create BandwidthProfile(s)",
+                    "method": "POST",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "bandwidthProfileDTOs",
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "description": "BandwidthProfile Object(s)",
+                            "allowMultiple": false,
+                            "type": "array",
+                            "items": {
+                                "$ref": "BandwidthProfileDTO"
+                            }
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "add"
+                }
+            ],
+            "description": "add"
+        },
+        {
+            "path": "/bandwidth-profile",
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Update BandwidthProfile(s)",
+                    "summary": "Update BandwidthProfile(s)",
+                    "method": "PUT",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "bandwidthProfileDTOs",
+                            "paramType": "body",
+                            "defaultValue": "",
+                            "description": "BandwidthProfile Object(s)",
+                            "allowMultiple": false,
+                            "type": "array",
+                            "items": {
+                                "$ref": "BandwidthProfileDTO"
+                            }
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "update"
+                }
+            ],
+            "description": "update"
+        },
+        {
+            "path": "/bandwidth-profile/{id}",
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Delete BandwidthProfile by id",
+                    "summary": "Delete a BandwidthProfile by its id",
+                    "method": "DELETE",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "id",
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "description": "id",
+                            "allowMultiple": false,
+                            "type": "string"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "delete"
+                }
+            ],
+            "description": "delete"
+        },
+        {
+            "path": "/bandwidth-profile/{id}",
+            "operations": [
+                {
+                    "produces": [
+                        "application/json"
+                    ],
+                    "notes": "Get a BandwidthProfile by id",
+                    "summary": "Retrieve a BandwidthProfile based on its id",
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "This Request is OK",
+                            "responseModel": "BandwidthProfileResult"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "type": "BandwidthProfileResult",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "id",
+                            "paramType": "path",
+                            "defaultValue": "",
+                            "description": "id",
+                            "allowMultiple": false,
+                            "type": "string"
+                        }
+                    ],
+                    "deprecated": "false",
+                    "nickname": "getBandwidthProfileById"
+                }
+            ],
+            "description": "getBandwidthProfileById"
+        }
+    ],
+    "resourcePath": "/bandwidth-profile"
+}

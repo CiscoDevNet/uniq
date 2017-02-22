@@ -1,0 +1,112 @@
+{
+    "basePath": "/",
+    "apis": [
+        {
+            "path": "/ras-test/{test-case-id}",
+            "description": "executeTestCase",
+            "operations": [
+                {
+                    "summary": "Returns testcase result",
+                    "notes": "This API executes the test case for the given test case id and returns the test result. It gives the error details in case of test failure.",
+                    "method": "GET",
+                    "deprecated": "false",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "description": "The test case identifier",
+                            "allowMultiple": false,
+                            "paramType": "path",
+                            "name": "test-case-id",
+                            "required": true,
+                            "defaultValue": ""
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "Successful completion of test case (pass or fail)",
+                            "code": 200,
+                            "responseModel": "TestCaseResult"
+                        },
+                        {
+                            "message": "Internal server error",
+                            "code": 500,
+                            "responseModel": "Void"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "Test case id does not exist",
+                            "code": 404,
+                            "responseModel": "Void"
+                        }
+                    ],
+                    "nickname": "executeTestCase",
+                    "type": "TestCaseResult",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ]
+        }
+    ],
+    "resourcePath": "/ras-test/{test-case-id}",
+    "swaggerVersion": "1.2",
+    "models": {
+        "TestCaseResponse": {
+            "extends": "",
+            "description": "",
+            "required": [
+                "testExecutionTimeInMillis",
+                "testCaseExecutionResult",
+                "testCaseId"
+            ],
+            "id": "TestCaseResponse",
+            "properties": {
+                "testCaseId": {
+                    "type": "string",
+                    "description": "the test case identifier"
+                },
+                "testCaseExecutionResult": {
+                    "type": "string",
+                    "description": "the test case result. success or failure",
+                    "enum": [
+                        "FAILURE",
+                        "SUCCESS"
+                    ]
+                },
+                "testCaseError": {
+                    "type": "string",
+                    "description": "the error details in case test failure"
+                },
+                "testExecutionTimeInMillis": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "the test case exeuction time in milliseconds"
+                }
+            }
+        },
+        "TestCaseResult": {
+            "extends": "",
+            "description": "",
+            "id": "TestCaseResult",
+            "properties": {
+                "response": {
+                    "$ref": "TestCaseResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0"
+}

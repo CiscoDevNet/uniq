@@ -1,66 +1,66 @@
 {
+    "resourcePath": "/relevance",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/relevance",
-    "basePath": "/policy-manager-service",
-    "apiVersion": "1.0",
-    "apis": [
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "RelevanceListResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "RelevanceListResult",
-                    "summary": "Lists all relevances",
-                    "nickname": "getAllRelevanceLevels",
-                    "parameters": [],
-                    "notes": "Get all Relevance(s)"
-                }
-            ],
-            "description": "getAllRelevanceLevels",
-            "path": "/relevance"
-        }
-    ],
+    "basePath": "/",
     "models": {
         "RelevanceListResult": {
             "properties": {
                 "response": {
-                    "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "type": "array"
                 },
                 "version": {
                     "type": "string"
                 }
             },
-            "extends": "",
+            "description": "",
             "id": "RelevanceListResult",
-            "description": ""
+            "extends": ""
         }
     },
-    "swaggerVersion": "1.2"
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "apis": [
+        {
+            "operations": [
+                {
+                    "notes": "Get all Relevance(s)",
+                    "nickname": "getAllRelevanceLevels",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "method": "GET",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "responseModel": "RelevanceListResult",
+                            "message": "This Request is OK",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "type": "RelevanceListResult",
+                    "summary": "Lists all relevances"
+                }
+            ],
+            "description": "getAllRelevanceLevels",
+            "path": "/relevance"
+        }
+    ]
 }

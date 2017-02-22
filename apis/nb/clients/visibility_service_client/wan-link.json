@@ -2,117 +2,653 @@
     "consumes": [
         "application/json"
     ],
+    "resourcePath": "/wan-link",
+    "apiVersion": "1.0",
+    "basePath": "/",
+    "apis": [
+        {
+            "path": "/wan-link",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This Request is Accepted",
+                            "code": 202
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "summary": "Create a link between a device and a cloud provider",
+                    "notes": "create",
+                    "method": "POST",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "description": "wanLinkDTOs",
+                            "required": false,
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "WanLinkDTO"
+                            },
+                            "type": "array",
+                            "name": "wanLinkDTOs"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "List",
+                            "name": "scope"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "requestorUsername",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "username"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "nickname": "create"
+                }
+            ],
+            "description": "create"
+        },
+        {
+            "path": "/wan-link",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "summary": "Update a link between a device and a cloud provider",
+                    "notes": "update",
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "description": "wanLinkDTOs",
+                            "required": false,
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "WanLinkDTO"
+                            },
+                            "type": "array",
+                            "name": "wanLinkDTOs"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "List",
+                            "name": "scope"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "requestorUsername",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "username"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "nickname": "update"
+                }
+            ],
+            "description": "update"
+        },
+        {
+            "path": "/wan-link/queue-bandwidth",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "summary": "Update the queue bandwidth allocation of a wan interface",
+                    "notes": "updateQosQueueBandwidth",
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "description": "bandwidthInfo",
+                            "required": false,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "IWanQosInterfaceBandwidthInfo",
+                            "name": "bandwidthInfo"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "List",
+                            "name": "scope"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "requestorUsername",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "username"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "nickname": "updateQosQueueBandwidth"
+                }
+            ],
+            "description": "updateQosQueueBandwidth"
+        },
+        {
+            "path": "/wan-link/{linkId}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "WanLinkDTO"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "summary": "Get a link between a device and a cloud provider",
+                    "notes": "get",
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "description": "wanLinkUuid",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "linkId"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "List",
+                            "name": "scope"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "requestorUsername",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "username"
+                        }
+                    ],
+                    "type": "WanLinkDTO",
+                    "nickname": "get"
+                }
+            ],
+            "description": "get"
+        },
+        {
+            "path": "/wan-link/{linkId}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "summary": "API to delete a link between a device and a cloud provider",
+                    "notes": "delete",
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "description": "wanLinkUuid",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "linkId"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "List",
+                            "name": "scope"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "requestorUsername",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "username"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "nickname": "delete"
+                }
+            ],
+            "description": "delete"
+        },
+        {
+            "path": "/wan-link/{linkId}/queue-bandwidth",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "IWanQosInterfaceBandwidthInfo"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "summary": "Get the queue bandwidth allocation of a wan interface",
+                    "notes": "getQueueBandwidth",
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "description": "wanLinkUuid",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "linkId"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "List",
+                            "name": "scope"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "requestorUsername",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "username"
+                        }
+                    ],
+                    "type": "IWanQosInterfaceBandwidthInfo",
+                    "nickname": "getQueueBandwidth"
+                }
+            ],
+            "description": "getQueueBandwidth"
+        },
+        {
+            "path": "/wan-link/{scheduleTime}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This Request is Accepted",
+                            "code": 202
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "summary": "Schedule the creation of a link between a device and a cloud provider",
+                    "notes": "scheduleCreate",
+                    "method": "POST",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "description": "wanLinkDTOs",
+                            "required": false,
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "WanLinkDTO"
+                            },
+                            "type": "array",
+                            "name": "wanLinkDTOs"
+                        },
+                        {
+                            "paramType": "path",
+                            "description": "Schedule Time",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "integer",
+                            "format": "int64",
+                            "name": "scheduleTime"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "List",
+                            "name": "scope"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "requestorUsername",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "username"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "nickname": "scheduleCreate"
+                }
+            ],
+            "description": "scheduleCreate"
+        },
+        {
+            "path": "/wan-link/{scheduleTime}",
+            "operations": [
+                {
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "summary": "Schedule the updation of a link between a device and a cloud provider",
+                    "notes": "scheduleUpdate",
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "description": "wanLinkDTOs",
+                            "required": false,
+                            "allowMultiple": true,
+                            "defaultValue": "",
+                            "items": {
+                                "$ref": "WanLinkDTO"
+                            },
+                            "type": "array",
+                            "name": "wanLinkDTOs"
+                        },
+                        {
+                            "paramType": "path",
+                            "description": "Schedule Time",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "integer",
+                            "format": "int64",
+                            "name": "scheduleTime"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "Authorization Scope for RBAC",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "List",
+                            "name": "scope"
+                        },
+                        {
+                            "paramType": "header",
+                            "description": "requestorUsername",
+                            "required": true,
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "type": "string",
+                            "name": "username"
+                        }
+                    ],
+                    "type": "TaskIdResult",
+                    "nickname": "scheduleUpdate"
+                }
+            ],
+            "description": "scheduleUpdate"
+        }
+    ],
     "produces": [
         "application/json"
     ],
+    "swaggerVersion": "1.2",
     "models": {
-        "WanLinkDTO": {
+        "TaskIdResult": {
             "extends": "",
-            "id": "WanLinkDTO",
+            "description": "",
+            "id": "TaskIdResult",
             "properties": {
-                "natAddress": {
-                    "type": "string"
+                "response": {
+                    "$ref": "TaskIdResponse"
                 },
-                "downloadBW": {
-                    "format": "float",
-                    "type": "number"
-                },
-                "serviceProvider": {
-                    "type": "string"
-                },
-                "tunnelId": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "wanCloudUuid": {
-                    "type": "string"
-                },
-                "uploadBW": {
-                    "format": "float",
-                    "type": "number"
-                },
-                "interfaceName": {
-                    "type": "string"
-                },
-                "wanAddressSubnetMask": {
-                    "type": "string"
-                },
-                "nextHopAddress": {
-                    "type": "string"
-                },
-                "wanAddress": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "deviceUuid": {
+                "version": {
                     "type": "string"
                 }
-            },
-            "description": ""
+            }
         },
         "IWanQosInterfaceBandwidthInfo": {
             "extends": "",
+            "description": "",
             "id": "IWanQosInterfaceBandwidthInfo",
             "properties": {
                 "interfaceId": {
                     "type": "string"
                 },
                 "bandwidthAllocations": {
+                    "type": "array",
                     "items": {
                         "$ref": "BandwidthAllocations"
-                    },
-                    "type": "array"
+                    }
                 }
-            },
-            "description": ""
+            }
+        },
+        "StdResult\u00abIWanQosInterfaceBandwidthInfo\u00bb": {
+            "extends": "",
+            "description": "",
+            "id": "StdResult\u00abIWanQosInterfaceBandwidthInfo\u00bb",
+            "properties": {
+                "response": {
+                    "$ref": "IWanQosInterfaceBandwidthInfo"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
         },
         "BandwidthAllocations": {
             "extends": "",
+            "description": "",
             "id": "BandwidthAllocations",
             "properties": {
-                "bandwidthPercent": {
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "class": {
                     "type": "string"
                 },
                 "dscp": {
                     "type": "string"
-                }
-            },
-            "description": ""
-        },
-        "StdResult\u00abIWanQosInterfaceBandwidthInfo\u00bb": {
-            "extends": "",
-            "id": "StdResult\u00abIWanQosInterfaceBandwidthInfo\u00bb",
-            "properties": {
-                "version": {
-                    "type": "string"
                 },
-                "response": {
-                    "$ref": "IWanQosInterfaceBandwidthInfo"
+                "bandwidthPercent": {
+                    "type": "integer",
+                    "format": "int32"
                 }
-            },
-            "description": ""
-        },
-        "TaskIdResult": {
-            "extends": "",
-            "id": "TaskIdResult",
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "$ref": "TaskIdResponse"
-                }
-            },
-            "description": ""
+            }
         },
         "TaskIdResponse": {
             "extends": "",
+            "description": "",
             "id": "TaskIdResponse",
             "properties": {
                 "url": {
@@ -121,443 +657,59 @@
                 "taskId": {
                     "$ref": "TaskId"
                 }
-            },
-            "description": ""
+            }
         },
         "TaskId": {
             "extends": "",
+            "description": "",
             "id": "TaskId",
-            "properties": {},
-            "description": ""
+            "properties": {}
+        },
+        "WanLinkDTO": {
+            "extends": "",
+            "description": "",
+            "id": "WanLinkDTO",
+            "properties": {
+                "wanCloudUuid": {
+                    "type": "string"
+                },
+                "uploadBW": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "wanAddress": {
+                    "type": "string"
+                },
+                "serviceProvider": {
+                    "type": "string"
+                },
+                "downloadBW": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "wanAddressSubnetMask": {
+                    "type": "string"
+                },
+                "interfaceName": {
+                    "type": "string"
+                },
+                "deviceUuid": {
+                    "type": "string"
+                },
+                "natAddress": {
+                    "type": "string"
+                },
+                "nextHopAddress": {
+                    "type": "string"
+                },
+                "tunnelId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
         }
-    },
-    "apis": [
-        {
-            "operations": [
-                {
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "summary": "Create a link between a device and a cloud provider",
-                    "parameters": [
-                        {
-                            "defaultValue": "",
-                            "name": "wanLinkDTOs",
-                            "allowMultiple": true,
-                            "items": {
-                                "$ref": "WanLinkDTO"
-                            },
-                            "required": false,
-                            "paramType": "body",
-                            "description": "wanLinkDTOs",
-                            "type": "array"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "scope",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "Authorization Scope for RBAC",
-                            "type": "List"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "username",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "requestorUsername",
-                            "type": "string"
-                        }
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "deprecated": "false",
-                    "nickname": "create",
-                    "notes": "create",
-                    "type": "TaskIdResult",
-                    "method": "POST"
-                }
-            ],
-            "description": "create",
-            "path": "/wan-link"
-        },
-        {
-            "operations": [
-                {
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "summary": "Update the queue bandwidth allocation of a wan interface",
-                    "parameters": [
-                        {
-                            "defaultValue": "",
-                            "name": "bandwidthInfo",
-                            "allowMultiple": false,
-                            "paramType": "body",
-                            "required": false,
-                            "description": "bandwidthInfo",
-                            "type": "IWanQosInterfaceBandwidthInfo"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "scope",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "Authorization Scope for RBAC",
-                            "type": "List"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "username",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "requestorUsername",
-                            "type": "string"
-                        }
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "deprecated": "false",
-                    "nickname": "updateQosQueueBandwidth",
-                    "notes": "updateQosQueueBandwidth",
-                    "type": "TaskIdResult",
-                    "method": "PUT"
-                }
-            ],
-            "description": "updateQosQueueBandwidth",
-            "path": "/wan-link/queue-bandwidth"
-        },
-        {
-            "operations": [
-                {
-                    "responseMessages": [
-                        {
-                            "responseModel": "WanLinkDTO",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "summary": "Get a link between a device and a cloud provider",
-                    "parameters": [
-                        {
-                            "defaultValue": "",
-                            "name": "linkId",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "required": true,
-                            "description": "wanLinkUuid",
-                            "type": "string"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "scope",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "Authorization Scope for RBAC",
-                            "type": "List"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "username",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "requestorUsername",
-                            "type": "string"
-                        }
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "deprecated": "false",
-                    "nickname": "get",
-                    "notes": "get",
-                    "type": "WanLinkDTO",
-                    "method": "GET"
-                }
-            ],
-            "description": "get",
-            "path": "/wan-link/{linkId}"
-        },
-        {
-            "operations": [
-                {
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "summary": "API to delete a link between a device and a cloud provider",
-                    "parameters": [
-                        {
-                            "defaultValue": "",
-                            "name": "linkId",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "required": true,
-                            "description": "wanLinkUuid",
-                            "type": "string"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "scope",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "Authorization Scope for RBAC",
-                            "type": "List"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "username",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "requestorUsername",
-                            "type": "string"
-                        }
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "deprecated": "false",
-                    "nickname": "delete",
-                    "notes": "delete",
-                    "type": "TaskIdResult",
-                    "method": "DELETE"
-                }
-            ],
-            "description": "delete",
-            "path": "/wan-link/{linkId}"
-        },
-        {
-            "operations": [
-                {
-                    "responseMessages": [
-                        {
-                            "responseModel": "StdResult\u00abIWanQosInterfaceBandwidthInfo\u00bb",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "summary": "Get the queue bandwidth allocation of a wan interface",
-                    "parameters": [
-                        {
-                            "defaultValue": "",
-                            "name": "linkId",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "required": true,
-                            "description": "wanLinkUuid",
-                            "type": "string"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "scope",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "Authorization Scope for RBAC",
-                            "type": "List"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "username",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "requestorUsername",
-                            "type": "string"
-                        }
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "deprecated": "false",
-                    "nickname": "getQueueBandwidth",
-                    "notes": "getQueueBandwidth",
-                    "type": "StdResult\u00abIWanQosInterfaceBandwidthInfo\u00bb",
-                    "method": "GET"
-                }
-            ],
-            "description": "getQueueBandwidth",
-            "path": "/wan-link/{linkId}/queue-bandwidth"
-        },
-        {
-            "operations": [
-                {
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "responseMessages": [
-                        {
-                            "responseModel": "TaskIdResult",
-                            "code": 200,
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "summary": "Schedule the creation of a link between a device and a cloud provider",
-                    "parameters": [
-                        {
-                            "defaultValue": "",
-                            "name": "wanLinkDTOs",
-                            "allowMultiple": true,
-                            "items": {
-                                "$ref": "WanLinkDTO"
-                            },
-                            "required": false,
-                            "paramType": "body",
-                            "description": "wanLinkDTOs",
-                            "type": "array"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "scheduleTime",
-                            "allowMultiple": false,
-                            "format": "int64",
-                            "required": true,
-                            "paramType": "path",
-                            "description": "Schedule Time",
-                            "type": "integer"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "scope",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "Authorization Scope for RBAC",
-                            "type": "List"
-                        },
-                        {
-                            "defaultValue": "",
-                            "name": "username",
-                            "allowMultiple": false,
-                            "paramType": "header",
-                            "required": true,
-                            "description": "requestorUsername",
-                            "type": "string"
-                        }
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "deprecated": "false",
-                    "nickname": "scheduleCreate",
-                    "notes": "scheduleCreate",
-                    "type": "TaskIdResult",
-                    "method": "POST"
-                }
-            ],
-            "description": "scheduleCreate",
-            "path": "/wan-link/{scheduleTime}"
-        }
-    ],
-    "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
-    "basePath": "/",
-    "resourcePath": "/wan-link"
+    }
 }

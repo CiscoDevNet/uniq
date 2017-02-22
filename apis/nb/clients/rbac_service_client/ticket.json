@@ -1,33 +1,33 @@
 {
-    "apiVersion": "1.0",
     "apis": [
         {
+            "description": "addTicket",
             "path": "/ticket",
             "operations": [
                 {
-                    "method": "POST",
-                    "summary": "addTicket",
-                    "deprecated": "false",
+                    "notes": "This method is used to create a new user ticket",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "POST",
+                    "deprecated": "false",
+                    "summary": "addTicket",
                     "parameters": [
                         {
-                            "paramType": "body",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": false,
                             "name": "user",
                             "description": "user",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body",
                             "type": "User"
                         }
                     ],
-                    "type": "TicketRbacResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TicketRbacResult"
+                            "responseModel": "TicketRbacResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 202,
@@ -46,39 +46,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to create a new user ticket",
-                    "nickname": "addTicket"
+                    "nickname": "addTicket",
+                    "type": "TicketRbacResult"
                 }
-            ],
-            "description": "addTicket"
+            ]
         },
         {
+            "description": "createTicketAttribute",
             "path": "/ticket/attribute",
             "operations": [
                 {
-                    "method": "POST",
-                    "summary": "createTicketAttribute",
-                    "deprecated": "false",
+                    "notes": "Create and update specific ticket attribute, Idle Timeout Minimum 60 seconds, Max 3600 seconds, default 900 seconds, Session Timeout Minimum 1800 seconds, Max 86400 seconds, default 21600 seconds",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "POST",
+                    "deprecated": "false",
+                    "summary": "createTicketAttribute",
                     "parameters": [
                         {
-                            "paramType": "body",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": false,
                             "name": "ticketAttribute",
                             "description": "ticketAttribute",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body",
                             "type": "TicketAttribute"
                         }
                     ],
-                    "type": "SuccessResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult"
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 202,
@@ -97,29 +97,29 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "Create and update specific ticket attribute, Idle Timeout Minimum 60 seconds, Max 3600 seconds, default 900 seconds, Session Timeout Minimum 1800 seconds, Max 86400 seconds, default 21600 seconds",
-                    "nickname": "createTicketAttribute"
+                    "nickname": "createTicketAttribute",
+                    "type": "SuccessResult"
                 }
-            ],
-            "description": "createTicketAttribute"
+            ]
         },
         {
+            "description": "getIdleTimeout",
             "path": "/ticket/attribute/idletimeout",
             "operations": [
                 {
-                    "method": "GET",
-                    "summary": "getIdleTimeout",
-                    "deprecated": "false",
+                    "notes": "Get Idle timeout",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "summary": "getIdleTimeout",
                     "parameters": [],
-                    "type": "TicketAttributeResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TicketAttributeResult"
+                            "responseModel": "TicketAttributeResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -134,29 +134,29 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "Get Idle timeout",
-                    "nickname": "getIdleTimeout"
+                    "nickname": "getIdleTimeout",
+                    "type": "TicketAttributeResult"
                 }
-            ],
-            "description": "getIdleTimeout"
+            ]
         },
         {
+            "description": "getSessionTimeout",
             "path": "/ticket/attribute/sessiontimeout",
             "operations": [
                 {
-                    "method": "GET",
-                    "summary": "getSessionTimeout",
-                    "deprecated": "false",
+                    "notes": "Get Session timeout",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "summary": "getSessionTimeout",
                     "parameters": [],
-                    "type": "TicketAttributeResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TicketAttributeResult"
+                            "responseModel": "TicketAttributeResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -171,39 +171,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "Get Session timeout",
-                    "nickname": "getSessionTimeout"
+                    "nickname": "getSessionTimeout",
+                    "type": "TicketAttributeResult"
                 }
-            ],
-            "description": "getSessionTimeout"
+            ]
         },
         {
+            "description": "deleteTicketAttribute",
             "path": "/ticket/attribute/{attribute}",
             "operations": [
                 {
-                    "method": "DELETE",
-                    "summary": "deleteTicketAttribute",
-                    "deprecated": "false",
+                    "notes": "Delete Ticket Attribute",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "summary": "deleteTicketAttribute",
                     "parameters": [
                         {
-                            "paramType": "path",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": true,
                             "name": "attribute",
                             "description": "attribute",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
                             "type": "string"
                         }
                     ],
-                    "type": "SuccessResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult"
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -218,39 +218,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "Delete Ticket Attribute",
-                    "nickname": "deleteTicketAttribute"
+                    "nickname": "deleteTicketAttribute",
+                    "type": "SuccessResult"
                 }
-            ],
-            "description": "deleteTicketAttribute"
+            ]
         },
         {
+            "description": "deleteTicket",
             "path": "/ticket/{ticket}",
             "operations": [
                 {
-                    "method": "DELETE",
-                    "summary": "deleteTicket",
-                    "deprecated": "false",
+                    "notes": "Revoke ticket, effectively sign out",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "summary": "deleteTicket",
                     "parameters": [
                         {
-                            "paramType": "path",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": true,
                             "name": "ticket",
                             "description": "ticket",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
                             "type": "string"
                         }
                     ],
-                    "type": "SuccessResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult"
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -265,105 +265,22 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "Revoke ticket, effectively sign out",
-                    "nickname": "deleteTicket"
+                    "nickname": "deleteTicket",
+                    "type": "SuccessResult"
                 }
-            ],
-            "description": "deleteTicket"
+            ]
         }
     ],
+    "basePath": "/",
     "produces": [
         "application/json"
     ],
+    "resourcePath": "/ticket",
     "models": {
-        "ServiceTicketRbac": {
-            "properties": {
-                "sessionTimeout": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "serviceTicket": {
-                    "description": "Service Ticket to be used as authentication Ticket",
-                    "type": "string"
-                },
-                "idleTimeout": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "serviceTicket"
-            ],
-            "id": "ServiceTicketRbac",
-            "description": "Object used to retrieve the service ticket",
-            "extends": ""
-        },
-        "User": {
-            "properties": {
-                "username": {
-                    "description": "username",
-                    "type": "string"
-                },
-                "password": {
-                    "description": "password",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "password",
-                "username"
-            ],
-            "id": "User",
-            "description": "",
-            "extends": ""
-        },
-        "TicketAttribute": {
-            "properties": {
-                "value": {
-                    "format": "int64",
-                    "description": "Service Ticket Attribute Value",
-                    "type": "integer"
-                },
-                "attribute": {
-                    "description": "Service Ticket Attribute Name",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "attribute",
-                "value"
-            ],
-            "id": "TicketAttribute",
-            "description": "Object used to retrieve the ticket attributes",
-            "extends": ""
-        },
-        "SuccessResult": {
-            "properties": {
-                "response": {
-                    "type": "string"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "SuccessResult",
-            "description": ""
-        },
-        "TicketAttributeResult": {
-            "properties": {
-                "response": {
-                    "$ref": "TicketAttribute"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "TicketAttributeResult",
-            "description": ""
-        },
         "TicketRbacResult": {
+            "description": "",
+            "extends": "",
+            "id": "TicketRbacResult",
             "properties": {
                 "response": {
                     "$ref": "ServiceTicketRbac"
@@ -371,13 +288,96 @@
                 "version": {
                     "type": "string"
                 }
+            }
+        },
+        "User": {
+            "properties": {
+                "password": {
+                    "description": "password",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "username",
+                    "type": "string"
+                }
             },
+            "description": "",
             "extends": "",
-            "id": "TicketRbacResult",
-            "description": ""
+            "id": "User",
+            "required": [
+                "password",
+                "username"
+            ]
+        },
+        "ServiceTicketRbac": {
+            "properties": {
+                "idleTimeout": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "sessionTimeout": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "serviceTicket": {
+                    "description": "Service Ticket to be used as authentication Ticket",
+                    "type": "string"
+                }
+            },
+            "description": "Object used to retrieve the service ticket",
+            "extends": "",
+            "id": "ServiceTicketRbac",
+            "required": [
+                "serviceTicket"
+            ]
+        },
+        "TicketAttribute": {
+            "properties": {
+                "value": {
+                    "description": "Service Ticket Attribute Value",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "attribute": {
+                    "description": "Service Ticket Attribute Name",
+                    "type": "string"
+                }
+            },
+            "description": "Object used to retrieve the ticket attributes",
+            "extends": "",
+            "id": "TicketAttribute",
+            "required": [
+                "value",
+                "attribute"
+            ]
+        },
+        "TicketAttributeResult": {
+            "description": "",
+            "extends": "",
+            "id": "TicketAttributeResult",
+            "properties": {
+                "response": {
+                    "$ref": "TicketAttribute"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "SuccessResult": {
+            "description": "",
+            "extends": "",
+            "id": "SuccessResult",
+            "properties": {
+                "response": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
         }
     },
-    "swaggerVersion": "1.2",
-    "basePath": "/",
-    "resourcePath": "/ticket"
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2"
 }

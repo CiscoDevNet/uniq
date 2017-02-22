@@ -1,36 +1,36 @@
 {
-    "apiVersion": "1.0",
     "apis": [
         {
+            "description": "addUser",
             "path": "/user",
             "operations": [
                 {
-                    "method": "POST",
-                    "summary": "addUser",
-                    "deprecated": "false",
+                    "notes": "This method is used to add a new user. <b>The password is excluded from the json schema below, but will still need to be included.</b>",
                     "produces": [
                         "application/json"
+                    ],
+                    "method": "POST",
+                    "deprecated": "false",
+                    "summary": "addUser",
+                    "parameters": [
+                        {
+                            "required": false,
+                            "name": "user",
+                            "description": "user",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "type": "UserReqRes"
+                        }
                     ],
                     "consumes": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "paramType": "body",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "required": false,
-                            "name": "user",
-                            "description": "user",
-                            "type": "UserReqRes"
-                        }
-                    ],
-                    "type": "SuccessResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult"
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 202,
@@ -49,39 +49,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to add a new user. <b>The password is excluded from the json schema below, but will still need to be included.</b>",
-                    "nickname": "addUser"
+                    "nickname": "addUser",
+                    "type": "SuccessResult"
                 }
-            ],
-            "description": "addUser"
+            ]
         },
         {
+            "description": "getUsers",
             "path": "/user",
             "operations": [
                 {
-                    "method": "GET",
-                    "summary": "getUsers",
-                    "deprecated": "false",
+                    "notes": "This method is used to get the list of Users. If you are an admin user, this will return a list of all the users, if you have an observer role, it will only show your own user information.",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "summary": "getUsers",
                     "parameters": [
                         {
-                            "paramType": "query",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": false,
                             "name": "authSource",
                             "description": "authSource",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query",
                             "type": "string"
                         }
                     ],
-                    "type": "UserListResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "UserListResult"
+                            "responseModel": "UserListResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -96,39 +96,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to get the list of Users. If you are an admin user, this will return a list of all the users, if you have an observer role, it will only show your own user information.",
-                    "nickname": "getUsers"
+                    "nickname": "getUsers",
+                    "type": "UserListResult"
                 }
-            ],
-            "description": "getUsers"
+            ]
         },
         {
+            "description": "updateUser",
             "path": "/user",
             "operations": [
                 {
-                    "method": "PUT",
-                    "summary": "updateUser",
-                    "deprecated": "false",
+                    "notes": "This method is used to update user data.<br /> To update the password, \"oldPassword\" will need to be provided and the new password can be represented as \"password\".<br /> <b>A user can only update their own password</b>.<br /> For an admin to update another admin or user's password, then the process is to delete and add a new user by the same name with the same permissions.",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "summary": "updateUser",
                     "parameters": [
                         {
-                            "paramType": "body",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": false,
                             "name": "user",
                             "description": "user",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body",
                             "type": "UserReqRes"
                         }
                     ],
-                    "type": "SuccessResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult"
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -143,29 +143,29 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to update user data.<br /> To update the password, \"oldPassword\" will need to be provided and the new password can be represented as \"password\".<br /> <b>A user can only update their own password</b>.<br /> For an admin to update another admin or user's password, then the process is to delete and add a new user by the same name with the same permissions.",
-                    "nickname": "updateUser"
+                    "nickname": "updateUser",
+                    "type": "SuccessResult"
                 }
-            ],
-            "description": "updateUser"
+            ]
         },
         {
+            "description": "getAutoPassphrase",
             "path": "/user/passphrase/auto",
             "operations": [
                 {
-                    "method": "GET",
-                    "summary": "getAutoPassphrase",
-                    "deprecated": "false",
+                    "notes": "This method is used to get an auto generated password.",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "summary": "getAutoPassphrase",
                     "parameters": [],
-                    "type": "AutoPassphraseResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "AutoPassphraseResult"
+                            "responseModel": "AutoPassphraseResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -180,39 +180,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to get an auto generated password.",
-                    "nickname": "getAutoPassphrase"
+                    "nickname": "getAutoPassphrase",
+                    "type": "AutoPassphraseResult"
                 }
-            ],
-            "description": "getAutoPassphrase"
+            ]
         },
         {
+            "description": "getAutoPassphraseWithSeedPhrase",
             "path": "/user/passphrase/auto/{seedPhrase}",
             "operations": [
                 {
-                    "method": "GET",
-                    "summary": "getAutoPassphrase",
-                    "deprecated": "false",
+                    "notes": "This method is used to get an auto generated password with a seed phrase.",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "summary": "getAutoPassphrase",
                     "parameters": [
                         {
-                            "paramType": "path",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": true,
                             "name": "seedPhrase",
                             "description": "seedPhrase",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
                             "type": "string"
                         }
                     ],
-                    "type": "AutoPassphraseResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "AutoPassphraseResult"
+                            "responseModel": "AutoPassphraseResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -227,76 +227,76 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to get an auto generated password with a seed phrase.",
-                    "nickname": "getAutoPassphraseWithSeedPhrase"
+                    "nickname": "getAutoPassphraseWithSeedPhrase",
+                    "type": "AutoPassphraseResult"
                 }
-            ],
-            "description": "getAutoPassphraseWithSeedPhrase"
+            ]
         },
         {
+            "description": "getAttemptCount",
             "path": "/user/password-policy/invalid-attempt-count",
             "operations": [
                 {
-                    "method": "GET",
-                    "summary": "getAttemptCount",
-                    "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [],
-                    "type": "UserLoginInvalidAttemptCountResult",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "UserLoginInvalidAttemptCountResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
                     "notes": "This method is used to get the max user invalid attempts before the user account is locked.",
-                    "nickname": "getAttemptCount"
-                }
-            ],
-            "description": "getAttemptCount"
-        },
-        {
-            "path": "/user/password-policy/invalid-attempt-count",
-            "operations": [
-                {
-                    "method": "PUT",
-                    "summary": "updateAttemptCount",
-                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "summary": "getAttemptCount",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "UserLoginInvalidAttemptCountResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "getAttemptCount",
+                    "type": "UserLoginInvalidAttemptCountResult"
+                }
+            ]
+        },
+        {
+            "description": "updateAttemptCount",
+            "path": "/user/password-policy/invalid-attempt-count",
+            "operations": [
+                {
+                    "notes": "This method is used to update the max user invalid attempts before the user account is locked.",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "summary": "updateAttemptCount",
                     "parameters": [
                         {
-                            "paramType": "body",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": false,
                             "name": "attemptCount",
                             "description": "attemptCount",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body",
                             "type": "UserLoginInvalidAttemptCount"
                         }
                     ],
-                    "type": "SuccessResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult"
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -311,42 +311,42 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to update the max user invalid attempts before the user account is locked.",
-                    "nickname": "updateAttemptCount"
+                    "nickname": "updateAttemptCount",
+                    "type": "SuccessResult"
                 }
-            ],
-            "description": "updateAttemptCount"
+            ]
         },
         {
+            "description": "updateLockExpiryTimeout",
             "path": "/user/password-policy/lock-expiry-time",
             "operations": [
                 {
-                    "method": "PUT",
-                    "summary": "updateLockExpiryTimeout",
-                    "deprecated": "false",
+                    "notes": "This method is used to set the lock expiration timer value which is used to unlock a user account.",
                     "produces": [
                         "application/json"
+                    ],
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "summary": "updateLockExpiryTimeout",
+                    "parameters": [
+                        {
+                            "required": false,
+                            "name": "expiryTime",
+                            "description": "expiryTime",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body",
+                            "type": "UserLockExpiryTime"
+                        }
                     ],
                     "consumes": [
                         "application/json"
                     ],
-                    "parameters": [
-                        {
-                            "paramType": "body",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "required": false,
-                            "name": "expiryTime",
-                            "description": "expiryTime",
-                            "type": "UserLockExpiryTime"
-                        }
-                    ],
-                    "type": "SuccessResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult"
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -361,29 +361,29 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to set the lock expiration timer value which is used to unlock a user account.",
-                    "nickname": "updateLockExpiryTimeout"
+                    "nickname": "updateLockExpiryTimeout",
+                    "type": "SuccessResult"
                 }
-            ],
-            "description": "updateLockExpiryTimeout"
+            ]
         },
         {
+            "description": "getLockExpiry",
             "path": "/user/password-policy/lock-expiry-time",
             "operations": [
                 {
-                    "method": "GET",
-                    "summary": "getLockExpiry",
-                    "deprecated": "false",
+                    "notes": "This method is used to get the lock expiration timer value which is used to unlock a user account.",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "summary": "getLockExpiry",
                     "parameters": [],
-                    "type": "UserLockExpiryTimeResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "UserLockExpiryTimeResult"
+                            "responseModel": "UserLockExpiryTimeResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -398,39 +398,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to get the lock expiration timer value which is used to unlock a user account.",
-                    "nickname": "getLockExpiry"
+                    "nickname": "getLockExpiry",
+                    "type": "UserLockExpiryTimeResult"
                 }
-            ],
-            "description": "getLockExpiry"
+            ]
         },
         {
+            "description": "updateUserStatus",
             "path": "/user/status",
             "operations": [
                 {
-                    "method": "PUT",
-                    "summary": "updateUserStatus",
-                    "deprecated": "false",
+                    "notes": "This method is used to update a user's lock status from locked to un-locked.<br/> Admin permission is required.<br/>",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "summary": "updateUserStatus",
                     "parameters": [
                         {
-                            "paramType": "body",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": false,
                             "name": "userStatus",
                             "description": "userStatus",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body",
                             "type": "UserStatus"
                         }
                     ],
-                    "type": "SuccessResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult"
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -445,86 +445,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to update a user's lock status from locked to un-locked.<br/> Admin permission is required.<br/>",
-                    "nickname": "updateUserStatus"
+                    "nickname": "updateUserStatus",
+                    "type": "SuccessResult"
                 }
-            ],
-            "description": "updateUserStatus"
+            ]
         },
         {
+            "description": "getUserStatus",
             "path": "/user/status/{username}",
             "operations": [
                 {
-                    "method": "GET",
-                    "summary": "getUserStatus",
-                    "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "parameters": [
-                        {
-                            "paramType": "path",
-                            "allowMultiple": false,
-                            "defaultValue": "",
-                            "required": true,
-                            "name": "username",
-                            "description": "username",
-                            "type": "string"
-                        }
-                    ],
-                    "type": "UserStatusResult",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "UserStatusResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
                     "notes": "This method is used to retrieve a user's lock status.<br/> Admin permission is required.<br/>",
-                    "nickname": "getUserStatus"
-                }
-            ],
-            "description": "getUserStatus"
-        },
-        {
-            "path": "/user/{username}",
-            "operations": [
-                {
+                    "produces": [
+                        "application/json"
+                    ],
                     "method": "GET",
-                    "summary": "getUser",
                     "deprecated": "false",
-                    "produces": [
-                        "application/json"
-                    ],
+                    "summary": "getUserStatus",
                     "parameters": [
                         {
-                            "paramType": "path",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": true,
                             "name": "username",
                             "description": "username",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
                             "type": "string"
                         }
                     ],
-                    "type": "UserResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "UserResult"
+                            "responseModel": "UserStatusResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -539,39 +492,39 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to get user data by username.",
-                    "nickname": "getUser"
+                    "nickname": "getUserStatus",
+                    "type": "UserStatusResult"
                 }
-            ],
-            "description": "getUser"
+            ]
         },
         {
+            "description": "getUser",
             "path": "/user/{username}",
             "operations": [
                 {
-                    "method": "DELETE",
-                    "summary": "deleteUser",
-                    "deprecated": "false",
+                    "notes": "This method is used to get user data by username.",
                     "produces": [
                         "application/json"
                     ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "summary": "getUser",
                     "parameters": [
                         {
-                            "paramType": "path",
-                            "allowMultiple": false,
-                            "defaultValue": "",
                             "required": true,
                             "name": "username",
                             "description": "username",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
                             "type": "string"
                         }
                     ],
-                    "type": "SuccessResult",
                     "responseMessages": [
                         {
                             "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "SuccessResult"
+                            "responseModel": "UserResult",
+                            "message": "This Request is OK"
                         },
                         {
                             "code": 403,
@@ -586,84 +539,194 @@
                             "message": "No Resource Found"
                         }
                     ],
-                    "notes": "This method is used to delete a user.<br/> Admin permission is required.<br/> It is possible to delete your own user.",
-                    "nickname": "deleteUser"
+                    "nickname": "getUser",
+                    "type": "UserResult"
                 }
-            ],
-            "description": "deleteUser"
+            ]
+        },
+        {
+            "description": "deleteUser",
+            "path": "/user/{username}",
+            "operations": [
+                {
+                    "notes": "This method is used to delete a user.<br/> Admin permission is required.<br/> It is possible to delete your own user.",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "summary": "deleteUser",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "name": "username",
+                            "description": "username",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path",
+                            "type": "string"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "responseModel": "SuccessResult",
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
+                        }
+                    ],
+                    "nickname": "deleteUser",
+                    "type": "SuccessResult"
+                }
+            ]
         }
     ],
+    "basePath": "/",
     "produces": [
         "application/json"
     ],
-    "consumes": [
-        "application/json"
-    ],
-    "swaggerVersion": "1.2",
-    "basePath": "/",
     "resourcePath": "/user",
     "models": {
-        "UserLoginInvalidAttemptCount": {
+        "UserReqRes": {
             "properties": {
-                "loginInvalidAttemptCount": {
-                    "format": "int32",
-                    "description": "User Invalid Attempt Count",
-                    "type": "integer"
+                "oldPassword": {
+                    "type": "string"
+                },
+                "authSource": {
+                    "description": "User Authentication Source",
+                    "enum": [
+                        "internal",
+                        " external"
+                    ],
+                    "type": "string"
+                },
+                "authorization": {
+                    "description": "User Authorization Scope",
+                    "items": {
+                        "$ref": "ScopeRole"
+                    },
+                    "type": "array"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "description": "Username",
+                    "type": "string"
                 }
             },
+            "description": "",
+            "extends": "",
+            "id": "UserReqRes",
             "required": [
-                "loginInvalidAttemptCount"
-            ],
-            "id": "UserLoginInvalidAttemptCount",
-            "description": "Object used to retrieve the maximum user invalid attempts permitted before user account is locked.",
-            "extends": ""
+                "username",
+                "authorization"
+            ]
         },
         "ScopeRole": {
             "properties": {
-                "role": {
-                    "description": "Authorization Role. Supported values are ROLE_ADMIN, ROLE_OBSERVER and ROLE_INSTALLER",
-                    "type": "string"
-                },
                 "scope": {
                     "description": "Scope of Authorization. Added to support future implementations, supported value is only ALL",
                     "type": "string"
+                },
+                "role": {
+                    "description": "Authorization Role. Supported values are ROLE_ADMIN, ROLE_OBSERVER and ROLE_INSTALLER",
+                    "type": "string"
                 }
             },
+            "description": "",
+            "extends": "",
+            "id": "ScopeRole",
             "required": [
                 "scope",
                 "role"
-            ],
-            "id": "ScopeRole",
+            ]
+        },
+        "UserLockExpiryTime": {
+            "properties": {
+                "lockExpiryTime": {
+                    "description": "User Lock Expiry Timer",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "description": "Object used to retrieve the global user lock expiry timer",
+            "extends": "",
+            "id": "UserLockExpiryTime",
+            "required": [
+                "lockExpiryTime"
+            ]
+        },
+        "UserLockExpiryTimeResult": {
             "description": "",
-            "extends": ""
-        },
-        "UserLoginInvalidAttemptCountResult": {
+            "extends": "",
+            "id": "UserLockExpiryTimeResult",
             "properties": {
                 "response": {
-                    "$ref": "UserLoginInvalidAttemptCount"
+                    "$ref": "UserLockExpiryTime"
                 },
                 "version": {
                     "type": "string"
                 }
-            },
-            "extends": "",
-            "id": "UserLoginInvalidAttemptCountResult",
-            "description": ""
+            }
         },
-        "UserStatusResult": {
+        "SuccessResult": {
+            "description": "",
+            "extends": "",
+            "id": "SuccessResult",
             "properties": {
                 "response": {
-                    "$ref": "UserStatus"
+                    "type": "string"
                 },
                 "version": {
                     "type": "string"
                 }
+            }
+        },
+        "UserLoginInvalidAttemptCount": {
+            "properties": {
+                "loginInvalidAttemptCount": {
+                    "description": "User Invalid Attempt Count",
+                    "format": "int32",
+                    "type": "integer"
+                }
             },
+            "description": "Object used to retrieve the maximum user invalid attempts permitted before user account is locked.",
             "extends": "",
-            "id": "UserStatusResult",
-            "description": ""
+            "id": "UserLoginInvalidAttemptCount",
+            "required": [
+                "loginInvalidAttemptCount"
+            ]
+        },
+        "AutoPassphrase": {
+            "properties": {
+                "autoPassphrase": {
+                    "description": "Auto generated passphrase",
+                    "type": "string"
+                }
+            },
+            "description": "Object used to retrieve the optional auto generated passphrase.",
+            "extends": "",
+            "id": "AutoPassphrase",
+            "required": [
+                "autoPassphrase"
+            ]
         },
         "AutoPassphraseResult": {
+            "description": "",
+            "extends": "",
+            "id": "AutoPassphraseResult",
             "properties": {
                 "response": {
                     "$ref": "AutoPassphrase"
@@ -671,12 +734,45 @@
                 "version": {
                     "type": "string"
                 }
-            },
+            }
+        },
+        "UserStatus": {
+            "description": "",
             "extends": "",
-            "id": "AutoPassphraseResult",
-            "description": ""
+            "id": "UserStatus",
+            "properties": {
+                "accountLocked": {
+                    "type": "boolean"
+                },
+                "lockExpiration": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "lockedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserLoginInvalidAttemptCountResult": {
+            "description": "",
+            "extends": "",
+            "id": "UserLoginInvalidAttemptCountResult",
+            "properties": {
+                "response": {
+                    "$ref": "UserLoginInvalidAttemptCount"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
         },
         "UserResult": {
+            "description": "",
+            "extends": "",
+            "id": "UserResult",
             "properties": {
                 "response": {
                     "$ref": "UserReqRes"
@@ -684,32 +780,12 @@
                 "version": {
                     "type": "string"
                 }
-            },
-            "extends": "",
-            "id": "UserResult",
-            "description": ""
-        },
-        "UserStatus": {
-            "properties": {
-                "accountLocked": {
-                    "type": "boolean"
-                },
-                "lockedAt": {
-                    "type": "string"
-                },
-                "username": {
-                    "type": "string"
-                },
-                "lockExpiration": {
-                    "format": "int64",
-                    "type": "integer"
-                }
-            },
-            "extends": "",
-            "id": "UserStatus",
-            "description": ""
+            }
         },
         "UserListResult": {
+            "description": "",
+            "extends": "",
+            "id": "UserListResult",
             "properties": {
                 "response": {
                     "items": {
@@ -720,101 +796,25 @@
                 "version": {
                     "type": "string"
                 }
-            },
-            "extends": "",
-            "id": "UserListResult",
-            "description": ""
+            }
         },
-        "SuccessResult": {
-            "properties": {
-                "response": {
-                    "type": "string"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "SuccessResult",
-            "description": ""
-        },
-        "AutoPassphrase": {
-            "properties": {
-                "autoPassphrase": {
-                    "description": "Auto generated passphrase",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "autoPassphrase"
-            ],
-            "id": "AutoPassphrase",
-            "description": "Object used to retrieve the optional auto generated passphrase.",
-            "extends": ""
-        },
-        "UserLockExpiryTime": {
-            "properties": {
-                "lockExpiryTime": {
-                    "format": "int32",
-                    "description": "User Lock Expiry Timer",
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "lockExpiryTime"
-            ],
-            "id": "UserLockExpiryTime",
-            "description": "Object used to retrieve the global user lock expiry timer",
-            "extends": ""
-        },
-        "UserLockExpiryTimeResult": {
-            "properties": {
-                "response": {
-                    "$ref": "UserLockExpiryTime"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "UserLockExpiryTimeResult",
-            "description": ""
-        },
-        "UserReqRes": {
-            "properties": {
-                "password": {
-                    "type": "string"
-                },
-                "username": {
-                    "description": "Username",
-                    "type": "string"
-                },
-                "authSource": {
-                    "enum": [
-                        "internal",
-                        " external"
-                    ],
-                    "description": "User Authentication Source",
-                    "type": "string"
-                },
-                "authorization": {
-                    "items": {
-                        "$ref": "ScopeRole"
-                    },
-                    "description": "User Authorization Scope",
-                    "type": "array"
-                },
-                "oldPassword": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "authorization",
-                "username"
-            ],
-            "id": "UserReqRes",
+        "UserStatusResult": {
             "description": "",
-            "extends": ""
+            "extends": "",
+            "id": "UserStatusResult",
+            "properties": {
+                "response": {
+                    "$ref": "UserStatus"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
         }
-    }
+    },
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "consumes": [
+        "application/json"
+    ]
 }

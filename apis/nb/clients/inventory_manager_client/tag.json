@@ -1,58 +1,154 @@
 {
-    "consumes": [
-        "application/json"
-    ],
+    "models": {
+        "TaskId": {
+            "id": "TaskId",
+            "description": "",
+            "properties": {},
+            "extends": ""
+        },
+        "TagDto": {
+            "id": "TagDto",
+            "description": "",
+            "properties": {
+                "id": {
+                    "description": "",
+                    "type": "string"
+                },
+                "resourceId": {
+                    "description": "Id of the resource to which the tag to be associated",
+                    "type": "string"
+                },
+                "tag": {
+                    "description": "Name of the tag",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "Type of the resource to which the tag to be associated",
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "required": [
+                "id",
+                "tag"
+            ]
+        },
+        "TagDtoListResult": {
+            "id": "TagDtoListResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "TagDto"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TaskIdResult": {
+            "id": "TaskIdResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TagDtoResult": {
+            "id": "TagDtoResult",
+            "description": "",
+            "properties": {
+                "response": {
+                    "$ref": "TagDto"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TaskIdResponse": {
+            "id": "TaskIdResponse",
+            "description": "",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            },
+            "extends": ""
+        }
+    },
     "apis": [
         {
             "description": "getTags",
             "operations": [
                 {
+                    "deprecated": "false",
                     "nickname": "getTags",
-                    "notes": "Gets all the tags if no filters are provided. Gets all the tags that are associated with resources of {resourceType} if resourceType filter is provided. Gets all the tags that are associated with a resource with id {resourceId} and of resource type {resourceType} when resourceId and resourceType filters are provided.",
-                    "summary": "Get the tags by filters",
+                    "type": "TagDtoListResult",
+                    "method": "GET",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TagDtoListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TagDtoListResult",
                     "parameters": [
                         {
+                            "required": false,
                             "name": "resourceType",
-                            "allowMultiple": false,
-                            "paramType": "query",
                             "type": "string",
                             "description": "Type of resource (network-device)",
-                            "required": false,
-                            "defaultValue": ""
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
                         },
                         {
+                            "required": false,
                             "name": "resourceId",
-                            "allowMultiple": false,
-                            "paramType": "query",
                             "type": "string",
                             "description": "Resource ID",
-                            "required": false,
-                            "defaultValue": ""
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "required": true,
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Gets all the tags if no filters are provided. Gets all the tags that are associated with resources of {resourceType} if resourceType filter is provided. Gets all the tags that are associated with a resource with id {resourceId} and of resource type {resourceType} when resourceId and resourceType filters are provided.",
+                    "summary": "Get the tags by filters",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TagDtoListResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ]
                 }
@@ -63,50 +159,59 @@
             "description": "addTag",
             "operations": [
                 {
+                    "deprecated": "false",
                     "nickname": "addTag",
-                    "notes": "Adds a new tag to the controller. The {tag} field should contain the value of the tag.",
-                    "summary": "Add a new tag",
+                    "type": "TaskIdResult",
+                    "method": "POST",
                     "consumes": [
                         "application/json"
                     ],
                     "produces": [
                         "application/json"
                     ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This Request is Accepted",
-                            "code": 202
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
                     "parameters": [
                         {
+                            "required": true,
                             "name": "tagDto",
-                            "allowMultiple": false,
-                            "paramType": "body",
                             "type": "TagDto",
                             "description": "TagDto with the tag",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body"
+                        },
+                        {
                             "required": true,
-                            "defaultValue": ""
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Adds a new tag to the controller. The {tag} field should contain the value of the tag.",
+                    "summary": "Add a new tag",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ]
                 }
@@ -117,46 +222,55 @@
             "description": "updateTag",
             "operations": [
                 {
+                    "deprecated": "false",
                     "nickname": "updateTag",
-                    "notes": "Updates the tag identified by {id} to a new value. The {id} field should be id of the old tag. The {tag} field should contain the new value of the tag.",
-                    "summary": "Update tag to a new value",
+                    "type": "TaskIdResult",
+                    "method": "PUT",
                     "consumes": [
                         "application/json"
                     ],
                     "produces": [
                         "application/json"
                     ],
-                    "method": "PUT",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
                     "parameters": [
                         {
+                            "required": true,
                             "name": "tagDto",
-                            "allowMultiple": false,
-                            "paramType": "body",
                             "type": "TagDto",
                             "description": "TagDto with the new tag",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body"
+                        },
+                        {
                             "required": true,
-                            "defaultValue": ""
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Updates the tag identified by {id} to a new value. The {id} field should be id of the old tag. The {tag} field should contain the new value of the tag.",
+                    "summary": "Update tag to a new value",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ]
                 }
@@ -167,50 +281,59 @@
             "description": "addTagToResource",
             "operations": [
                 {
+                    "deprecated": "false",
                     "nickname": "addTagToResource",
-                    "notes": "Associates a tag to a resource. The {id} field should be the id of the tag. The {resourceId} should the id of the resource. The {resourceType} should be the type of the resource. Supported resourceTypes are network-device, interface.",
-                    "summary": "Associate a tag to a resource",
+                    "type": "TaskIdResult",
+                    "method": "POST",
                     "consumes": [
                         "application/json"
                     ],
                     "produces": [
                         "application/json"
                     ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This Request is Accepted",
-                            "code": 202
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
                     "parameters": [
                         {
+                            "required": true,
                             "name": "tagDto",
-                            "allowMultiple": false,
-                            "paramType": "body",
                             "type": "TagDto",
                             "description": "TagDto with tag ID, resource ID and resource type",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "body"
+                        },
+                        {
                             "required": true,
-                            "defaultValue": ""
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Associates a tag to a resource. The {id} field should be the id of the tag. The {resourceId} should the id of the resource. The {resourceType} should be the type of the resource (like network-device)",
+                    "summary": "Associate a tag to a resource",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 202,
+                            "message": "This Request is Accepted"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ]
                 }
@@ -221,61 +344,70 @@
             "description": "deleteTagFromResource",
             "operations": [
                 {
+                    "deprecated": "false",
                     "nickname": "deleteTagFromResource",
-                    "notes": "Deletes the association of tag by its id.from resource of id {resourceId} which is of type {resourceType}.  Supported resourceTypes are network-device, interface.",
-                    "summary": "Delete association of tag from a resource",
+                    "type": "TaskIdResult",
+                    "method": "DELETE",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
                     "parameters": [
                         {
+                            "required": true,
                             "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
                             "type": "string",
                             "description": "Tag ID",
-                            "required": true,
-                            "defaultValue": ""
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
                         },
                         {
+                            "required": true,
                             "name": "resourceType",
-                            "allowMultiple": false,
-                            "paramType": "query",
                             "type": "string",
-                            "description": "Type of resource. Supported resourceTypes are network-device, interface.",
-                            "required": true,
-                            "defaultValue": ""
+                            "description": "Type of resource (network-device, link, interface)",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
                         },
                         {
+                            "required": true,
                             "name": "resourceId",
-                            "allowMultiple": false,
-                            "paramType": "query",
                             "type": "string",
                             "description": "Resource ID",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
                             "required": true,
-                            "defaultValue": ""
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Deletes the association of tag by its id.from resource of id {resourceId} which is of type {resourceType}",
+                    "summary": "Delete association of tag from a resource",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ]
                 }
@@ -283,46 +415,55 @@
             "path": "/tag/association/{id}"
         },
         {
-            "description": "getTag",
+            "description": "deleteTag",
             "operations": [
                 {
-                    "nickname": "getTag",
-                    "notes": "Gets the details of the tag by its id.",
-                    "summary": "Retrieves tag by its id",
+                    "deprecated": "false",
+                    "nickname": "deleteTag",
+                    "type": "TaskIdResult",
+                    "method": "DELETE",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TagDtoResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TagDtoResult",
                     "parameters": [
                         {
+                            "required": true,
                             "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
                             "type": "string",
                             "description": "Tag ID",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        },
+                        {
                             "required": true,
-                            "defaultValue": ""
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Deletes the tag by its id. The tag cannot be deleted when there is an existing association between the tag and a resource.",
+                    "summary": "Delete tag by its id",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TaskIdResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ]
                 }
@@ -330,46 +471,55 @@
             "path": "/tag/{id}"
         },
         {
-            "description": "deleteTag",
+            "description": "getTag",
             "operations": [
                 {
-                    "nickname": "deleteTag",
-                    "notes": "Deletes the tag by its id. The tag cannot be deleted when there is an existing association between the tag and a resource.",
-                    "summary": "Delete tag by its id",
+                    "deprecated": "false",
+                    "nickname": "getTag",
+                    "type": "TagDtoResult",
+                    "method": "GET",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
                     "parameters": [
                         {
+                            "required": true,
                             "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
                             "type": "string",
                             "description": "Tag ID",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "path"
+                        },
+                        {
                             "required": true,
-                            "defaultValue": ""
+                            "name": "scope",
+                            "type": "List",
+                            "description": "Authorization Scope for RBAC",
+                            "allowMultiple": false,
+                            "defaultValue": "",
+                            "paramType": "header"
+                        }
+                    ],
+                    "notes": "Gets the details of the tag by its id.",
+                    "summary": "Retrieves tag by its id",
+                    "responseMessages": [
+                        {
+                            "responseModel": "TagDtoResult",
+                            "code": 200,
+                            "message": "This Request is OK"
+                        },
+                        {
+                            "code": 403,
+                            "message": "This user is Forbidden Access to this Resource"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not Authorized Yet, Credentials to be supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "No Resource Found"
                         }
                     ]
                 }
@@ -378,97 +528,10 @@
         }
     ],
     "apiVersion": "1.0",
+    "consumes": [
+        "application/json"
+    ],
     "swaggerVersion": "1.2",
-    "models": {
-        "TagDto": {
-            "required": [
-                "id",
-                "tag"
-            ],
-            "properties": {
-                "resourceId": {
-                    "type": "string",
-                    "description": "Id of the resource to which the tag to be associated"
-                },
-                "resourceType": {
-                    "type": "string",
-                    "description": "Type of the resource to which the tag to be associated"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "Name of the tag"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier for tag"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TagDto"
-        },
-        "TaskId": {
-            "properties": {},
-            "description": "",
-            "extends": "",
-            "id": "TaskId"
-        },
-        "TaskIdResult": {
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "$ref": "TaskIdResponse"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TaskIdResult"
-        },
-        "TaskIdResponse": {
-            "properties": {
-                "taskId": {
-                    "$ref": "TaskId"
-                },
-                "url": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TaskIdResponse"
-        },
-        "TagDtoResult": {
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "$ref": "TagDto"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TagDtoResult"
-        },
-        "TagDtoListResult": {
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TagDto"
-                    }
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TagDtoListResult"
-        }
-    },
     "basePath": "/apic-em-inventory-manager-service",
     "produces": [
         "application/json"

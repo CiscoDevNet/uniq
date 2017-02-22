@@ -1,404 +1,420 @@
 {
     "apis": [
         {
+            "description": "loadCustomTopology",
             "path": "/topology/custom",
             "operations": [
                 {
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "responseModel": "TopologyResult",
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
                     "summary": "loadCustomTopology",
                     "nickname": "loadCustomTopology",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "GET",
+                    "type": "TopologyResult",
                     "notes": "This method is used to obtain the topology by customized layout",
-                    "deprecated": "false",
-                    "parameters": [],
-                    "type": "TopologyResult"
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "TopologyResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": []
                 }
-            ],
-            "description": "loadCustomTopology"
+            ]
         },
         {
+            "description": "saveCustomTopology",
             "path": "/topology/custom",
             "operations": [
                 {
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "responseModel": "TaskIdResult",
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
                     "summary": "saveCustomTopology",
                     "nickname": "saveCustomTopology",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "POST",
+                    "type": "TaskIdResult",
                     "notes": "This method is used to save the topology in canvas implementation",
-                    "deprecated": "false",
-                    "parameters": [
+                    "method": "POST",
+                    "responseMessages": [
                         {
-                            "paramType": "body",
-                            "defaultValue": "",
-                            "required": true,
-                            "allowMultiple": false,
-                            "description": "Topology",
-                            "name": "topo",
-                            "type": "Topology"
+                            "message": "This Request is OK",
+                            "responseModel": "TaskIdResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This Request is Accepted",
+                            "code": 202
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
                         }
                     ],
-                    "type": "TaskIdResult"
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "name": "topo",
+                            "type": "Topology",
+                            "description": "Topology",
+                            "paramType": "body",
+                            "required": true
+                        }
+                    ]
                 }
-            ],
-            "description": "saveCustomTopology"
+            ]
         },
         {
+            "description": "getL2Topology",
             "path": "/topology/l2/{vlanID}",
             "operations": [
                 {
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "responseModel": "TopologyResult",
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
                     "summary": "getL2Topology",
                     "nickname": "getL2Topology",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "GET",
+                    "type": "TopologyResult",
                     "notes": "This method is used to obtain the Layer 2 topology by Vlan ID",
-                    "deprecated": "false",
-                    "parameters": [
+                    "method": "GET",
+                    "responseMessages": [
                         {
-                            "paramType": "path",
-                            "defaultValue": "",
-                            "required": true,
-                            "allowMultiple": false,
-                            "description": "ID of VLAN",
-                            "name": "vlanID",
-                            "type": "string"
+                            "message": "This Request is OK",
+                            "responseModel": "TopologyResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
                         }
                     ],
-                    "type": "TopologyResult"
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "name": "vlanID",
+                            "type": "string",
+                            "description": "ID of VLAN",
+                            "paramType": "path",
+                            "required": true
+                        }
+                    ]
                 }
-            ],
-            "description": "getL2Topology"
+            ]
         },
         {
+            "description": "getL3TopologyForVrf",
             "path": "/topology/l3/vrf/{vrfName}",
             "operations": [
                 {
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "responseModel": "TopologyResult",
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
                     "summary": "getL3TopologyForVrf",
                     "nickname": "getL3TopologyForVrf",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "GET",
+                    "type": "TopologyResult",
                     "notes": "This method is used to obtain Layer 3 device topology by vrf name",
-                    "deprecated": "false",
-                    "parameters": [
+                    "method": "GET",
+                    "responseMessages": [
                         {
-                            "paramType": "path",
-                            "defaultValue": "",
-                            "required": true,
-                            "allowMultiple": false,
-                            "description": "VRF Name",
-                            "name": "vrfName",
-                            "type": "string"
+                            "message": "This Request is OK",
+                            "responseModel": "TopologyResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
                         }
                     ],
-                    "type": "TopologyResult"
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "name": "vrfName",
+                            "type": "string",
+                            "description": "VRF Name",
+                            "paramType": "path",
+                            "required": true
+                        }
+                    ]
                 }
-            ],
-            "description": "getL3TopologyForVrf"
+            ]
         },
         {
+            "description": "getL3Topology",
             "path": "/topology/l3/{topologyType}",
             "operations": [
                 {
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "responseModel": "TopologyResult",
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
                     "summary": "getL3Topology",
                     "nickname": "getL3Topology",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "GET",
+                    "type": "TopologyResult",
                     "notes": "This method is used to obtain Layer 3 device topology by routing protocol type",
-                    "deprecated": "false",
-                    "parameters": [
+                    "method": "GET",
+                    "responseMessages": [
                         {
-                            "paramType": "path",
-                            "defaultValue": "",
-                            "required": true,
-                            "allowMultiple": false,
-                            "description": "Type of topology(OSPF,ISIS,etc)",
-                            "name": "topologyType",
-                            "type": "string"
+                            "message": "This Request is OK",
+                            "responseModel": "TopologyResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
                         }
                     ],
-                    "type": "TopologyResult"
+                    "parameters": [
+                        {
+                            "defaultValue": "",
+                            "allowMultiple": false,
+                            "name": "topologyType",
+                            "type": "string",
+                            "description": "Type of topology(OSPF,ISIS,etc)",
+                            "paramType": "path",
+                            "required": true
+                        }
+                    ]
                 }
-            ],
-            "description": "getL3Topology"
+            ]
         },
         {
+            "description": "getPhysicalTopology",
             "path": "/topology/physical-topology",
             "operations": [
                 {
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "responseModel": "TopologyResult",
-                            "message": "This Request is OK"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
                     "summary": "getPhysicalTopology",
                     "nickname": "getPhysicalTopology",
+                    "deprecated": "false",
                     "produces": [
                         "application/json"
                     ],
-                    "method": "GET",
+                    "type": "TopologyResult",
                     "notes": "This method is used to obtain the raw physical topology",
-                    "deprecated": "false",
-                    "parameters": [],
-                    "type": "TopologyResult"
+                    "method": "GET",
+                    "responseMessages": [
+                        {
+                            "message": "This Request is OK",
+                            "responseModel": "TopologyResult",
+                            "code": 200
+                        },
+                        {
+                            "message": "This user is Forbidden Access to this Resource",
+                            "code": 403
+                        },
+                        {
+                            "message": "Not Authorized Yet, Credentials to be supplied",
+                            "code": 401
+                        },
+                        {
+                            "message": "No Resource Found",
+                            "code": 404
+                        }
+                    ],
+                    "parameters": []
                 }
-            ],
-            "description": "getPhysicalTopology"
+            ]
         }
     ],
     "resourcePath": "/topology",
     "produces": [
         "application/json"
     ],
-    "apiVersion": "1.0",
-    "basePath": "/topology-service",
     "swaggerVersion": "1.2",
     "models": {
-        "NodeWrapperCustom": {
+        "TopologyResult": {
+            "description": "",
+            "properties": {
+                "response": {
+                    "$ref": "Topology"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "extends": "",
+            "id": "TopologyResult"
+        },
+        "NodeWrapper": {
+            "description": "",
             "properties": {
                 "label": {
-                    "description": "Label for the node",
+                    "description": "Hostname of the device",
                     "type": "string"
                 },
-                "attributeInfo": {
-                    "$ref": "object"
-                },
-                "parentNodeId": {
-                    "description": "Unique Id of the Node for ehich the custom properties are being represented",
+                "ip": {
+                    "description": "IP address of the device",
                     "type": "string"
                 },
                 "x": {
+                    "description": "X position of the device on the displayed topology view",
                     "format": "int32",
-                    "description": "X - Coordinate for this Node in the topology View",
                     "type": "integer"
                 },
-                "y": {
-                    "format": "int32",
-                    "description": "Y - Coordinate for this Node in the topology View",
-                    "type": "integer"
+                "fixed": {
+                    "description": "Indication of whether the position is fixed or will use auto layout ",
+                    "type": "boolean"
+                },
+                "dataPathId": {
+                    "description": "ID of the path between devices",
+                    "type": "string"
+                },
+                "tags": {
+                    "description": "List of tags applied on this device",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "id": {
+                    "description": "Unique identifier for device",
                     "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "NodeWrapperCustom",
-            "description": ""
-        },
-        "LinkWrapper": {
-            "properties": {
-                "startPortName": {
-                    "description": "Interface port name corresponding to start devices",
+                },
+                "networkType": {
+                    "description": "Type of network",
                     "type": "string"
                 },
                 "greyOut": {
-                    "description": "Device greyout",
+                    "description": "Indicates if the device is active for this topology view",
                     "type": "boolean"
                 },
-                "id": {
-                    "description": "Unified identifier for device",
+                "roleSource": {
+                    "description": "Indicates whether role is assigned manually or automatically",
                     "type": "string"
                 },
-                "source": {
-                    "description": "Device ID correspondng to the source device ",
+                "role": {
+                    "description": "Role of the device",
                     "type": "string"
                 },
-                "startPortID": {
-                    "description": "Device port ID corresponding to start devices",
+                "order": {
+                    "description": "Device order by link number",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "aclApplied": {
+                    "description": "Indicates if the ACL that is applied on the device",
+                    "type": "boolean"
+                },
+                "family": {
+                    "description": "Product family which is part of the product identifier",
                     "type": "string"
                 },
-                "linkStatus": {
-                    "description": "Indicates whether link is working",
+                "nodeType": {
+                    "description": "Host or device",
                     "type": "string"
                 },
-                "endPortID": {
-                    "description": "Device port ID corresponding to end devices",
+                "osType": {
+                    "description": "OS type of the device",
                     "type": "string"
                 },
-                "target": {
-                    "description": "Device ID corresponding to the target device",
+                "vlanId": {
+                    "description": "VLan id",
                     "type": "string"
                 },
-                "endPortName": {
-                    "description": "Interface port name corresponding to end devices",
+                "userId": {
+                    "description": "ID of the host ",
                     "type": "string"
                 },
-                "endPortIpv4Mask": {
-                    "description": "Interface port IPv4 mask corresponding to end devices",
+                "platformId": {
+                    "description": "Device platform description",
                     "type": "string"
                 },
-                "startPortIpv4Address": {
-                    "description": "Interface port IPv4 address corresponding to start devices",
+                "deviceType": {
+                    "description": "Type of the device",
                     "type": "string"
                 },
-                "attributeInfo": {
-                    "$ref": "object"
-                },
-                "endPortIpv4Address": {
-                    "description": "Interface port IPv4 address corresponding to end devices",
+                "upperNode": {
+                    "description": "Start node ID",
                     "type": "string"
                 },
-                "endPortSpeed": {
-                    "description": "Interface port speed corresponding to end devices",
-                    "type": "string"
+                "customParam": {
+                    "description": "Device custom parameters",
+                    "$ref": "NodeWrapperCustom"
                 },
-                "startPortIpv4Mask": {
-                    "description": "Interface port IPv4 mask corresponding to start devices",
-                    "type": "string"
+                "y": {
+                    "description": "Y position of the device on the displayed topology view",
+                    "format": "int32",
+                    "type": "integer"
                 },
-                "tag": {
-                    "description": "Tag for the devices",
-                    "type": "string"
-                },
-                "startPortSpeed": {
-                    "description": "Interface port speed corresponding to start devices",
+                "softwareVersion": {
+                    "description": "Device OS version",
                     "type": "string"
                 }
             },
-            "extends": "",
-            "id": "LinkWrapper",
             "required": [
-                "startPortID",
-                "endPortID",
-                "target",
-                "source",
-                "tag",
+                "role",
                 "id",
-                "endPortName",
-                "endPortSpeed",
-                "startPortName",
-                "startPortSpeed",
-                "linkStatus",
-                "startPortIpv4Address",
-                "endPortIpv4Address",
-                "startPortIpv4Mask",
+                "label",
+                "roleSource",
                 "greyOut",
-                "endPortIpv4Mask"
+                "deviceType",
+                "ip",
+                "nodeType",
+                "family",
+                "platformId",
+                "tags",
+                "vlanId",
+                "y",
+                "x",
+                "fixed",
+                "aclApplied"
             ],
-            "description": ""
+            "extends": "",
+            "id": "NodeWrapper"
         },
         "TaskIdResponse": {
+            "description": "",
             "properties": {
                 "url": {
                     "type": "string"
@@ -408,201 +424,173 @@
                 }
             },
             "extends": "",
-            "id": "TaskIdResponse",
-            "description": ""
+            "id": "TaskIdResponse"
         },
         "TaskIdResult": {
+            "description": "",
             "properties": {
-                "version": {
-                    "type": "string"
-                },
                 "response": {
                     "$ref": "TaskIdResponse"
+                },
+                "version": {
+                    "type": "string"
                 }
             },
             "extends": "",
-            "id": "TaskIdResult",
-            "description": ""
+            "id": "TaskIdResult"
         },
-        "NodeWrapper": {
+        "TaskId": {
+            "description": "",
+            "properties": {},
+            "extends": "",
+            "id": "TaskId"
+        },
+        "LinkWrapper": {
+            "description": "",
             "properties": {
-                "label": {
-                    "description": "Hostname of the device",
+                "endPortSpeed": {
+                    "description": "Interface port speed corresponding to end devices",
                     "type": "string"
                 },
-                "upperNode": {
-                    "description": "Start node ID",
+                "endPortIpv4Mask": {
+                    "description": "Interface port IPv4 mask corresponding to end devices",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Device ID corresponding to the target device",
+                    "type": "string"
+                },
+                "endPortID": {
+                    "description": "Device port ID corresponding to end devices",
+                    "type": "string"
+                },
+                "startPortSpeed": {
+                    "description": "Interface port speed corresponding to start devices",
+                    "type": "string"
+                },
+                "endPortIpv4Address": {
+                    "description": "Interface port IPv4 address corresponding to end devices",
+                    "type": "string"
+                },
+                "startPortIpv4Mask": {
+                    "description": "Interface port IPv4 mask corresponding to start devices",
+                    "type": "string"
+                },
+                "startPortID": {
+                    "description": "Device port ID corresponding to start devices",
+                    "type": "string"
+                },
+                "tag": {
+                    "description": "Tag for the devices",
+                    "type": "string"
+                },
+                "linkStatus": {
+                    "description": "Indicates whether link is working",
+                    "type": "string"
+                },
+                "startPortIpv4Address": {
+                    "description": "Interface port IPv4 address corresponding to start devices",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "Device ID correspondng to the source device ",
+                    "type": "string"
+                },
+                "endPortName": {
+                    "description": "Interface port name corresponding to end devices",
+                    "type": "string"
+                },
+                "startPortName": {
+                    "description": "Interface port name corresponding to start devices",
                     "type": "string"
                 },
                 "id": {
-                    "description": "Unique identifier for device",
+                    "description": "Unified identifier for device",
                     "type": "string"
-                },
-                "x": {
-                    "format": "int32",
-                    "description": "X position of the device on the displayed topology view",
-                    "type": "integer"
-                },
-                "platformId": {
-                    "description": "Device platform description",
-                    "type": "string"
-                },
-                "aclApplied": {
-                    "description": "Indicates if the ACL that is applied on the device",
-                    "type": "boolean"
                 },
                 "greyOut": {
-                    "description": "Indicates if the device is active for this topology view",
+                    "description": "Device greyout",
                     "type": "boolean"
-                },
-                "order": {
-                    "format": "int32",
-                    "description": "Device order by link number",
-                    "type": "integer"
-                },
-                "fixed": {
-                    "description": "Indication of whether the position is fixed or will use auto layout ",
-                    "type": "boolean"
-                },
-                "softwareVersion": {
-                    "description": "Device OS version",
-                    "type": "string"
-                },
-                "customParam": {
-                    "$ref": "NodeWrapperCustom",
-                    "description": "Device custom parameters"
-                },
-                "nodeType": {
-                    "description": "Host or device",
-                    "type": "string"
-                },
-                "userId": {
-                    "description": "ID of the host ",
-                    "type": "string"
-                },
-                "ip": {
-                    "description": "IP address of the device",
-                    "type": "string"
-                },
-                "y": {
-                    "format": "int32",
-                    "description": "Y position of the device on the displayed topology view",
-                    "type": "integer"
-                },
-                "role": {
-                    "description": "Role of the device",
-                    "type": "string"
-                },
-                "family": {
-                    "description": "Product family which is part of the product identifier",
-                    "type": "string"
-                },
-                "dataPathId": {
-                    "description": "ID of the path between devices",
-                    "type": "string"
-                },
-                "tags": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "List of tags applied on this device",
-                    "type": "array"
-                },
-                "attributeInfo": {
-                    "$ref": "object"
-                },
-                "vlanId": {
-                    "description": "VLan id",
-                    "type": "string"
-                },
-                "networkType": {
-                    "description": "Type of network",
-                    "type": "string"
-                },
-                "osType": {
-                    "description": "OS type of the device",
-                    "type": "string"
-                },
-                "deviceType": {
-                    "description": "Type of the device",
-                    "type": "string"
-                },
-                "roleSource": {
-                    "description": "Indicates whether role is assigned manually or automatically",
-                    "type": "string"
                 }
             },
-            "extends": "",
-            "id": "NodeWrapper",
             "required": [
-                "y",
-                "x",
-                "family",
-                "nodeType",
-                "tags",
-                "fixed",
-                "role",
+                "source",
                 "id",
-                "platformId",
-                "label",
-                "roleSource",
-                "vlanId",
-                "deviceType",
-                "ip",
+                "startPortID",
+                "endPortID",
                 "greyOut",
-                "aclApplied"
+                "linkStatus",
+                "tag",
+                "endPortName",
+                "endPortSpeed",
+                "startPortName",
+                "startPortSpeed",
+                "startPortIpv4Mask",
+                "endPortIpv4Address",
+                "endPortIpv4Mask",
+                "startPortIpv4Address",
+                "target"
             ],
-            "description": ""
+            "extends": "",
+            "id": "LinkWrapper"
         },
         "Topology": {
+            "description": "",
             "properties": {
-                "links": {
-                    "items": {
-                        "$ref": "LinkWrapper"
-                    },
-                    "description": "List of link between devices",
-                    "type": "array"
-                },
-                "attributeInfo": {
-                    "$ref": "object"
-                },
-                "id": {
-                    "type": "string"
-                },
                 "nodes": {
+                    "description": "List of devices and hosts",
                     "items": {
                         "$ref": "NodeWrapper"
                     },
-                    "description": "List of devices and hosts",
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "links": {
+                    "description": "List of link between devices",
+                    "items": {
+                        "$ref": "LinkWrapper"
+                    },
                     "type": "array"
                 }
             },
-            "extends": "",
-            "id": "Topology",
             "required": [
                 "links",
                 "nodes"
             ],
-            "description": ""
+            "extends": "",
+            "id": "Topology"
         },
-        "TopologyResult": {
+        "NodeWrapperCustom": {
+            "description": "",
             "properties": {
-                "version": {
+                "label": {
+                    "description": "Label for the node",
                     "type": "string"
                 },
-                "response": {
-                    "$ref": "Topology"
+                "x": {
+                    "description": "X - Coordinate for this Node in the topology View",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "parentNodeId": {
+                    "description": "Unique Id of the Node for ehich the custom properties are being represented",
+                    "type": "string"
+                },
+                "y": {
+                    "description": "Y - Coordinate for this Node in the topology View",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
                 }
             },
             "extends": "",
-            "id": "TopologyResult",
-            "description": ""
-        },
-        "TaskId": {
-            "properties": {},
-            "extends": "",
-            "id": "TaskId",
-            "description": ""
+            "id": "NodeWrapperCustom"
         }
-    }
+    },
+    "apiVersion": "1.0",
+    "basePath": "/"
 }
