@@ -1673,7 +1673,69 @@ class DefaultApi(object):
                                           postData, headerParams, files=files)
 
 
+    def getDefaultCaPemChain(self, **kwargs):
+        """getDefaultCaPemChain
 
+        Args:
+
+            id, str: Certificate ID (required)
+
+
+            type, str: Certificate type (required)
+
+
+
+        Returns:
+        """
+
+        allParams = ['id', 'type']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getDefaultCaPemChain" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/certificate-authority/ca/{id}/{type}'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+
+
+
+
+
+        if ('id' in params):
+            replacement = str(self.apiClient.toPathValue(params['id']))
+            replacement = urllib.parse.quote(replacement)
+            resourcePath = resourcePath.replace('{' + 'id' + '}',
+                                                replacement)
+
+        if ('type' in params):
+            replacement = str(self.apiClient.toPathValue(params['type']))
+            replacement = urllib.parse.quote(replacement)
+            resourcePath = resourcePath.replace('{' + 'type' + '}',
+                                                replacement)
+
+
+
+
+
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
 
 
 

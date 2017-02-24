@@ -15,13 +15,16 @@ class ActionProperty(object):
         """
         self.swaggerTypes = {
             
-            'destinations': 'list[str]',
+            'bandwidthProfileId': 'str',
             
             
             'priorityLevel': 'str',
             
             
             'experienceLevel': 'str',
+            
+            
+            'destinations': 'list[str]',
             
             
             'pathPreference': 'str',
@@ -57,11 +60,13 @@ class ActionProperty(object):
 
         self.attributeMap = {
             
-            'destinations': 'destinations',
+            'bandwidthProfileId': 'bandwidthProfileId',
             
             'priorityLevel': 'priorityLevel',
             
             'experienceLevel': 'experienceLevel',
+            
+            'destinations': 'destinations',
             
             'pathPreference': 'pathPreference',
             
@@ -86,8 +91,9 @@ class ActionProperty(object):
         }       
 
         
+        #ID of the bandwidth profile
         
-        self.destinations = None # list[str]
+        self.bandwidthProfileId = None # str
         
         #priority level for a policy
         
@@ -96,6 +102,9 @@ class ActionProperty(object):
         #experience level for a policy
         
         self.experienceLevel = None # str
+        
+        
+        self.destinations = None # list[str]
         
         #path preference for a policy
         

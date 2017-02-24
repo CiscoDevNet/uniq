@@ -332,6 +332,89 @@ class ApplicationApi(object):
         
         
     
+    def deleteApplication(self, **kwargs):
+        """Delete a list of applications by ids
+
+        Args:
+            
+            scheduleAt, str: scheduleAt (required)
+            
+            
+            scheduleDesc, str: scheduleDesc (required)
+            
+            
+            scheduleOrigin, str: scheduleOrigin (required)
+            
+            
+            ids, list[str]: ids (required)
+            
+            
+        
+        Returns: TaskIdResult
+        """
+
+        allParams = ['scheduleAt', 'scheduleDesc', 'scheduleOrigin', 'ids']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method deleteApplication" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/application/{ids}'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'DELETE'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+        
+        if ('scheduleAt' in params):
+            queryParams['scheduleAt'] = self.apiClient.toPathValue(params['scheduleAt'])
+        
+        if ('scheduleDesc' in params):
+            queryParams['scheduleDesc'] = self.apiClient.toPathValue(params['scheduleDesc'])
+        
+        if ('scheduleOrigin' in params):
+            queryParams['scheduleOrigin'] = self.apiClient.toPathValue(params['scheduleOrigin'])
+        
+
+        
+
+        
+        if ('ids' in params):
+            replacement = str(self.apiClient.toPathValue(params['ids']))
+            replacement = urllib.parse.quote(replacement)
+            resourcePath = resourcePath.replace('{' + 'ids' + '}',
+                                                replacement)
+        
+
+        
+
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+        
+        
+        
+    
     def getApplication(self, **kwargs):
         """Return an application given an id
 
@@ -392,89 +475,6 @@ class ApplicationApi(object):
             return None
 
         responseObject = self.apiClient.deserialize(response, 'ApplicationResult')
-        return responseObject
-        
-        
-        
-    
-    def deleteApplication(self, **kwargs):
-        """Delete an application by id
-
-        Args:
-            
-            scheduleAt, str: scheduleAt (required)
-            
-            
-            scheduleDesc, str: scheduleDesc (required)
-            
-            
-            scheduleOrigin, str: scheduleOrigin (required)
-            
-            
-            id, str: id (required)
-            
-            
-        
-        Returns: TaskIdResult
-        """
-
-        allParams = ['scheduleAt', 'scheduleDesc', 'scheduleOrigin', 'id']
-
-        params = locals()
-        for (key, val) in list(params['kwargs'].items()):
-            if key not in allParams:
-                raise TypeError("Got an unexpected keyword argument '%s' to method deleteApplication" % key)
-            params[key] = val
-        del params['kwargs']
-
-        resourcePath = '/application/{id}'
-        resourcePath = resourcePath.replace('{format}', 'json')
-        method = 'DELETE'
-
-        queryParams = {}
-        headerParams = {}
-        formParams = {}
-        files = {}
-        bodyParam = None
-
-        headerParams['Accept'] = 'application/json'
-        headerParams['Content-Type'] = 'application/json'
-
-        
-        if ('scheduleAt' in params):
-            queryParams['scheduleAt'] = self.apiClient.toPathValue(params['scheduleAt'])
-        
-        if ('scheduleDesc' in params):
-            queryParams['scheduleDesc'] = self.apiClient.toPathValue(params['scheduleDesc'])
-        
-        if ('scheduleOrigin' in params):
-            queryParams['scheduleOrigin'] = self.apiClient.toPathValue(params['scheduleOrigin'])
-        
-
-        
-
-        
-        if ('id' in params):
-            replacement = str(self.apiClient.toPathValue(params['id']))
-            replacement = urllib.parse.quote(replacement)
-            resourcePath = resourcePath.replace('{' + 'id' + '}',
-                                                replacement)
-        
-
-        
-
-        
-
-        postData = (formParams if formParams else bodyParam)
-
-        response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams, files=files)
-
-        
-        if not response:
-            return None
-
-        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
         return responseObject
         
         

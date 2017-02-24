@@ -15,9 +15,6 @@ class ModuleDTO(object):
         """
         self.swaggerTypes = {
             
-            'name': 'str',
-            
-            
             'isFieldReplaceable': 'str',
             
             
@@ -27,16 +24,13 @@ class ModuleDTO(object):
             'containmentEntity': 'str',
             
             
+            'name': 'str',
+            
+            
             'serialNumber': 'str',
             
             
             'description': 'str',
-            
-            
-            'id': 'str',
-            
-            
-            'moduleIndex': 'int',
             
             
             'assemblyNumber': 'str',
@@ -60,13 +54,17 @@ class ModuleDTO(object):
             'vendorEquipmentType': 'str',
             
             
+            'id': 'str',
+            
+            
+            'moduleIndex': 'int',
+            
+            
             'attributeInfo': 'dict'
             
         }
 
         self.attributeMap = {
-            
-            'name': 'name',
             
             'isFieldReplaceable': 'isFieldReplaceable',
             
@@ -74,13 +72,11 @@ class ModuleDTO(object):
             
             'containmentEntity': 'containmentEntity',
             
+            'name': 'name',
+            
             'serialNumber': 'serialNumber',
             
             'description': 'description',
-            
-            'id': 'id',
-            
-            'moduleIndex': 'moduleIndex',
             
             'assemblyNumber': 'assemblyNumber',
             
@@ -96,14 +92,14 @@ class ModuleDTO(object):
             
             'vendorEquipmentType': 'vendorEquipmentType',
             
+            'id': 'id',
+            
+            'moduleIndex': 'moduleIndex',
+            
             'attributeInfo': 'attributeInfo'
             
         }       
 
-        
-        #Name of the module
-        
-        self.name = None # str
         
         #To mention if field is replaceable
         
@@ -117,6 +113,10 @@ class ModuleDTO(object):
         
         self.containmentEntity = None # str
         
+        #Name of the module
+        
+        self.name = None # str
+        
         #Serial number of the module
         
         self.serialNumber = None # str
@@ -124,14 +124,6 @@ class ModuleDTO(object):
         #Description of the module
         
         self.description = None # str
-        
-        #Id of the module
-        
-        self.id = None # str
-        
-        #Index of the module
-        
-        self.moduleIndex = None # int
         
         #Assembly number of the module
         
@@ -160,6 +152,14 @@ class ModuleDTO(object):
         #Vendor euipment type of the module
         
         self.vendorEquipmentType = None # str
+        
+        #Id of the module
+        
+        self.id = None # str
+        
+        #Index of the module
+        
+        self.moduleIndex = None # int
         
         
         self.attributeInfo = None # dict

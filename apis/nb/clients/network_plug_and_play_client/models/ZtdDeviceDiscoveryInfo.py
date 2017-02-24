@@ -36,16 +36,16 @@ class ZtdDeviceDiscoveryInfo(object):
             'ipAddressList': 'str',
             
             
-            'snmpVersion': 'str',
-            
-            
             'snmpMode': 'str',
             
             
-            'cdpLevel': 'int',
+            'snmpVersion': 'str',
             
             
             'discoveryType': 'str',
+            
+            
+            'cdpLevel': 'int',
             
             
             'ipFilterList': 'list[str]',
@@ -95,13 +95,13 @@ class ZtdDeviceDiscoveryInfo(object):
             
             'ipAddressList': 'ipAddressList',
             
-            'snmpVersion': 'snmpVersion',
-            
             'snmpMode': 'snmpMode',
             
-            'cdpLevel': 'cdpLevel',
+            'snmpVersion': 'snmpVersion',
             
             'discoveryType': 'discoveryType',
+            
+            'cdpLevel': 'cdpLevel',
             
             'ipFilterList': 'ipFilterList',
             
@@ -154,21 +154,21 @@ class ZtdDeviceDiscoveryInfo(object):
         
         self.ipAddressList = None # str
         
-        #Version of SNMP. Can be v2 or v3
-        
-        self.snmpVersion = None # str
-        
         #Mode of SNMP. Available values:&#39;AUTHPRIV&#39; or &#39;AUTHNOPRIV&#39; or &#39;NOAUTHNOPRIV&#39;
         
         self.snmpMode = None # str
         
-        #CDP level to which neighbor devices to be discovered
+        #Version of SNMP. Can be v2 or v3
         
-        self.cdpLevel = None # int
+        self.snmpVersion = None # str
         
         #Available types are: single, auto cdp discovery, range, multi range
         
         self.discoveryType = None # str
+        
+        #CDP level to which neighbor devices to be discovered
+        
+        self.cdpLevel = None # int
         
         #Username of the devices to be discovered
         

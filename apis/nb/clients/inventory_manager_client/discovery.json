@@ -1,723 +1,262 @@
 {
-    "apis": [
-        {
-            "description": "updateDiscovery",
-            "operations": [
-                {
-                    "nickname": "updateDiscovery",
-                    "notes": "Stops or starts an existing discovery",
-                    "summary": "Updates an existing discovery specified by id - only for starting/stopping the discovery",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "PUT",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "discovery",
-                            "allowMultiple": false,
-                            "paramType": "body",
-                            "type": "DiscoveryNIO",
-                            "description": "Discovery request that holds the status of discovery as active / inactive",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery"
-        },
-        {
-            "description": "deleteAllDiscovery",
-            "operations": [
-                {
-                    "nickname": "deleteAllDiscovery",
-                    "notes": "Stops all the discoveries and removes them",
-                    "summary": "Deletes all discovery",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": []
-                }
-            ],
-            "path": "/discovery"
-        },
-        {
-            "description": "insertDiscovery",
-            "operations": [
-                {
-                    "nickname": "insertDiscovery",
-                    "notes": "Initiates discovery with the given parameters",
-                    "summary": "Starts a new discovery process and returns a task-id",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This Request is Accepted",
-                            "code": 202
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "request",
-                            "allowMultiple": false,
-                            "paramType": "body",
-                            "type": "InventoryRequest",
-                            "description": "Discovery request that holds the parameters required for discovery",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery"
-        },
-        {
-            "description": "getDiscoveryCount",
-            "operations": [
-                {
-                    "nickname": "getDiscoveryCount",
-                    "notes": "Gets the count of all available discovery",
-                    "summary": "Retrieves the number of discovery",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "CountResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "CountResult",
-                    "parameters": []
-                }
-            ],
-            "path": "/discovery/count"
-        },
-        {
-            "description": "getDiscoveryJobsByIp",
-            "operations": [
-                {
-                    "nickname": "getDiscoveryJobsByIp",
-                    "notes": "Gets the list of discovery jobs for the given IP",
-                    "summary": "Retrieves the list of discovery jobs for the given IP",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "DiscoveryJobNIOListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "DiscoveryJobNIOListResult",
-                    "parameters": [
-                        {
-                            "name": "offset",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "integer",
-                            "description": "offset",
-                            "required": false,
-                            "format": "int32",
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "limit",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "integer",
-                            "description": "limit",
-                            "required": false,
-                            "format": "int32",
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "ipAddress",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "ipAddress",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery/job"
-        },
-        {
-            "description": "deleteDiscoveryById",
-            "operations": [
-                {
-                    "nickname": "deleteDiscoveryById",
-                    "notes": "Stops the discovery for the given ID and removes it",
-                    "summary": "Deletes the discovery specified by id",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Discovery ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery/{id}"
-        },
-        {
-            "description": "getDiscoveryById",
-            "operations": [
-                {
-                    "nickname": "getDiscoveryById",
-                    "notes": "Retrieves discovery by ID",
-                    "summary": "Retrieves the discovery specified by id",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "DiscoveryNIOResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "DiscoveryNIOResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Discovery ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery/{id}"
-        },
-        {
-            "description": "getDiscoveryJobsById",
-            "operations": [
-                {
-                    "nickname": "getDiscoveryJobsById",
-                    "notes": "Gets the list of discovery jobs for the given IP",
-                    "summary": "Retrieves the list of discovery jobs for the given IP",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "DiscoveryJobNIOListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "DiscoveryJobNIOListResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Discovery ID",
-                            "required": true,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "offset",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "integer",
-                            "description": "offset",
-                            "required": false,
-                            "format": "int32",
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "limit",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "integer",
-                            "description": "limit",
-                            "required": false,
-                            "format": "int32",
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "ipAddress",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "ipAddress",
-                            "required": false,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery/{id}/job"
-        },
-        {
-            "description": "getNetworkDeviceByDiscoveryId",
-            "operations": [
-                {
-                    "nickname": "getNetworkDeviceByDiscoveryId",
-                    "notes": "Gets the network devices discovered for the given discovery",
-                    "summary": "Retrieves the network devices discovered in the discovery specified by id",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "NetworkDeviceNIOListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "NetworkDeviceNIOListResult",
-                    "parameters": [
-                        {
-                            "name": "taskId",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "taskId",
-                            "required": false,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "id",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery/{id}/network-device"
-        },
-        {
-            "description": "getNetworkDeviceCountByDiscoveryId",
-            "operations": [
-                {
-                    "nickname": "getNetworkDeviceCountByDiscoveryId",
-                    "notes": "Gets the count of network devices discovered in the given discovery",
-                    "summary": "Retrieves the number of network devices discovered in the discovery specified by id",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "CountResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "CountResult",
-                    "parameters": [
-                        {
-                            "name": "taskId",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "taskId",
-                            "required": false,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Discovery ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery/{id}/network-device/count"
-        },
-        {
-            "description": "getNetworkDeviceByDiscoveryIdByRange",
-            "operations": [
-                {
-                    "nickname": "getNetworkDeviceByDiscoveryIdByRange",
-                    "notes": "Gets the network devices discovered for the given discovery and for the given range. The maximum number of records that could be retrieved is 500",
-                    "summary": "Retrieves the range of network devices discovered for the given discovery",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "NetworkDeviceNIOListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "NetworkDeviceNIOListResult",
-                    "parameters": [
-                        {
-                            "name": "taskId",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "taskId",
-                            "required": false,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Discovery ID",
-                            "required": true,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "startIndex",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "integer",
-                            "description": "Start index",
-                            "required": true,
-                            "format": "int32",
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "recordsToReturn",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "integer",
-                            "description": "Number of records to return",
-                            "required": true,
-                            "format": "int32",
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery/{id}/network-device/{startIndex}/{recordsToReturn}"
-        },
-        {
-            "description": "deleteDiscoveryByRange",
-            "operations": [
-                {
-                    "nickname": "deleteDiscoveryByRange",
-                    "notes": "Stops discovery for the given range and removes them",
-                    "summary": "Deletes the discovery in the given range",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "startIndex",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "integer",
-                            "description": "Start index",
-                            "required": true,
-                            "format": "int32",
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "recordsToDelete",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "integer",
-                            "description": "Number of records to delete",
-                            "required": true,
-                            "format": "int32",
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery/{startIndex}/{recordsToDelete}"
-        },
-        {
-            "description": "getDiscoveryByRange",
-            "operations": [
-                {
-                    "nickname": "getDiscoveryByRange",
-                    "notes": "Gets the discovery for the range specified",
-                    "summary": "Retrieves the discovery in the given range",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "DiscoveryNIOListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "DiscoveryNIOListResult",
-                    "parameters": [
-                        {
-                            "name": "startIndex",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "integer",
-                            "description": "Start index",
-                            "required": true,
-                            "format": "int32",
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "recordsToReturn",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "integer",
-                            "description": "Number of records to return",
-                            "required": true,
-                            "format": "int32",
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/discovery/{startIndex}/{recordsToReturn}"
-        }
-    ],
     "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
     "models": {
+        "TaskIdResponse": {
+            "description": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "taskId": {
+                    "$ref": "TaskId"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "Date": {
+            "description": "",
+            "id": "Date",
+            "properties": {
+                "timezoneOffset": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "date": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "month": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "year": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "day": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "seconds": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "hours": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "time": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minutes": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "extends": ""
+        },
+        "InventoryRequest": {
+            "description": "",
+            "id": "InventoryRequest",
+            "extends": "",
+            "properties": {
+                "globalCredentialIdList": {
+                    "type": "array",
+                    "description": "List of global credential ids to be used",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "snmpROCommunity": {
+                    "type": "string",
+                    "description": "Snmp RO community of the devices to be discovered"
+                },
+                "snmpPrivPassphrase": {
+                    "type": "string",
+                    "description": "Pass phrase for SNMP privacy"
+                },
+                "reDiscovery": {
+                    "type": "boolean",
+                    "description": "Flag to indicate if rediscovery is needed or not"
+                },
+                "parentDiscoveryId": {
+                    "type": "string"
+                },
+                "discoveryType": {
+                    "type": "string",
+                    "description": "Available types are: single, auto cdp discovery, range, multi range"
+                },
+                "userNameList": {
+                    "type": "array",
+                    "description": "Username of the devices to be discovered",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "snmpAuthProtocol": {
+                    "type": "string",
+                    "description": "SNMP auth protocol. Available values:'SHA' or 'MD5'"
+                },
+                "ipFilterList": {
+                    "type": "array",
+                    "description": "Ip addresses of the devices to be filtered out during discovery",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ipAddressList": {
+                    "type": "string",
+                    "description": "Ip address(es) of the device to be discovered"
+                },
+                "retry": {
+                    "type": "integer",
+                    "description": "Number of times to try establishing connection to device",
+                    "format": "int32"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "Time to wait for device response in seconds",
+                    "format": "int32"
+                },
+                "snmpPrivProtocol": {
+                    "type": "string",
+                    "description": "SNMP privacy protocol. Available values:'DES' or 'AES128'"
+                },
+                "protocolOrder": {
+                    "type": "string",
+                    "description": "Order of protocol in which device connection establishment to be tried"
+                },
+                "snmpRWCommunity": {
+                    "type": "string",
+                    "description": "Snmp RW community of the devices to be discovered"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for discovery"
+                },
+                "enablePasswordList": {
+                    "type": "array",
+                    "description": "Enable Password of the devices to be discovered",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "snmpMode": {
+                    "type": "string",
+                    "description": "Mode of SNMP. Available values:'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'"
+                },
+                "cdpLevel": {
+                    "type": "integer",
+                    "description": "CDP level to which neighbor devices to be discovered",
+                    "format": "int32"
+                },
+                "snmpAuthPassphrase": {
+                    "type": "string",
+                    "description": "Auth Pass phrase for SNMP"
+                },
+                "snmpUserName": {
+                    "type": "string",
+                    "description": "SNMP username of the device"
+                },
+                "passwordList": {
+                    "type": "array",
+                    "description": "Password of the devices to be discovered",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "snmpVersion": {
+                    "type": "string",
+                    "description": "Version of SNMP. Can be v2 or v3"
+                }
+            },
+            "required": [
+                "name",
+                "ipAddressList",
+                "snmpVersion",
+                "discoveryType"
+            ]
+        },
+        "DiscoveryJobNIO": {
+            "description": "",
+            "id": "DiscoveryJobNIO",
+            "extends": "",
+            "properties": {
+                "startTime": {
+                    "type": "string",
+                    "description": "Discovery job start time"
+                },
+                "inventoryCollectionStatus": {
+                    "type": "string",
+                    "description": "Last known inventory collection status of the device"
+                },
+                "discoveryStatus": {
+                    "type": "string",
+                    "description": "Discovery status for the IP"
+                },
+                "pingStatus": {
+                    "type": "string",
+                    "description": "Ping status for the IP during this job run"
+                },
+                "ipAddress": {
+                    "type": "string",
+                    "description": "IP Address"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Discovery job name"
+                },
+                "attributeInfo": {
+                    "$ref": "object"
+                },
+                "endTime": {
+                    "type": "string",
+                    "description": "End time for the discovery job"
+                },
+                "taskId": {
+                    "type": "string",
+                    "description": "Discovery job task id"
+                },
+                "snmpStatus": {
+                    "type": "string",
+                    "description": "SNMP status for the IP during this job run"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "cliStatus": {
+                    "type": "string",
+                    "description": "CLI status for the IP during this job run"
+                },
+                "inventoryReachabilityStatus": {
+                    "type": "string",
+                    "description": "Last known reachabilty status of the device"
+                },
+                "jobStatus": {
+                    "type": "string",
+                    "description": "Status of the job"
+                }
+            },
+            "required": [
+                "pingStatus",
+                "snmpStatus",
+                "cliStatus",
+                "inventoryReachabilityStatus",
+                "name",
+                "startTime",
+                "endTime",
+                "taskId",
+                "inventoryCollectionStatus",
+                "jobStatus",
+                "ipAddress",
+                "discoveryStatus"
+            ]
+        },
         "NetworkDeviceNIOListResult": {
+            "description": "",
+            "id": "NetworkDeviceNIOListResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -729,17 +268,235 @@
                     }
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "NetworkDeviceNIOListResult"
+            "extends": ""
         },
-        "TaskId": {
-            "properties": {},
+        "DiscoveryNIOResult": {
             "description": "",
+            "id": "DiscoveryNIOResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "DiscoveryNIO"
+                }
+            },
+            "extends": ""
+        },
+        "NetworkDeviceNIO": {
+            "description": "",
+            "id": "NetworkDeviceNIO",
             "extends": "",
-            "id": "TaskId"
+            "properties": {
+                "locationName": {
+                    "type": "string",
+                    "description": "Name of the associated location"
+                },
+                "macAddress": {
+                    "type": "string",
+                    "description": "MAC address of device"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of device as switch, router, wireless lan controller, accesspoints"
+                },
+                "vendor": {
+                    "type": "string",
+                    "description": "Vendor information of the device"
+                },
+                "snmpLocation": {
+                    "type": "string",
+                    "description": "SNMP location on device"
+                },
+                "wlcApDeviceStatus": {
+                    "type": "string",
+                    "description": "Collection status of AP devices"
+                },
+                "portRange": {
+                    "type": "string",
+                    "description": "Range of ports on device"
+                },
+                "interfaceCount": {
+                    "type": "string",
+                    "description": "Number of interfaces on the device"
+                },
+                "lineCardCount": {
+                    "type": "string",
+                    "description": "Number of linecards on the device"
+                },
+                "lineCardId": {
+                    "type": "string",
+                    "description": "IDs of linecards of the device"
+                },
+                "avgUpdateFrequency": {
+                    "type": "integer",
+                    "description": "Frequency in which interface info gets updated",
+                    "format": "int32"
+                },
+                "errorCode": {
+                    "type": "string",
+                    "description": "Error code when inventory collection fails"
+                },
+                "numUpdates": {
+                    "type": "integer",
+                    "description": "Number of time network-device info got updated",
+                    "format": "int32"
+                },
+                "bootDateTime": {
+                    "type": "string",
+                    "description": "Device boot time",
+                    "format": "date-time"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of network device"
+                },
+                "memorySize": {
+                    "type": "string",
+                    "description": "Processor memory size"
+                },
+                "inventoryCollectionStatus": {
+                    "type": "string",
+                    "description": "Last known collection status of the device"
+                },
+                "inventoryReachabilityStatus": {
+                    "type": "string",
+                    "description": "Last known reachabilty status of the device"
+                },
+                "reachabilityStatus": {
+                    "type": "string",
+                    "description": "Reachability status of a device as Success/Failure/Discarded"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "Time when the network device info last got updated"
+                },
+                "qosStatus": {
+                    "type": "string",
+                    "description": "Qos status on device"
+                },
+                "roleSource": {
+                    "type": "string",
+                    "description": "Role source as manual / auto"
+                },
+                "upTime": {
+                    "type": "string",
+                    "description": "Time that shows for how long the device has been up"
+                },
+                "serialNumber": {
+                    "type": "string",
+                    "description": "Serial number of device"
+                },
+                "reachabilityFailureReason": {
+                    "type": "string",
+                    "description": "Failure reason for unreachable devices"
+                },
+                "authModelId": {
+                    "type": "string",
+                    "description": "Authentication model Id on device"
+                },
+                "snmpStatus": {
+                    "type": "string",
+                    "description": "SNMP status at the time of discovery"
+                },
+                "family": {
+                    "type": "string",
+                    "description": "Family of device as switch, router, wireless lan controller, accesspoints"
+                },
+                "duplicateDeviceId": {
+                    "type": "string",
+                    "description": "Identifier of the duplicate ip of the same device discovered"
+                },
+                "tagCount": {
+                    "type": "integer",
+                    "description": "Number of tags associated with the device",
+                    "format": "int32"
+                },
+                "imageName": {
+                    "type": "string",
+                    "description": "Image details on the device"
+                },
+                "cliStatus": {
+                    "type": "string",
+                    "description": "CLI status at the time of discovery"
+                },
+                "pingStatus": {
+                    "type": "string",
+                    "description": "Ping status at the time of discovery"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Tag ID that is associated with the device"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Location ID that is associated with the device"
+                },
+                "anchorWlcForAp": {
+                    "type": "string",
+                    "description": "Connected WLC device for AP"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role of device as access, distribution, border router, core"
+                },
+                "errorDescription": {
+                    "type": "string",
+                    "description": "Error description when inventory collection fails"
+                },
+                "ingressQueueConfig": {
+                    "type": "string",
+                    "description": "Ingress queue config on device"
+                },
+                "managementIpAddress": {
+                    "type": "string",
+                    "description": "IP address of the device"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Device name"
+                },
+                "platformId": {
+                    "type": "string",
+                    "description": "Platform ID of device"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "description": "Software version on the device"
+                },
+                "snmpContact": {
+                    "type": "string",
+                    "description": "SNMP contact on device"
+                }
+            },
+            "required": [
+                "family",
+                "snmpStatus",
+                "cliStatus",
+                "inventoryReachabilityStatus",
+                "type",
+                "serialNumber",
+                "upTime",
+                "inventoryCollectionStatus",
+                "role",
+                "macAddress",
+                "softwareVersion",
+                "lastUpdated",
+                "tagCount",
+                "hostname",
+                "id",
+                "managementIpAddress",
+                "memorySize",
+                "platformId",
+                "reachabilityStatus",
+                "interfaceCount",
+                "lineCardCount",
+                "lineCardId"
+            ]
         },
         "TaskIdResult": {
+            "description": "",
+            "id": "TaskIdResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -748,356 +505,17 @@
                     "$ref": "TaskIdResponse"
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "TaskIdResult"
+            "extends": ""
         },
-        "NetworkDeviceNIO": {
-            "required": [
-                "type",
-                "snmpStatus",
-                "cliStatus",
-                "inventoryReachabilityStatus",
-                "serialNumber",
-                "family",
-                "id",
-                "role",
-                "interfaceCount",
-                "lineCardCount",
-                "lineCardId",
-                "managementIpAddress",
-                "memorySize",
-                "platformId",
-                "reachabilityStatus",
-                "inventoryCollectionStatus",
-                "upTime",
-                "tagCount",
-                "hostname",
-                "lastUpdated",
-                "macAddress",
-                "softwareVersion"
-            ],
-            "properties": {
-                "reachabilityFailureReason": {
-                    "type": "string",
-                    "description": "Failure reason for unreachable devices"
-                },
-                "reachabilityStatus": {
-                    "type": "string",
-                    "description": "Device reachability status as Reachable / Unreachable"
-                },
-                "qosStatus": {
-                    "type": "string",
-                    "description": "Qos status on device"
-                },
-                "serialNumber": {
-                    "type": "string",
-                    "description": "Serial number of device"
-                },
-                "inventoryCollectionStatus": {
-                    "type": "string",
-                    "description": "Inventory status"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "Tag ID that is associated with the device"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of network device"
-                },
-                "platformId": {
-                    "type": "string",
-                    "description": "Platform ID of device"
-                },
-                "inventoryReachabilityStatus": {
-                    "type": "string",
-                    "description": "Inventory reachablity status"
-                },
-                "cliStatus": {
-                    "type": "string",
-                    "description": "CLI status at the time of discovery"
-                },
-                "wlcApDeviceStatus": {
-                    "type": "string",
-                    "description": "Collection status of AP devices"
-                },
-                "lastUpdated": {
-                    "type": "string",
-                    "description": "Time when the network device info last got updated"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "Device name"
-                },
-                "anchorWlcForAp": {
-                    "type": "string",
-                    "description": "Connected WLC device for AP"
-                },
-                "snmpLocation": {
-                    "type": "string",
-                    "description": "SNMP location on device"
-                },
-                "numUpdates": {
-                    "description": "Number of time network-device info got updated",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "ingressQueueConfig": {
-                    "type": "string",
-                    "description": "Ingress queue config on device"
-                },
-                "lineCardId": {
-                    "type": "string",
-                    "description": "IDs of linecards of the device"
-                },
-                "softwareVersion": {
-                    "type": "string",
-                    "description": "Software version on the device"
-                },
-                "pingStatus": {
-                    "type": "string",
-                    "description": "Ping status at the time of discovery"
-                },
-                "tagCount": {
-                    "description": "Number of tags associated with the device",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "location": {
-                    "type": "string",
-                    "description": "Location ID that is associated with the device"
-                },
-                "upTime": {
-                    "type": "string",
-                    "description": "Time that shows for how long the device has been up"
-                },
-                "snmpStatus": {
-                    "type": "string",
-                    "description": "SNMP status at the time of discovery"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Type of device as switch, router, wireless lan controller, accesspoints"
-                },
-                "errorDescription": {
-                    "type": "string",
-                    "description": "Inventory status description"
-                },
-                "avgUpdateFrequency": {
-                    "description": "Frequency in which interface info gets updated",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "locationName": {
-                    "type": "string",
-                    "description": "Name of the associated location"
-                },
-                "portRange": {
-                    "type": "string",
-                    "description": "Range of ports on device"
-                },
-                "errorCode": {
-                    "type": "string",
-                    "description": "Inventory status error code"
-                },
-                "snmpContact": {
-                    "type": "string",
-                    "description": "SNMP contact on device"
-                },
-                "lineCardCount": {
-                    "type": "string",
-                    "description": "Number of linecards on the device"
-                },
-                "authModelId": {
-                    "type": "string",
-                    "description": "Authentication model Id on device"
-                },
-                "bootDateTime": {
-                    "description": "Device boot time",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "family": {
-                    "type": "string",
-                    "description": "Family of device as switch, router, wireless lan controller, accesspoints"
-                },
-                "roleSource": {
-                    "type": "string",
-                    "description": "Role source as manual / auto"
-                },
-                "imageName": {
-                    "type": "string",
-                    "description": "Image details on the device"
-                },
-                "duplicateDeviceId": {
-                    "type": "string",
-                    "description": "Identifier of the duplicate ip of the same device discovered"
-                },
-                "role": {
-                    "type": "string",
-                    "description": "Role of device as access, distribution, border router, core"
-                },
-                "interfaceCount": {
-                    "type": "string",
-                    "description": "Number of interfaces on the device"
-                },
-                "memorySize": {
-                    "type": "string",
-                    "description": "Processor memory size"
-                },
-                "vendor": {
-                    "type": "string",
-                    "description": "Vendor information of the device"
-                },
-                "managementIpAddress": {
-                    "type": "string",
-                    "description": "IP address of the device"
-                },
-                "macAddress": {
-                    "type": "string",
-                    "description": "MAC address of device"
-                }
-            },
+        "TaskId": {
             "description": "",
-            "extends": "",
-            "id": "NetworkDeviceNIO"
-        },
-        "DiscoveryNIO": {
-            "required": [
-                "id",
-                "discoveryStatus"
-            ],
-            "properties": {
-                "discoveryStatus": {
-                    "type": "string",
-                    "description": "Available options are: active, inactive, edit"
-                },
-                "passwordList": {
-                    "type": "string",
-                    "description": "Password of the devices to be discovered"
-                },
-                "deviceIds": {
-                    "type": "string",
-                    "description": "Ids of the devices discovered in a discovery"
-                },
-                "snmpRwCommunity": {
-                    "type": "string",
-                    "description": "Snmp RW community of the devices to be discovered"
-                },
-                "snmpAuthPassphrase": {
-                    "type": "string"
-                },
-                "snmpAuthProtocol": {
-                    "type": "string"
-                },
-                "discoveryCondition": {
-                    "type": "string",
-                    "description": "To indicate the discovery status. Available options: Complete or In Progress"
-                },
-                "cdpLevel": {
-                    "description": "CDP level to which neighbor devices to be discovered",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier for discovery"
-                },
-                "userNameList": {
-                    "type": "string",
-                    "description": "Username of the devices to be discovered"
-                },
-                "enablePasswordList": {
-                    "type": "string",
-                    "description": "Enable Password of the devices to be discovered"
-                },
-                "ipAddressList": {
-                    "type": "string",
-                    "description": "Ip address of the device to be discovered"
-                },
-                "isAutoCdp": {
-                    "type": "boolean",
-                    "description": "Flag to mention if CDP discovery or not"
-                },
-                "snmpMode": {
-                    "type": "string"
-                },
-                "ipFilterList": {
-                    "type": "string",
-                    "description": "IP addresses of the devices to be filtered"
-                },
-                "numDevices": {
-                    "description": "Number of devices discovered in a discovery",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "parentDiscoveryId": {
-                    "type": "string",
-                    "description": "Parent Discovery Id from which the discovery initiated"
-                },
-                "snmpUserName": {
-                    "type": "string"
-                },
-                "retryCount": {
-                    "description": "Number of times to try establishing connection to device",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "snmpPrivProtocol": {
-                    "type": "string"
-                },
-                "discoveryType": {
-                    "type": "string",
-                    "description": "Available types are: single, auto cdp discovery, range, multi range"
-                },
-                "snmpRoCommunity": {
-                    "type": "string",
-                    "description": "Snmp RO community of the devices to be discovered"
-                },
-                "protocolOrder": {
-                    "type": "string",
-                    "description": "Order of protocol in which device connection establishment to be tried"
-                },
-                "globalCredentialIdList": {
-                    "type": "array",
-                    "description": "To get the list of global credential of the discovery",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name for the discovery"
-                },
-                "snmpPrivPassphrase": {
-                    "type": "string"
-                },
-                "timeOut": {
-                    "description": "Time to wait for device response.",
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "DiscoveryNIO"
-        },
-        "CountResult": {
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "CountResult"
+            "id": "TaskId",
+            "properties": {},
+            "extends": ""
         },
         "DiscoveryJobNIOListResult": {
+            "description": "",
+            "id": "DiscoveryJobNIOListResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -1109,217 +527,11 @@
                     }
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "DiscoveryJobNIOListResult"
-        },
-        "DiscoveryJobNIO": {
-            "required": [
-                "startTime",
-                "name",
-                "pingStatus",
-                "snmpStatus",
-                "cliStatus",
-                "inventoryReachabilityStatus",
-                "taskId",
-                "discoveryStatus",
-                "inventoryCollectionStatus",
-                "ipAddress"
-            ],
-            "properties": {
-                "snmpStatus": {
-                    "type": "string",
-                    "description": "SNMP status for the IP during this job run"
-                },
-                "taskId": {
-                    "type": "string",
-                    "description": "Discovery job task id"
-                },
-                "discoveryStatus": {
-                    "type": "string",
-                    "description": "Discovery status for the IP"
-                },
-                "ipAddress": {
-                    "type": "string",
-                    "description": "IP Address"
-                },
-                "startTime": {
-                    "type": "string",
-                    "description": "Discovery job start time"
-                },
-                "jobStatus": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Discovery job name"
-                },
-                "attributeInfo": {
-                    "$ref": "object"
-                },
-                "inventoryCollectionStatus": {
-                    "type": "string",
-                    "description": "Last known inventory collection status of the device"
-                },
-                "pingStatus": {
-                    "type": "string",
-                    "description": "Ping status for the IP during this job run"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "inventoryReachabilityStatus": {
-                    "type": "string",
-                    "description": "Last known reachabilty status of the device"
-                },
-                "cliStatus": {
-                    "type": "string",
-                    "description": "CLI status for the IP during this job run"
-                },
-                "endTime": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "DiscoveryJobNIO"
-        },
-        "DiscoveryNIOResult": {
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "$ref": "DiscoveryNIO"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "DiscoveryNIOResult"
-        },
-        "InventoryRequest": {
-            "required": [
-                "name",
-                "snmpVersion",
-                "ipAddressList",
-                "discoveryType"
-            ],
-            "properties": {
-                "passwordList": {
-                    "type": "array",
-                    "description": "Password of the devices to be discovered",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "snmpAuthProtocol": {
-                    "type": "string",
-                    "description": "SNMP auth protocol. Available values:'SHA' or 'MD5'"
-                },
-                "cdpLevel": {
-                    "description": "CDP level to which neighbor devices to be discovered",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "userNameList": {
-                    "type": "array",
-                    "description": "Username of the devices to be discovered",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "enablePasswordList": {
-                    "type": "array",
-                    "description": "Enable Password of the devices to be discovered",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "ipAddressList": {
-                    "type": "string",
-                    "description": "Ip address of the device to be discovered"
-                },
-                "snmpROCommunity": {
-                    "type": "string",
-                    "description": "Snmp RO community of the devices to be discovered"
-                },
-                "snmpMode": {
-                    "type": "string",
-                    "description": "Mode of SNMP. Available values:'AUTHPRIV' or 'AUTHNOPRIV' or 'NOAUTHNOPRIV'"
-                },
-                "ipFilterList": {
-                    "type": "array",
-                    "description": "Username of the devices to be discovered",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "retry": {
-                    "description": "Number of times to try establishing connection to device",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "parentDiscoveryId": {
-                    "type": "string"
-                },
-                "snmpUserName": {
-                    "type": "string",
-                    "description": "SNMP username of the device"
-                },
-                "reDiscovery": {
-                    "type": "boolean",
-                    "description": "Flag to indicate is rediscovery or not"
-                },
-                "snmpVersion": {
-                    "type": "string",
-                    "description": "Version of SNMP. Can be v2 or v3"
-                },
-                "snmpPrivProtocol": {
-                    "type": "string",
-                    "description": "SNMP privacy protocol. Available values:'DES' or 'AES128'"
-                },
-                "snmpRWCommunity": {
-                    "type": "string",
-                    "description": "Snmp RW community of the devices to be discovered"
-                },
-                "discoveryType": {
-                    "type": "string",
-                    "description": "Available types are: single, auto cdp discovery, range, multi range"
-                },
-                "snmpAuthPassphrase": {
-                    "type": "string",
-                    "description": "Auth Pass phrase for SNMP"
-                },
-                "protocolOrder": {
-                    "type": "string",
-                    "description": "Order of protocol in which device connection establishment to be tried"
-                },
-                "globalCredentialIdList": {
-                    "type": "array",
-                    "description": "List of global credential ids to be used",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name for discovery"
-                },
-                "snmpPrivPassphrase": {
-                    "type": "string",
-                    "description": "Pass phrase for SNMP privacy"
-                },
-                "timeout": {
-                    "description": "Time to wait for device response in seconds",
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "InventoryRequest"
+            "extends": ""
         },
         "DiscoveryNIOListResult": {
+            "description": "",
+            "id": "DiscoveryNIOListResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -1331,70 +543,1337 @@
                     }
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "DiscoveryNIOListResult"
+            "extends": ""
         },
-        "Date": {
-            "properties": {
-                "hours": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "year": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "seconds": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "month": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "timezoneOffset": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "day": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "time": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "minutes": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "date": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
+        "DiscoveryNIO": {
             "description": "",
+            "id": "DiscoveryNIO",
             "extends": "",
-            "id": "Date"
-        },
-        "TaskIdResponse": {
             "properties": {
-                "taskId": {
-                    "$ref": "TaskId"
+                "numDevices": {
+                    "type": "integer",
+                    "description": "Number of devices discovered in a discovery",
+                    "format": "int32"
                 },
-                "url": {
+                "globalCredentialIdList": {
+                    "type": "array",
+                    "description": "To get the list of global credential of the discovery",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "snmpPrivPassphrase": {
+                    "type": "string"
+                },
+                "userNameList": {
+                    "type": "string",
+                    "description": "Username of the devices to be discovered"
+                },
+                "snmpRoCommunity": {
+                    "type": "string",
+                    "description": "Snmp RO community of the devices to be discovered"
+                },
+                "discoveryCondition": {
+                    "type": "string",
+                    "description": "To indicate the discovery status. Available options: Complete or In Progress"
+                },
+                "parentDiscoveryId": {
+                    "type": "string",
+                    "description": "Parent Discovery Id from which the discovery initiated"
+                },
+                "discoveryType": {
+                    "type": "string",
+                    "description": "Available types are: single, auto cdp discovery, range, multi range"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the discovery"
+                },
+                "retryCount": {
+                    "type": "integer",
+                    "description": "Number of times to try establishing connection to device",
+                    "format": "int32"
+                },
+                "snmpAuthProtocol": {
+                    "type": "string"
+                },
+                "isAutoCdp": {
+                    "type": "boolean",
+                    "description": "Flag to mention if CDP discovery or not"
+                },
+                "timeOut": {
+                    "type": "integer",
+                    "description": "Time to wait for device response.",
+                    "format": "int32"
+                },
+                "ipFilterList": {
+                    "type": "string",
+                    "description": "IP addresses of the devices to be filtered"
+                },
+                "ipAddressList": {
+                    "type": "string",
+                    "description": "Ip address of the device to be discovered"
+                },
+                "attributeInfo": {
+                    "$ref": "object"
+                },
+                "snmpPrivProtocol": {
+                    "type": "string"
+                },
+                "protocolOrder": {
+                    "type": "string",
+                    "description": "Order of protocol in which device connection establishment to be tried"
+                },
+                "discoveryStatus": {
+                    "type": "string",
+                    "description": "Available options are: active, inactive, edit"
+                },
+                "enablePasswordList": {
+                    "type": "string",
+                    "description": "Enable Password of the devices to be discovered"
+                },
+                "cdpLevel": {
+                    "type": "integer",
+                    "description": "CDP level to which neighbor devices to be discovered",
+                    "format": "int32"
+                },
+                "snmpAuthPassphrase": {
+                    "type": "string"
+                },
+                "deviceIds": {
+                    "type": "string",
+                    "description": "Ids of the devices discovered in a discovery"
+                },
+                "snmpRwCommunity": {
+                    "type": "string",
+                    "description": "Snmp RW community of the devices to be discovered"
+                },
+                "snmpUserName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for discovery"
+                },
+                "passwordList": {
+                    "type": "string",
+                    "description": "Password of the devices to be discovered"
+                },
+                "snmpMode": {
                     "type": "string"
                 }
             },
+            "required": [
+                "id",
+                "discoveryStatus"
+            ]
+        },
+        "CountResult": {
             "description": "",
-            "extends": "",
-            "id": "TaskIdResponse"
+            "id": "CountResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "extends": ""
         }
     },
-    "basePath": "/apic-em-inventory-manager-service",
+    "resourcePath": "/discovery",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/discovery"
+    "apis": [
+        {
+            "description": "insertDiscovery",
+            "path": "/discovery",
+            "operations": [
+                {
+                    "method": "POST",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "insertDiscovery",
+                    "type": "TaskIdResult",
+                    "notes": "Initiates discovery with the given parameters",
+                    "summary": "Starts a new discovery process and returns a task-id",
+                    "parameters": [
+                        {
+                            "description": "Discovery request that holds the parameters required for discovery",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "InventoryRequest",
+                            "allowMultiple": false,
+                            "name": "request",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body.",
+                            "code": 201
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The request was accepted for processing, but the processing has not been completed.",
+                            "code": 202
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "deleteAllDiscovery",
+            "path": "/discovery",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "deleteAllDiscovery",
+                    "type": "TaskIdResult",
+                    "notes": "Stops all the discoveries and removes them",
+                    "summary": "Deletes all discovery",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "updateDiscovery",
+            "path": "/discovery",
+            "operations": [
+                {
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "updateDiscovery",
+                    "type": "TaskIdResult",
+                    "notes": "Stops or starts an existing discovery",
+                    "summary": "Updates an existing discovery specified by id - only for starting/stopping the discovery",
+                    "parameters": [
+                        {
+                            "description": "Discovery request that holds the status of discovery as active / inactive",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "DiscoveryNIO",
+                            "allowMultiple": false,
+                            "name": "discovery",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getDiscoveryCount",
+            "path": "/discovery/count",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getDiscoveryCount",
+                    "type": "CountResult",
+                    "notes": "Gets the count of all available discovery jobs",
+                    "summary": "Retrieves the number of discoveries",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getDiscoveryJobsByIp",
+            "path": "/discovery/job",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getDiscoveryJobsByIp",
+                    "type": "DiscoveryJobNIOListResult",
+                    "notes": "Gets the list of discovery jobs for the given IP",
+                    "summary": "Retrieves the list of discovery jobs for the given IP",
+                    "parameters": [
+                        {
+                            "description": "offset",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": false,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "offset",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "limit",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": false,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "limit",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "ipAddress",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "ipAddress",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "DiscoveryJobNIOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getDiscoveryById",
+            "path": "/discovery/{id}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getDiscoveryById",
+                    "type": "DiscoveryNIOResult",
+                    "notes": "Gets discovery by ID",
+                    "summary": "Retrieves the discovery specified by id",
+                    "parameters": [
+                        {
+                            "description": "Discovery ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "DiscoveryNIOResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "deleteDiscoveryById",
+            "path": "/discovery/{id}",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "deleteDiscoveryById",
+                    "type": "TaskIdResult",
+                    "notes": "Stops the discovery for the given ID and removes it",
+                    "summary": "Deletes the discovery specified by id",
+                    "parameters": [
+                        {
+                            "description": "Discovery ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getDiscoveryJobsById",
+            "path": "/discovery/{id}/job",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getDiscoveryJobsById",
+                    "type": "DiscoveryJobNIOListResult",
+                    "notes": "Gets the list of discovery jobs for the given id. The result can optionally be filtered based on IP",
+                    "summary": "Retrieves list of discovery jobs for the specified discovery id",
+                    "parameters": [
+                        {
+                            "description": "Discovery ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        },
+                        {
+                            "description": "offset",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": false,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "offset",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "limit",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": false,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "limit",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "ipAddress",
+                            "defaultValue": "",
+                            "required": false,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "ipAddress",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "DiscoveryJobNIOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getNetworkDeviceByDiscoveryId",
+            "path": "/discovery/{id}/network-device",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getNetworkDeviceByDiscoveryId",
+                    "type": "NetworkDeviceNIOListResult",
+                    "notes": "Gets the network devices discovered for the given discovery",
+                    "summary": "Retrieves the network devices discovered in the discovery specified by id",
+                    "parameters": [
+                        {
+                            "description": "taskId",
+                            "defaultValue": "",
+                            "required": false,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "taskId",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "id",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "NetworkDeviceNIOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getNetworkDeviceCountByDiscoveryId",
+            "path": "/discovery/{id}/network-device/count",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getNetworkDeviceCountByDiscoveryId",
+                    "type": "CountResult",
+                    "notes": "Gets the count of network devices discovered in the given discovery",
+                    "summary": "Retrieves the number of network devices discovered in the discovery specified by id",
+                    "parameters": [
+                        {
+                            "description": "taskId",
+                            "defaultValue": "",
+                            "required": false,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "taskId",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "Discovery ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getNetworkDeviceByDiscoveryIdByRange",
+            "path": "/discovery/{id}/network-device/{startIndex}/{recordsToReturn}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getNetworkDeviceByDiscoveryIdByRange",
+                    "type": "NetworkDeviceNIOListResult",
+                    "notes": "Gets the network devices discovered for the given discovery and for the given range. The maximum number of records that could be retrieved is 500",
+                    "summary": "Retrieves the range of network devices discovered for the given discovery",
+                    "parameters": [
+                        {
+                            "description": "taskId",
+                            "defaultValue": "",
+                            "required": false,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "taskId",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "Discovery ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        },
+                        {
+                            "description": "Start index",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": true,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "startIndex",
+                            "paramType": "path"
+                        },
+                        {
+                            "description": "Number of records to return",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": true,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "recordsToReturn",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "NetworkDeviceNIOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "deleteDiscoveryByRange",
+            "path": "/discovery/{startIndex}/{recordsToDelete}",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "deleteDiscoveryByRange",
+                    "type": "TaskIdResult",
+                    "notes": "Stops discovery for the given range and removes them",
+                    "summary": "Deletes the discovery in the given range",
+                    "parameters": [
+                        {
+                            "description": "Start index",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": true,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "startIndex",
+                            "paramType": "path"
+                        },
+                        {
+                            "description": "Number of records to delete",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": true,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "recordsToDelete",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getDiscoveryByRange",
+            "path": "/discovery/{startIndex}/{recordsToReturn}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getDiscoveryByRange",
+                    "type": "DiscoveryNIOListResult",
+                    "notes": "Gets the discovery for the range specified",
+                    "summary": "Retrieves the discovery in the given range",
+                    "parameters": [
+                        {
+                            "description": "Start index",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": true,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "startIndex",
+                            "paramType": "path"
+                        },
+                        {
+                            "description": "Number of records to return",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": true,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "recordsToReturn",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "DiscoveryNIOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "swaggerVersion": "1.2",
+    "basePath": "/apic-em-inventory-manager-service"
 }

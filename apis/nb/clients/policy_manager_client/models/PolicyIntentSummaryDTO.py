@@ -15,9 +15,6 @@ class PolicyIntentSummaryDTO(object):
         """
         self.swaggerTypes = {
             
-            'operations': 'list[str]',
-            
-            
             'numberOfDevices': 'int',
             
             
@@ -30,25 +27,29 @@ class PolicyIntentSummaryDTO(object):
             'serviceProviderProfileStale': 'bool',
             
             
-            'policyScope': 'str',
+            'bandwidthProfileStale': 'bool',
+            
+            
+            'operations': 'list[str]',
             
             
             'lastUpdateTime': 'int',
             
             
+            'policyScope': 'str',
+            
+            
             'numberOfAssignedApplications': 'int',
             
             
-            'scopeWirelessSegment': 'str',
+            'latestPolicyVersion': 'int',
             
             
-            'latestPolicyVersion': 'int'
+            'scopeWirelessSegment': 'str'
             
         }
 
         self.attributeMap = {
-            
-            'operations': 'operations',
             
             'numberOfDevices': 'numberOfDevices',
             
@@ -58,22 +59,22 @@ class PolicyIntentSummaryDTO(object):
             
             'serviceProviderProfileStale': 'serviceProviderProfileStale',
             
-            'policyScope': 'policyScope',
+            'bandwidthProfileStale': 'bandwidthProfileStale',
+            
+            'operations': 'operations',
             
             'lastUpdateTime': 'lastUpdateTime',
             
+            'policyScope': 'policyScope',
+            
             'numberOfAssignedApplications': 'numberOfAssignedApplications',
             
-            'scopeWirelessSegment': 'scopeWirelessSegment',
+            'latestPolicyVersion': 'latestPolicyVersion',
             
-            'latestPolicyVersion': 'latestPolicyVersion'
+            'scopeWirelessSegment': 'scopeWirelessSegment'
             
         }       
 
-        
-        #The operations in that version. (policy-add, policy-update, policy-delete)
-        
-        self.operations = None # list[str]
         
         #The number of devices in the policy scope
         
@@ -91,23 +92,31 @@ class PolicyIntentSummaryDTO(object):
         
         self.serviceProviderProfileStale = None # bool
         
-        #Scope of the policy
+        #Flag to indicate if Bandwidth Profile associated with the policy is stale
         
-        self.policyScope = None # str
+        self.bandwidthProfileStale = None # bool
+        
+        #The operations in that version. (policy-add, policy-update, policy-delete)
+        
+        self.operations = None # list[str]
         
         #Last update time of the policy
         
         self.lastUpdateTime = None # int
         
+        #Scope of the policy
+        
+        self.policyScope = None # str
+        
         #The number of assigned applications in the policy
         
         self.numberOfAssignedApplications = None # int
         
-        #Wireless segment of the policy
-        
-        self.scopeWirelessSegment = None # str
-        
         #Latest version of the policy
         
         self.latestPolicyVersion = None # int
+        
+        #Wireless segment of the policy
+        
+        self.scopeWirelessSegment = None # str
         

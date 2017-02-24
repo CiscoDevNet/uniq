@@ -18,34 +18,34 @@ class ServiceProviderProfileDTO(object):
             'classModels': 'list[ClassModelDTO]',
             
             
+            'description': 'str',
+            
+            
             'name': 'str',
             
             
             'interfaces': 'list[ServiceProviderProfileInterfaceDTO]',
             
             
-            'description': 'str',
+            'currentVersion': 'int',
             
             
             'vendor': 'str',
             
             
-            'currentVersion': 'int',
+            'modelType': 'str',
             
             
             'defaultModel': 'bool',
             
             
-            'modelType': 'str',
-            
-            
             'id': 'str',
             
             
-            'lastUpdateTime': 'int',
+            'createTime': 'int',
             
             
-            'createTime': 'int'
+            'lastUpdateTime': 'int'
             
         }
 
@@ -53,25 +53,25 @@ class ServiceProviderProfileDTO(object):
             
             'classModels': 'classModels',
             
+            'description': 'description',
+            
             'name': 'name',
             
             'interfaces': 'interfaces',
             
-            'description': 'description',
+            'currentVersion': 'currentVersion',
             
             'vendor': 'vendor',
             
-            'currentVersion': 'currentVersion',
+            'modelType': 'modelType',
             
             'defaultModel': 'defaultModel',
             
-            'modelType': 'modelType',
-            
             'id': 'id',
             
-            'lastUpdateTime': 'lastUpdateTime',
+            'createTime': 'createTime',
             
-            'createTime': 'createTime'
+            'lastUpdateTime': 'lastUpdateTime'
             
         }       
 
@@ -79,6 +79,9 @@ class ServiceProviderProfileDTO(object):
         #classModels list size should match the modelType
         
         self.classModels = None # list[ClassModelDTO]
+        
+        
+        self.description = None # str
         
         #unique name for the ServiceProviderProfile
         
@@ -89,31 +92,28 @@ class ServiceProviderProfileDTO(object):
         self.interfaces = None # list[ServiceProviderProfileInterfaceDTO]
         
         
-        self.description = None # str
+        self.currentVersion = None # int
         
         
         self.vendor = None # str
-        
-        
-        self.currentVersion = None # int
-        
-        #Read only attribute to indicate whether the ServiceProviderProfile is default(&#39;true&#39;) or custom(&#39;false&#39;)
-        
-        self.defaultModel = None # bool
         
         #Available options are: Three-Class, Four-Class, Five-Class, Six-Class, Eight-Class
         
         self.modelType = None # str
         
+        #Read only attribute to indicate whether the ServiceProviderProfile is default(&#39;true&#39;) or custom(&#39;false&#39;)
+        
+        self.defaultModel = None # bool
+        
         #id
         
         self.id = None # str
         
-        #lastUpdateTime
-        
-        self.lastUpdateTime = None # int
-        
         #createTime
         
         self.createTime = None # int
+        
+        #lastUpdateTime
+        
+        self.lastUpdateTime = None # int
         

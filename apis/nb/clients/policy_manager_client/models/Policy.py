@@ -15,6 +15,12 @@ class Policy(object):
         """
         self.swaggerTypes = {
             
+            'policyScope': 'str',
+            
+            
+            'actionProperty': 'ActionProperty',
+            
+            
             'actions': 'list[str]',
             
             
@@ -24,19 +30,13 @@ class Policy(object):
             'policyOwner': 'str',
             
             
-            'actionProperty': 'ActionProperty',
-            
-            
-            'state': 'str',
-            
-            
-            'policyScope': 'str',
-            
-            
             'resource': 'PolicyResource',
             
             
             'id': 'str',
+            
+            
+            'state': 'str',
             
             
             'instanceUuid': 'str',
@@ -57,21 +57,21 @@ class Policy(object):
 
         self.attributeMap = {
             
+            'policyScope': 'policyScope',
+            
+            'actionProperty': 'actionProperty',
+            
             'actions': 'actions',
             
             'networkUser': 'networkUser',
             
             'policyOwner': 'policyOwner',
             
-            'actionProperty': 'actionProperty',
-            
-            'state': 'state',
-            
-            'policyScope': 'policyScope',
-            
             'resource': 'resource',
             
             'id': 'id',
+            
+            'state': 'state',
             
             'instanceUuid': 'instanceUuid',
             
@@ -86,6 +86,14 @@ class Policy(object):
         }       
 
         
+        #policyScope
+        
+        self.policyScope = None # str
+        
+        #ActionProperty
+        
+        self.actionProperty = None # ActionProperty
+        
         #Action Set
         
         self.actions = None # list[str]
@@ -98,17 +106,6 @@ class Policy(object):
         
         self.policyOwner = None # str
         
-        #ActionProperty
-        
-        self.actionProperty = None # ActionProperty
-        
-        
-        self.state = None # str
-        
-        #policyScope
-        
-        self.policyScope = None # str
-        
         #Resource
         
         self.resource = None # PolicyResource
@@ -116,6 +113,9 @@ class Policy(object):
         #id
         
         self.id = None # str
+        
+        
+        self.state = None # str
         
         #
         

@@ -30,13 +30,13 @@ class CertificateInfo(object):
             'keyType': 'str',
             
             
-            'noAfterDateISO8601': 'str',
-            
-            
             'noAfterDate': 'str',
             
             
             'beginDateISO8601': 'str',
+            
+            
+            'noAfterDateISO8601': 'str',
             
             
             'beginDate': 'str',
@@ -58,11 +58,11 @@ class CertificateInfo(object):
             
             'keyType': 'keyType',
             
-            'noAfterDateISO8601': 'noAfterDateISO8601',
-            
             'noAfterDate': 'noAfterDate',
             
             'beginDateISO8601': 'beginDateISO8601',
+            
+            'noAfterDateISO8601': 'noAfterDateISO8601',
             
             'beginDate': 'beginDate',
             
@@ -87,13 +87,13 @@ class CertificateInfo(object):
         self.keyType = None # str
         
         
-        self.noAfterDateISO8601 = None # str
-        
-        
         self.noAfterDate = None # str
         
         
         self.beginDateISO8601 = None # str
+        
+        
+        self.noAfterDateISO8601 = None # str
         
         
         self.beginDate = None # str

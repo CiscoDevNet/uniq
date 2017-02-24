@@ -1,160 +1,19 @@
 {
-    "produces": [
-        "application/json"
-    ],
-    "resourcePath": "/category",
     "basePath": "/policy-manager-service",
-    "apiVersion": "1.0",
-    "apis": [
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "CategoryListResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "CategoryListResult",
-                    "summary": "Lists all categories",
-                    "nickname": "getAllCategories",
-                    "parameters": [],
-                    "notes": "Get all categories"
-                }
-            ],
-            "description": "getAllCategories",
-            "path": "/category"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "CountResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "CountResult",
-                    "summary": "Return total count of categories",
-                    "nickname": "getCategoryCount",
-                    "parameters": [],
-                    "notes": "Get total count for categories"
-                }
-            ],
-            "description": "getCategoryCount",
-            "path": "/category/count"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "CategoryResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "CategoryResult",
-                    "summary": "Retrieves a category based on their id",
-                    "nickname": "getCategoryById",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "name": "id"
-                        }
-                    ],
-                    "notes": "Get category by id"
-                }
-            ],
-            "description": "getCategoryById",
-            "path": "/category/{id}"
-        }
-    ],
+    "swaggerVersion": "1.2",
     "models": {
-        "CountResult": {
-            "properties": {
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "CountResult",
-            "description": ""
-        },
         "CategoryDTO": {
+            "extends": "",
             "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "id"
-                },
                 "name": {
                     "type": "string",
                     "description": "Category Name"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
                 }
             },
-            "extends": "",
             "required": [
                 "name",
                 "id"
@@ -163,34 +22,283 @@
             "description": ""
         },
         "CategoryResult": {
+            "extends": "",
             "properties": {
-                "response": {
-                    "$ref": "CategoryDTO"
-                },
                 "version": {
                     "type": "string"
+                },
+                "response": {
+                    "$ref": "CategoryDTO"
                 }
             },
-            "extends": "",
             "id": "CategoryResult",
             "description": ""
         },
         "CategoryListResult": {
+            "extends": "",
             "properties": {
+                "version": {
+                    "type": "string"
+                },
                 "response": {
                     "type": "array",
                     "items": {
                         "$ref": "CategoryDTO"
                     }
-                },
-                "version": {
-                    "type": "string"
                 }
             },
-            "extends": "",
             "id": "CategoryListResult",
+            "description": ""
+        },
+        "CountResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "id": "CountResult",
             "description": ""
         }
     },
-    "swaggerVersion": "1.2"
+    "apis": [
+        {
+            "path": "/category",
+            "operations": [
+                {
+                    "type": "CategoryListResult",
+                    "notes": "Get all categories",
+                    "nickname": "getAllCategories",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "CategoryListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Lists all categories",
+                    "parameters": []
+                }
+            ],
+            "description": "getAllCategories"
+        },
+        {
+            "path": "/category/count",
+            "operations": [
+                {
+                    "type": "CountResult",
+                    "notes": "Get total count for categories",
+                    "nickname": "getCategoryCount",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Return total count of categories",
+                    "parameters": []
+                }
+            ],
+            "description": "getCategoryCount"
+        },
+        {
+            "path": "/category/{id}",
+            "operations": [
+                {
+                    "type": "CategoryResult",
+                    "notes": "Get category by id",
+                    "nickname": "getCategoryById",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "CategoryResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Retrieves a category based on their id",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "id",
+                            "defaultValue": "",
+                            "paramType": "path"
+                        }
+                    ]
+                }
+            ],
+            "description": "getCategoryById"
+        }
+    ],
+    "resourcePath": "/category",
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0"
 }

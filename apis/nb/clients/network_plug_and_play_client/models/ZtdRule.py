@@ -15,6 +15,9 @@ class ZtdRule(object):
         """
         self.swaggerTypes = {
             
+            'source': 'str',
+            
+            
             'serialNumber': 'str',
             
             
@@ -28,18 +31,6 @@ class ZtdRule(object):
             
             
             'platformId': 'str',
-            
-            
-            'templateConfigId': 'str',
-            
-            
-            'licenseString': 'str',
-            
-            
-            'apCount': 'str',
-            
-            
-            'isMobilityController': 'str',
             
             
             'pkiEnabled': 'bool',
@@ -69,7 +60,16 @@ class ZtdRule(object):
             'eulaAccepted': 'bool',
             
             
-            'memberDetail': 'list[ZtdMemberDetail]',
+            'templateConfigId': 'str',
+            
+            
+            'licenseString': 'str',
+            
+            
+            'apCount': 'str',
+            
+            
+            'isMobilityController': 'str',
             
             
             'aliases': 'list[str]',
@@ -84,16 +84,19 @@ class ZtdRule(object):
             'tag': 'str',
             
             
-            'connetedToLocationGeoAddr': 'str',
-            
-            
-            'configPreference': 'str',
+            'memberDetail': 'list[ZtdMemberDetail]',
             
             
             'imagePreference': 'str',
             
             
             'connectedToDeviceHostName': 'str',
+            
+            
+            'configPreference': 'str',
+            
+            
+            'connetedToLocationGeoAddr': 'str',
             
             
             'connectedToPortName': 'str',
@@ -105,6 +108,8 @@ class ZtdRule(object):
 
         self.attributeMap = {
             
+            'source': 'source',
+            
             'serialNumber': 'serialNumber',
             
             'id': 'id',
@@ -114,14 +119,6 @@ class ZtdRule(object):
             'imageId': 'imageId',
             
             'platformId': 'platformId',
-            
-            'templateConfigId': 'templateConfigId',
-            
-            'licenseString': 'licenseString',
-            
-            'apCount': 'apCount',
-            
-            'isMobilityController': 'isMobilityController',
             
             'pkiEnabled': 'pkiEnabled',
             
@@ -141,7 +138,13 @@ class ZtdRule(object):
             
             'eulaAccepted': 'eulaAccepted',
             
-            'memberDetail': 'memberDetail',
+            'templateConfigId': 'templateConfigId',
+            
+            'licenseString': 'licenseString',
+            
+            'apCount': 'apCount',
+            
+            'isMobilityController': 'isMobilityController',
             
             'aliases': 'aliases',
             
@@ -151,13 +154,15 @@ class ZtdRule(object):
             
             'tag': 'tag',
             
-            'connetedToLocationGeoAddr': 'connetedToLocationGeoAddr',
-            
-            'configPreference': 'configPreference',
+            'memberDetail': 'memberDetail',
             
             'imagePreference': 'imagePreference',
             
             'connectedToDeviceHostName': 'connectedToDeviceHostName',
+            
+            'configPreference': 'configPreference',
+            
+            'connetedToLocationGeoAddr': 'connetedToLocationGeoAddr',
             
             'connectedToPortName': 'connectedToPortName',
             
@@ -165,6 +170,10 @@ class ZtdRule(object):
             
         }       
 
+        
+        #Source of rule,set to CLOUD if rule matches synced cloud device
+        
+        self.source = None # str
         
         #Serial number
         
@@ -185,22 +194,6 @@ class ZtdRule(object):
         #Platform ID
         
         self.platformId = None # str
-        
-        #Template config ID
-        
-        self.templateConfigId = None # str
-        
-        #License string
-        
-        self.licenseString = None # str
-        
-        #Wireless AP count
-        
-        self.apCount = None # str
-        
-        #Specify if device is a wireless mobility controller
-        
-        self.isMobilityController = None # str
         
         #Configure PKCS#12 trust point during PNP workflow if true
         
@@ -237,8 +230,21 @@ class ZtdRule(object):
         
         self.eulaAccepted = None # bool
         
+        #Template config ID
         
-        self.memberDetail = None # list[ZtdMemberDetail]
+        self.templateConfigId = None # str
+        
+        #License string
+        
+        self.licenseString = None # str
+        
+        #Wireless AP count
+        
+        self.apCount = None # str
+        
+        #Specify if device is a wireless mobility controller
+        
+        self.isMobilityController = None # str
         
         
         self.aliases = None # list[str]
@@ -254,16 +260,19 @@ class ZtdRule(object):
         self.tag = None # str
         
         
-        self.connetedToLocationGeoAddr = None # str
-        
-        
-        self.configPreference = None # str
+        self.memberDetail = None # list[ZtdMemberDetail]
         
         
         self.imagePreference = None # str
         
         
         self.connectedToDeviceHostName = None # str
+        
+        
+        self.configPreference = None # str
+        
+        
+        self.connetedToLocationGeoAddr = None # str
         
         
         self.connectedToPortName = None # str

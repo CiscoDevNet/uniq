@@ -18,6 +18,9 @@ class ZtdDevice(object):
             'serialNumber': 'str',
             
             
+            'source': 'str',
+            
+            
             'aliases': 'list[str]',
             
             
@@ -36,13 +39,19 @@ class ZtdDevice(object):
             'imageId': 'str',
             
             
+            'configId': 'str',
+            
+            
+            'pkiEnabled': 'bool',
+            
+            
             'eulaAccepted': 'bool',
             
             
-            'templateConfigId': 'str',
-            
-            
             'licenseLevel': 'str',
+            
+            
+            'templateConfigId': 'str',
             
             
             'licenseString': 'str',
@@ -54,22 +63,16 @@ class ZtdDevice(object):
             'isMobilityController': 'str',
             
             
-            'sudiRequired': 'bool',
-            
-            
-            'memberUdi': 'str',
-            
-            
             'deviceDiscoveryInfo': 'ZtdDeviceDiscoveryInfo',
             
             
             'macAddress': 'str',
             
             
-            'configId': 'str',
+            'sudiRequired': 'bool',
             
             
-            'pkiEnabled': 'bool',
+            'memberUdi': 'str',
             
             
             'fileDestination': 'str',
@@ -85,9 +88,6 @@ class ZtdDevice(object):
             
             
             'bootstrapId': 'str',
-            
-            
-            'oldNetworkDeviceId': 'str',
             
             
             'hwRevision': 'str',
@@ -162,6 +162,12 @@ class ZtdDevice(object):
             'memberDetail': 'list[ZtdMemberDetail]',
             
             
+            'requestHeader': 'ZtdRequestHeader',
+            
+            
+            'lastStateTransitionTime': 'str',
+            
+            
             'firstContact': 'str',
             
             
@@ -169,9 +175,6 @@ class ZtdDevice(object):
             
             
             'cleanup': 'bool',
-            
-            
-            'lastStateTransitionTime': 'str',
             
             
             'stateDisplay': 'str',
@@ -191,6 +194,8 @@ class ZtdDevice(object):
             
             'serialNumber': 'serialNumber',
             
+            'source': 'source',
+            
             'aliases': 'aliases',
             
             'ipAddress': 'ipAddress',
@@ -203,11 +208,15 @@ class ZtdDevice(object):
             
             'imageId': 'imageId',
             
+            'configId': 'configId',
+            
+            'pkiEnabled': 'pkiEnabled',
+            
             'eulaAccepted': 'eulaAccepted',
             
-            'templateConfigId': 'templateConfigId',
-            
             'licenseLevel': 'licenseLevel',
+            
+            'templateConfigId': 'templateConfigId',
             
             'licenseString': 'licenseString',
             
@@ -215,17 +224,13 @@ class ZtdDevice(object):
             
             'isMobilityController': 'isMobilityController',
             
-            'sudiRequired': 'sudiRequired',
-            
-            'memberUdi': 'memberUdi',
-            
             'deviceDiscoveryInfo': 'deviceDiscoveryInfo',
             
             'macAddress': 'macAddress',
             
-            'configId': 'configId',
+            'sudiRequired': 'sudiRequired',
             
-            'pkiEnabled': 'pkiEnabled',
+            'memberUdi': 'memberUdi',
             
             'fileDestination': 'fileDestination',
             
@@ -236,8 +241,6 @@ class ZtdDevice(object):
             'unclaimedHint': 'unclaimedHint',
             
             'bootstrapId': 'bootstrapId',
-            
-            'oldNetworkDeviceId': 'oldNetworkDeviceId',
             
             'hwRevision': 'hwRevision',
             
@@ -287,13 +290,15 @@ class ZtdDevice(object):
             
             'memberDetail': 'memberDetail',
             
+            'requestHeader': 'requestHeader',
+            
+            'lastStateTransitionTime': 'lastStateTransitionTime',
+            
             'firstContact': 'firstContact',
             
             'lastContact': 'lastContact',
             
             'cleanup': 'cleanup',
-            
-            'lastStateTransitionTime': 'lastStateTransitionTime',
             
             'stateDisplay': 'stateDisplay',
             
@@ -309,6 +314,10 @@ class ZtdDevice(object):
         #Serial number
         
         self.serialNumber = None # str
+        
+        #Source of device,set to CLOUD if device matches synced cloud device
+        
+        self.source = None # str
         
         
         self.aliases = None # list[str]
@@ -332,17 +341,25 @@ class ZtdDevice(object):
         
         self.imageId = None # str
         
+        #Configuration file ID
+        
+        self.configId = None # str
+        
+        #Configure PKCS#12 trust point during PNP workflow if true
+        
+        self.pkiEnabled = None # bool
+        
         #CLI execution EULA accepted or not
         
         self.eulaAccepted = None # bool
         
-        #Template config ID
-        
-        self.templateConfigId = None # str
-        
         #CLI execution license level
         
         self.licenseLevel = None # str
+        
+        #Template config ID
+        
+        self.templateConfigId = None # str
         
         #License information
         
@@ -356,13 +373,6 @@ class ZtdDevice(object):
         
         self.isMobilityController = None # str
         
-        
-        self.sudiRequired = None # bool
-        
-        #Unique device ID of redundant/stack switches
-        
-        self.memberUdi = None # str
-        
         #Device discovery info
         
         self.deviceDiscoveryInfo = None # ZtdDeviceDiscoveryInfo
@@ -370,13 +380,12 @@ class ZtdDevice(object):
         
         self.macAddress = None # str
         
-        #Configuration file ID
         
-        self.configId = None # str
+        self.sudiRequired = None # bool
         
-        #Configure PKCS#12 trust point during PNP workflow if true
+        #Unique device ID of redundant/stack switches
         
-        self.pkiEnabled = None # bool
+        self.memberUdi = None # str
         
         #Location on device to which image/config files will be copied
         
@@ -397,10 +406,6 @@ class ZtdDevice(object):
         #Bootstrap file ID
         
         self.bootstrapId = None # str
-        
-        #Inventory device of which this device is the replacement
-        
-        self.oldNetworkDeviceId = None # str
         
         #HW revision
         
@@ -494,6 +499,13 @@ class ZtdDevice(object):
         
         self.memberDetail = None # list[ZtdMemberDetail]
         
+        
+        self.requestHeader = None # ZtdRequestHeader
+        
+        #Last state transition time of device
+        
+        self.lastStateTransitionTime = None # str
+        
         #First contact time of device
         
         self.firstContact = None # str
@@ -504,10 +516,6 @@ class ZtdDevice(object):
         
         
         self.cleanup = None # bool
-        
-        #Last state transition time of device
-        
-        self.lastStateTransitionTime = None # str
         
         
         self.stateDisplay = None # str

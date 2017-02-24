@@ -1,516 +1,61 @@
 {
-    "produces": [
-        "application/json"
-    ],
-    "consumes": [
-        "application/json"
-    ],
-    "resourcePath": "/service-provider-profile",
     "basePath": "/policy-manager-service",
-    "apiVersion": "1.0",
-    "apis": [
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "ServiceProviderProfileListResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "ServiceProviderProfileListResult",
-                    "summary": "Retrieves ServiceProviderProfiles based on a given filter",
-                    "nickname": "getServiceProviderProfilesByFilters",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "Retrieve ServiceProviderProfile for a given name",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "name"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve Default('true') or Custom('false') ServiceProviderProfiles",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "defaultModel"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve ServiceProviderProfiles which have stale interfaces - only valid value is 'true'",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "interfaces.stale"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve ServiceProviderProfiles which have stale interfaces within the policyScope",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "interfaces.policyScope"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Starting index of the resources (1 based)",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "offset"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Number of resources to return",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "limit"
-                        }
-                    ],
-                    "notes": "Retrieves ServiceProviderProfiles based on a given filter"
-                }
-            ],
-            "description": "getServiceProviderProfilesByFilters",
-            "path": "/service-provider-profile"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "PUT",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Update ServiceProviderProfiles(s)",
-                    "nickname": "update",
-                    "parameters": [
-                        {
-                            "paramType": "body",
-                            "type": "array",
-                            "description": "ServiceProviderProfile Object(s)",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "items": {
-                                "$ref": "ServiceProviderProfileDTO"
-                            },
-                            "name": "serviceProviderProfileDTOs"
-                        }
-                    ],
-                    "notes": "Update ServiceProviderProfiles(s)"
-                }
-            ],
-            "description": "update",
-            "path": "/service-provider-profile"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Create ServiceProviderProfiles(s)",
-                    "nickname": "add",
-                    "parameters": [
-                        {
-                            "paramType": "body",
-                            "type": "array",
-                            "description": "ServiceProviderProfile Object(s)",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "items": {
-                                "$ref": "ServiceProviderProfileDTO"
-                            },
-                            "name": "serviceProviderProfileDTOs"
-                        }
-                    ],
-                    "notes": "Create ServiceProviderProfiles(s)"
-                }
-            ],
-            "description": "add",
-            "path": "/service-provider-profile"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "CountResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "CountResult",
-                    "summary": "Return total count of ServiceProviderProfile",
-                    "nickname": "getCount",
-                    "parameters": [],
-                    "notes": "Get total count of ServiceProviderProfiles"
-                }
-            ],
-            "description": "getCount",
-            "path": "/service-provider-profile/count"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "ServiceProviderProfileResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "ServiceProviderProfileResult",
-                    "summary": "Retrieves a ServiceProviderProfile based on its id",
-                    "nickname": "getById",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "name": "id"
-                        }
-                    ],
-                    "notes": "Get a ServiceProviderProfile by id"
-                }
-            ],
-            "description": "getById",
-            "path": "/service-provider-profile/{id}"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Deletes a ServiceProviderProfile by its id",
-                    "nickname": "delete",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "name": "id"
-                        }
-                    ],
-                    "notes": "Delete ServiceProviderProfile by id"
-                }
-            ],
-            "description": "delete",
-            "path": "/service-provider-profile/{id}"
-        }
-    ],
+    "swaggerVersion": "1.2",
     "models": {
-        "ServiceProviderProfileInterfaceDTO": {
+        "ServiceProviderProfileDTO": {
+            "extends": "",
             "properties": {
                 "createTime": {
-                    "format": "int64",
                     "type": "integer",
-                    "description": "createTime"
+                    "description": "createTime",
+                    "format": "int64"
                 },
-                "interfaceName": {
-                    "type": "string"
-                },
-                "serviceProviderProfileVersion": {
-                    "format": "int64",
-                    "type": "integer"
-                },
-                "deviceName": {
-                    "type": "string"
-                },
-                "lastUpdateTime": {
-                    "format": "int64",
+                "currentVersion": {
                     "type": "integer",
-                    "description": "lastUpdateTime"
-                },
-                "deviceId": {
-                    "type": "string"
-                },
-                "stale": {
-                    "type": "boolean",
-                    "description": "Indicates whether the ServiceProviderProfile has been updated since the last time this interface was provisioned"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "id"
-                },
-                "policyScope": {
-                    "type": "string"
-                },
-                "interfaceId": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "required": [
-                "id"
-            ],
-            "id": "ServiceProviderProfileInterfaceDTO",
-            "description": ""
-        },
-        "ClassModelDTO": {
-            "properties": {
-                "admittedTrafficClasses": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array",
-                    "description": "Valid values are broadcast-video, bulk-data, multimedia-conferencing, multimedia-streaming, network-control, ops-admin-mgmt, real-time-interactive, signaling, transactional-data, voip-telephony, best-effort, scavenger"
-                },
-                "bandwidthPercentage": {
-                    "format": "int32",
-                    "type": "integer",
-                    "description": "Valid values are from 1 to 100 inclusive"
-                },
-                "priority": {
-                    "type": "boolean",
-                    "description": "1 and Only 1 classModel in a given ServiceProviderProfile should have priority value as 'true'"
-                },
-                "dscp": {
-                    "type": "string",
-                    "description": "Valid values are from 0 to 63 inclusive"
+                    "format": "int64"
                 },
                 "name": {
                     "type": "string",
-                    "description": ""
-                }
-            },
-            "extends": "",
-            "required": [
-                "name",
-                "dscp",
-                "admittedTrafficClasses",
-                "bandwidthPercentage"
-            ],
-            "id": "ClassModelDTO",
-            "description": ""
-        },
-        "TaskIdResult": {
-            "properties": {
-                "response": {
-                    "$ref": "TaskIdResponse"
+                    "description": "unique name for the ServiceProviderProfile"
                 },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "TaskIdResult",
-            "description": ""
-        },
-        "ServiceProviderProfileListResult": {
-            "properties": {
-                "response": {
+                "interfaces": {
                     "type": "array",
                     "items": {
-                        "$ref": "ServiceProviderProfileDTO"
-                    }
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "ServiceProviderProfileListResult",
-            "description": ""
-        },
-        "ServiceProviderProfileDTO": {
-            "properties": {
-                "currentVersion": {
-                    "format": "int64",
-                    "type": "integer"
+                        "$ref": "ServiceProviderProfileInterfaceDTO"
+                    },
+                    "description": "read only details of interfaces on which the ServiceProviderProfile has been provisioned"
                 },
                 "id": {
                     "type": "string",
                     "description": "id"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "vendor": {
-                    "type": "string"
-                },
-                "classModels": {
-                    "items": {
-                        "$ref": "ClassModelDTO"
-                    },
-                    "type": "array",
-                    "description": "classModels list size should match the modelType"
-                },
-                "createTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "createTime"
-                },
-                "interfaces": {
-                    "items": {
-                        "$ref": "ServiceProviderProfileInterfaceDTO"
-                    },
-                    "type": "array",
-                    "description": "read only details of interfaces on which the ServiceProviderProfile has been provisioned"
-                },
-                "modelType": {
-                    "type": "string",
-                    "description": "Available options are: Three-Class, Four-Class, Five-Class, Six-Class, Eight-Class"
                 },
                 "defaultModel": {
                     "type": "boolean",
                     "description": "Read only attribute to indicate whether the ServiceProviderProfile is default('true') or custom('false')"
                 },
-                "lastUpdateTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "lastUpdateTime"
+                "description": {
+                    "type": "string"
                 },
-                "name": {
+                "modelType": {
                     "type": "string",
-                    "description": "unique name for the ServiceProviderProfile"
+                    "description": "Available options are: Three-Class, Four-Class, Five-Class, Six-Class, Eight-Class"
+                },
+                "lastUpdateTime": {
+                    "type": "integer",
+                    "description": "lastUpdateTime",
+                    "format": "int64"
+                },
+                "vendor": {
+                    "type": "string"
+                },
+                "classModels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ClassModelDTO"
+                    },
+                    "description": "classModels list size should match the modelType"
                 }
             },
-            "extends": "",
             "required": [
                 "classModels",
                 "name",
@@ -520,52 +65,727 @@
             "id": "ServiceProviderProfileDTO",
             "description": ""
         },
-        "CountResult": {
+        "TaskIdResult": {
+            "extends": "",
             "properties": {
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "version": {
                     "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
                 }
             },
+            "id": "TaskIdResult",
+            "description": ""
+        },
+        "ServiceProviderProfileInterfaceDTO": {
             "extends": "",
+            "properties": {
+                "createTime": {
+                    "type": "integer",
+                    "description": "createTime",
+                    "format": "int64"
+                },
+                "lastUpdateTime": {
+                    "type": "integer",
+                    "description": "lastUpdateTime",
+                    "format": "int64"
+                },
+                "policyScope": {
+                    "type": "string"
+                },
+                "interfaceId": {
+                    "type": "string"
+                },
+                "stale": {
+                    "type": "boolean",
+                    "description": "Indicates whether the ServiceProviderProfile has been updated since the last time this interface was provisioned"
+                },
+                "deviceId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "deviceName": {
+                    "type": "string"
+                },
+                "interfaceName": {
+                    "type": "string"
+                },
+                "serviceProviderProfileVersion": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "id": "ServiceProviderProfileInterfaceDTO",
+            "description": ""
+        },
+        "CountResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
             "id": "CountResult",
             "description": ""
         },
-        "ServiceProviderProfileResult": {
-            "properties": {
-                "response": {
-                    "$ref": "ServiceProviderProfileDTO"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "ServiceProviderProfileResult",
-            "description": ""
-        },
         "TaskId": {
-            "properties": {},
             "extends": "",
+            "properties": {},
             "id": "TaskId",
             "description": ""
         },
         "TaskIdResponse": {
+            "extends": "",
             "properties": {
-                "url": {
-                    "type": "string"
-                },
                 "taskId": {
                     "$ref": "TaskId"
+                },
+                "url": {
+                    "type": "string"
                 }
             },
-            "extends": "",
             "id": "TaskIdResponse",
+            "description": ""
+        },
+        "ClassModelDTO": {
+            "extends": "",
+            "properties": {
+                "priority": {
+                    "type": "boolean",
+                    "description": "1 and Only 1 classModel in a given ServiceProviderProfile should have priority value as 'true'"
+                },
+                "name": {
+                    "type": "string",
+                    "description": ""
+                },
+                "admittedTrafficClasses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Valid values are broadcast-video, bulk-data, multimedia-conferencing, multimedia-streaming, network-control, ops-admin-mgmt, real-time-interactive, signaling, transactional-data, voip-telephony, best-effort, scavenger"
+                },
+                "dscp": {
+                    "type": "string",
+                    "description": "Valid values are from 0 to 63 inclusive"
+                },
+                "bandwidthPercentage": {
+                    "type": "integer",
+                    "description": "Valid values are from 1 to 100 inclusive",
+                    "format": "int32"
+                }
+            },
+            "required": [
+                "name",
+                "dscp",
+                "bandwidthPercentage",
+                "admittedTrafficClasses"
+            ],
+            "id": "ClassModelDTO",
+            "description": ""
+        },
+        "ServiceProviderProfileResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "ServiceProviderProfileDTO"
+                }
+            },
+            "id": "ServiceProviderProfileResult",
+            "description": ""
+        },
+        "ServiceProviderProfileListResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ServiceProviderProfileDTO"
+                    }
+                }
+            },
+            "id": "ServiceProviderProfileListResult",
             "description": ""
         }
     },
-    "swaggerVersion": "1.2"
+    "consumes": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/service-provider-profile",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Create ServiceProviderProfiles(s)",
+                    "nickname": "add",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body.",
+                            "code": 201
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The request was accepted for processing, but the processing has not been completed.",
+                            "code": 202
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "POST",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Create ServiceProviderProfiles(s)",
+                    "parameters": [
+                        {
+                            "type": "array",
+                            "name": "serviceProviderProfileDTOs",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "ServiceProviderProfile Object(s)",
+                            "items": {
+                                "$ref": "ServiceProviderProfileDTO"
+                            },
+                            "defaultValue": "",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+            ],
+            "description": "add"
+        },
+        {
+            "path": "/service-provider-profile",
+            "operations": [
+                {
+                    "type": "ServiceProviderProfileListResult",
+                    "notes": "Retrieves ServiceProviderProfiles based on a given filter",
+                    "nickname": "getServiceProviderProfilesByFilters",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "ServiceProviderProfileListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Retrieves ServiceProviderProfiles based on a given filter",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "name",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve ServiceProviderProfile for a given name",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "defaultModel",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve Default('true') or Custom('false') ServiceProviderProfiles",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "interfaces.stale",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve ServiceProviderProfiles which have stale interfaces - only valid value is 'true'",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "interfaces.policyScope",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve ServiceProviderProfiles which have stale interfaces within the policyScope",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "offset",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Starting index of the resources (1 based)",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "limit",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Number of resources to return",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+            ],
+            "description": "getServiceProviderProfilesByFilters"
+        },
+        {
+            "path": "/service-provider-profile",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Update ServiceProviderProfiles(s)",
+                    "nickname": "update",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "PUT",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Update ServiceProviderProfiles(s)",
+                    "parameters": [
+                        {
+                            "type": "array",
+                            "name": "serviceProviderProfileDTOs",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "ServiceProviderProfile Object(s)",
+                            "items": {
+                                "$ref": "ServiceProviderProfileDTO"
+                            },
+                            "defaultValue": "",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+            ],
+            "description": "update"
+        },
+        {
+            "path": "/service-provider-profile/count",
+            "operations": [
+                {
+                    "type": "CountResult",
+                    "notes": "Get total count of ServiceProviderProfiles",
+                    "nickname": "getCount",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Return total count of ServiceProviderProfile",
+                    "parameters": []
+                }
+            ],
+            "description": "getCount"
+        },
+        {
+            "path": "/service-provider-profile/{id}",
+            "operations": [
+                {
+                    "type": "ServiceProviderProfileResult",
+                    "notes": "Get a ServiceProviderProfile by id",
+                    "nickname": "getById",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "ServiceProviderProfileResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Retrieves a ServiceProviderProfile based on its id",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "id",
+                            "defaultValue": "",
+                            "paramType": "path"
+                        }
+                    ]
+                }
+            ],
+            "description": "getById"
+        },
+        {
+            "path": "/service-provider-profile/{id}",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Delete ServiceProviderProfile by id",
+                    "nickname": "delete",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Deletes a ServiceProviderProfile by its id",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "id",
+                            "defaultValue": "",
+                            "paramType": "path"
+                        }
+                    ]
+                }
+            ],
+            "description": "delete"
+        }
+    ],
+    "resourcePath": "/service-provider-profile",
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0"
 }

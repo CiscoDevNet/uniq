@@ -1,390 +1,71 @@
 {
-    "consumes": [
-        "application/json"
-    ],
-    "apis": [
-        {
-            "description": "getTags",
-            "operations": [
-                {
-                    "nickname": "getTags",
-                    "notes": "Gets all the tags if no filters are provided. Gets all the tags that are associated with resources of {resourceType} if resourceType filter is provided. Gets all the tags that are associated with a resource with id {resourceId} and of resource type {resourceType} when resourceId and resourceType filters are provided.",
-                    "summary": "Get the tags by filters",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TagDtoListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TagDtoListResult",
-                    "parameters": [
-                        {
-                            "name": "resourceType",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "Type of resource (network-device)",
-                            "required": false,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "resourceId",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "Resource ID",
-                            "required": false,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag"
-        },
-        {
-            "description": "addTag",
-            "operations": [
-                {
-                    "nickname": "addTag",
-                    "notes": "Adds a new tag to the controller. The {tag} field should contain the value of the tag.",
-                    "summary": "Add a new tag",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This Request is Accepted",
-                            "code": 202
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "tagDto",
-                            "allowMultiple": false,
-                            "paramType": "body",
-                            "type": "TagDto",
-                            "description": "TagDto with the tag",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag"
-        },
-        {
-            "description": "updateTag",
-            "operations": [
-                {
-                    "nickname": "updateTag",
-                    "notes": "Updates the tag identified by {id} to a new value. The {id} field should be id of the old tag. The {tag} field should contain the new value of the tag.",
-                    "summary": "Update tag to a new value",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "PUT",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "tagDto",
-                            "allowMultiple": false,
-                            "paramType": "body",
-                            "type": "TagDto",
-                            "description": "TagDto with the new tag",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag"
-        },
-        {
-            "description": "addTagToResource",
-            "operations": [
-                {
-                    "nickname": "addTagToResource",
-                    "notes": "Associates a tag to a resource. The {id} field should be the id of the tag. The {resourceId} should the id of the resource. The {resourceType} should be the type of the resource. Supported resourceTypes are network-device, interface.",
-                    "summary": "Associate a tag to a resource",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This Request is Accepted",
-                            "code": 202
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "tagDto",
-                            "allowMultiple": false,
-                            "paramType": "body",
-                            "type": "TagDto",
-                            "description": "TagDto with tag ID, resource ID and resource type",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag/association"
-        },
-        {
-            "description": "deleteTagFromResource",
-            "operations": [
-                {
-                    "nickname": "deleteTagFromResource",
-                    "notes": "Deletes the association of tag by its id.from resource of id {resourceId} which is of type {resourceType}.  Supported resourceTypes are network-device, interface.",
-                    "summary": "Delete association of tag from a resource",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Tag ID",
-                            "required": true,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "resourceType",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "Type of resource. Supported resourceTypes are network-device, interface.",
-                            "required": true,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "resourceId",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "Resource ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag/association/{id}"
-        },
-        {
-            "description": "getTag",
-            "operations": [
-                {
-                    "nickname": "getTag",
-                    "notes": "Gets the details of the tag by its id.",
-                    "summary": "Retrieves tag by its id",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TagDtoResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TagDtoResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Tag ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag/{id}"
-        },
-        {
-            "description": "deleteTag",
-            "operations": [
-                {
-                    "nickname": "deleteTag",
-                    "notes": "Deletes the tag by its id. The tag cannot be deleted when there is an existing association between the tag and a resource.",
-                    "summary": "Delete tag by its id",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Tag ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag/{id}"
-        }
-    ],
     "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
     "models": {
+        "TaskId": {
+            "description": "",
+            "id": "TaskId",
+            "properties": {},
+            "extends": ""
+        },
+        "TaskIdResponse": {
+            "description": "",
+            "id": "TaskIdResponse",
+            "properties": {
+                "taskId": {
+                    "$ref": "TaskId"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "TagDtoListResult": {
+            "description": "",
+            "id": "TagDtoListResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "TagDto"
+                    }
+                }
+            },
+            "extends": ""
+        },
+        "TagDtoResult": {
+            "description": "",
+            "id": "TagDtoResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TagDto"
+                }
+            },
+            "extends": ""
+        },
+        "TaskIdResult": {
+            "description": "",
+            "id": "TaskIdResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "extends": ""
+        },
         "TagDto": {
-            "required": [
-                "id",
-                "tag"
-            ],
+            "description": "",
+            "id": "TagDto",
+            "extends": "",
             "properties": {
                 "resourceId": {
                     "type": "string",
@@ -403,75 +84,654 @@
                     "description": "Unique identifier for tag"
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "TagDto"
-        },
-        "TaskId": {
-            "properties": {},
-            "description": "",
-            "extends": "",
-            "id": "TaskId"
-        },
-        "TaskIdResult": {
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "$ref": "TaskIdResponse"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TaskIdResult"
-        },
-        "TaskIdResponse": {
-            "properties": {
-                "taskId": {
-                    "$ref": "TaskId"
-                },
-                "url": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TaskIdResponse"
-        },
-        "TagDtoResult": {
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "$ref": "TagDto"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TagDtoResult"
-        },
-        "TagDtoListResult": {
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "TagDto"
-                    }
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TagDtoListResult"
+            "required": [
+                "id",
+                "tag"
+            ]
         }
     },
-    "basePath": "/apic-em-inventory-manager-service",
+    "resourcePath": "/tag",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/tag"
+    "apis": [
+        {
+            "description": "addTag",
+            "path": "/tag",
+            "operations": [
+                {
+                    "method": "POST",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "addTag",
+                    "type": "TaskIdResult",
+                    "notes": "Adds a new tag to the controller. The {tag} field should contain the value of the tag.",
+                    "summary": "Add a new tag",
+                    "parameters": [
+                        {
+                            "description": "TagDto with the tag",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "TagDto",
+                            "allowMultiple": false,
+                            "name": "tagDto",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body.",
+                            "code": 201
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The request was accepted for processing, but the processing has not been completed.",
+                            "code": 202
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getTags",
+            "path": "/tag",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getTags",
+                    "type": "TagDtoListResult",
+                    "notes": "Gets all the tags if no filters are provided. Gets all the tags that are associated with resources of {resourceType} if resourceType filter is provided. Gets all the tags that are associated with a resource with id {resourceId} and of resource type {resourceType} when resourceId and resourceType filters are provided.",
+                    "summary": "Get the tags by filters",
+                    "parameters": [
+                        {
+                            "description": "Type of resource (network-device)",
+                            "defaultValue": "",
+                            "required": false,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "resourceType",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "Resource ID",
+                            "defaultValue": "",
+                            "required": false,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "resourceId",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TagDtoListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "updateTag",
+            "path": "/tag",
+            "operations": [
+                {
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "updateTag",
+                    "type": "TaskIdResult",
+                    "notes": "Updates the tag identified by {id} to a new value. The {id} field should be id of the old tag. The {tag} field should contain the new value of the tag.",
+                    "summary": "Update tag to a new value",
+                    "parameters": [
+                        {
+                            "description": "TagDto with the new tag",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "TagDto",
+                            "allowMultiple": false,
+                            "name": "tagDto",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "addTagToResource",
+            "path": "/tag/association",
+            "operations": [
+                {
+                    "method": "POST",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "addTagToResource",
+                    "type": "TaskIdResult",
+                    "notes": "Associates a tag to a resource. The {id} field should be the id of the tag. The {resourceId} should the id of the resource. The {resourceType} should be the type of the resource. Supported resourceTypes are network-device, interface.",
+                    "summary": "Associate a tag to a resource",
+                    "parameters": [
+                        {
+                            "description": "TagDto with tag ID, resource ID and resource type",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "TagDto",
+                            "allowMultiple": false,
+                            "name": "tagDto",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body.",
+                            "code": 201
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The request was accepted for processing, but the processing has not been completed.",
+                            "code": 202
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "deleteTagFromResource",
+            "path": "/tag/association/{id}",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "deleteTagFromResource",
+                    "type": "TaskIdResult",
+                    "notes": "Deletes the association of tag by its id.from resource of id {resourceId} which is of type {resourceType}.  Supported resourceTypes are network-device, interface.",
+                    "summary": "Delete association of tag from a resource",
+                    "parameters": [
+                        {
+                            "description": "Tag ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        },
+                        {
+                            "description": "Type of resource. Supported resourceTypes are network-device, interface.",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "resourceType",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "Resource ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "resourceId",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "deleteTag",
+            "path": "/tag/{id}",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "deleteTag",
+                    "type": "TaskIdResult",
+                    "notes": "Deletes the tag by its id. The tag cannot be deleted when there is an existing association between the tag and a resource.",
+                    "summary": "Delete tag by its id",
+                    "parameters": [
+                        {
+                            "description": "Tag ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getTag",
+            "path": "/tag/{id}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getTag",
+                    "type": "TagDtoResult",
+                    "notes": "Gets the details of the tag by its id.",
+                    "summary": "Retrieves tag by its id",
+                    "parameters": [
+                        {
+                            "description": "Tag ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TagDtoResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "swaggerVersion": "1.2",
+    "consumes": [
+        "application/json"
+    ],
+    "basePath": "/apic-em-inventory-manager-service"
 }

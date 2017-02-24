@@ -1,146 +1,44 @@
 {
-    "produces": [
-        "application/json"
-    ],
-    "consumes": [
-        "application/json"
-    ],
-    "resourcePath": "/policy/interrupt",
     "basePath": "/policy-manager-service",
-    "apiVersion": "1.0",
-    "apis": [
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "PUT",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Update policy interrupt on a scope. Triggers 'abort' and 'abort, restore to original' actions",
-                    "nickname": "updatePolicyInterrupt",
-                    "parameters": [
-                        {
-                            "type": "PolicyInterruptInput",
-                            "description": "policyInterruptInput",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "body",
-                            "name": "policyInterruptInput"
-                        }
-                    ],
-                    "notes": "Sends an interrupt for policy scope to ABORT (Abort all tasks for the policy scope where possible) or ABORT-RESTORE-TO-ORIGINAL (Abort all tasks for the policy scope and restore all devices in policy scope to original state)"
-                }
-            ],
-            "description": "updatePolicyInterrupt",
-            "path": "/policy/interrupt/"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "PolicyInterruptDTOResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "PolicyInterruptDTOResult",
-                    "summary": "Retrieves the latest interrupt on a policy scope",
-                    "nickname": "getPolicyInterruptByScope",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "policyScope",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "policyScope"
-                        },
-                        {
-                            "type": "string",
-                            "description": "scopeWirelessSegment",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "scopeWirelessSegment"
-                        }
-                    ],
-                    "notes": "Get the latest policy interrupt by policy scope"
-                }
-            ],
-            "description": "getPolicyInterruptByScope",
-            "path": "/policy/interrupt/"
-        }
-    ],
+    "swaggerVersion": "1.2",
     "models": {
-        "PolicyInterruptDTO": {
+        "TaskIdResponse": {
+            "extends": "",
             "properties": {
-                "action": {
-                    "type": "string",
-                    "description": "One of {ABORT, ABORT-RESTORE-TO-ORIGINAL}"
+                "taskId": {
+                    "$ref": "TaskId"
                 },
-                "policyScope": {
-                    "type": "string",
-                    "description": "Policy scope"
+                "url": {
+                    "type": "string"
+                }
+            },
+            "id": "TaskIdResponse",
+            "description": ""
+        },
+        "PolicyInterruptDTO": {
+            "extends": "",
+            "properties": {
+                "createTime": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "scopeWirelessSegment": {
                     "type": "string",
                     "description": "Scope wireless segment"
                 },
-                "createTime": {
-                    "format": "int64",
-                    "type": "integer"
+                "action": {
+                    "type": "string",
+                    "description": "One of {ABORT, ABORT-RESTORE-TO-ORIGINAL}"
                 },
                 "lastUpdateTime": {
-                    "format": "int64",
-                    "type": "integer"
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "policyScope": {
+                    "type": "string",
+                    "description": "Policy scope"
                 }
             },
-            "extends": "",
             "required": [
                 "action",
                 "policyScope"
@@ -148,33 +46,8 @@
             "id": "PolicyInterruptDTO",
             "description": ""
         },
-        "PolicyInterruptDTOResult": {
-            "properties": {
-                "response": {
-                    "$ref": "PolicyInterruptDTO"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "PolicyInterruptDTOResult",
-            "description": ""
-        },
-        "TaskIdResult": {
-            "properties": {
-                "response": {
-                    "$ref": "TaskIdResponse"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "TaskIdResult",
-            "description": ""
-        },
         "PolicyInterruptInput": {
+            "extends": "",
             "properties": {
                 "action": {
                     "type": "string",
@@ -189,7 +62,6 @@
                     "description": "Policy scope"
                 }
             },
-            "extends": "",
             "required": [
                 "action",
                 "policyScope"
@@ -197,25 +69,225 @@
             "id": "PolicyInterruptInput",
             "description": ""
         },
-        "TaskId": {
-            "properties": {},
+        "PolicyInterruptDTOResult": {
             "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "PolicyInterruptDTO"
+                }
+            },
+            "id": "PolicyInterruptDTOResult",
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "properties": {},
             "id": "TaskId",
             "description": ""
         },
-        "TaskIdResponse": {
+        "TaskIdResult": {
+            "extends": "",
             "properties": {
-                "url": {
+                "version": {
                     "type": "string"
                 },
-                "taskId": {
-                    "$ref": "TaskId"
+                "response": {
+                    "$ref": "TaskIdResponse"
                 }
             },
-            "extends": "",
-            "id": "TaskIdResponse",
+            "id": "TaskIdResult",
             "description": ""
         }
     },
-    "swaggerVersion": "1.2"
+    "consumes": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/policy/interrupt/",
+            "operations": [
+                {
+                    "type": "PolicyInterruptDTOResult",
+                    "notes": "Get the latest policy interrupt by policy scope",
+                    "nickname": "getPolicyInterruptByScope",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "PolicyInterruptDTOResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Retrieves the latest interrupt on a policy scope",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "policyScope",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "policyScope",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "scopeWirelessSegment",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "scopeWirelessSegment",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+            ],
+            "description": "getPolicyInterruptByScope"
+        },
+        {
+            "path": "/policy/interrupt/",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Sends an interrupt for policy scope to ABORT (Abort all tasks for the policy scope where possible) or ABORT-RESTORE-TO-ORIGINAL (Abort all tasks for the policy scope and restore all devices in policy scope to original state)",
+                    "nickname": "updatePolicyInterrupt",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "PUT",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Update policy interrupt on a scope. Triggers 'abort' and 'abort, restore to original' actions",
+                    "parameters": [
+                        {
+                            "type": "PolicyInterruptInput",
+                            "name": "policyInterruptInput",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "policyInterruptInput",
+                            "defaultValue": "",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+            ],
+            "description": "updatePolicyInterrupt"
+        }
+    ],
+    "resourcePath": "/policy/interrupt",
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0"
 }

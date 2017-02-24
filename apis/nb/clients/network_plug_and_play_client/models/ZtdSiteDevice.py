@@ -18,13 +18,13 @@ class ZtdSiteDevice(object):
             'authStatus': 'DeviceAuthState',
             
             
-            'lastContact': 'str',
-            
-            
             'deviceId': 'str',
             
             
             'lastStateTransitionTime': 'str',
+            
+            
+            'lastContact': 'str',
             
             
             'stateDisplay': 'str',
@@ -34,6 +34,9 @@ class ZtdSiteDevice(object):
             
             
             'serialNumber': 'str',
+            
+            
+            'source': 'str',
             
             
             'tag': 'str',
@@ -54,16 +57,22 @@ class ZtdSiteDevice(object):
             'imageId': 'str',
             
             
-            'eulaAccepted': 'bool',
+            'configId': 'str',
+            
+            
+            'pkiEnabled': 'bool',
             
             
             'memberCount': 'int',
             
             
-            'templateConfigId': 'str',
+            'eulaAccepted': 'bool',
             
             
             'licenseLevel': 'str',
+            
+            
+            'templateConfigId': 'str',
             
             
             'bootStrapId': 'str',
@@ -78,16 +87,10 @@ class ZtdSiteDevice(object):
             'isMobilityController': 'str',
             
             
-            'sudiRequired': 'bool',
-            
-            
             'deviceDiscoveryInfo': 'ZtdDeviceDiscoveryInfo',
             
             
-            'configId': 'str',
-            
-            
-            'pkiEnabled': 'bool',
+            'sudiRequired': 'bool',
             
             
             'memberDetail': 'list[ZtdMemberDetail]',
@@ -99,22 +102,22 @@ class ZtdSiteDevice(object):
             'connectedToPortId': 'str',
             
             
-            'imagePreference': 'str',
-            
-            
             'connectedToDeviceHostName': 'str',
             
             
             'connectedToPortName': 'str',
             
             
-            'connetedToLocationCivicAddr': 'str',
+            'configPreference': 'str',
+            
+            
+            'imagePreference': 'str',
             
             
             'connetedToLocationGeoAddr': 'str',
             
             
-            'configPreference': 'str',
+            'connetedToLocationCivicAddr': 'str',
             
             
             'hostName': 'str'
@@ -125,17 +128,19 @@ class ZtdSiteDevice(object):
             
             'authStatus': 'authStatus',
             
-            'lastContact': 'lastContact',
-            
             'deviceId': 'deviceId',
             
             'lastStateTransitionTime': 'lastStateTransitionTime',
+            
+            'lastContact': 'lastContact',
             
             'stateDisplay': 'stateDisplay',
             
             'state': 'state',
             
             'serialNumber': 'serialNumber',
+            
+            'source': 'source',
             
             'tag': 'tag',
             
@@ -149,13 +154,17 @@ class ZtdSiteDevice(object):
             
             'imageId': 'imageId',
             
-            'eulaAccepted': 'eulaAccepted',
+            'configId': 'configId',
+            
+            'pkiEnabled': 'pkiEnabled',
             
             'memberCount': 'memberCount',
             
-            'templateConfigId': 'templateConfigId',
+            'eulaAccepted': 'eulaAccepted',
             
             'licenseLevel': 'licenseLevel',
+            
+            'templateConfigId': 'templateConfigId',
             
             'bootStrapId': 'bootStrapId',
             
@@ -165,13 +174,9 @@ class ZtdSiteDevice(object):
             
             'isMobilityController': 'isMobilityController',
             
-            'sudiRequired': 'sudiRequired',
-            
             'deviceDiscoveryInfo': 'deviceDiscoveryInfo',
             
-            'configId': 'configId',
-            
-            'pkiEnabled': 'pkiEnabled',
+            'sudiRequired': 'sudiRequired',
             
             'memberDetail': 'memberDetail',
             
@@ -179,17 +184,17 @@ class ZtdSiteDevice(object):
             
             'connectedToPortId': 'connectedToPortId',
             
-            'imagePreference': 'imagePreference',
-            
             'connectedToDeviceHostName': 'connectedToDeviceHostName',
             
             'connectedToPortName': 'connectedToPortName',
             
-            'connetedToLocationCivicAddr': 'connetedToLocationCivicAddr',
+            'configPreference': 'configPreference',
+            
+            'imagePreference': 'imagePreference',
             
             'connetedToLocationGeoAddr': 'connetedToLocationGeoAddr',
             
-            'configPreference': 'configPreference',
+            'connetedToLocationCivicAddr': 'connetedToLocationCivicAddr',
             
             'hostName': 'hostName'
             
@@ -200,13 +205,13 @@ class ZtdSiteDevice(object):
         self.authStatus = None # DeviceAuthState
         
         
-        self.lastContact = None # str
-        
-        
         self.deviceId = None # str
         
         
         self.lastStateTransitionTime = None # str
+        
+        
+        self.lastContact = None # str
         
         
         self.stateDisplay = None # str
@@ -217,6 +222,10 @@ class ZtdSiteDevice(object):
         #Serial number
         
         self.serialNumber = None # str
+        
+        #Source of rule,set to CLOUD if rule matches synced cloud device
+        
+        self.source = None # str
         
         #Tag of device
         
@@ -241,21 +250,29 @@ class ZtdSiteDevice(object):
         
         self.imageId = None # str
         
-        #CLI execution EULA accepted or not
+        #Configuration file id
         
-        self.eulaAccepted = None # bool
+        self.configId = None # str
+        
+        #Configure PKCS#12 trust point during PNP workflow if true
+        
+        self.pkiEnabled = None # bool
         
         #Count of members in a stack switch excluding master
         
         self.memberCount = None # int
         
-        #Template config ID
+        #CLI execution EULA accepted or not
         
-        self.templateConfigId = None # str
+        self.eulaAccepted = None # bool
         
         #CLI execution license level
         
         self.licenseLevel = None # str
+        
+        #Template config ID
+        
+        self.templateConfigId = None # str
         
         #Bootstrap file id
         
@@ -273,20 +290,12 @@ class ZtdSiteDevice(object):
         
         self.isMobilityController = None # str
         
-        
-        self.sudiRequired = None # bool
-        
         #Device discovery info
         
         self.deviceDiscoveryInfo = None # ZtdDeviceDiscoveryInfo
         
-        #Configuration file id
         
-        self.configId = None # str
-        
-        #Configure PKCS#12 trust point during PNP workflow if true
-        
-        self.pkiEnabled = None # bool
+        self.sudiRequired = None # bool
         
         
         self.memberDetail = None # list[ZtdMemberDetail]
@@ -298,22 +307,22 @@ class ZtdSiteDevice(object):
         self.connectedToPortId = None # str
         
         
-        self.imagePreference = None # str
-        
-        
         self.connectedToDeviceHostName = None # str
         
         
         self.connectedToPortName = None # str
         
         
-        self.connetedToLocationCivicAddr = None # str
+        self.configPreference = None # str
+        
+        
+        self.imagePreference = None # str
         
         
         self.connetedToLocationGeoAddr = None # str
         
         
-        self.configPreference = None # str
+        self.connetedToLocationCivicAddr = None # str
         
         #Host name
         

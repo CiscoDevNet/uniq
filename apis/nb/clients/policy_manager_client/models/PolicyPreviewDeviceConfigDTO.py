@@ -33,10 +33,10 @@ class PolicyPreviewDeviceConfigDTO(object):
             'id': 'str',
             
             
-            'lastUpdateTime': 'int',
+            'createTime': 'int',
             
             
-            'createTime': 'int'
+            'lastUpdateTime': 'int'
             
         }
 
@@ -54,9 +54,9 @@ class PolicyPreviewDeviceConfigDTO(object):
             
             'id': 'id',
             
-            'lastUpdateTime': 'lastUpdateTime',
+            'createTime': 'createTime',
             
-            'createTime': 'createTime'
+            'lastUpdateTime': 'lastUpdateTime'
             
         }       
 
@@ -85,11 +85,11 @@ class PolicyPreviewDeviceConfigDTO(object):
         
         self.id = None # str
         
-        #lastUpdateTime
-        
-        self.lastUpdateTime = None # int
-        
         #createTime
         
         self.createTime = None # int
+        
+        #lastUpdateTime
+        
+        self.lastUpdateTime = None # int
         

@@ -15,15 +15,6 @@ class SNMPv3CredentialDTO(object):
         """
         self.swaggerTypes = {
             
-            'privacyPassword': 'str',
-            
-            
-            'privacyType': 'str',
-            
-            
-            'snmpMode': 'str',
-            
-            
             'username': 'str',
             
             
@@ -33,13 +24,22 @@ class SNMPv3CredentialDTO(object):
             'authPassword': 'str',
             
             
+            'privacyPassword': 'str',
+            
+            
+            'privacyType': 'str',
+            
+            
+            'snmpMode': 'str',
+            
+            
             'description': 'str',
             
             
-            'credentialType': 'str',
-            
-            
             'comments': 'str',
+            
+            
+            'credentialType': 'str',
             
             
             'instanceUuid': 'str',
@@ -51,23 +51,23 @@ class SNMPv3CredentialDTO(object):
 
         self.attributeMap = {
             
-            'privacyPassword': 'privacyPassword',
-            
-            'privacyType': 'privacyType',
-            
-            'snmpMode': 'snmpMode',
-            
             'username': 'username',
             
             'authType': 'authType',
             
             'authPassword': 'authPassword',
             
+            'privacyPassword': 'privacyPassword',
+            
+            'privacyType': 'privacyType',
+            
+            'snmpMode': 'snmpMode',
+            
             'description': 'description',
             
-            'credentialType': 'credentialType',
-            
             'comments': 'comments',
+            
+            'credentialType': 'credentialType',
             
             'instanceUuid': 'instanceUuid',
             
@@ -75,18 +75,6 @@ class SNMPv3CredentialDTO(object):
             
         }       
 
-        
-        #Privacy password is required if SNMP mode is AuthPriv
-        
-        self.privacyPassword = None # str
-        
-        #Privacy type is required if SNMP mode is AuthPriv
-        
-        self.privacyType = None # str
-        
-        #SNMP mode
-        
-        self.snmpMode = None # str
         
         #SNMP user name
         
@@ -100,17 +88,29 @@ class SNMPv3CredentialDTO(object):
         
         self.authPassword = None # str
         
+        #Privacy password is required if SNMP mode is AuthPriv
+        
+        self.privacyPassword = None # str
+        
+        #Privacy type is required if SNMP mode is AuthPriv
+        
+        self.privacyType = None # str
+        
+        #SNMP mode
+        
+        self.snmpMode = None # str
+        
         #Description of the credential
         
         self.description = None # str
         
-        #Credential type to identify the application that uses the credential
-        
-        self.credentialType = None # str
-        
         #Comments to identify the credential
         
         self.comments = None # str
+        
+        #Credential type to identify the application that uses the credential
+        
+        self.credentialType = None # str
         
         
         self.instanceUuid = None # str

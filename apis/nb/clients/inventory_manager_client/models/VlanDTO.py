@@ -24,19 +24,19 @@ class VlanDTO(object):
             'prefix': 'str',
             
             
-            'vlanType': 'str',
-            
-            
-            'vlanNumber': 'int',
-            
-            
             'networkAddress': 'str',
             
             
             'ipAddress': 'str',
             
             
-            'interfaceName': 'str'
+            'interfaceName': 'str',
+            
+            
+            'vlanType': 'str',
+            
+            
+            'vlanNumber': 'int'
             
         }
 
@@ -48,40 +48,48 @@ class VlanDTO(object):
             
             'prefix': 'prefix',
             
-            'vlanType': 'vlanType',
-            
-            'vlanNumber': 'vlanNumber',
-            
             'networkAddress': 'networkAddress',
             
             'ipAddress': 'ipAddress',
             
-            'interfaceName': 'interfaceName'
+            'interfaceName': 'interfaceName',
+            
+            'vlanType': 'vlanType',
+            
+            'vlanNumber': 'vlanNumber'
             
         }       
 
         
+        #Number of Ip addresses
         
         self.numberOfIPs = None # int
         
+        #Mask ip
         
         self.mask = None # int
         
+        #Prefix
         
         self.prefix = None # str
         
-        
-        self.vlanType = None # str
-        
-        
-        self.vlanNumber = None # int
-        
+        #Network addresses
         
         self.networkAddress = None # str
         
+        #Ip address
         
         self.ipAddress = None # str
         
+        #Interface name
         
         self.interfaceName = None # str
+        
+        #Type of Vlan
+        
+        self.vlanType = None # str
+        
+        #Vlan Number
+        
+        self.vlanNumber = None # int
         

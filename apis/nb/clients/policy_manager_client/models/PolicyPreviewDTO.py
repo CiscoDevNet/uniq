@@ -18,22 +18,22 @@ class PolicyPreviewDTO(object):
             'deviceConfigs': 'list[PolicyPreviewDeviceConfigDTO]',
             
             
-            'policies': 'list[Policy]',
-            
-            
             'state': 'str',
             
             
             'networkDeviceIds': 'list[str]',
             
             
+            'policies': 'list[Policy]',
+            
+            
             'id': 'str',
             
             
-            'lastUpdateTime': 'int',
+            'createTime': 'int',
             
             
-            'createTime': 'int'
+            'lastUpdateTime': 'int'
             
         }
 
@@ -41,17 +41,17 @@ class PolicyPreviewDTO(object):
             
             'deviceConfigs': 'deviceConfigs',
             
-            'policies': 'policies',
-            
             'state': 'state',
             
             'networkDeviceIds': 'networkDeviceIds',
             
+            'policies': 'policies',
+            
             'id': 'id',
             
-            'lastUpdateTime': 'lastUpdateTime',
+            'createTime': 'createTime',
             
-            'createTime': 'createTime'
+            'lastUpdateTime': 'lastUpdateTime'
             
         }       
 
@@ -59,10 +59,6 @@ class PolicyPreviewDTO(object):
         #list of preview device configs
         
         self.deviceConfigs = None # list[PolicyPreviewDeviceConfigDTO]
-        
-        #list of policies
-        
-        self.policies = None # list[Policy]
         
         #one of {DISABLE, ENABLE_DEVICE}
         
@@ -72,15 +68,19 @@ class PolicyPreviewDTO(object):
         
         self.networkDeviceIds = None # list[str]
         
+        #list of policies
+        
+        self.policies = None # list[Policy]
+        
         #id
         
         self.id = None # str
         
-        #lastUpdateTime
-        
-        self.lastUpdateTime = None # int
-        
         #createTime
         
         self.createTime = None # int
+        
+        #lastUpdateTime
+        
+        self.lastUpdateTime = None # int
         

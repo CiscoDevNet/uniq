@@ -80,6 +80,68 @@ class GlobalcredentialApi(object):
         
         
     
+    def updateCliCredential(self, **kwargs):
+        """Updates global CLI credential
+
+        Args:
+            
+            globalCredentialNio, CLICredentialDTO: CLI credentials (required)
+            
+            
+        
+        Returns: TaskIdResult
+        """
+
+        allParams = ['globalCredentialNio']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateCliCredential" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/global-credential/cli'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+        
+
+        
+
+        
+
+        
+
+        
+        if ('globalCredentialNio' in params):
+            bodyParam = params['globalCredentialNio']
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+        
+        
+        
+    
     def addCliCredential(self, **kwargs):
         """Creates global CLI credential
 
@@ -125,6 +187,68 @@ class GlobalcredentialApi(object):
         
         if ('globalCredentialNioList' in params):
             bodyParam = params['globalCredentialNioList']
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+        
+        
+        
+    
+    def updateSnmpReadCommunity(self, **kwargs):
+        """Updates global SNMP read community
+
+        Args:
+            
+            globalCredentialNio, SNMPv2ReadCommunityDTO: SNMP read community details (required)
+            
+            
+        
+        Returns: TaskIdResult
+        """
+
+        allParams = ['globalCredentialNio']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateSnmpReadCommunity" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/global-credential/snmpv2-read-community'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+        
+
+        
+
+        
+
+        
+
+        
+        if ('globalCredentialNio' in params):
+            bodyParam = params['globalCredentialNio']
         
 
         postData = (formParams if formParams else bodyParam)
@@ -204,6 +328,68 @@ class GlobalcredentialApi(object):
         
         
     
+    def updateSnmpWriteCommunity(self, **kwargs):
+        """Updates global SNMP write community
+
+        Args:
+            
+            globalCredentialNio, SNMPv2WriteCommunityDTO: SNMP write community details (required)
+            
+            
+        
+        Returns: TaskIdResult
+        """
+
+        allParams = ['globalCredentialNio']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateSnmpWriteCommunity" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/global-credential/snmpv2-write-community'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+        
+
+        
+
+        
+
+        
+
+        
+        if ('globalCredentialNio' in params):
+            bodyParam = params['globalCredentialNio']
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+        
+        
+        
+    
     def addSnmpWriteCommunity(self, **kwargs):
         """Creates global SNMP write community
 
@@ -249,6 +435,68 @@ class GlobalcredentialApi(object):
         
         if ('globalCredentialNioList' in params):
             bodyParam = params['globalCredentialNioList']
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+        
+        
+        
+    
+    def updateSnmpv3Credential(self, **kwargs):
+        """Updates global SNMPv3 credential
+
+        Args:
+            
+            globalCredentialNio, SNMPv3CredentialDTO: SNMPv3 credential details (required)
+            
+            
+        
+        Returns: TaskIdResult
+        """
+
+        allParams = ['globalCredentialNio']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateSnmpv3Credential" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/global-credential/snmpv3'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+        
+
+        
+
+        
+
+        
+
+        
+        if ('globalCredentialNio' in params):
+            bodyParam = params['globalCredentialNio']
         
 
         postData = (formParams if formParams else bodyParam)

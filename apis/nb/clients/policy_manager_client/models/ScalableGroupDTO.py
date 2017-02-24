@@ -18,10 +18,10 @@ class ScalableGroupDTO(object):
             'name': 'str',
             
             
-            'state': 'str',
+            'id': 'str',
             
             
-            'id': 'str'
+            'state': 'str'
             
         }
 
@@ -29,9 +29,9 @@ class ScalableGroupDTO(object):
             
             'name': 'name',
             
-            'state': 'state',
+            'id': 'id',
             
-            'id': 'id'
+            'state': 'state'
             
         }       
 
@@ -40,11 +40,11 @@ class ScalableGroupDTO(object):
         
         self.name = None # str
         
-        #state
-        
-        self.state = None # str
-        
         #id
         
         self.id = None # str
+        
+        #state
+        
+        self.state = None # str
         
