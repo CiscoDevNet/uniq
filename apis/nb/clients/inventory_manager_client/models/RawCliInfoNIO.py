@@ -33,6 +33,9 @@ class RawCliInfoNIO(object):
             'healthMonitor': 'str',
             
             
+            'snmp': 'str',
+            
+            
             'id': 'str',
             
             
@@ -40,9 +43,6 @@ class RawCliInfoNIO(object):
             
             
             'cdpNeighbors': 'str',
-            
-            
-            'snmp': 'str',
             
             
             'attributeInfo': 'dict'
@@ -63,13 +63,13 @@ class RawCliInfoNIO(object):
             
             'healthMonitor': 'healthMonitor',
             
+            'snmp': 'snmp',
+            
             'id': 'id',
             
             'runningConfig': 'runningConfig',
             
             'cdpNeighbors': 'cdpNeighbors',
-            
-            'snmp': 'snmp',
             
             'attributeInfo': 'attributeInfo'
             
@@ -100,6 +100,10 @@ class RawCliInfoNIO(object):
         
         self.healthMonitor = None # str
         
+        #SNMP configuration info of the device
+        
+        self.snmp = None # str
+        
         #Unique identifier for config
         
         self.id = None # str
@@ -111,10 +115,6 @@ class RawCliInfoNIO(object):
         #CDP configuration info of the device
         
         self.cdpNeighbors = None # str
-        
-        #SNMP configuration info of the device
-        
-        self.snmp = None # str
         
         
         self.attributeInfo = None # dict

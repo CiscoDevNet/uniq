@@ -15,25 +15,25 @@ class TaskIdResponse(object):
         """
         self.swaggerTypes = {
             
-            'url': 'str',
+            'taskId': 'str',
             
             
-            'taskId': 'str'
+            'url': 'str'
             
         }
 
         self.attributeMap = {
             
-            'url': 'url',
+            'taskId': 'taskId',
             
-            'taskId': 'taskId'
+            'url': 'url'
             
         }       
 
         
         
-        self.url = None # str
-        
-        
         self.taskId = None # TaskId
+        
+        
+        self.url = None # str
         

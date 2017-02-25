@@ -15,13 +15,10 @@ class ApplicationDTO(object):
         """
         self.swaggerTypes = {
             
-            'trafficClass': 'str',
-            
-            
-            'applicationIpPortClassifiers': 'list[ApplicationIpPortClassifierDTO]',
-            
-            
             'category': 'str',
+            
+            
+            'trafficClass': 'str',
             
             
             'name': 'str',
@@ -52,6 +49,21 @@ class ApplicationDTO(object):
             
             
             'ipPorts': 'str',
+            
+            
+            'appProtocol': 'str',
+            
+            
+            'applicationGroup': 'str',
+            
+            
+            'categoryId': 'str',
+            
+            
+            'enabled': 'str',
+            
+            
+            'encrypted': 'str',
             
             
             'engineId': 'str',
@@ -123,29 +135,15 @@ class ApplicationDTO(object):
             'udpPorts': 'str',
             
             
-            'appProtocol': 'str',
-            
-            
-            'applicationGroup': 'str',
-            
-            
-            'categoryId': 'str',
-            
-            
-            'enabled': 'str',
-            
-            
-            'encrypted': 'str'
+            'applicationIpPortClassifiers': 'list[ApplicationIpPortClassifierDTO]'
             
         }
 
         self.attributeMap = {
             
-            'trafficClass': 'trafficClass',
-            
-            'applicationIpPortClassifiers': 'applicationIpPortClassifiers',
-            
             'category': 'category',
+            
+            'trafficClass': 'trafficClass',
             
             'name': 'name',
             
@@ -166,6 +164,16 @@ class ApplicationDTO(object):
             'dscp': 'dscp',
             
             'ipPorts': 'ipPorts',
+            
+            'appProtocol': 'appProtocol',
+            
+            'applicationGroup': 'applicationGroup',
+            
+            'categoryId': 'categoryId',
+            
+            'enabled': 'enabled',
+            
+            'encrypted': 'encrypted',
             
             'engineId': 'engineId',
             
@@ -213,30 +221,18 @@ class ApplicationDTO(object):
             
             'udpPorts': 'udpPorts',
             
-            'appProtocol': 'appProtocol',
-            
-            'applicationGroup': 'applicationGroup',
-            
-            'categoryId': 'categoryId',
-            
-            'enabled': 'enabled',
-            
-            'encrypted': 'encrypted'
+            'applicationIpPortClassifiers': 'applicationIpPortClassifiers'
             
         }       
 
         
-        #Traffic class to which the app belongs
-        
-        self.trafficClass = None # str
-        
-        #IP Port classifiers for the application
-        
-        self.applicationIpPortClassifiers = None # list[ApplicationIpPortClassifierDTO]
-        
         #Category name
         
         self.category = None # str
+        
+        #Traffic class to which the app belongs
+        
+        self.trafficClass = None # str
         
         #App Name
         
@@ -277,6 +273,26 @@ class ApplicationDTO(object):
         #list of ip ports
         
         self.ipPorts = None # str
+        
+        #protocol of the app. Valid values are tcp, udp, tcp/udp, ip or it could be empty. Values are case sensitive.
+        
+        self.appProtocol = None # str
+        
+        #App group name
+        
+        self.applicationGroup = None # str
+        
+        #Category id
+        
+        self.categoryId = None # str
+        
+        #If the app enabled
+        
+        self.enabled = None # str
+        
+        #If the app is encrypted
+        
+        self.encrypted = None # str
         
         #engine id
         
@@ -370,23 +386,7 @@ class ApplicationDTO(object):
         
         self.udpPorts = None # str
         
-        #protocol of the app. Valid values are tcp, udp, tcp/udp, ip or it could be empty. Values are case sensitive.
+        #IP Port classifiers for the application
         
-        self.appProtocol = None # str
-        
-        #App group name
-        
-        self.applicationGroup = None # str
-        
-        #Category id
-        
-        self.categoryId = None # str
-        
-        #If the app enabled
-        
-        self.enabled = None # str
-        
-        #If the app is encrypted
-        
-        self.encrypted = None # str
+        self.applicationIpPortClassifiers = None # list[ApplicationIpPortClassifierDTO]
         

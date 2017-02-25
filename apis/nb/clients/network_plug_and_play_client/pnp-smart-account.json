@@ -1,0 +1,2541 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "/pnp-smart-account",
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/pnp-smart-account/device",
+      "description": "getSmartAccountDevices",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves synced devices",
+          "notes": "This API is used to retrieve synced devices",
+          "type": "ZtdSmartAccountDeviceListResult",
+          "nickname": "getSmartAccountDevices",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userId",
+              "description": "User ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account Id",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "serialNumber",
+              "description": "Serial number",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "macAddress",
+              "description": "MAC address",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSmartAccountDeviceListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/device",
+      "description": "syncSmartAccountDevices",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Sync the devices from cloud",
+          "notes": "This API is used to sync the devices fom cloud.",
+          "type": "TaskIdResult",
+          "nickname": "syncSmartAccountDevices",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccount",
+              "description": "Synced Account",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdSyncedAccount"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 201,
+              "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "The request was successful. The result is contained in the response body.",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "The client made a request for a resource that does not exist."
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/device/count",
+      "description": "getSmartAccountDeviceCount",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves count of synced devices",
+          "notes": "This API is used to retrieve count of synced devices in PNP",
+          "type": "string",
+          "nickname": "getSmartAccountDeviceCount",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userId",
+              "description": "User ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account Id",
+              "defaultValue": "",
+              "required": false,
+              "type": "List",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "serialNumber",
+              "description": "Serial number",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "macAddress",
+              "description": "MAC address",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "productId",
+              "description": "Product ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "SuccessResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/netinfo",
+      "description": "getApicEmNetworkInfo",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves APIC-EM external network endpoints and gateway proxy status",
+          "notes": "This API endpoint is used to retrieve current list of external APIC-EM controller addresses and status of proxy gateway",
+          "type": "ZtdApicEmNetworkInfoResult",
+          "nickname": "getApicEmNetworkInfo",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdApicEmNetworkInfoResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account",
+      "description": "getZtdSycnedAccounts",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves synced accounts for a user id",
+          "notes": "This API is used to retrieve synced accounts for a particular user",
+          "type": "ZtdSyncedAccountListResult",
+          "nickname": "getZtdSycnedAccounts",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userId",
+              "description": "User ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "smartAccountId",
+              "description": "Smart Account ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "virtualAccountId",
+              "description": "Virtual Account ID",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSyncedAccountListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account",
+      "description": "createZtdSyncedAccount",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create selected smart account and virtual account in PnP",
+          "notes": "This API is used to create selected smart account and virtual account in PnP",
+          "type": "TaskIdResult",
+          "nickname": "createZtdSyncedAccount",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccount",
+              "description": "Synced Account",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdSyncedAccount"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 201,
+              "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "The request was successful. The result is contained in the response body.",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "The client made a request for a resource that does not exist."
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account/count",
+      "description": "getZtdSycnedAccountCount",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves count of synced accounts for a user id",
+          "notes": "This API is used to retrieve count of synced accounts for a particular user",
+          "type": "string",
+          "nickname": "getZtdSycnedAccountCount",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "SuccessResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account/{syncedAccountId}",
+      "description": "updateZtdSyncedAccount",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Updates a synced account with its ID",
+          "notes": "This API is used to update synced account with its ID",
+          "type": "TaskIdResult",
+          "nickname": "updateZtdSyncedAccount",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccount",
+              "description": "Synced Account",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdSyncedAccount"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "The request was successful. The result is contained in the response body.",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account/{syncedAccountId}",
+      "description": "deleteZtdSyncedAccountById",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Deletes a synced account with its ID",
+          "notes": "This API is used to delete a synced account with its ID ",
+          "type": "TaskIdResult",
+          "nickname": "deleteZtdSyncedAccountById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccount",
+              "description": "Synced Account",
+              "defaultValue": "",
+              "required": false,
+              "type": "ZtdSyncedAccount",
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account/{syncedAccountId}",
+      "description": "getZtdSycnedAccountById",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a synced account with its ID",
+          "notes": "This API is used to retrieve a synced account with its ID and userId",
+          "type": "ZtdSyncedAccountResult",
+          "nickname": "getZtdSycnedAccountById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSyncedAccountResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account/{syncedAccountId}/profile",
+      "description": "createProfile",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a profile",
+          "notes": "This API is used to create a new profile to be associated with a smart account",
+          "type": "TaskIdResult",
+          "nickname": "createProfile",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "profile",
+              "description": "Profile ",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdSmartAccountProfile"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 201,
+              "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "The request was successful. The result is contained in the response body.",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "The client made a request for a resource that does not exist."
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account/{syncedAccountId}/profile",
+      "description": "updateProfile",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a profile",
+          "notes": "This API is used to update an existing profile associated with a smart account",
+          "type": "TaskIdResult",
+          "nickname": "updateProfile",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "profile",
+              "description": "Profile ",
+              "defaultValue": "",
+              "required": true,
+              "type": "array",
+              "items": {
+                "$ref": "ZtdSmartAccountProfile"
+              },
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "The request was successful. The result is contained in the response body.",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "The client made a request for a resource that does not exist."
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account/{syncedAccountId}/profile",
+      "description": "getSmartAccountProfiles",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of profiles",
+          "notes": "This API is used to retrieve a list of profiles associated with a smart account",
+          "type": "ZtdSmartAccountProfileListResult",
+          "nickname": "getSmartAccountProfiles",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSmartAccountProfileListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "The client made a request for a resource that does not exist."
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account/{syncedAccountId}/profile/{profileId}",
+      "description": "deleteProfile",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a profile",
+          "notes": "This API is used to delete an existing profile associated with a smart account",
+          "type": "TaskIdResult",
+          "nickname": "deleteProfile",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "profileId",
+              "description": "Profile Id",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/synced-account/{syncedAccountId}/profile/{profileId}",
+      "description": "getSmartAccountProfileById",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves profile by id",
+          "notes": "This API is used to retrieve profile by id that associated with a smart account",
+          "type": "ZtdSmartAccountProfileListResult",
+          "nickname": "getSmartAccountProfileById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "syncedAccountId",
+              "description": "Synced Account ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "profileId",
+              "description": "Profile Id",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSmartAccountProfileListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "The client made a request for a resource that does not exist."
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/user",
+      "description": "getUsers",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of smart account users",
+          "notes": "This API is used to retrieve a list of smart account users",
+          "type": "ZtdSmartAccountUserListResult",
+          "nickname": "getUsers",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "username",
+              "description": "Username",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "state",
+              "description": "State",
+              "defaultValue": "",
+              "required": false,
+              "type": "string",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "offset",
+              "description": "Starting index of the response. Minimum value is 1",
+              "defaultValue": "1",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "limit",
+              "description": "Limit the number of responses. Maximum value supported is 500. Minimum value is 1",
+              "defaultValue": "10",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "paramType": "query",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSmartAccountUserListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "The client made a request for a resource that does not exist."
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/user",
+      "description": "createUser",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Generates a smart account token",
+          "notes": "This API is used to generate a smart account token",
+          "type": "TaskIdResult",
+          "nickname": "createUser",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "user",
+              "description": "Smart Account user",
+              "defaultValue": "",
+              "required": true,
+              "type": "ZtdSmartAccountUser",
+              "paramType": "body",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 201,
+              "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "Request failed because the media type is not supported",
+              "responseModel": "Void"
+            },
+            {
+              "code": 200,
+              "message": "The request was successful. The result is contained in the response body.",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 202,
+              "message": "Request was accepted. Use Task ID to track the progress",
+              "responseModel": "Void"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "The client made a request for a resource that does not exist."
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/user/{userId}",
+      "description": "deleteUserById",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Deletes a smart account user with its ID",
+          "notes": "This API is used to delete a smart account user with its ID ",
+          "type": "TaskIdResult",
+          "nickname": "deleteUserById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userId",
+              "description": "User ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "The request was successful, however no content was returned."
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "TaskIdResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect)."
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "Request failed because the resource does not exist",
+              "responseModel": "Void"
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    },
+    {
+      "path": "/pnp-smart-account/user/{userId}/account",
+      "description": "getSmartAccounts",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieves a list of smart accounts",
+          "notes": "This API is used to retrieve a list of smart accounts associated with the user",
+          "type": "ZtdSmartAccountListResult",
+          "nickname": "getSmartAccounts",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userId",
+              "description": "User ID",
+              "defaultValue": "",
+              "required": true,
+              "type": "string",
+              "paramType": "path",
+              "allowMultiple": false
+            },
+            {
+              "name": "scope",
+              "description": "Authorization Scope for RBAC",
+              "defaultValue": "ALL",
+              "required": true,
+              "type": "List",
+              "paramType": "header",
+              "allowMultiple": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 204,
+              "message": "Request was successful but without any result",
+              "responseModel": "Void"
+            },
+            {
+              "code": 409,
+              "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed."
+            },
+            {
+              "code": 206,
+              "message": "The GET request included a Range Header, and the server responded with the partial content matching the range."
+            },
+            {
+              "code": 504,
+              "message": "The server did not respond inside time restrictions and timed-out."
+            },
+            {
+              "code": 415,
+              "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON)."
+            },
+            {
+              "code": 200,
+              "message": "Request was successful and the result is contained in the response body",
+              "responseModel": "ZtdSmartAccountListResult"
+            },
+            {
+              "code": 500,
+              "message": "Request failed because of unknown failure on the server",
+              "responseModel": "Void"
+            },
+            {
+              "code": 501,
+              "message": "The server has not implemented the functionality required to fulfill the request."
+            },
+            {
+              "code": 403,
+              "message": "Request failed because the user does not have access to perform the operation on the resource",
+              "responseModel": "Void"
+            },
+            {
+              "code": 400,
+              "message": "Request failed because of problems in the request parameters",
+              "responseModel": "Void"
+            },
+            {
+              "code": 503,
+              "message": "The server is (temporarily) unavailable."
+            },
+            {
+              "code": 401,
+              "message": "Request failed because the resource is protected without authentication, or the authentication credentials failed",
+              "responseModel": "Void"
+            },
+            {
+              "code": 404,
+              "message": "The client made a request for a resource that does not exist."
+            }
+          ],
+          "deprecated": "false"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "ZtdSmartAccountProfileListResult": {
+      "id": "ZtdSmartAccountProfileListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdSmartAccountProfile"
+          }
+        }
+      }
+    },
+    "ZtdSmartAccountControllerAttribute": {
+      "id": "ZtdSmartAccountControllerAttribute",
+      "description": "ZTD Smart Account Controller Attribute representation",
+      "extends": "",
+      "properties": {
+        "primaryFqdn": {
+          "type": "string"
+        },
+        "primaryIpv4": {
+          "type": "string"
+        },
+        "secondaryIpv4": {
+          "type": "string"
+        },
+        "primaryProtocol": {
+          "type": "string"
+        },
+        "primaryPort": {
+          "type": "string"
+        },
+        "secondaryProtocol": {
+          "type": "string"
+        },
+        "secondaryPort": {
+          "type": "string"
+        }
+      }
+    },
+    "TaskId": {
+      "id": "TaskId",
+      "description": "",
+      "extends": "",
+      "properties": {}
+    },
+    "ZtdSmartAccountListResult": {
+      "id": "ZtdSmartAccountListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdSmartAccount"
+          }
+        }
+      }
+    },
+    "ZtdApicEmNetworkInfo": {
+      "id": "ZtdApicEmNetworkInfo",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "proxyCert": {
+          "type": "string"
+        },
+        "controllerCert": {
+          "type": "string"
+        },
+        "ipv4Addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ipv6Addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "proxyEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ZtdSyncedAccountResult": {
+      "id": "ZtdSyncedAccountResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "ZtdSyncedAccount"
+        }
+      }
+    },
+    "ZtdSmartAccountProfile": {
+      "id": "ZtdSmartAccountProfile",
+      "description": "ZTD Smart Account User Profile representation",
+      "required": [
+        "userId",
+        "makeDefault"
+      ],
+      "extends": "",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "description": "profile ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "user ID"
+        },
+        "controllerAttributes": {
+          "$ref": "ZtdSmartAccountControllerAttribute"
+        },
+        "profileName": {
+          "type": "string",
+          "description": "Default profile name is PNP-DEFAULT-APICEM"
+        },
+        "makeDefault": {
+          "type": "boolean",
+          "description": "Register profile as default profile"
+        },
+        "attributeInfo": {
+          "$ref": "object"
+        }
+      }
+    },
+    "ZtdSmartAccountUserListResult": {
+      "id": "ZtdSmartAccountUserListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdSmartAccountUser"
+          }
+        }
+      }
+    },
+    "ZtdApicEmNetworkInfoResult": {
+      "id": "ZtdApicEmNetworkInfoResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "ZtdApicEmNetworkInfo"
+        }
+      }
+    },
+    "ZtdSyncedAccount": {
+      "id": "ZtdSyncedAccount",
+      "description": "Ztd Synced Account",
+      "required": [
+        "id",
+        "smartAccountId",
+        "virtualAccountId"
+      ],
+      "extends": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Synced Account ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Ztd Smart Account User Id"
+        },
+        "profileId": {
+          "type": "string",
+          "description": "Profile ID"
+        },
+        "smartAccountId": {
+          "type": "string",
+          "description": "Smart Account ID"
+        },
+        "companyName": {
+          "type": "string",
+          "description": "Company Name"
+        },
+        "virtualAccountId": {
+          "type": "string",
+          "description": "Virtual Account ID"
+        },
+        "state": {
+          "type": "string",
+          "description": "State"
+        }
+      }
+    },
+    "ZtdVirtualAccount": {
+      "id": "ZtdVirtualAccount",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "virtualAccountName": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ZtdSmartAccount": {
+      "id": "ZtdSmartAccount",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "domainIdentifier": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "virtualAccount": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdVirtualAccount"
+          }
+        }
+      }
+    },
+    "TaskIdResponse": {
+      "id": "TaskIdResponse",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "taskId": {
+          "$ref": "TaskId"
+        }
+      }
+    },
+    "ZtdSmartAccountDeviceListResult": {
+      "id": "ZtdSmartAccountDeviceListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdSmartAccountDevice"
+          }
+        }
+      }
+    },
+    "TaskIdResult": {
+      "id": "TaskIdResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "$ref": "TaskIdResponse"
+        }
+      }
+    },
+    "ZtdSmartAccountDevice": {
+      "id": "ZtdSmartAccountDevice",
+      "description": "Ztd Smart Account Device",
+      "extends": "",
+      "properties": {
+        "serialNumber": {
+          "type": "string",
+          "description": "serial number"
+        },
+        "id": {
+          "type": "string",
+          "description": "Smart Account Device Id"
+        },
+        "platformId": {
+          "type": "string",
+          "description": "platform id"
+        },
+        "macAddress": {
+          "type": "string",
+          "description": "mac address"
+        },
+        "stateDisplay": {
+          "type": "string"
+        },
+        "reDirectState": {
+          "type": "string"
+        },
+        "reDirectStateDisplay": {
+          "type": "string"
+        },
+        "projectName": {
+          "type": "string"
+        },
+        "syncedAccountId": {
+          "type": "string",
+          "description": "synced account id"
+        },
+        "state": {
+          "type": "string",
+          "description": "state"
+        },
+        "attributeInfo": {
+          "$ref": "object"
+        }
+      }
+    },
+    "ZtdSmartAccountUser": {
+      "id": "ZtdSmartAccountUser",
+      "description": "ZTD Smart Account User representation",
+      "required": [
+        "password",
+        "username",
+        "id"
+      ],
+      "extends": "",
+      "properties": {
+        "password": {
+          "type": "string",
+          "description": "Smart Account Password"
+        },
+        "username": {
+          "type": "string",
+          "description": "Smart Account Username"
+        },
+        "id": {
+          "type": "string",
+          "description": "User ID"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "ZtdSyncedAccountListResult": {
+      "id": "ZtdSyncedAccountListResult",
+      "description": "",
+      "extends": "",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "ZtdSyncedAccount"
+          }
+        }
+      }
+    }
+  }
+}

@@ -15,9 +15,6 @@ class FileObject(object):
         """
         self.swaggerTypes = {
             
-            'encrypted': 'bool',
-            
-            
             'id': 'str',
             
             
@@ -27,16 +24,19 @@ class FileObject(object):
             'nameSpace': 'str',
             
             
-            'fileFormat': 'str',
+            'downloadPath': 'str',
             
             
-            'sha1Checksum': 'str',
+            'encrypted': 'bool',
             
             
             'md5Checksum': 'str',
             
             
-            'downloadPath': 'str',
+            'sha1Checksum': 'str',
+            
+            
+            'fileFormat': 'str',
             
             
             'name': 'str',
@@ -48,21 +48,21 @@ class FileObject(object):
 
         self.attributeMap = {
             
-            'encrypted': 'encrypted',
-            
             'id': 'id',
             
             'fileSize': 'fileSize',
             
             'nameSpace': 'nameSpace',
             
-            'fileFormat': 'fileFormat',
+            'downloadPath': 'downloadPath',
             
-            'sha1Checksum': 'sha1Checksum',
+            'encrypted': 'encrypted',
             
             'md5Checksum': 'md5Checksum',
             
-            'downloadPath': 'downloadPath',
+            'sha1Checksum': 'sha1Checksum',
+            
+            'fileFormat': 'fileFormat',
             
             'name': 'name',
             
@@ -70,10 +70,6 @@ class FileObject(object):
             
         }       
 
-        
-        #isEncrypted of the file
-        
-        self.encrypted = None # bool
         
         #file indentification number
         
@@ -87,21 +83,25 @@ class FileObject(object):
         
         self.nameSpace = None # str
         
-        #MIME Type of the File. e.g. text/plain, application/xml, audio/mpeg
+        #Absolute path of the file
         
-        self.fileFormat = None # str
+        self.downloadPath = None # str
         
-        #sha1Checksum of the file
+        #isEncrypted of the file
         
-        self.sha1Checksum = None # str
+        self.encrypted = None # bool
         
         #md5Checksum of the file
         
         self.md5Checksum = None # str
         
-        #Absolute path of the file
+        #sha1Checksum of the file
         
-        self.downloadPath = None # str
+        self.sha1Checksum = None # str
+        
+        #MIME Type of the File. e.g. text/plain, application/xml, audio/mpeg
+        
+        self.fileFormat = None # str
         
         #Name of the file
         

@@ -15,46 +15,50 @@ class NetworkDeviceManagementInfo(object):
         """
         self.swaggerTypes = {
             
+            'family': 'str',
+            
+            
             'id': 'str',
             
             
             'type': 'str',
             
             
-            'family': 'str',
+            'series': 'str',
             
             
-            'managementIpAddress': 'str',
+            'hostname': 'str',
             
             
             'credentials': 'dict',
             
             
-            'series': 'str',
-            
-            
-            'hostname': 'str'
+            'managementIpAddress': 'str'
             
         }
 
         self.attributeMap = {
             
+            'family': 'family',
+            
             'id': 'id',
             
             'type': 'type',
             
-            'family': 'family',
+            'series': 'series',
             
-            'managementIpAddress': 'managementIpAddress',
+            'hostname': 'hostname',
             
             'credentials': 'credentials',
             
-            'series': 'series',
-            
-            'hostname': 'hostname'
+            'managementIpAddress': 'managementIpAddress'
             
         }       
 
+        
+        #Family of device as switch, router, wireless lan controller, accesspoints
+        
+        self.family = None # str
         
         #Unique identifier of device
         
@@ -64,18 +68,6 @@ class NetworkDeviceManagementInfo(object):
         
         self.type = None # str
         
-        #Family of device as switch, router, wireless lan controller, accesspoints
-        
-        self.family = None # str
-        
-        #IP address of the device
-        
-        self.managementIpAddress = None # str
-        
-        #Credential info
-        
-        self.credentials = None # dict
-        
         #Device series
         
         self.series = None # str
@@ -83,4 +75,12 @@ class NetworkDeviceManagementInfo(object):
         #Device name
         
         self.hostname = None # str
+        
+        #Credential info
+        
+        self.credentials = None # dict
+        
+        #IP address of the device
+        
+        self.managementIpAddress = None # str
         

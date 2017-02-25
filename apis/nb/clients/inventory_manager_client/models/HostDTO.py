@@ -21,22 +21,19 @@ class HostDTO(object):
             'source': 'str',
             
             
-            'id': 'str',
-            
-            
             'avgUpdateFrequency': 'str',
             
             
-            'hostIp': 'str',
+            'lastUpdated': 'str',
             
             
-            'connectedAPMacAddress': 'str',
+            'subType': 'str',
             
             
-            'connectedAPName': 'str',
+            'vlanId': 'str',
             
             
-            'connectedInterfaceId': 'str',
+            'id': 'str',
             
             
             'connectedInterfaceName': 'str',
@@ -60,13 +57,16 @@ class HostDTO(object):
             'pointOfPresence': 'str',
             
             
-            'vlanId': 'str',
+            'connectedAPMacAddress': 'str',
             
             
-            'subType': 'str',
+            'connectedAPName': 'str',
             
             
-            'lastUpdated': 'str',
+            'connectedInterfaceId': 'str',
+            
+            
+            'hostIp': 'str',
             
             
             'attributeInfo': 'dict'
@@ -79,17 +79,15 @@ class HostDTO(object):
             
             'source': 'source',
             
-            'id': 'id',
-            
             'avgUpdateFrequency': 'avgUpdateFrequency',
             
-            'hostIp': 'hostIp',
+            'lastUpdated': 'lastUpdated',
             
-            'connectedAPMacAddress': 'connectedAPMacAddress',
+            'subType': 'subType',
             
-            'connectedAPName': 'connectedAPName',
+            'vlanId': 'vlanId',
             
-            'connectedInterfaceId': 'connectedInterfaceId',
+            'id': 'id',
             
             'connectedInterfaceName': 'connectedInterfaceName',
             
@@ -105,11 +103,13 @@ class HostDTO(object):
             
             'pointOfPresence': 'pointOfPresence',
             
-            'vlanId': 'vlanId',
+            'connectedAPMacAddress': 'connectedAPMacAddress',
             
-            'subType': 'subType',
+            'connectedAPName': 'connectedAPName',
             
-            'lastUpdated': 'lastUpdated',
+            'connectedInterfaceId': 'connectedInterfaceId',
+            
+            'hostIp': 'hostIp',
             
             'attributeInfo': 'attributeInfo'
             
@@ -124,29 +124,24 @@ class HostDTO(object):
         
         self.source = None # str
         
-        #Id of the host
-        
-        self.id = None # str
-        
         #Frequency in which host info gets updated
         
         self.avgUpdateFrequency = None # str
         
-        #Ip address of the host
+        #Time when the host info last got updated
         
-        self.hostIp = None # str
+        self.lastUpdated = None # str
         
-        #Mac address of the AP to which wireless host gets connected
         
-        self.connectedAPMacAddress = None # str
+        self.subType = None # str
         
-        #Name of the AP to which wireless host gets connected
+        #Vlan Id of the host
         
-        self.connectedAPName = None # str
+        self.vlanId = None # str
         
-        #Id of the interface to which host gets connected
+        #Id of the host
         
-        self.connectedInterfaceId = None # str
+        self.id = None # str
         
         #Name of the interface to which host gets connected
         
@@ -176,16 +171,21 @@ class HostDTO(object):
         
         self.pointOfPresence = None # str
         
-        #Vlan Id of the host
+        #Mac address of the AP to which wireless host gets connected
         
-        self.vlanId = None # str
+        self.connectedAPMacAddress = None # str
         
+        #Name of the AP to which wireless host gets connected
         
-        self.subType = None # str
+        self.connectedAPName = None # str
         
-        #Time when the host info last got updated
+        #Id of the interface to which host gets connected
         
-        self.lastUpdated = None # str
+        self.connectedInterfaceId = None # str
+        
+        #Ip address of the host
+        
+        self.hostIp = None # str
         
         
         self.attributeInfo = None # dict

@@ -18,6 +18,9 @@ class PolicyDiffDTO(object):
             'policy': 'Policy',
             
             
+            'changeList': 'list[str]',
+            
+            
             'operation': 'str'
             
         }
@@ -25,6 +28,8 @@ class PolicyDiffDTO(object):
         self.attributeMap = {
             
             'policy': 'policy',
+            
+            'changeList': 'changeList',
             
             'operation': 'operation'
             
@@ -34,6 +39,10 @@ class PolicyDiffDTO(object):
         #policy
         
         self.policy = None # Policy
+        
+        #changeList
+        
+        self.changeList = None # list[str]
         
         #operation
         

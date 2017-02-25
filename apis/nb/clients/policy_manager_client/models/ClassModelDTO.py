@@ -15,40 +15,36 @@ class ClassModelDTO(object):
         """
         self.swaggerTypes = {
             
-            'priority': 'bool',
-            
-            
             'name': 'str',
             
             
             'dscp': 'str',
             
             
+            'bandwidthPercentage': 'int',
+            
+            
             'admittedTrafficClasses': 'list[str]',
             
             
-            'bandwidthPercentage': 'int'
+            'priority': 'bool'
             
         }
 
         self.attributeMap = {
             
-            'priority': 'priority',
-            
             'name': 'name',
             
             'dscp': 'dscp',
             
+            'bandwidthPercentage': 'bandwidthPercentage',
+            
             'admittedTrafficClasses': 'admittedTrafficClasses',
             
-            'bandwidthPercentage': 'bandwidthPercentage'
+            'priority': 'priority'
             
         }       
 
-        
-        #1 and Only 1 classModel in a given ServiceProviderProfile should have priority value as &#39;true&#39;
-        
-        self.priority = None # bool
         
         #
         
@@ -58,11 +54,15 @@ class ClassModelDTO(object):
         
         self.dscp = None # str
         
+        #Valid values are from 1 to 100 inclusive
+        
+        self.bandwidthPercentage = None # int
+        
         #Valid values are broadcast-video, bulk-data, multimedia-conferencing, multimedia-streaming, network-control, ops-admin-mgmt, real-time-interactive, signaling, transactional-data, voip-telephony, best-effort, scavenger
         
         self.admittedTrafficClasses = None # list[str]
         
-        #Valid values are from 1 to 100 inclusive
+        #1 and Only 1 classModel in a given ServiceProviderProfile should have priority value as &#39;true&#39;
         
-        self.bandwidthPercentage = None # int
+        self.priority = None # bool
         

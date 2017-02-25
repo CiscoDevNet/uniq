@@ -15,16 +15,13 @@ class PolicyTagAssociationDeviceDTO(object):
         """
         self.swaggerTypes = {
             
-            'restricted': 'bool',
-            
-            
-            'unAssigned': 'bool',
+            'restrictedReason': 'str',
             
             
             'deviceRole': 'str',
             
             
-            'restrictedReason': 'str',
+            'restricted': 'bool',
             
             
             'deviceId': 'str',
@@ -36,19 +33,20 @@ class PolicyTagAssociationDeviceDTO(object):
             'deviceName': 'str',
             
             
-            'deviceIp': 'str'
+            'deviceIp': 'str',
+            
+            
+            'unAssigned': 'bool'
             
         }
 
         self.attributeMap = {
             
-            'restricted': 'restricted',
-            
-            'unAssigned': 'unAssigned',
+            'restrictedReason': 'restrictedReason',
             
             'deviceRole': 'deviceRole',
             
-            'restrictedReason': 'restrictedReason',
+            'restricted': 'restricted',
             
             'deviceId': 'deviceId',
             
@@ -56,22 +54,21 @@ class PolicyTagAssociationDeviceDTO(object):
             
             'deviceName': 'deviceName',
             
-            'deviceIp': 'deviceIp'
+            'deviceIp': 'deviceIp',
+            
+            'unAssigned': 'unAssigned'
             
         }       
 
         
         
-        self.restricted = None # bool
-        
-        
-        self.unAssigned = None # bool
+        self.restrictedReason = None # str
         
         
         self.deviceRole = None # str
         
         
-        self.restrictedReason = None # str
+        self.restricted = None # bool
         
         
         self.deviceId = None # str
@@ -84,4 +81,7 @@ class PolicyTagAssociationDeviceDTO(object):
         
         
         self.deviceIp = None # str
+        
+        
+        self.unAssigned = None # bool
         

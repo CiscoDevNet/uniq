@@ -15,10 +15,10 @@ class ContractDTO(object):
         """
         self.swaggerTypes = {
             
-            'name': 'str',
-            
-            
             'description': 'str',
+            
+            
+            'name': 'str',
             
             
             'accessClause': 'AccessClauseDTO',
@@ -27,37 +27,37 @@ class ContractDTO(object):
             'id': 'str',
             
             
-            'lastUpdateTime': 'int',
+            'createTime': 'int',
             
             
-            'createTime': 'int'
+            'lastUpdateTime': 'int'
             
         }
 
         self.attributeMap = {
             
-            'name': 'name',
-            
             'description': 'description',
+            
+            'name': 'name',
             
             'accessClause': 'accessClause',
             
             'id': 'id',
             
-            'lastUpdateTime': 'lastUpdateTime',
+            'createTime': 'createTime',
             
-            'createTime': 'createTime'
+            'lastUpdateTime': 'lastUpdateTime'
             
         }       
 
         
-        #name
-        
-        self.name = None # str
-        
         #description
         
         self.description = None # str
+        
+        #name
+        
+        self.name = None # str
         
         #accessClause
         
@@ -67,11 +67,11 @@ class ContractDTO(object):
         
         self.id = None # str
         
-        #lastUpdateTime
-        
-        self.lastUpdateTime = None # int
-        
         #createTime
         
         self.createTime = None # int
+        
+        #lastUpdateTime
+        
+        self.lastUpdateTime = None # int
         

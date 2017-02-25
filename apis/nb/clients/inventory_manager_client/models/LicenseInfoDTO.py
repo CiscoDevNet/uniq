@@ -27,10 +27,58 @@ class LicenseInfoDTO(object):
             'description': 'str',
             
             
+            'validityPeriodRemaining': 'int',
+            
+            
+            'maxUsageCount': 'int',
+            
+            
+            'eulaStatus': 'bool',
+            
+            
+            'validityPeriod': 'int',
+            
+            
+            'usageCount': 'int',
+            
+            
+            'physicalIndex': 'str',
+            
+            
+            'licenseIndex': 'int',
+            
+            
+            'featureVersion': 'str',
+            
+            
+            'counted': 'bool',
+            
+            
+            'totalCount': 'int',
+            
+            
+            'provisionState': 'int',
+            
+            
+            'parentId': 'int',
+            
+            
+            'expiredPeriod': 'int',
+            
+            
+            'usageCountRemaining': 'int',
+            
+            
             'status': 'str',
             
             
             'id': 'str',
+            
+            
+            'deployPending': 'int',
+            
+            
+            'hostId': 'str',
             
             
             'evalPeriodLeft': 'str',
@@ -66,54 +114,6 @@ class LicenseInfoDTO(object):
             'storedUsed': 'int',
             
             
-            'hostId': 'str',
-            
-            
-            'totalCount': 'int',
-            
-            
-            'parentId': 'int',
-            
-            
-            'provisionState': 'int',
-            
-            
-            'physicalIndex': 'str',
-            
-            
-            'licenseIndex': 'int',
-            
-            
-            'featureVersion': 'str',
-            
-            
-            'counted': 'bool',
-            
-            
-            'validityPeriod': 'int',
-            
-            
-            'validityPeriodRemaining': 'int',
-            
-            
-            'maxUsageCount': 'int',
-            
-            
-            'usageCount': 'int',
-            
-            
-            'eulaStatus': 'bool',
-            
-            
-            'usageCountRemaining': 'int',
-            
-            
-            'expiredPeriod': 'int',
-            
-            
-            'deployPending': 'int',
-            
-            
             'attributeInfo': 'dict'
             
         }
@@ -128,9 +128,41 @@ class LicenseInfoDTO(object):
             
             'description': 'description',
             
+            'validityPeriodRemaining': 'validityPeriodRemaining',
+            
+            'maxUsageCount': 'maxUsageCount',
+            
+            'eulaStatus': 'eulaStatus',
+            
+            'validityPeriod': 'validityPeriod',
+            
+            'usageCount': 'usageCount',
+            
+            'physicalIndex': 'physicalIndex',
+            
+            'licenseIndex': 'licenseIndex',
+            
+            'featureVersion': 'featureVersion',
+            
+            'counted': 'counted',
+            
+            'totalCount': 'totalCount',
+            
+            'provisionState': 'provisionState',
+            
+            'parentId': 'parentId',
+            
+            'expiredPeriod': 'expiredPeriod',
+            
+            'usageCountRemaining': 'usageCountRemaining',
+            
             'status': 'status',
             
             'id': 'id',
+            
+            'deployPending': 'deployPending',
+            
+            'hostId': 'hostId',
             
             'evalPeriodLeft': 'evalPeriodLeft',
             
@@ -154,38 +186,6 @@ class LicenseInfoDTO(object):
             
             'storedUsed': 'storedUsed',
             
-            'hostId': 'hostId',
-            
-            'totalCount': 'totalCount',
-            
-            'parentId': 'parentId',
-            
-            'provisionState': 'provisionState',
-            
-            'physicalIndex': 'physicalIndex',
-            
-            'licenseIndex': 'licenseIndex',
-            
-            'featureVersion': 'featureVersion',
-            
-            'counted': 'counted',
-            
-            'validityPeriod': 'validityPeriod',
-            
-            'validityPeriodRemaining': 'validityPeriodRemaining',
-            
-            'maxUsageCount': 'maxUsageCount',
-            
-            'usageCount': 'usageCount',
-            
-            'eulaStatus': 'eulaStatus',
-            
-            'usageCountRemaining': 'usageCountRemaining',
-            
-            'expiredPeriod': 'expiredPeriod',
-            
-            'deployPending': 'deployPending',
-            
             'attributeInfo': 'attributeInfo'
             
         }       
@@ -207,6 +207,62 @@ class LicenseInfoDTO(object):
         
         self.description = None # str
         
+        #Time period remaining before the license expires or transitions to rightToUse(9) license. Value will be in milliseconds
+        
+        self.validityPeriodRemaining = None # int
+        
+        #Maximum number of entities that can use this license
+        
+        self.maxUsageCount = None # int
+        
+        #Whether the user accepted end user license agreement for this license. Values are true(1)  - EULA accepted, false(2) - EULA not accepted
+        
+        self.eulaStatus = None # bool
+        
+        #Time period the license is valid for. Value will be in milliseconds
+        
+        self.validityPeriod = None # int
+        
+        #Number of current usages of this licensed feature
+        
+        self.usageCount = None # int
+        
+        #Physical entity index
+        
+        self.physicalIndex = None # str
+        
+        #Index of the license to uniquely identify a license within the device
+        
+        self.licenseIndex = None # int
+        
+        #Version of the feature that is using or can use this license. Ex: &#39;1.0&#39;, &#39;2.0&#39; 
+        
+        self.featureVersion = None # str
+        
+        #If license feature is counted as part of the license. Values are true(1)  - counted license, false(2) - uncounted license
+        
+        self.counted = None # bool
+        
+        #Total number of this licensed feature
+        
+        self.totalCount = None # int
+        
+        #Provision state of the license feature
+        
+        self.provisionState = None # int
+        
+        #Parent Id of the license
+        
+        self.parentId = None # int
+        
+        #Time period after the license expires. Value will be in milliseconds
+        
+        self.expiredPeriod = None # int
+        
+        #Number of entities that can still use this license
+        
+        self.usageCountRemaining = None # int
+        
         #Status of the license
         
         self.status = None # str
@@ -214,6 +270,14 @@ class LicenseInfoDTO(object):
         #Id of the license
         
         self.id = None # str
+        
+        #Deploy Pending information of license
+        
+        self.deployPending = None # int
+        
+        #An administratively-assigned fully-qualified domain name for this managed node
+        
+        self.hostId = None # str
         
         #Number of days remaining in the eval period
         
@@ -258,70 +322,6 @@ class LicenseInfoDTO(object):
         #License store that is used for storing this license
         
         self.storedUsed = None # int
-        
-        #An administratively-assigned fully-qualified domain name for this managed node
-        
-        self.hostId = None # str
-        
-        #Total number of this licensed feature
-        
-        self.totalCount = None # int
-        
-        #Parent Id of the license
-        
-        self.parentId = None # int
-        
-        #Provision state of the license feature
-        
-        self.provisionState = None # int
-        
-        #Physical entity index
-        
-        self.physicalIndex = None # str
-        
-        #Index of the license to uniquely identify a license within the device
-        
-        self.licenseIndex = None # int
-        
-        #Version of the feature that is using or can use this license. Ex: &#39;1.0&#39;, &#39;2.0&#39; 
-        
-        self.featureVersion = None # str
-        
-        #If license feature is counted as part of the license. Values are true(1)  - counted license, false(2) - uncounted license
-        
-        self.counted = None # bool
-        
-        #Time period the license is valid for. Value will be in milliseconds
-        
-        self.validityPeriod = None # int
-        
-        #Time period remaining before the license expires or transitions to rightToUse(9) license. Value will be in milliseconds
-        
-        self.validityPeriodRemaining = None # int
-        
-        #Maximum number of entities that can use this license
-        
-        self.maxUsageCount = None # int
-        
-        #Number of current usages of this licensed feature
-        
-        self.usageCount = None # int
-        
-        #Whether the user accepted end user license agreement for this license. Values are true(1)  - EULA accepted, false(2) - EULA not accepted
-        
-        self.eulaStatus = None # bool
-        
-        #Number of entities that can still use this license
-        
-        self.usageCountRemaining = None # int
-        
-        #Time period after the license expires. Value will be in milliseconds
-        
-        self.expiredPeriod = None # int
-        
-        #Deploy Pending information of license
-        
-        self.deployPending = None # int
         
         
         self.attributeInfo = None # dict

@@ -19,7 +19,7 @@ class SegmentApi(object):
     
     
     def getSegmentInfo(self, **kwargs):
-        """list of segment info based on the policyTag
+        """Retrieves list of segment info based on the policy tag
 
         Args:
             

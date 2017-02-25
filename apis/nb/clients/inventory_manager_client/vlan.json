@@ -1,100 +1,61 @@
 {
-    "apis": [
-        {
-            "description": "getDeviceVLANData",
-            "operations": [
-                {
-                    "nickname": "getDeviceVLANData",
-                    "notes": "getDeviceVLANData",
-                    "summary": "API to get the List of VLAN Data for a device",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "VlanListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "VlanListResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "deviceUUID",
-                            "required": true,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "interfaceType",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "Vlan assocaited with sub-interface",
-                            "required": false,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/network-device/{id}/vlan"
-        }
-    ],
     "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
     "models": {
         "VlanDTO": {
+            "description": "",
+            "id": "VlanDTO",
+            "extends": "",
             "properties": {
-                "networkAddress": {
-                    "type": "string"
-                },
-                "vlanNumber": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "interfaceName": {
-                    "type": "string"
-                },
-                "ipAddress": {
-                    "type": "string"
-                },
-                "vlanType": {
-                    "type": "string"
-                },
                 "mask": {
                     "type": "integer",
+                    "description": "Mask ip",
                     "format": "int32"
+                },
+                "networkAddress": {
+                    "type": "string",
+                    "description": "Network addresses"
+                },
+                "vlanType": {
+                    "type": "string",
+                    "description": "Type of Vlan"
+                },
+                "interfaceName": {
+                    "type": "string",
+                    "description": "Interface name"
                 },
                 "numberOfIPs": {
                     "type": "integer",
+                    "description": "Number of Ip addresses",
                     "format": "int32"
                 },
+                "ipAddress": {
+                    "type": "string",
+                    "description": "Ip address"
+                },
                 "prefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Prefix"
+                },
+                "vlanNumber": {
+                    "type": "integer",
+                    "description": "Vlan Number",
+                    "format": "int32"
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "VlanDTO"
+            "required": [
+                "numberOfIPs",
+                "mask",
+                "prefix",
+                "networkAddress",
+                "ipAddress",
+                "interfaceName",
+                "vlanType",
+                "vlanNumber"
+            ]
         },
         "VlanListResult": {
+            "description": "",
+            "id": "VlanListResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -106,14 +67,107 @@
                     }
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "VlanListResult"
+            "extends": ""
         }
     },
-    "basePath": "/apic-em-inventory-manager-service",
+    "resourcePath": "/network-device/{id}/vlan",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/network-device/{id}/vlan"
+    "apis": [
+        {
+            "description": "getDeviceVLANData",
+            "path": "/network-device/{id}/vlan",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getDeviceVLANData",
+                    "type": "VlanListResult",
+                    "notes": "getDeviceVLANData",
+                    "summary": "Retrieves list of VLAN data for a device",
+                    "parameters": [
+                        {
+                            "description": "deviceUUID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        },
+                        {
+                            "description": "Vlan assocaited with sub-interface",
+                            "defaultValue": "",
+                            "required": false,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "interfaceType",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "VlanListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "swaggerVersion": "1.2",
+    "basePath": "/apic-em-inventory-manager-service"
 }

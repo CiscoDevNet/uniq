@@ -15,6 +15,9 @@ class SiteManagementInfo(object):
         """
         self.swaggerTypes = {
             
+            'deviceIds': 'list[str]',
+            
+            
             'name': 'str',
             
             
@@ -27,14 +30,13 @@ class SiteManagementInfo(object):
             'id': 'str',
             
             
-            'description': 'str',
-            
-            
-            'deviceIds': 'list[str]'
+            'description': 'str'
             
         }
 
         self.attributeMap = {
+            
+            'deviceIds': 'deviceIds',
             
             'name': 'name',
             
@@ -44,12 +46,14 @@ class SiteManagementInfo(object):
             
             'id': 'id',
             
-            'description': 'description',
-            
-            'deviceIds': 'deviceIds'
+            'description': 'description'
             
         }       
 
+        
+        #Unique identifier of devices that are associated with site
+        
+        self.deviceIds = None # list[str]
         
         #Name of site
         
@@ -70,8 +74,4 @@ class SiteManagementInfo(object):
         #Description of site
         
         self.description = None # str
-        
-        #Unique identifier of devices that are associated with site
-        
-        self.deviceIds = None # list[str]
         

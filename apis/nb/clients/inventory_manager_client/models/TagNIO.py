@@ -15,50 +15,66 @@ class TagNIO(object):
         """
         self.swaggerTypes = {
             
-            'id': 'str',
-            
-            
-            'interfaceId': 'str',
-            
-            
-            'networkDeviceId': 'str',
-            
-            
-            'tag': 'str',
-            
-            
-            'linkId': 'str',
+            'locationId': 'str',
             
             
             'lastUpdated': 'str',
             
             
-            'locationId': 'str'
+            'linkId': 'str',
+            
+            
+            'id': 'str',
+            
+            
+            'tag': 'str',
+            
+            
+            'interfaceId': 'str',
+            
+            
+            'networkDeviceId': 'str'
             
         }
 
         self.attributeMap = {
             
-            'id': 'id',
-            
-            'interfaceId': 'interfaceId',
-            
-            'networkDeviceId': 'networkDeviceId',
-            
-            'tag': 'tag',
-            
-            'linkId': 'linkId',
+            'locationId': 'locationId',
             
             'lastUpdated': 'lastUpdated',
             
-            'locationId': 'locationId'
+            'linkId': 'linkId',
+            
+            'id': 'id',
+            
+            'tag': 'tag',
+            
+            'interfaceId': 'interfaceId',
+            
+            'networkDeviceId': 'networkDeviceId'
             
         }       
 
         
+        #Unique identifier of location
+        
+        self.locationId = None # str
+        
+        #Time when the device interface info last got updated
+        
+        self.lastUpdated = None # str
+        
+        #Unique identifier of link
+        
+        self.linkId = None # str
+        
         #Unique identifier of tag
         
         self.id = None # str
+        
+        #Tag Id
+        
+        self.tag = None # str
         
         #Unique identifier of the interface
         
@@ -67,20 +83,4 @@ class TagNIO(object):
         #Unique identifier of device
         
         self.networkDeviceId = None # str
-        
-        #Tag Id
-        
-        self.tag = None # str
-        
-        #Unique identifier of link
-        
-        self.linkId = None # str
-        
-        #Time when the device interface info last got updated
-        
-        self.lastUpdated = None # str
-        
-        #Unique identifier of location
-        
-        self.locationId = None # str
         

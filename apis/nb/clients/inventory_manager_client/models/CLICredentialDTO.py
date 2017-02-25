@@ -27,10 +27,10 @@ class CLICredentialDTO(object):
             'description': 'str',
             
             
-            'credentialType': 'str',
-            
-            
             'comments': 'str',
+            
+            
+            'credentialType': 'str',
             
             
             'instanceUuid': 'str',
@@ -50,9 +50,9 @@ class CLICredentialDTO(object):
             
             'description': 'description',
             
-            'credentialType': 'credentialType',
-            
             'comments': 'comments',
+            
+            'credentialType': 'credentialType',
             
             'instanceUuid': 'instanceUuid',
             
@@ -77,13 +77,13 @@ class CLICredentialDTO(object):
         
         self.description = None # str
         
-        #Credential type to identify the application that uses the credential
-        
-        self.credentialType = None # str
-        
         #Comments to identify the credential
         
         self.comments = None # str
+        
+        #Credential type to identify the application that uses the credential
+        
+        self.credentialType = None # str
         
         
         self.instanceUuid = None # str

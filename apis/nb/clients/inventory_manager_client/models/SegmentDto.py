@@ -15,25 +15,27 @@ class SegmentDto(object):
         """
         self.swaggerTypes = {
             
-            'name': 'str',
+            'networkDevices': 'list[NetworkDeviceBrief]',
             
             
-            'networkDevices': 'list[NetworkDeviceBrief]'
+            'name': 'str'
             
         }
 
         self.attributeMap = {
             
-            'name': 'name',
+            'networkDevices': 'networkDevices',
             
-            'networkDevices': 'networkDevices'
+            'name': 'name'
             
         }       
 
         
-        
-        self.name = None # str
-        
+        #List of network devices
         
         self.networkDevices = None # list[NetworkDeviceBrief]
+        
+        #Segment Name
+        
+        self.name = None # str
         

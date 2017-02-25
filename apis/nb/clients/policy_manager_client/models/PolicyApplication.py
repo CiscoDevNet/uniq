@@ -15,53 +15,53 @@ class PolicyApplication(object):
         """
         self.swaggerTypes = {
             
+            'raw': 'str',
+            
+            
             'trafficClass': 'str',
-            
-            
-            'appName': 'str',
             
             
             'stale': 'bool',
             
             
-            'raw': 'str',
+            'id': 'str',
             
             
-            'id': 'str'
+            'appName': 'str'
             
         }
 
         self.attributeMap = {
             
-            'trafficClass': 'trafficClass',
+            'raw': 'raw',
             
-            'appName': 'appName',
+            'trafficClass': 'trafficClass',
             
             'stale': 'stale',
             
-            'raw': 'raw',
+            'id': 'id',
             
-            'id': 'id'
+            'appName': 'appName'
             
         }       
 
-        
-        #Traffic class to which the app belongs
-        
-        self.trafficClass = None # str
-        
-        
-        self.appName = None # str
-        
-        #Indicates whether the application has been updated since the last time this policy was provisioned
-        
-        self.stale = None # bool
         
         #Either raw Application of the form port:protocol should be specified or appId should be specified
         
         self.raw = None # str
         
+        #Traffic class to which the app belongs
+        
+        self.trafficClass = None # str
+        
+        #Indicates whether the application has been updated since the last time this policy was provisioned
+        
+        self.stale = None # bool
+        
         #id
         
         self.id = None # str
+        
+        
+        self.appName = None # str
         

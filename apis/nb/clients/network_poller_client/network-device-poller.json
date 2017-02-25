@@ -1,0 +1,277 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "resourcePath": "/network-device-poller/cli",
+    "apiVersion": "1.0",
+    "basePath": "/network-poller-service",
+    "models": {
+        "LegitCliKeyResult": {
+            "id": "LegitCliKeyResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            }
+        },
+        "CommandRunnerDTO": {
+            "id": "CommandRunnerDTO",
+            "description": "",
+            "required": [
+                "commands",
+                "deviceUuids"
+            ],
+            "extends": "",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "commands": {
+                    "uniqueItems": true,
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "deviceUuids": {
+                    "uniqueItems": true,
+                    "description": "",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            }
+        },
+        "TaskIdResult": {
+            "id": "TaskIdResult",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            }
+        },
+        "TaskIdResponse": {
+            "id": "TaskIdResponse",
+            "description": "",
+            "extends": "",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "$ref": "TaskId"
+                }
+            }
+        },
+        "TaskId": {
+            "id": "TaskId",
+            "description": "",
+            "extends": "",
+            "properties": {}
+        }
+    },
+    "swaggerVersion": "1.2",
+    "apis": [
+        {
+            "description": "getLegitCliKeywords",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "LegitCliKeyResult",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "responseModel": "LegitCliKeyResult",
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "summary": "Get all keywords of CLIs accepted by command runner",
+                    "notes": "Get valid keywords",
+                    "nickname": "getLegitCliKeywords",
+                    "parameters": [],
+                    "method": "GET"
+                }
+            ],
+            "path": "/network-device-poller/cli/legit-reads"
+        },
+        {
+            "description": "submitCommands",
+            "operations": [
+                {
+                    "deprecated": "false",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "type": "TaskIdResult",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body.",
+                            "code": 201
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "responseModel": "TaskIdResult",
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200
+                        },
+                        {
+                            "message": "The request was accepted for processing, but the processing has not been completed.",
+                            "code": 202
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "summary": "Run read-only commands on devices to get their real-time configuration",
+                    "notes": "Submit request for read-only CLIs",
+                    "nickname": "submitCommands",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "name": "commandRunnerDto",
+                            "type": "CommandRunnerDTO",
+                            "description": "commandRunnerDto",
+                            "allowMultiple": false,
+                            "required": false,
+                            "defaultValue": ""
+                        },
+                        {
+                            "paramType": "header",
+                            "name": "username",
+                            "type": "string",
+                            "description": "requestorUsername",
+                            "allowMultiple": false,
+                            "required": true,
+                            "defaultValue": ""
+                        }
+                    ],
+                    "method": "POST"
+                }
+            ],
+            "path": "/network-device-poller/cli/read-request"
+        }
+    ]
+}

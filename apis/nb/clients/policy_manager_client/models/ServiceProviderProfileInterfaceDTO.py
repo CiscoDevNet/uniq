@@ -15,13 +15,10 @@ class ServiceProviderProfileInterfaceDTO(object):
         """
         self.swaggerTypes = {
             
-            'stale': 'bool',
+            'deviceId': 'str',
             
             
             'interfaceName': 'str',
-            
-            
-            'deviceId': 'str',
             
             
             'deviceName': 'str',
@@ -30,56 +27,55 @@ class ServiceProviderProfileInterfaceDTO(object):
             'policyScope': 'str',
             
             
+            'interfaceId': 'str',
+            
+            
             'serviceProviderProfileVersion': 'int',
             
             
-            'interfaceId': 'str',
+            'stale': 'bool',
             
             
             'id': 'str',
             
             
-            'lastUpdateTime': 'int',
+            'createTime': 'int',
             
             
-            'createTime': 'int'
+            'lastUpdateTime': 'int'
             
         }
 
         self.attributeMap = {
             
-            'stale': 'stale',
+            'deviceId': 'deviceId',
             
             'interfaceName': 'interfaceName',
-            
-            'deviceId': 'deviceId',
             
             'deviceName': 'deviceName',
             
             'policyScope': 'policyScope',
             
+            'interfaceId': 'interfaceId',
+            
             'serviceProviderProfileVersion': 'serviceProviderProfileVersion',
             
-            'interfaceId': 'interfaceId',
+            'stale': 'stale',
             
             'id': 'id',
             
-            'lastUpdateTime': 'lastUpdateTime',
+            'createTime': 'createTime',
             
-            'createTime': 'createTime'
+            'lastUpdateTime': 'lastUpdateTime'
             
         }       
 
         
-        #Indicates whether the ServiceProviderProfile has been updated since the last time this interface was provisioned
         
-        self.stale = None # bool
+        self.deviceId = None # str
         
         
         self.interfaceName = None # str
-        
-        
-        self.deviceId = None # str
         
         
         self.deviceName = None # str
@@ -88,20 +84,24 @@ class ServiceProviderProfileInterfaceDTO(object):
         self.policyScope = None # str
         
         
+        self.interfaceId = None # str
+        
+        
         self.serviceProviderProfileVersion = None # int
         
+        #Indicates whether the ServiceProviderProfile has been updated since the last time this interface was provisioned
         
-        self.interfaceId = None # str
+        self.stale = None # bool
         
         #id
         
         self.id = None # str
         
-        #lastUpdateTime
-        
-        self.lastUpdateTime = None # int
-        
         #createTime
         
         self.createTime = None # int
+        
+        #lastUpdateTime
+        
+        self.lastUpdateTime = None # int
         

@@ -15,15 +15,6 @@ class DiscoveryJobNIO(object):
         """
         self.swaggerTypes = {
             
-            'startTime': 'str',
-            
-            
-            'endTime': 'str',
-            
-            
-            'name': 'str',
-            
-            
             'pingStatus': 'str',
             
             
@@ -36,10 +27,16 @@ class DiscoveryJobNIO(object):
             'inventoryReachabilityStatus': 'str',
             
             
+            'name': 'str',
+            
+            
+            'startTime': 'str',
+            
+            
+            'endTime': 'str',
+            
+            
             'taskId': 'str',
-            
-            
-            'discoveryStatus': 'str',
             
             
             'inventoryCollectionStatus': 'str',
@@ -51,6 +48,9 @@ class DiscoveryJobNIO(object):
             'ipAddress': 'str',
             
             
+            'discoveryStatus': 'str',
+            
+            
             'id': 'str',
             
             
@@ -60,12 +60,6 @@ class DiscoveryJobNIO(object):
 
         self.attributeMap = {
             
-            'startTime': 'startTime',
-            
-            'endTime': 'endTime',
-            
-            'name': 'name',
-            
             'pingStatus': 'pingStatus',
             
             'snmpStatus': 'snmpStatus',
@@ -74,9 +68,13 @@ class DiscoveryJobNIO(object):
             
             'inventoryReachabilityStatus': 'inventoryReachabilityStatus',
             
-            'taskId': 'taskId',
+            'name': 'name',
             
-            'discoveryStatus': 'discoveryStatus',
+            'startTime': 'startTime',
+            
+            'endTime': 'endTime',
+            
+            'taskId': 'taskId',
             
             'inventoryCollectionStatus': 'inventoryCollectionStatus',
             
@@ -84,23 +82,14 @@ class DiscoveryJobNIO(object):
             
             'ipAddress': 'ipAddress',
             
+            'discoveryStatus': 'discoveryStatus',
+            
             'id': 'id',
             
             'attributeInfo': 'attributeInfo'
             
         }       
 
-        
-        #Discovery job start time
-        
-        self.startTime = None # str
-        
-        
-        self.endTime = None # str
-        
-        #Discovery job name
-        
-        self.name = None # str
         
         #Ping status for the IP during this job run
         
@@ -118,24 +107,37 @@ class DiscoveryJobNIO(object):
         
         self.inventoryReachabilityStatus = None # str
         
+        #Discovery job name
+        
+        self.name = None # str
+        
+        #Discovery job start time
+        
+        self.startTime = None # str
+        
+        #End time for the discovery job
+        
+        self.endTime = None # str
+        
         #Discovery job task id
         
         self.taskId = None # str
-        
-        #Discovery status for the IP
-        
-        self.discoveryStatus = None # str
         
         #Last known inventory collection status of the device
         
         self.inventoryCollectionStatus = None # str
         
+        #Status of the job
         
         self.jobStatus = None # str
         
         #IP Address
         
         self.ipAddress = None # str
+        
+        #Discovery status for the IP
+        
+        self.discoveryStatus = None # str
         
         
         self.id = None # str

@@ -15,90 +15,90 @@ class PolicyDTO(object):
         """
         self.swaggerTypes = {
             
-            'priority': 'int',
+            'description': 'str',
             
             
             'name': 'str',
             
             
-            'description': 'str',
+            'priority': 'int',
             
             
             'contract': 'PolicyContractDTO',
             
             
-            'consumer': 'ConsumerDTO',
-            
-            
             'producer': 'ProducerDTO',
+            
+            
+            'consumer': 'ConsumerDTO',
             
             
             'id': 'str',
             
             
-            'lastUpdateTime': 'int',
+            'createTime': 'int',
             
             
-            'createTime': 'int'
+            'lastUpdateTime': 'int'
             
         }
 
         self.attributeMap = {
             
-            'priority': 'priority',
+            'description': 'description',
             
             'name': 'name',
             
-            'description': 'description',
+            'priority': 'priority',
             
             'contract': 'contract',
             
-            'consumer': 'consumer',
-            
             'producer': 'producer',
+            
+            'consumer': 'consumer',
             
             'id': 'id',
             
-            'lastUpdateTime': 'lastUpdateTime',
+            'createTime': 'createTime',
             
-            'createTime': 'createTime'
+            'lastUpdateTime': 'lastUpdateTime'
             
         }       
 
-        
-        #priority
-        
-        self.priority = None # int
-        
-        #name
-        
-        self.name = None # str
         
         #description
         
         self.description = None # str
         
+        #name
+        
+        self.name = None # str
+        
+        #priority
+        
+        self.priority = None # int
+        
         #contract
         
         self.contract = None # PolicyContractDTO
-        
-        #consumer
-        
-        self.consumer = None # ConsumerDTO
         
         #producer
         
         self.producer = None # ProducerDTO
         
+        #consumer
+        
+        self.consumer = None # ConsumerDTO
+        
         #id
         
         self.id = None # str
         
-        #lastUpdateTime
-        
-        self.lastUpdateTime = None # int
-        
         #createTime
         
         self.createTime = None # int
+        
+        #lastUpdateTime
+        
+        self.lastUpdateTime = None # int
         

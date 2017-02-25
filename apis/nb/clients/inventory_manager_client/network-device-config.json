@@ -1,131 +1,76 @@
 {
-    "apis": [
-        {
-            "description": "getRunningConfig",
-            "operations": [
-                {
-                    "nickname": "getRunningConfig",
-                    "notes": "Gets the config for all devices",
-                    "summary": "Retrieves device config list",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "RawCliInfoNIOListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "RawCliInfoNIOListResult",
-                    "parameters": []
-                }
-            ],
-            "path": "/network-device/config"
-        },
-        {
-            "description": "getNetworkConfigCount",
-            "operations": [
-                {
-                    "nickname": "getNetworkConfigCount",
-                    "notes": "Gets the count of device configs",
-                    "summary": "Retrieves config count",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "CountResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "CountResult",
-                    "parameters": []
-                }
-            ],
-            "path": "/network-device/config/count"
-        },
-        {
-            "description": "getRunningConfig",
-            "operations": [
-                {
-                    "nickname": "getRunningConfig",
-                    "notes": "Gets the device config by device ID",
-                    "summary": "Retrieves device config",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "SuccessResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "SuccessResult",
-                    "parameters": [
-                        {
-                            "name": "networkDeviceId",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "networkDeviceId",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/network-device/{networkDeviceId}/config"
-        }
-    ],
     "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
     "models": {
+        "RawCliInfoNIO": {
+            "description": "",
+            "id": "RawCliInfoNIO",
+            "extends": "",
+            "properties": {
+                "cdpNeighbors": {
+                    "type": "string",
+                    "description": "CDP configuration info of the device"
+                },
+                "intfDescription": {
+                    "type": "string",
+                    "description": "Interface configuration info of the device"
+                },
+                "inventory": {
+                    "type": "string",
+                    "description": "Inventory configuration info of the device"
+                },
+                "runningConfig": {
+                    "type": "string",
+                    "description": "Running-config of the device"
+                },
+                "healthMonitor": {
+                    "type": "string",
+                    "description": "Health monitor configuration info of the device"
+                },
+                "snmp": {
+                    "type": "string",
+                    "description": "SNMP configuration info of the device"
+                },
+                "macAddressTable": {
+                    "type": "string",
+                    "description": "MAC address configuration info of the device"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version configuration info of the device"
+                },
+                "ipIntfBrief": {
+                    "type": "string",
+                    "description": "IP interface brief configuration info of the device"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for config"
+                },
+                "attributeInfo": {
+                    "$ref": "object"
+                }
+            },
+            "required": [
+                "id",
+                "runningConfig"
+            ]
+        },
+        "SuccessResult": {
+            "description": "",
+            "id": "SuccessResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
         "CountResult": {
+            "description": "",
+            "id": "CountResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -135,11 +80,11 @@
                     "format": "int32"
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "CountResult"
+            "extends": ""
         },
         "RawCliInfoNIOListResult": {
+            "description": "",
+            "id": "RawCliInfoNIOListResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -151,81 +96,244 @@
                     }
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "RawCliInfoNIOListResult"
-        },
-        "SuccessResult": {
-            "properties": {
-                "version": {
-                    "type": "string"
-                },
-                "response": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "SuccessResult"
-        },
-        "RawCliInfoNIO": {
-            "required": [
-                "id",
-                "runningConfig"
-            ],
-            "properties": {
-                "version": {
-                    "type": "string",
-                    "description": "Version configuration info of the device"
-                },
-                "attributeInfo": {
-                    "$ref": "object"
-                },
-                "healthMonitor": {
-                    "type": "string",
-                    "description": "Health monitor configuration info of the device"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier for config"
-                },
-                "macAddressTable": {
-                    "type": "string",
-                    "description": "MAC address configuration info of the device"
-                },
-                "intfDescription": {
-                    "type": "string",
-                    "description": "Interface configuration info of the device"
-                },
-                "cdpNeighbors": {
-                    "type": "string",
-                    "description": "CDP configuration info of the device"
-                },
-                "snmp": {
-                    "type": "string",
-                    "description": "SNMP configuration info of the device"
-                },
-                "inventory": {
-                    "type": "string",
-                    "description": "Inventory configuration info of the device"
-                },
-                "runningConfig": {
-                    "type": "string",
-                    "description": "Running-config of the device"
-                },
-                "ipIntfBrief": {
-                    "type": "string",
-                    "description": "IP interface brief configuration info of the device"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "RawCliInfoNIO"
+            "extends": ""
         }
     },
-    "basePath": "/apic-em-inventory-manager-service",
+    "resourcePath": "/network-device",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/network-device"
+    "apis": [
+        {
+            "description": "getRunningConfig",
+            "path": "/network-device/config",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getRunningConfig",
+                    "type": "RawCliInfoNIOListResult",
+                    "notes": "Gets the config for all devices",
+                    "summary": "Retrieves device config list",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "RawCliInfoNIOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getNetworkConfigCount",
+            "path": "/network-device/config/count",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getNetworkConfigCount",
+                    "type": "CountResult",
+                    "notes": "Gets the count of device configs",
+                    "summary": "Retrieves config count",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getRunningConfigById",
+            "path": "/network-device/{networkDeviceId}/config",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getRunningConfigById",
+                    "type": "SuccessResult",
+                    "notes": "Gets the device config by device ID",
+                    "summary": "Retrieves device config",
+                    "parameters": [
+                        {
+                            "description": "networkDeviceId",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "networkDeviceId",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "SuccessResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "swaggerVersion": "1.2",
+    "basePath": "/apic-em-inventory-manager-service"
 }

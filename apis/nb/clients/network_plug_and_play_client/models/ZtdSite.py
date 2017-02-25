@@ -18,34 +18,34 @@ class ZtdSite(object):
             'id': 'str',
             
             
-            'tftpServer': 'str',
-            
-            
-            'siteName': 'str',
-            
-            
-            'deviceCount': 'int',
-            
-            
-            'tftpPath': 'str',
-            
-            
-            'installerUserID': 'str',
-            
-            
-            'note': 'str',
-            
-            
-            'deviceLastUpdate': 'str',
+            'provisionedBy': 'str',
             
             
             'provisionedOn': 'str',
             
             
-            'provisionedBy': 'str',
+            'siteName': 'str',
+            
+            
+            'tftpServer': 'str',
+            
+            
+            'tftpPath': 'str',
+            
+            
+            'note': 'str',
+            
+            
+            'deviceCount': 'int',
             
             
             'pendingDeviceCount': 'int',
+            
+            
+            'deviceLastUpdate': 'str',
+            
+            
+            'installerUserID': 'str',
             
             
             'state': 'str'
@@ -56,25 +56,25 @@ class ZtdSite(object):
             
             'id': 'id',
             
-            'tftpServer': 'tftpServer',
-            
-            'siteName': 'siteName',
-            
-            'deviceCount': 'deviceCount',
-            
-            'tftpPath': 'tftpPath',
-            
-            'installerUserID': 'installerUserID',
-            
-            'note': 'note',
-            
-            'deviceLastUpdate': 'deviceLastUpdate',
+            'provisionedBy': 'provisionedBy',
             
             'provisionedOn': 'provisionedOn',
             
-            'provisionedBy': 'provisionedBy',
+            'siteName': 'siteName',
+            
+            'tftpServer': 'tftpServer',
+            
+            'tftpPath': 'tftpPath',
+            
+            'note': 'note',
+            
+            'deviceCount': 'deviceCount',
             
             'pendingDeviceCount': 'pendingDeviceCount',
+            
+            'deviceLastUpdate': 'deviceLastUpdate',
+            
+            'installerUserID': 'installerUserID',
             
             'state': 'state'
             
@@ -85,45 +85,45 @@ class ZtdSite(object):
         
         self.id = None # str
         
-        #TFTP server host name or IP address
+        #User creating the project
         
-        self.tftpServer = None # str
-        
-        #Project name
-        
-        self.siteName = None # str
-        
-        #Number of devices under the project
-        
-        self.deviceCount = None # int
-        
-        #TFTP server path
-        
-        self.tftpPath = None # str
-        
-        #Installer user ID
-        
-        self.installerUserID = None # str
-        
-        #Project notes. Any file can be attached
-        
-        self.note = None # str
-        
-        #Last contact time among all devices in this project
-        
-        self.deviceLastUpdate = None # str
+        self.provisionedBy = None # str
         
         #Creation time for project
         
         self.provisionedOn = None # str
         
-        #User creating the project
+        #Project name
         
-        self.provisionedBy = None # str
+        self.siteName = None # str
+        
+        #TFTP server host name or IP address
+        
+        self.tftpServer = None # str
+        
+        #TFTP server path
+        
+        self.tftpPath = None # str
+        
+        #Project notes. Any file can be attached
+        
+        self.note = None # str
+        
+        #Number of devices under the project
+        
+        self.deviceCount = None # int
         
         #Number of devices in pending state
         
         self.pendingDeviceCount = None # int
+        
+        #Last contact time among all devices in this project
+        
+        self.deviceLastUpdate = None # str
+        
+        #Installer user ID
+        
+        self.installerUserID = None # str
         
         #Project state
         

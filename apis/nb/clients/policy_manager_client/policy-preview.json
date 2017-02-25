@@ -1,451 +1,19 @@
 {
-    "produces": [
-        "application/json"
-    ],
-    "consumes": [
-        "application/json"
-    ],
-    "resourcePath": "/policy/preview",
     "basePath": "/policy-manager-service",
-    "apiVersion": "1.0",
-    "apis": [
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Create a policy preview",
-                    "nickname": "add",
-                    "parameters": [
-                        {
-                            "type": "PolicyPreviewDTO",
-                            "description": "PolicyPreviewDTO",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "body",
-                            "name": "policyPreviewDTO"
-                        }
-                    ],
-                    "notes": "Create a policy preview"
-                }
-            ],
-            "description": "add",
-            "path": "/policy/preview"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "PolicyPreviewDTOListResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "PolicyPreviewDTOListResult",
-                    "summary": "Retrieves policy preview based on a given filter",
-                    "nickname": "getPolicyPreviewListByFilters",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "Retrieve policy previews for a given scope",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "policyScope"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve policy previews for a given wireless segment, within a policyScope (policyScope is mandatory for this)",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "scopeWirelessSegment"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Starting index of the resources (1 based)",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "offset"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Number of resources to return",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "limit"
-                        }
-                    ],
-                    "notes": "Retrieves policy previews based on a given filter"
-                }
-            ],
-            "description": "getPolicyPreviewListByFilters",
-            "path": "/policy/preview"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "PUT",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Update a policy preview",
-                    "nickname": "update",
-                    "parameters": [
-                        {
-                            "type": "PolicyPreviewDTO",
-                            "description": "PolicyPreviewDTO",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "body",
-                            "name": "policyPreviewDTO"
-                        }
-                    ],
-                    "notes": "Update a policy preview"
-                }
-            ],
-            "description": "update",
-            "path": "/policy/preview"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Deletes a policy preview by its id",
-                    "nickname": "delete",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "name": "id"
-                        }
-                    ],
-                    "notes": "Delete a policy preview by id"
-                }
-            ],
-            "description": "delete",
-            "path": "/policy/preview/{id}"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "PolicyPreviewDTOResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "PolicyPreviewDTOResult",
-                    "summary": "Retrieves a policy preview based on its id",
-                    "nickname": "getById",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "name": "id"
-                        }
-                    ],
-                    "notes": "Get a policy preview by id"
-                }
-            ],
-            "description": "getById",
-            "path": "/policy/preview/{id}"
-        }
-    ],
+    "swaggerVersion": "1.2",
     "models": {
-        "PolicyApplicationDiffDTO": {
-            "properties": {
-                "operation": {
-                    "type": "string",
-                    "description": "operation",
-                    "enum": [
-                        "CREATE",
-                        "UPDATE",
-                        "DELETE"
-                    ]
-                },
-                "policyApplication": {
-                    "$ref": "PolicyApplication",
-                    "description": "application"
-                }
-            },
-            "extends": "",
-            "id": "PolicyApplicationDiffDTO",
-            "description": ""
-        },
-        "PolicyPreviewDeviceConfigDTO": {
-            "properties": {
-                "createTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "createTime"
-                },
-                "fileId": {
-                    "type": "string",
-                    "description": "file id"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "status"
-                },
-                "lastUpdateTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "lastUpdateTime"
-                },
-                "deviceId": {
-                    "type": "string",
-                    "description": "network device id"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "id"
-                },
-                "operationId": {
-                    "type": "string",
-                    "description": "operation id"
-                },
-                "failureReason": {
-                    "type": "string",
-                    "description": "failure reason"
-                }
-            },
-            "extends": "",
-            "required": [
-                "id"
-            ],
-            "id": "PolicyPreviewDeviceConfigDTO",
-            "description": ""
-        },
-        "PolicyPreviewDTOResult": {
-            "properties": {
-                "response": {
-                    "$ref": "PolicyPreviewDTO"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "PolicyPreviewDTOResult",
-            "description": ""
-        },
-        "Policy": {
-            "properties": {
-                "state": {
-                    "type": "string"
-                },
-                "policyScope": {
-                    "type": "string",
-                    "description": "policyScope"
-                },
-                "actionProperty": {
-                    "$ref": "ActionProperty",
-                    "description": "ActionProperty"
-                },
-                "networkUser": {
-                    "$ref": "NetworkUser",
-                    "description": "Network User"
-                },
-                "scopeWirelessSegment": {
-                    "type": "string"
-                },
-                "taskId": {
-                    "type": "string",
-                    "description": "Task ID"
-                },
-                "policyPriority": {
-                    "format": "int32",
-                    "type": "integer",
-                    "description": "Policy Priority"
-                },
-                "policyName": {
-                    "type": "string",
-                    "description": "name of the policy"
-                },
-                "actions": {
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array",
-                    "description": "Action Set"
-                },
-                "instanceUuid": {
-                    "type": "string",
-                    "description": ""
-                },
-                "policyOwner": {
-                    "type": "string",
-                    "description": "Policy Owner"
-                },
-                "resource": {
-                    "$ref": "PolicyResource",
-                    "description": "Resource"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "id"
-                }
-            },
-            "extends": "",
-            "required": [
-                "actions",
-                "networkUser",
-                "policyOwner",
-                "actionProperty",
-                "policyScope",
-                "resource",
-                "id",
-                "taskId",
-                "policyName",
-                "policyPriority"
-            ],
-            "id": "Policy",
-            "description": ""
-        },
         "CategoryDTO": {
+            "extends": "",
             "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "id"
-                },
                 "name": {
                     "type": "string",
                     "description": "Category Name"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
                 }
             },
-            "extends": "",
             "required": [
                 "name",
                 "id"
@@ -453,48 +21,93 @@
             "id": "CategoryDTO",
             "description": ""
         },
-        "TaskId": {
-            "properties": {},
+        "PolicyPreviewDTOResult": {
             "extends": "",
-            "id": "TaskId",
-            "description": ""
-        },
-        "TaskIdResponse": {
             "properties": {
-                "url": {
+                "version": {
                     "type": "string"
                 },
-                "taskId": {
-                    "$ref": "TaskId"
+                "response": {
+                    "$ref": "PolicyPreviewDTO"
                 }
             },
-            "extends": "",
-            "id": "TaskIdResponse",
+            "id": "PolicyPreviewDTOResult",
             "description": ""
         },
-        "PolicyApplication": {
+        "PolicyPreviewDTO": {
+            "extends": "",
             "properties": {
-                "appName": {
-                    "type": "string"
+                "createTime": {
+                    "type": "integer",
+                    "description": "createTime",
+                    "format": "int64"
                 },
-                "stale": {
-                    "type": "boolean",
-                    "description": "Indicates whether the application has been updated since the last time this policy was provisioned"
+                "networkDeviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "list of network device ids, required when state is ENABLE_DEVICE"
                 },
-                "raw": {
-                    "type": "string",
-                    "description": "Either raw Application of the form port:protocol should be specified or appId should be specified"
+                "deviceConfigs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PolicyPreviewDeviceConfigDTO"
+                    },
+                    "description": "list of preview device configs"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Policy"
+                    },
+                    "description": "list of policies"
+                },
+                "lastUpdateTime": {
+                    "type": "integer",
+                    "description": "lastUpdateTime",
+                    "format": "int64"
                 },
                 "id": {
                     "type": "string",
                     "description": "id"
                 },
+                "state": {
+                    "type": "string",
+                    "description": "one of {DISABLE, ENABLE_DEVICE}"
+                }
+            },
+            "required": [
+                "state",
+                "policies",
+                "id"
+            ],
+            "id": "PolicyPreviewDTO",
+            "description": ""
+        },
+        "PolicyApplication": {
+            "extends": "",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
                 "trafficClass": {
                     "type": "string",
                     "description": "Traffic class to which the app belongs"
+                },
+                "stale": {
+                    "type": "boolean",
+                    "description": "Indicates whether the application has been updated since the last time this policy was provisioned"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "raw": {
+                    "type": "string",
+                    "description": "Either raw Application of the form port:protocol should be specified or appId should be specified"
                 }
             },
-            "extends": "",
             "required": [
                 "trafficClass",
                 "id"
@@ -502,189 +115,174 @@
             "id": "PolicyApplication",
             "description": ""
         },
-        "PolicyPreviewDTOListResult": {
+        "NetworkUser": {
+            "extends": "",
             "properties": {
+                "applications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PolicyApplication"
+                    },
+                    "uniqueItems": true
+                },
+                "applicationDiffs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PolicyApplicationDiffDTO"
+                    },
+                    "uniqueItems": true
+                },
+                "userIdentifiers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "locations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "deviceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "CategoryDTO"
+                    },
+                    "uniqueItems": true
+                }
+            },
+            "id": "NetworkUser",
+            "description": ""
+        },
+        "PolicyResource": {
+            "extends": "",
+            "properties": {
+                "applications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PolicyApplication"
+                    },
+                    "uniqueItems": true
+                },
+                "applicationDiffs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "PolicyApplicationDiffDTO"
+                    },
+                    "uniqueItems": true
+                },
+                "userIdentifiers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "locations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "trafficClasses": {
+                    "type": "string",
+                    "description": "Traffic classes to set the bandwidth profile for. If the ActionProperty is BandwidthProfileId, this resource should be 'ALL_TRAFFIC_CLASSES'. Otherwise, it should be null."
+                },
+                "deviceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "CategoryDTO"
+                    },
+                    "uniqueItems": true
+                }
+            },
+            "id": "PolicyResource",
+            "description": ""
+        },
+        "PolicyPreviewDTOListResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
                 "response": {
                     "type": "array",
                     "items": {
                         "$ref": "PolicyPreviewDTO"
                     }
-                },
-                "version": {
-                    "type": "string"
                 }
             },
-            "extends": "",
             "id": "PolicyPreviewDTOListResult",
             "description": ""
         },
-        "TaskIdResult": {
+        "TaskIdResponse": {
+            "extends": "",
             "properties": {
-                "response": {
-                    "$ref": "TaskIdResponse"
+                "taskId": {
+                    "$ref": "TaskId"
                 },
-                "version": {
+                "url": {
                     "type": "string"
                 }
             },
-            "extends": "",
-            "id": "TaskIdResult",
-            "description": ""
-        },
-        "PolicyResource": {
-            "properties": {
-                "applicationDiffs": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "$ref": "PolicyApplicationDiffDTO"
-                    }
-                },
-                "deviceTypes": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "locations": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "applications": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "$ref": "PolicyApplication"
-                    }
-                },
-                "userIdentifiers": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "categories": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "$ref": "CategoryDTO"
-                    }
-                }
-            },
-            "extends": "",
-            "id": "PolicyResource",
-            "description": ""
-        },
-        "PolicyPreviewDTO": {
-            "properties": {
-                "state": {
-                    "type": "string",
-                    "description": "one of {DISABLE, ENABLE_DEVICE}"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "id"
-                },
-                "createTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "createTime"
-                },
-                "lastUpdateTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "lastUpdateTime"
-                },
-                "policies": {
-                    "items": {
-                        "$ref": "Policy"
-                    },
-                    "type": "array",
-                    "description": "list of policies"
-                },
-                "deviceConfigs": {
-                    "items": {
-                        "$ref": "PolicyPreviewDeviceConfigDTO"
-                    },
-                    "type": "array",
-                    "description": "list of preview device configs"
-                },
-                "networkDeviceIds": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array",
-                    "description": "list of network device ids, required when state is ENABLE_DEVICE"
-                }
-            },
-            "extends": "",
-            "required": [
-                "policies",
-                "state",
-                "id"
-            ],
-            "id": "PolicyPreviewDTO",
-            "description": ""
-        },
-        "NetworkUser": {
-            "properties": {
-                "applicationDiffs": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "$ref": "PolicyApplicationDiffDTO"
-                    }
-                },
-                "deviceTypes": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "locations": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "applications": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "$ref": "PolicyApplication"
-                    }
-                },
-                "userIdentifiers": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "categories": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "$ref": "CategoryDTO"
-                    }
-                }
-            },
-            "extends": "",
-            "id": "NetworkUser",
+            "id": "TaskIdResponse",
             "description": ""
         },
         "ActionProperty": {
+            "extends": "",
             "properties": {
+                "PrimaryPathPref": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "SecondaryPathPref": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "bandwidthProfileId": {
+                    "type": "string",
+                    "description": "ID of the bandwidth profile"
+                },
+                "pathControlFlag": {
+                    "type": "boolean",
+                    "description": "path control flag"
+                },
                 "priorityLevel": {
                     "type": "string",
                     "description": "priority level for a policy"
+                },
+                "PathOfLastResort": {
+                    "type": "string"
+                },
+                "pathPreference": {
+                    "type": "string",
+                    "description": "path preference for a policy"
+                },
+                "experienceLevel": {
+                    "type": "string",
+                    "description": "experience level for a policy"
                 },
                 "relevanceLevel": {
                     "type": "string",
@@ -694,46 +292,19 @@
                     "type": "boolean",
                     "description": "path preference flag"
                 },
-                "PrimaryPathPref": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
                 "trustLevel": {
                     "type": "string",
                     "description": "trust level for a policy"
                 },
-                "pathPreference": {
-                    "type": "string",
-                    "description": "path preference for a policy"
-                },
-                "pathControlFlag": {
-                    "type": "boolean",
-                    "description": "path control flag"
+                "destinations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
                 },
                 "maintainExperience": {
                     "type": "string"
-                },
-                "experienceLevel": {
-                    "type": "string",
-                    "description": "experience level for a policy"
-                },
-                "SecondaryPathPref": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "PathOfLastResort": {
-                    "type": "string"
-                },
-                "destinations": {
-                    "uniqueItems": true,
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 },
                 "TertiaryPathPref": {
                     "type": "array",
@@ -742,8 +313,8 @@
                     }
                 }
             },
-            "extends": "",
             "required": [
+                "bandwidthProfileId",
                 "priorityLevel",
                 "experienceLevel",
                 "pathPreference",
@@ -754,7 +325,629 @@
             ],
             "id": "ActionProperty",
             "description": ""
+        },
+        "Policy": {
+            "extends": "",
+            "properties": {
+                "policyName": {
+                    "type": "string",
+                    "description": "name of the policy"
+                },
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "description": "Action Set"
+                },
+                "instanceUuid": {
+                    "type": "string",
+                    "description": ""
+                },
+                "policyScope": {
+                    "type": "string",
+                    "description": "policyScope"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "resource": {
+                    "$ref": "PolicyResource",
+                    "description": "Resource"
+                },
+                "taskId": {
+                    "type": "string",
+                    "description": "Task ID"
+                },
+                "scopeWirelessSegment": {
+                    "type": "string"
+                },
+                "policyOwner": {
+                    "type": "string",
+                    "description": "Policy Owner"
+                },
+                "policyPriority": {
+                    "type": "integer",
+                    "description": "Policy Priority",
+                    "format": "int32"
+                },
+                "networkUser": {
+                    "$ref": "NetworkUser",
+                    "description": "Network User"
+                },
+                "actionProperty": {
+                    "$ref": "ActionProperty",
+                    "description": "ActionProperty"
+                },
+                "state": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "policyScope",
+                "actionProperty",
+                "actions",
+                "networkUser",
+                "policyOwner",
+                "resource",
+                "id",
+                "taskId",
+                "policyName",
+                "policyPriority"
+            ],
+            "id": "Policy",
+            "description": ""
+        },
+        "TaskId": {
+            "extends": "",
+            "properties": {},
+            "id": "TaskId",
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "id": "TaskIdResult",
+            "description": ""
+        },
+        "PolicyPreviewDeviceConfigDTO": {
+            "extends": "",
+            "properties": {
+                "createTime": {
+                    "type": "integer",
+                    "description": "createTime",
+                    "format": "int64"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "status"
+                },
+                "operationId": {
+                    "type": "string",
+                    "description": "operation id"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "deviceId": {
+                    "type": "string",
+                    "description": "network device id"
+                },
+                "lastUpdateTime": {
+                    "type": "integer",
+                    "description": "lastUpdateTime",
+                    "format": "int64"
+                },
+                "failureReason": {
+                    "type": "string",
+                    "description": "failure reason"
+                },
+                "fileId": {
+                    "type": "string",
+                    "description": "file id"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "id": "PolicyPreviewDeviceConfigDTO",
+            "description": ""
+        },
+        "PolicyApplicationDiffDTO": {
+            "extends": "",
+            "properties": {
+                "policyApplication": {
+                    "$ref": "PolicyApplication",
+                    "description": "application"
+                },
+                "operation": {
+                    "type": "string",
+                    "enum": [
+                        "CREATE",
+                        "UPDATE",
+                        "DELETE"
+                    ],
+                    "description": "operation"
+                }
+            },
+            "id": "PolicyApplicationDiffDTO",
+            "description": ""
         }
     },
-    "swaggerVersion": "1.2"
+    "consumes": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/policy/preview",
+            "operations": [
+                {
+                    "type": "PolicyPreviewDTOListResult",
+                    "notes": "Retrieves policy previews based on a given filter",
+                    "nickname": "getPolicyPreviewListByFilters",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "PolicyPreviewDTOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Retrieves policy preview based on a given filter",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "policyScope",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve policy previews for a given scope",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "scopeWirelessSegment",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve policy previews for a given wireless segment, within a policyScope (policyScope is mandatory for this)",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "offset",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Starting index of the resources (1 based)",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "limit",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Number of resources to return",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+            ],
+            "description": "getPolicyPreviewListByFilters"
+        },
+        {
+            "path": "/policy/preview",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Create a policy preview",
+                    "nickname": "add",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body.",
+                            "code": 201
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The request was accepted for processing, but the processing has not been completed.",
+                            "code": 202
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "POST",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Create a policy preview",
+                    "parameters": [
+                        {
+                            "type": "PolicyPreviewDTO",
+                            "name": "policyPreviewDTO",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "PolicyPreviewDTO",
+                            "defaultValue": "",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+            ],
+            "description": "add"
+        },
+        {
+            "path": "/policy/preview",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Update a policy preview",
+                    "nickname": "update",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "PUT",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Update a policy preview",
+                    "parameters": [
+                        {
+                            "type": "PolicyPreviewDTO",
+                            "name": "policyPreviewDTO",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "PolicyPreviewDTO",
+                            "defaultValue": "",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+            ],
+            "description": "update"
+        },
+        {
+            "path": "/policy/preview/{id}",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Delete a policy preview by id",
+                    "nickname": "delete",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Deletes a policy preview by its id",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "id",
+                            "defaultValue": "",
+                            "paramType": "path"
+                        }
+                    ]
+                }
+            ],
+            "description": "delete"
+        },
+        {
+            "path": "/policy/preview/{id}",
+            "operations": [
+                {
+                    "type": "PolicyPreviewDTOResult",
+                    "notes": "Get a policy preview by id",
+                    "nickname": "getById",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "PolicyPreviewDTOResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Retrieves a policy preview based on its id",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "id",
+                            "defaultValue": "",
+                            "paramType": "path"
+                        }
+                    ]
+                }
+            ],
+            "description": "getById"
+        }
+    ],
+    "resourcePath": "/policy/preview",
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0"
 }

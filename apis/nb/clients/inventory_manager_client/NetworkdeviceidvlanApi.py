@@ -19,7 +19,7 @@ class NetworkdeviceidvlanApi(object):
     
     
     def getDeviceVLANData(self, **kwargs):
-        """API to get the List of VLAN Data for a device
+        """Retrieves list of VLAN data for a device
 
         Args:
             
