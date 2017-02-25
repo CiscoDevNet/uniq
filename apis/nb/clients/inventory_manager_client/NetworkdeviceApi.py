@@ -19,7 +19,7 @@ class NetworkdeviceApi(object):
 
 
     def getAllNetworkDevice(self, **kwargs):
-        """Retrieves the network devices by filters
+        """Retrieves all network devices
 
         Args:
 
@@ -76,6 +76,130 @@ class NetworkdeviceApi(object):
 
 
 
+    def updateNetworkDeviceDetails(self, **kwargs):
+        """Network device sync api
+
+        Args:
+
+            inventoryDeviceInfo, InventoryDeviceInfo: Payload to hold device IP and credential information (required)
+
+
+
+        Returns: TaskIdResult
+        """
+
+        allParams = ['inventoryDeviceInfo']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateNetworkDeviceDetails" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/network-device'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+
+
+
+
+
+
+
+
+
+        if ('inventoryDeviceInfo' in params):
+            bodyParam = params['inventoryDeviceInfo']
+
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+
+
+
+
+    def addNetworkDevice(self, **kwargs):
+        """Network device POST api
+
+        Args:
+
+            inventoryDeviceInfo, InventoryDeviceInfo: Payload to hold device IP and credential information (required)
+
+
+
+        Returns: TaskIdResult
+        """
+
+        allParams = ['inventoryDeviceInfo']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method addNetworkDevice" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/network-device'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'POST'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+
+
+
+
+
+
+
+
+
+        if ('inventoryDeviceInfo' in params):
+            bodyParam = params['inventoryDeviceInfo']
+
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+
+
+
+
     def updateNetworkDevice(self, **kwargs):
         """Updates network device role
 
@@ -121,6 +245,189 @@ class NetworkdeviceApi(object):
 
         if ('networkDeviceBriefNIO' in params):
             bodyParam = params['networkDeviceBriefNIO']
+
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+
+
+
+
+    def updateSchedule(self, **kwargs):
+        """updateSchedule
+
+        Args:
+
+            schedulingNIO, SchedulingNIO: schedulingNIO (required)
+
+
+
+        Returns: TaskIdResult
+        """
+
+        allParams = ['schedulingNIO']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateSchedule" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/network-device/collection-schedule'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+
+
+
+
+
+
+
+
+
+        if ('schedulingNIO' in params):
+            bodyParam = params['schedulingNIO']
+
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+
+
+
+
+    def getScheduleglobally(self, **kwargs):
+        """Retrieves the collection interval of all devices
+
+        Args:
+
+
+        Returns: CountResult
+        """
+
+        allParams = []
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getScheduleglobally" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/network-device/collection-schedule/global'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+
+
+
+
+
+
+
+
+
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'CountResult')
+        return responseObject
+
+
+
+
+    def updateScheduleGlobally(self, **kwargs):
+        """updateScheduleGlobally
+
+        Args:
+
+            schedule, int: schedule (required)
+
+
+
+        Returns: TaskIdResult
+        """
+
+        allParams = ['schedule']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateScheduleGlobally" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/network-device/collection-schedule/global/{schedule}'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+
+
+
+
+
+        if ('schedule' in params):
+            replacement = str(self.apiClient.toPathValue(params['schedule']))
+            replacement = urllib.parse.quote(replacement)
+            resourcePath = resourcePath.replace('{' + 'schedule' + '}',
+                                                replacement)
+
+
+
+
 
 
         postData = (formParams if formParams else bodyParam)
@@ -251,7 +558,7 @@ class NetworkdeviceApi(object):
 
 
     def getNetworkDeviceCount(self, **kwargs):
-        """Retrieves network device count by filters
+        """Retrieves network device count
 
         Args:
 
@@ -555,7 +862,7 @@ class NetworkdeviceApi(object):
 
 
     def getNetworkDeviceByLocationByRange(self, **kwargs):
-        """Retrieves network devices with location by range
+        """Retrieves network devices with specified location in the given range
 
         Args:
 
@@ -638,7 +945,7 @@ class NetworkdeviceApi(object):
 
 
     def getNetworkDeviceLocationByRange(self, **kwargs):
-        """Retrieves device location range
+        """Retrieves device locations in the given range
 
         Args:
 
@@ -1149,6 +1456,74 @@ class NetworkdeviceApi(object):
 
 
 
+    def syncDevice(self, **kwargs):
+        """Network device sync api
+
+        Args:
+
+            id, List: List of id&#39;s in the format [\&quot;id1\&quot;, \&quot;id2\&quot;] (required)
+
+
+            forceSync, bool: forceSync (required)
+
+
+
+        Returns: TaskIdResult
+        """
+
+        allParams = ['id', 'forceSync']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method syncDevice" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/network-device/sync'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+
+        if ('forceSync' in params):
+            queryParams['forceSync'] = self.apiClient.toPathValue(params['forceSync'])
+
+
+
+
+
+
+
+
+
+        if ('id' in params):
+            bodyParam = params['id']
+
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'TaskIdResult')
+        return responseObject
+
+
+
+
     def getNetworkDeviceById(self, **kwargs):
         """Retrieves network device by ID
 
@@ -1344,6 +1719,71 @@ class NetworkdeviceApi(object):
 
 
 
+    def getScheduleDevice(self, **kwargs):
+        """Retrieves the collection interval specified by device ID
+
+        Args:
+
+            id, str: Device ID (required)
+
+
+
+        Returns: CountResult
+        """
+
+        allParams = ['id']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getScheduleDevice" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/network-device/{id}/collection-schedule'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+
+
+
+
+
+        if ('id' in params):
+            replacement = str(self.apiClient.toPathValue(params['id']))
+            replacement = urllib.parse.quote(replacement)
+            resourcePath = resourcePath.replace('{' + 'id' + '}',
+                                                replacement)
+
+
+
+
+
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'CountResult')
+        return responseObject
+
+
+
+
     def getNetworkDeviceLocationById(self, **kwargs):
         """Retrieves device location by device ID
 
@@ -1473,7 +1913,7 @@ class NetworkdeviceApi(object):
 
 
 
-    #changed this from getRunningConfig to getRunningConfigById manually
+
     def getRunningConfigById(self, **kwargs):
         """Retrieves device config
 
@@ -1491,7 +1931,7 @@ class NetworkdeviceApi(object):
         params = locals()
         for (key, val) in list(params['kwargs'].items()):
             if key not in allParams:
-                raise TypeError("Got an unexpected keyword argument '%s' to method getRunningConfig" % key)
+                raise TypeError("Got an unexpected keyword argument '%s' to method getRunningConfigById" % key)
             params[key] = val
         del params['kwargs']
 

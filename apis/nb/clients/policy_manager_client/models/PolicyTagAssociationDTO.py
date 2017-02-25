@@ -15,41 +15,41 @@ class PolicyTagAssociationDTO(object):
         """
         self.swaggerTypes = {
             
-            'networkDevices': 'list[PolicyTagAssociationDeviceDTO]',
-            
-            
-            'policyTag': 'str',
-            
-            
             'unModifiable': 'bool',
             
             
-            'unModifiableReason': 'str'
+            'unModifiableReason': 'str',
+            
+            
+            'networkDevices': 'list[PolicyTagAssociationDeviceDTO]',
+            
+            
+            'policyTag': 'str'
             
         }
 
         self.attributeMap = {
             
-            'networkDevices': 'networkDevices',
-            
-            'policyTag': 'policyTag',
-            
             'unModifiable': 'unModifiable',
             
-            'unModifiableReason': 'unModifiableReason'
+            'unModifiableReason': 'unModifiableReason',
+            
+            'networkDevices': 'networkDevices',
+            
+            'policyTag': 'policyTag'
             
         }       
 
-        
-        
-        self.networkDevices = None # list[PolicyTagAssociationDeviceDTO]
-        
-        
-        self.policyTag = None # str
         
         
         self.unModifiable = None # bool
         
         
         self.unModifiableReason = None # str
+        
+        
+        self.networkDevices = None # list[PolicyTagAssociationDeviceDTO]
+        
+        
+        self.policyTag = None # str
         

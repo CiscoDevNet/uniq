@@ -15,9 +15,6 @@ class Date(object):
         """
         self.swaggerTypes = {
             
-            'time': 'int',
-            
-            
             'hours': 'int',
             
             
@@ -25,6 +22,9 @@ class Date(object):
             
             
             'seconds': 'int',
+            
+            
+            'time': 'int',
             
             
             'year': 'int',
@@ -39,13 +39,13 @@ class Date(object):
 
         self.attributeMap = {
             
-            'time': 'time',
-            
             'hours': 'hours',
             
             'minutes': 'minutes',
             
             'seconds': 'seconds',
+            
+            'time': 'time',
             
             'year': 'year',
             
@@ -57,9 +57,6 @@ class Date(object):
 
         
         
-        self.time = None # int
-        
-        
         self.hours = None # int
         
         
@@ -67,6 +64,9 @@ class Date(object):
         
         
         self.seconds = None # int
+        
+        
+        self.time = None # int
         
         
         self.year = None # int

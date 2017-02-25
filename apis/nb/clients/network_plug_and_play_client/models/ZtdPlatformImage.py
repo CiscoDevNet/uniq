@@ -15,53 +15,53 @@ class ZtdPlatformImage(object):
         """
         self.swaggerTypes = {
             
-            'imageId': 'str',
-            
-            
             'imageName': 'str',
+            
+            
+            'imageId': 'str',
             
             
             'platform': 'list[ZtdPlatform]',
             
             
-            'imageSize': 'str',
+            'imageVersion': 'str',
             
             
-            'imageVersion': 'str'
+            'imageSize': 'str'
             
         }
 
         self.attributeMap = {
             
-            'imageId': 'imageId',
-            
             'imageName': 'imageName',
+            
+            'imageId': 'imageId',
             
             'platform': 'platform',
             
-            'imageSize': 'imageSize',
+            'imageVersion': 'imageVersion',
             
-            'imageVersion': 'imageVersion'
+            'imageSize': 'imageSize'
             
         }       
 
-        
-        #Image ID
-        
-        self.imageId = None # str
         
         #Image name
         
         self.imageName = None # str
         
+        #Image ID
+        
+        self.imageId = None # str
+        
         
         self.platform = None # list[ZtdPlatform]
-        
-        #Image size in bytes
-        
-        self.imageSize = None # str
         
         #Image version
         
         self.imageVersion = None # str
+        
+        #Image size in bytes
+        
+        self.imageSize = None # str
         

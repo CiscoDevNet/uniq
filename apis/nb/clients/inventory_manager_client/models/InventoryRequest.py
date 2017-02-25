@@ -15,9 +15,6 @@ class InventoryRequest(object):
         """
         self.swaggerTypes = {
             
-            'name': 'str',
-            
-            
             'cdpLevel': 'int',
             
             
@@ -66,13 +63,7 @@ class InventoryRequest(object):
             'parentDiscoveryId': 'str',
             
             
-            'snmpMode': 'str',
-            
-            
-            'snmpUserName': 'str',
-            
-            
-            'snmpVersion': 'str',
+            'name': 'str',
             
             
             'timeout': 'int',
@@ -81,13 +72,20 @@ class InventoryRequest(object):
             'ipAddressList': 'str',
             
             
-            'discoveryType': 'str'
+            'snmpVersion': 'str',
+            
+            
+            'discoveryType': 'str',
+            
+            
+            'snmpMode': 'str',
+            
+            
+            'snmpUserName': 'str'
             
         }
 
         self.attributeMap = {
-            
-            'name': 'name',
             
             'cdpLevel': 'cdpLevel',
             
@@ -121,24 +119,22 @@ class InventoryRequest(object):
             
             'parentDiscoveryId': 'parentDiscoveryId',
             
-            'snmpMode': 'snmpMode',
-            
-            'snmpUserName': 'snmpUserName',
-            
-            'snmpVersion': 'snmpVersion',
+            'name': 'name',
             
             'timeout': 'timeout',
             
             'ipAddressList': 'ipAddressList',
             
-            'discoveryType': 'discoveryType'
+            'snmpVersion': 'snmpVersion',
+            
+            'discoveryType': 'discoveryType',
+            
+            'snmpMode': 'snmpMode',
+            
+            'snmpUserName': 'snmpUserName'
             
         }       
 
-        
-        #Name for discovery
-        
-        self.name = None # str
         
         #CDP level to which neighbor devices to be discovered
         
@@ -148,7 +144,7 @@ class InventoryRequest(object):
         
         self.enablePasswordList = None # list[str]
         
-        #Username of the devices to be discovered
+        #Ip addresses of the devices to be filtered out during discovery
         
         self.ipFilterList = None # list[str]
         
@@ -160,7 +156,7 @@ class InventoryRequest(object):
         
         self.protocolOrder = None # str
         
-        #Flag to indicate is rediscovery or not
+        #Flag to indicate if rediscovery is needed or not
         
         self.reDiscovery = None # bool
         
@@ -203,6 +199,26 @@ class InventoryRequest(object):
         
         self.parentDiscoveryId = None # str
         
+        #Name for discovery
+        
+        self.name = None # str
+        
+        #Time to wait for device response in seconds
+        
+        self.timeout = None # int
+        
+        #Ip address(es) of the device to be discovered
+        
+        self.ipAddressList = None # str
+        
+        #Version of SNMP. Can be v2 or v3
+        
+        self.snmpVersion = None # str
+        
+        #Available types are: single, auto cdp discovery, range, multi range
+        
+        self.discoveryType = None # str
+        
         #Mode of SNMP. Available values:&#39;AUTHPRIV&#39; or &#39;AUTHNOPRIV&#39; or &#39;NOAUTHNOPRIV&#39;
         
         self.snmpMode = None # str
@@ -210,20 +226,4 @@ class InventoryRequest(object):
         #SNMP username of the device
         
         self.snmpUserName = None # str
-        
-        #Version of SNMP. Can be v2 or v3
-        
-        self.snmpVersion = None # str
-        
-        #Time to wait for device response in seconds
-        
-        self.timeout = None # int
-        
-        #Ip address of the device to be discovered
-        
-        self.ipAddressList = None # str
-        
-        #Available types are: single, auto cdp discovery, range, multi range
-        
-        self.discoveryType = None # str
         

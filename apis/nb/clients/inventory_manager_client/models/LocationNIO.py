@@ -21,19 +21,16 @@ class LocationNIO(object):
             'description': 'str',
             
             
-            'tag': 'str',
-            
-            
-            'id': 'str',
-            
-            
             'geographicalAddress': 'str',
             
             
             'locationName': 'str',
             
             
-            'attributeInfo': 'dict'
+            'id': 'str',
+            
+            
+            'tag': 'str'
             
         }
 
@@ -43,15 +40,13 @@ class LocationNIO(object):
             
             'description': 'description',
             
-            'tag': 'tag',
-            
-            'id': 'id',
-            
             'geographicalAddress': 'geographicalAddress',
             
             'locationName': 'locationName',
             
-            'attributeInfo': 'attributeInfo'
+            'id': 'id',
+            
+            'tag': 'tag'
             
         }       
 
@@ -64,14 +59,6 @@ class LocationNIO(object):
         
         self.description = None # str
         
-        #Tag associated with the location
-        
-        self.tag = None # str
-        
-        #Unique identifier for location
-        
-        self.id = None # str
-        
         #Geographic address of the location
         
         self.geographicalAddress = None # str
@@ -80,6 +67,11 @@ class LocationNIO(object):
         
         self.locationName = None # str
         
+        #Unique identifier for location
         
-        self.attributeInfo = None # dict
+        self.id = None # str
+        
+        #Tag associated with the location
+        
+        self.tag = None # str
         

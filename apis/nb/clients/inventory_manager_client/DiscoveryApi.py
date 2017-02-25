@@ -199,7 +199,7 @@ class DiscoveryApi(object):
         
     
     def getDiscoveryCount(self, **kwargs):
-        """Retrieves the number of discovery
+        """Retrieves the number of discoveries
 
         Args:
             
@@ -459,7 +459,7 @@ class DiscoveryApi(object):
         
     
     def getDiscoveryJobsById(self, **kwargs):
-        """Retrieves the list of discovery jobs for the given IP
+        """Retrieves list of discovery jobs for the specified discovery id
 
         Args:
             

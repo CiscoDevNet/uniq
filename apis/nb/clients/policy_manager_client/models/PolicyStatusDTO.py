@@ -21,16 +21,19 @@ class PolicyStatusDTO(object):
             'businessIrrelevantConsumerProducerApplications': 'list[PolicyConsumerProducerApplication]',
             
             
-            'applicationPolicyCount': 'int',
+            'networkDeviceIp': 'str',
+            
+            
+            'businessRelevantApplications': 'list[PolicyApplication]',
             
             
             'businessIrrelevantApplications': 'list[PolicyApplication]',
             
             
+            'applicationPolicyCount': 'int',
+            
+            
             'pending': 'bool',
-            
-            
-            'businessRelevantApplications': 'list[PolicyApplication]',
             
             
             'status': 'str',
@@ -42,9 +45,6 @@ class PolicyStatusDTO(object):
             'lastUpdated': 'str',
             
             
-            'policyScope': 'str',
-            
-            
             'failureReason': 'str',
             
             
@@ -54,19 +54,19 @@ class PolicyStatusDTO(object):
             'policyVersion': 'str',
             
             
+            'policyScope': 'str',
+            
+            
+            'outOfScope': 'bool',
+            
+            
             'networkDeviceId': 'str',
             
             
             'networkDeviceName': 'str',
             
             
-            'outOfScope': 'bool',
-            
-            
-            'scopeWirelessSegment': 'str',
-            
-            
-            'networkDeviceIp': 'str'
+            'scopeWirelessSegment': 'str'
             
         }
 
@@ -76,13 +76,15 @@ class PolicyStatusDTO(object):
             
             'businessIrrelevantConsumerProducerApplications': 'businessIrrelevantConsumerProducerApplications',
             
-            'applicationPolicyCount': 'applicationPolicyCount',
+            'networkDeviceIp': 'networkDeviceIp',
+            
+            'businessRelevantApplications': 'businessRelevantApplications',
             
             'businessIrrelevantApplications': 'businessIrrelevantApplications',
             
-            'pending': 'pending',
+            'applicationPolicyCount': 'applicationPolicyCount',
             
-            'businessRelevantApplications': 'businessRelevantApplications',
+            'pending': 'pending',
             
             'status': 'status',
             
@@ -90,23 +92,21 @@ class PolicyStatusDTO(object):
             
             'lastUpdated': 'lastUpdated',
             
-            'policyScope': 'policyScope',
-            
             'failureReason': 'failureReason',
             
             'lastSuccessfulPolicyVersion': 'lastSuccessfulPolicyVersion',
             
             'policyVersion': 'policyVersion',
             
+            'policyScope': 'policyScope',
+            
+            'outOfScope': 'outOfScope',
+            
             'networkDeviceId': 'networkDeviceId',
             
             'networkDeviceName': 'networkDeviceName',
             
-            'outOfScope': 'outOfScope',
-            
-            'scopeWirelessSegment': 'scopeWirelessSegment',
-            
-            'networkDeviceIp': 'networkDeviceIp'
+            'scopeWirelessSegment': 'scopeWirelessSegment'
             
         }       
 
@@ -118,16 +118,19 @@ class PolicyStatusDTO(object):
         self.businessIrrelevantConsumerProducerApplications = None # list[PolicyConsumerProducerApplication]
         
         
-        self.applicationPolicyCount = None # int
+        self.networkDeviceIp = None # str
+        
+        
+        self.businessRelevantApplications = None # list[PolicyApplication]
         
         
         self.businessIrrelevantApplications = None # list[PolicyApplication]
         
         
+        self.applicationPolicyCount = None # int
+        
+        
         self.pending = None # bool
-        
-        
-        self.businessRelevantApplications = None # list[PolicyApplication]
         
         
         self.status = None # str
@@ -139,9 +142,6 @@ class PolicyStatusDTO(object):
         self.lastUpdated = None # str
         
         
-        self.policyScope = None # str
-        
-        
         self.failureReason = None # str
         
         
@@ -151,17 +151,17 @@ class PolicyStatusDTO(object):
         self.policyVersion = None # str
         
         
+        self.policyScope = None # str
+        
+        
+        self.outOfScope = None # bool
+        
+        
         self.networkDeviceId = None # str
         
         
         self.networkDeviceName = None # str
         
         
-        self.outOfScope = None # bool
-        
-        
         self.scopeWirelessSegment = None # str
-        
-        
-        self.networkDeviceIp = None # str
         

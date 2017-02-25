@@ -21,13 +21,13 @@ class FlowDTO(object):
             'protocol': 'str',
             
             
+            'codec': 'str',
+            
+            
             'status': 'str',
             
             
             'applicationName': 'str',
-            
-            
-            'codec': 'str',
             
             
             'interfaceName': 'str',
@@ -37,12 +37,6 @@ class FlowDTO(object):
             
             
             'failureReason': 'str',
-            
-            
-            'destIP': 'str',
-            
-            
-            'averageBandwidth': 'str',
             
             
             'clientReference': 'str',
@@ -72,6 +66,12 @@ class FlowDTO(object):
             'peakBandwidth': 'str',
             
             
+            'averageBandwidth': 'str',
+            
+            
+            'destIP': 'str',
+            
+            
             'sourceIP': 'str'
             
         }
@@ -82,21 +82,17 @@ class FlowDTO(object):
             
             'protocol': 'protocol',
             
+            'codec': 'codec',
+            
             'status': 'status',
             
             'applicationName': 'applicationName',
-            
-            'codec': 'codec',
             
             'interfaceName': 'interfaceName',
             
             'sourcePort': 'sourcePort',
             
             'failureReason': 'failureReason',
-            
-            'destIP': 'destIP',
-            
-            'averageBandwidth': 'averageBandwidth',
             
             'clientReference': 'clientReference',
             
@@ -116,6 +112,10 @@ class FlowDTO(object):
             
             'peakBandwidth': 'peakBandwidth',
             
+            'averageBandwidth': 'averageBandwidth',
+            
+            'destIP': 'destIP',
+            
             'sourceIP': 'sourceIP'
             
         }       
@@ -129,16 +129,16 @@ class FlowDTO(object):
         
         self.protocol = None # str
         
+        #codec
+        
+        self.codec = None # str
+        
         
         self.status = None # str
         
         #APIC-EM application name
         
         self.applicationName = None # str
-        
-        #codec
-        
-        self.codec = None # str
         
         #interfaceName
         
@@ -150,14 +150,6 @@ class FlowDTO(object):
         
         
         self.failureReason = None # str
-        
-        #destIP
-        
-        self.destIP = None # str
-        
-        #averageBandwidth in kbps (min: 0, max: 2147483647 kbps)
-        
-        self.averageBandwidth = None # str
         
         #clientReference (can be used by the client as a reference to this resource
         
@@ -194,6 +186,14 @@ class FlowDTO(object):
         #peakBandwidth in kbps (min: 0, max: 2147483647 kbps)
         
         self.peakBandwidth = None # str
+        
+        #averageBandwidth in kbps (min: 0, max: 2147483647 kbps)
+        
+        self.averageBandwidth = None # str
+        
+        #destIP
+        
+        self.destIP = None # str
         
         #sourceIP
         

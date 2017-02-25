@@ -1,95 +1,9 @@
 {
-    "apis": [
-        {
-            "description": "getSegmentInfo",
-            "operations": [
-                {
-                    "nickname": "getSegmentInfo",
-                    "notes": "Gets list of segment info based on policyTag",
-                    "summary": "list of segment info based on the policyTag",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "SegmentResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "SegmentResult",
-                    "parameters": [
-                        {
-                            "name": "type",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "Type of segment",
-                            "required": true,
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "policyTag",
-                            "allowMultiple": false,
-                            "paramType": "query",
-                            "type": "string",
-                            "description": "Policy tag",
-                            "required": false,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/segment"
-        }
-    ],
     "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
     "models": {
-        "NetworkDeviceBrief": {
-            "properties": {
-                "hostName": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "NetworkDeviceBrief"
-        },
-        "SegmentDto": {
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "networkDevices": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "NetworkDeviceBrief"
-                    }
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "SegmentDto"
-        },
         "SegmentResult": {
+            "description": "",
+            "id": "SegmentResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -101,14 +15,142 @@
                     }
                 }
             },
+            "extends": ""
+        },
+        "NetworkDeviceBrief": {
             "description": "",
+            "id": "NetworkDeviceBrief",
+            "properties": {
+                "hostName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "extends": ""
+        },
+        "SegmentDto": {
+            "description": "",
+            "id": "SegmentDto",
             "extends": "",
-            "id": "SegmentResult"
+            "properties": {
+                "networkDevices": {
+                    "type": "array",
+                    "description": "List of network devices",
+                    "items": {
+                        "$ref": "NetworkDeviceBrief"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Segment Name"
+                }
+            },
+            "required": [
+                "networkDevices",
+                "name"
+            ]
         }
     },
-    "basePath": "/apic-em-inventory-manager-service",
+    "resourcePath": "/segment",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/segment"
+    "apis": [
+        {
+            "description": "getSegmentInfo",
+            "path": "/segment",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getSegmentInfo",
+                    "type": "SegmentResult",
+                    "notes": "Gets the list of segment info based on the policy tag",
+                    "summary": "Retrieves list of segment info based on the policy tag",
+                    "parameters": [
+                        {
+                            "description": "Type of segment",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "type",
+                            "paramType": "query"
+                        },
+                        {
+                            "description": "Policy tag",
+                            "defaultValue": "",
+                            "required": false,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "policyTag",
+                            "paramType": "query"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "SegmentResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "swaggerVersion": "1.2",
+    "basePath": "/apic-em-inventory-manager-service"
 }

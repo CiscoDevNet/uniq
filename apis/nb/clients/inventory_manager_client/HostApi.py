@@ -19,7 +19,7 @@ class HostApi(object):
     
     
     def getHosts(self, **kwargs):
-        """Retrieve hosts
+        """Retrieve hosts based on given filters
 
         Args:
             
@@ -41,7 +41,7 @@ class HostApi(object):
             hostMac, list[str]: hostMac (required)
             
             
-            hostType, list[str]: hostType (required)
+            hostType, str: Host type : wired or wireless (required)
             
             
             connectedInterfaceName, list[str]: connectedInterfaceName (required)
@@ -147,7 +147,7 @@ class HostApi(object):
         
     
     def getHostCount(self, **kwargs):
-        """Gives total number of hosts
+        """Retrieves the number of hosts
 
         Args:
             
@@ -157,7 +157,7 @@ class HostApi(object):
             hostMac, list[str]: hostMac (required)
             
             
-            hostType, list[str]: hostType (required)
+            hostType, str: Host type : wired or wireless (required)
             
             
             connectedInterfaceName, list[str]: connectedInterfaceName (required)

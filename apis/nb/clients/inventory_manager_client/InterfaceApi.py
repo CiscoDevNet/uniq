@@ -453,7 +453,7 @@ class InterfaceApi(object):
         
     
     def getInterfaceRangeByDevice(self, **kwargs):
-        """Retrieves interface range for the device
+        """Retrieves device interfaces in the given range
 
         Args:
             

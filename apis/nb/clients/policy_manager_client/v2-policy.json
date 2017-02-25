@@ -1,521 +1,76 @@
 {
-    "produces": [
-        "application/json"
-    ],
-    "consumes": [
-        "application/json"
-    ],
-    "resourcePath": "/v2/policy",
     "basePath": "/policy-manager-service",
-    "apiVersion": "1.0",
-    "apis": [
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "PolicyDTOListResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "PolicyDTOListResult",
-                    "summary": "Retrieves policies based on a given filter",
-                    "nickname": "getPolicyByFilters",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given name",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "name"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given contract name",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "contract+name"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given producer scalable group name",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "producer+scalableGroupName"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given consumer scalable group name",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "consumer+scalableGroupName"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Retrieve policies for a given scalable group name (used within producer or consumer)",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "scalableGroupName"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Starting index of the resources (1 based)",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "offset"
-                        },
-                        {
-                            "type": "string",
-                            "description": "Number of resources to return",
-                            "allowMultiple": false,
-                            "required": false,
-                            "defaultValue": "",
-                            "paramType": "query",
-                            "name": "limit"
-                        }
-                    ],
-                    "notes": "Retrieves policies based on a given filter"
-                }
-            ],
-            "description": "getPolicyByFilters",
-            "path": "/v2/policy"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 202,
-                            "message": "This Request is Accepted"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Create Policy(s)",
-                    "nickname": "add",
-                    "parameters": [
-                        {
-                            "paramType": "body",
-                            "type": "array",
-                            "description": "Policy Object(s)",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "items": {
-                                "$ref": "PolicyDTO"
-                            },
-                            "name": "policyDTOs"
-                        }
-                    ],
-                    "notes": "Create Policy(s)"
-                }
-            ],
-            "description": "add",
-            "path": "/v2/policy"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "PUT",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Update Policy(s)",
-                    "nickname": "update",
-                    "parameters": [
-                        {
-                            "paramType": "body",
-                            "type": "array",
-                            "description": "Policy Object(s)",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "items": {
-                                "$ref": "PolicyDTO"
-                            },
-                            "name": "policyDTOs"
-                        }
-                    ],
-                    "notes": "Update Policy(s)"
-                }
-            ],
-            "description": "update",
-            "path": "/v2/policy"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "CountResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "CountResult",
-                    "summary": "Return total count of policies",
-                    "nickname": "getCount",
-                    "parameters": [],
-                    "notes": "Get total count of policies"
-                }
-            ],
-            "description": "getCount",
-            "path": "/v2/policy/count"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "summary": "Deletes a policy by its id",
-                    "nickname": "delete",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "name": "id"
-                        }
-                    ],
-                    "notes": "Delete a policy by id"
-                }
-            ],
-            "description": "delete",
-            "path": "/v2/policy/{id}"
-        },
-        {
-            "operations": [
-                {
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "This Request is OK",
-                            "responseModel": "PolicyDTOResult"
-                        },
-                        {
-                            "code": 403,
-                            "message": "This user is Forbidden Access to this Resource"
-                        },
-                        {
-                            "code": 401,
-                            "message": "Not Authorized Yet, Credentials to be supplied"
-                        },
-                        {
-                            "code": 404,
-                            "message": "No Resource Found"
-                        }
-                    ],
-                    "type": "PolicyDTOResult",
-                    "summary": "Retrieves a policy based on its id",
-                    "nickname": "getById",
-                    "parameters": [
-                        {
-                            "type": "string",
-                            "description": "id",
-                            "allowMultiple": false,
-                            "required": true,
-                            "defaultValue": "",
-                            "paramType": "path",
-                            "name": "id"
-                        }
-                    ],
-                    "notes": "Get a policy by id"
-                }
-            ],
-            "description": "getById",
-            "path": "/v2/policy/{id}"
-        }
-    ],
+    "swaggerVersion": "1.2",
     "models": {
-        "ProducerDTO": {
-            "properties": {
-                "scalableGroups": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "ScalableGroupDTO"
-                    }
-                }
-            },
-            "extends": "",
-            "id": "ProducerDTO",
-            "description": ""
-        },
-        "ConsumerDTO": {
-            "properties": {
-                "scalableGroups": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "ScalableGroupDTO"
-                    }
-                }
-            },
-            "extends": "",
-            "id": "ConsumerDTO",
-            "description": ""
-        },
-        "TaskIdResult": {
-            "properties": {
-                "response": {
-                    "$ref": "TaskIdResponse"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "TaskIdResult",
-            "description": ""
-        },
-        "PolicyDTOResult": {
-            "properties": {
-                "response": {
-                    "$ref": "PolicyDTO"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "PolicyDTOResult",
-            "description": ""
-        },
-        "CountResult": {
-            "properties": {
-                "response": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "version": {
-                    "type": "string"
-                }
-            },
-            "extends": "",
-            "id": "CountResult",
-            "description": ""
-        },
         "PolicyDTOListResult": {
+            "extends": "",
             "properties": {
+                "version": {
+                    "type": "string"
+                },
                 "response": {
                     "type": "array",
                     "items": {
                         "$ref": "PolicyDTO"
                     }
-                },
-                "version": {
-                    "type": "string"
                 }
             },
-            "extends": "",
             "id": "PolicyDTOListResult",
             "description": ""
         },
-        "PolicyContractDTO": {
+        "CountResult": {
+            "extends": "",
             "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "id"
+                "version": {
+                    "type": "string"
                 },
-                "name": {
-                    "type": "string",
-                    "description": "name"
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
                 }
             },
+            "id": "CountResult",
+            "description": ""
+        },
+        "ConsumerDTO": {
             "extends": "",
-            "required": [
-                "name",
-                "id"
-            ],
-            "id": "PolicyContractDTO",
+            "properties": {
+                "scalableGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ScalableGroupDTO"
+                    }
+                }
+            },
+            "id": "ConsumerDTO",
             "description": ""
         },
         "TaskId": {
-            "properties": {},
             "extends": "",
+            "properties": {},
             "id": "TaskId",
             "description": ""
         },
-        "PolicyDTO": {
+        "TaskIdResponse": {
+            "extends": "",
             "properties": {
-                "consumer": {
-                    "$ref": "ConsumerDTO",
-                    "description": "consumer"
+                "taskId": {
+                    "$ref": "TaskId"
                 },
-                "contract": {
-                    "$ref": "PolicyContractDTO",
-                    "description": "contract"
-                },
-                "producer": {
-                    "$ref": "ProducerDTO",
-                    "description": "producer"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "description"
-                },
-                "lastUpdateTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "lastUpdateTime"
-                },
-                "createTime": {
-                    "format": "int64",
-                    "type": "integer",
-                    "description": "createTime"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "id"
-                },
-                "priority": {
-                    "format": "int32",
-                    "type": "integer",
-                    "description": "priority"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "name"
+                "url": {
+                    "type": "string"
                 }
             },
-            "extends": "",
-            "required": [
-                "priority",
-                "name",
-                "contract",
-                "consumer",
-                "producer",
-                "id"
-            ],
-            "id": "PolicyDTO",
+            "id": "TaskIdResponse",
             "description": ""
         },
         "ScalableGroupDTO": {
+            "extends": "",
             "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name"
+                },
                 "state": {
                     "type": "string",
                     "description": "state"
@@ -523,32 +78,697 @@
                 "id": {
                     "type": "string",
                     "description": "id"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "name"
                 }
             },
-            "extends": "",
             "required": [
                 "id"
             ],
             "id": "ScalableGroupDTO",
             "description": ""
         },
-        "TaskIdResponse": {
+        "PolicyDTOResult": {
+            "extends": "",
             "properties": {
-                "url": {
+                "version": {
                     "type": "string"
                 },
-                "taskId": {
-                    "$ref": "TaskId"
+                "response": {
+                    "$ref": "PolicyDTO"
                 }
             },
+            "id": "PolicyDTOResult",
+            "description": ""
+        },
+        "ProducerDTO": {
             "extends": "",
-            "id": "TaskIdResponse",
+            "properties": {
+                "scalableGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ScalableGroupDTO"
+                    }
+                }
+            },
+            "id": "ProducerDTO",
+            "description": ""
+        },
+        "TaskIdResult": {
+            "extends": "",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "TaskIdResponse"
+                }
+            },
+            "id": "TaskIdResult",
+            "description": ""
+        },
+        "PolicyContractDTO": {
+            "extends": "",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                }
+            },
+            "required": [
+                "name",
+                "id"
+            ],
+            "id": "PolicyContractDTO",
+            "description": ""
+        },
+        "PolicyDTO": {
+            "extends": "",
+            "properties": {
+                "contract": {
+                    "$ref": "PolicyContractDTO",
+                    "description": "contract"
+                },
+                "createTime": {
+                    "type": "integer",
+                    "description": "createTime",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name"
+                },
+                "producer": {
+                    "$ref": "ProducerDTO",
+                    "description": "producer"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "priority",
+                    "format": "int32"
+                },
+                "consumer": {
+                    "$ref": "ConsumerDTO",
+                    "description": "consumer"
+                },
+                "lastUpdateTime": {
+                    "type": "integer",
+                    "description": "lastUpdateTime",
+                    "format": "int64"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description"
+                }
+            },
+            "required": [
+                "name",
+                "priority",
+                "contract",
+                "producer",
+                "consumer",
+                "id"
+            ],
+            "id": "PolicyDTO",
             "description": ""
         }
     },
-    "swaggerVersion": "1.2"
+    "consumes": [
+        "application/json"
+    ],
+    "apis": [
+        {
+            "path": "/v2/policy",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Create Policy(s)",
+                    "nickname": "add",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body.",
+                            "code": 201
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The request was accepted for processing, but the processing has not been completed.",
+                            "code": 202
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "POST",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Create Policy(s)",
+                    "parameters": [
+                        {
+                            "type": "array",
+                            "name": "policyDTOs",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "Policy Object(s)",
+                            "items": {
+                                "$ref": "PolicyDTO"
+                            },
+                            "defaultValue": "",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+            ],
+            "description": "add"
+        },
+        {
+            "path": "/v2/policy",
+            "operations": [
+                {
+                    "type": "PolicyDTOListResult",
+                    "notes": "Retrieves policies based on a given filter",
+                    "nickname": "getPolicyByFilters",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "PolicyDTOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Retrieves policies based on a given filter",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "name",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve policies for a given name",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "contract+name",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve policies for a given contract name",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "producer+scalableGroupName",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve policies for a given producer scalable group name",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "consumer+scalableGroupName",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve policies for a given consumer scalable group name",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "scalableGroupName",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Retrieve policies for a given scalable group name (used within producer or consumer)",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "offset",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Starting index of the resources (1 based)",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        },
+                        {
+                            "type": "string",
+                            "name": "limit",
+                            "allowMultiple": false,
+                            "required": false,
+                            "description": "Number of resources to return",
+                            "defaultValue": "",
+                            "paramType": "query"
+                        }
+                    ]
+                }
+            ],
+            "description": "getPolicyByFilters"
+        },
+        {
+            "path": "/v2/policy",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Update Policy(s)",
+                    "nickname": "update",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "PUT",
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Update Policy(s)",
+                    "parameters": [
+                        {
+                            "type": "array",
+                            "name": "policyDTOs",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "Policy Object(s)",
+                            "items": {
+                                "$ref": "PolicyDTO"
+                            },
+                            "defaultValue": "",
+                            "paramType": "body"
+                        }
+                    ]
+                }
+            ],
+            "description": "update"
+        },
+        {
+            "path": "/v2/policy/count",
+            "operations": [
+                {
+                    "type": "CountResult",
+                    "notes": "Get total count of policies",
+                    "nickname": "getCount",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Return total count of policies",
+                    "parameters": []
+                }
+            ],
+            "description": "getCount"
+        },
+        {
+            "path": "/v2/policy/{id}",
+            "operations": [
+                {
+                    "type": "PolicyDTOResult",
+                    "notes": "Get a policy by id",
+                    "nickname": "getById",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "PolicyDTOResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Retrieves a policy based on its id",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "id",
+                            "defaultValue": "",
+                            "paramType": "path"
+                        }
+                    ]
+                }
+            ],
+            "description": "getById"
+        },
+        {
+            "path": "/v2/policy/{id}",
+            "operations": [
+                {
+                    "type": "TaskIdResult",
+                    "notes": "Delete a policy by id",
+                    "nickname": "delete",
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "summary": "Deletes a policy by its id",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "id",
+                            "allowMultiple": false,
+                            "required": true,
+                            "description": "id",
+                            "defaultValue": "",
+                            "paramType": "path"
+                        }
+                    ]
+                }
+            ],
+            "description": "delete"
+        }
+    ],
+    "resourcePath": "/v2/policy",
+    "produces": [
+        "application/json"
+    ],
+    "apiVersion": "1.0"
 }

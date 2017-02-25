@@ -36,9 +36,6 @@ class ZtdBulkStatus(object):
             'siteSkipped': 'int',
             
             
-            'username': 'str',
-            
-            
             'deviceAdded': 'int',
             
             
@@ -46,6 +43,9 @@ class ZtdBulkStatus(object):
             
             
             'deviceSkipped': 'int',
+            
+            
+            'username': 'str',
             
             
             'requestFilename': 'str',
@@ -74,13 +74,13 @@ class ZtdBulkStatus(object):
             
             'siteSkipped': 'siteSkipped',
             
-            'username': 'username',
-            
             'deviceAdded': 'deviceAdded',
             
             'deviceFailed': 'deviceFailed',
             
             'deviceSkipped': 'deviceSkipped',
+            
+            'username': 'username',
             
             'requestFilename': 'requestFilename',
             
@@ -113,9 +113,6 @@ class ZtdBulkStatus(object):
         self.siteSkipped = None # int
         
         
-        self.username = None # str
-        
-        
         self.deviceAdded = None # int
         
         
@@ -123,6 +120,9 @@ class ZtdBulkStatus(object):
         
         
         self.deviceSkipped = None # int
+        
+        
+        self.username = None # str
         
         
         self.requestFilename = None # str

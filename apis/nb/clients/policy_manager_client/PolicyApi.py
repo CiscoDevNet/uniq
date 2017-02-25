@@ -1242,6 +1242,68 @@ class PolicyApi(object):
         
         
     
+    def getScheduledPolicies(self, **kwargs):
+        """Retrieves scheduled policies
+
+        Args:
+            
+            policyScope, str: Retrieve scheduled policies for a given scope (required)
+            
+            
+        
+        Returns: ScheduledPolicyListResult
+        """
+
+        allParams = ['policyScope']
+
+        params = locals()
+        for (key, val) in list(params['kwargs'].items()):
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getScheduledPolicies" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/policy/schedule'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+        formParams = {}
+        files = {}
+        bodyParam = None
+
+        headerParams['Accept'] = 'application/json'
+        headerParams['Content-Type'] = 'application/json'
+
+        
+        if ('policyScope' in params):
+            queryParams['policyScope'] = self.apiClient.toPathValue(params['policyScope'])
+        
+
+        
+
+        
+
+        
+
+        
+
+        postData = (formParams if formParams else bodyParam)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, files=files)
+
+        
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'ScheduledPolicyListResult')
+        return responseObject
+        
+        
+        
+    
     def getPolicyStatus(self, **kwargs):
         """Retrieves policy statuses based on a given filter
 

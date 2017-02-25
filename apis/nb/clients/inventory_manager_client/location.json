@@ -1,552 +1,28 @@
 {
-    "consumes": [
-        "application/json"
-    ],
-    "apis": [
-        {
-            "description": "addLocation",
-            "operations": [
-                {
-                    "nickname": "addLocation",
-                    "notes": "Creates a new location with the attributes given",
-                    "summary": "Creates location",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This Request is Accepted",
-                            "code": 202
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "locationNIO",
-                            "allowMultiple": false,
-                            "paramType": "body",
-                            "type": "LocationNIO",
-                            "description": "Attributes of a location",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/location"
-        },
-        {
-            "description": "getAllLocation",
-            "operations": [
-                {
-                    "nickname": "getAllLocation",
-                    "notes": "Gets list of locations",
-                    "summary": "Retrieves all locations",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "LocationNIOListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "LocationNIOListResult",
-                    "parameters": []
-                }
-            ],
-            "path": "/location"
-        },
-        {
-            "description": "updateLocation",
-            "operations": [
-                {
-                    "nickname": "updateLocation",
-                    "notes": "Updates a location with the given attributes",
-                    "summary": "Updates location",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "PUT",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "locationNIO",
-                            "allowMultiple": false,
-                            "paramType": "body",
-                            "type": "LocationNIO",
-                            "description": "Attributes of a location",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/location"
-        },
-        {
-            "description": "getLocationCount",
-            "operations": [
-                {
-                    "nickname": "getLocationCount",
-                    "notes": "Gets the count of all locations",
-                    "summary": "Retrieves location count",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "CountResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "CountResult",
-                    "parameters": []
-                }
-            ],
-            "path": "/location/count"
-        },
-        {
-            "description": "getLocationByName",
-            "operations": [
-                {
-                    "nickname": "getLocationByName",
-                    "notes": "Gets the location with the given location name",
-                    "summary": "Retrieves location by location name",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "LocationNIOResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "LocationNIOResult",
-                    "parameters": [
-                        {
-                            "name": "locationName",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Location name",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/location/location-name/{locationName}"
-        },
-        {
-            "description": "updateLocationTag",
-            "operations": [
-                {
-                    "nickname": "updateLocationTag",
-                    "notes": "Associates the given tag to the given location",
-                    "summary": "Associate a tag to a location",
-                    "consumes": [
-                        "application/json"
-                    ],
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "POST",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This Request is Accepted",
-                            "code": 202
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "tagNIO",
-                            "allowMultiple": false,
-                            "paramType": "body",
-                            "type": "TagNIO",
-                            "description": "TagNIO with tag ID and location ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/location/tag"
-        },
-        {
-            "description": "getLocationById",
-            "operations": [
-                {
-                    "nickname": "getLocationById",
-                    "notes": "Gets the location with the given ID",
-                    "summary": "Retrieves location by ID",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "LocationNIOResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "LocationNIOResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Location ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/location/{id}"
-        },
-        {
-            "description": "deleteLocationById",
-            "operations": [
-                {
-                    "nickname": "deleteLocationById",
-                    "notes": "Deletes the location with the given ID",
-                    "summary": "Deletes location by ID",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Location ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/location/{id}"
-        },
-        {
-            "description": "deleteLocationTag",
-            "operations": [
-                {
-                    "nickname": "deleteLocationTag",
-                    "notes": "Deletes the location tag for the given location ID",
-                    "summary": "Deletes location tag by location ID",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "DELETE",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "TaskIdResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "TaskIdResult",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Location ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/location/{id}/tag"
-        },
-        {
-            "description": "getLocationByRange",
-            "operations": [
-                {
-                    "nickname": "getLocationByRange",
-                    "notes": "Gets list of locations in the given range",
-                    "summary": "Retrieves location range",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "LocationNIOListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "LocationNIOListResult",
-                    "parameters": [
-                        {
-                            "name": "startIndex",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "integer",
-                            "description": "Start index",
-                            "required": true,
-                            "format": "int32",
-                            "defaultValue": ""
-                        },
-                        {
-                            "name": "recordsToReturn",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "integer",
-                            "description": "Number of records to return",
-                            "required": true,
-                            "format": "int32",
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/location/{startIndex}/{recordsToReturn}"
-        },
-        {
-            "description": "getLocationByTag",
-            "operations": [
-                {
-                    "nickname": "getLocationByTag",
-                    "notes": "Gets list of locations associated with the given tag",
-                    "summary": "Retrieves location by tag",
-                    "produces": [
-                        "application/json"
-                    ],
-                    "method": "GET",
-                    "deprecated": "false",
-                    "responseMessages": [
-                        {
-                            "message": "This Request is OK",
-                            "code": 200,
-                            "responseModel": "LocationNIOListResult"
-                        },
-                        {
-                            "message": "This user is Forbidden Access to this Resource",
-                            "code": 403
-                        },
-                        {
-                            "message": "Not Authorized Yet, Credentials to be supplied",
-                            "code": 401
-                        },
-                        {
-                            "message": "No Resource Found",
-                            "code": 404
-                        }
-                    ],
-                    "type": "LocationNIOListResult",
-                    "parameters": [
-                        {
-                            "name": "tagId",
-                            "allowMultiple": false,
-                            "paramType": "path",
-                            "type": "string",
-                            "description": "Tag ID",
-                            "required": true,
-                            "defaultValue": ""
-                        }
-                    ]
-                }
-            ],
-            "path": "/tag/{tagId}/location"
-        }
-    ],
     "apiVersion": "1.0",
-    "swaggerVersion": "1.2",
     "models": {
-        "CountResult": {
+        "TaskId": {
+            "description": "",
+            "id": "TaskId",
+            "properties": {},
+            "extends": ""
+        },
+        "TaskIdResponse": {
+            "description": "",
+            "id": "TaskIdResponse",
             "properties": {
-                "version": {
-                    "type": "string"
+                "taskId": {
+                    "$ref": "TaskId"
                 },
-                "response": {
-                    "type": "integer",
-                    "format": "int32"
+                "url": {
+                    "type": "string"
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "CountResult"
+            "extends": ""
         },
         "LocationNIOListResult": {
+            "description": "",
+            "id": "LocationNIOListResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -558,17 +34,11 @@
                     }
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "LocationNIOListResult"
-        },
-        "TaskId": {
-            "properties": {},
-            "description": "",
-            "extends": "",
-            "id": "TaskId"
+            "extends": ""
         },
         "TaskIdResult": {
+            "description": "",
+            "id": "TaskIdResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -577,24 +47,100 @@
                     "$ref": "TaskIdResponse"
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "TaskIdResult"
+            "extends": ""
         },
-        "TaskIdResponse": {
+        "TagNIO": {
+            "description": "",
+            "id": "TagNIO",
+            "extends": "",
             "properties": {
-                "taskId": {
-                    "$ref": "TaskId"
+                "networkDeviceId": {
+                    "type": "string",
+                    "description": "Unique identifier of device"
                 },
-                "url": {
-                    "type": "string"
+                "linkId": {
+                    "type": "string",
+                    "description": "Unique identifier of link"
+                },
+                "interfaceId": {
+                    "type": "string",
+                    "description": "Unique identifier of the interface"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Unique identifier of location"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "Time when the device interface info last got updated"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Tag Id"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of tag"
                 }
             },
+            "required": [
+                "locationId",
+                "id",
+                "tag"
+            ]
+        },
+        "CountResult": {
             "description": "",
+            "id": "CountResult",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "extends": ""
+        },
+        "LocationNIO": {
+            "description": "",
+            "id": "LocationNIO",
             "extends": "",
-            "id": "TaskIdResponse"
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the location"
+                },
+                "locationName": {
+                    "type": "string",
+                    "description": "Name of the location"
+                },
+                "civicAddress": {
+                    "type": "string",
+                    "description": "Civic address of the location"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier for location"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Tag associated with the location"
+                },
+                "geographicalAddress": {
+                    "type": "string",
+                    "description": "Geographic address of the location"
+                }
+            },
+            "required": [
+                "locationName",
+                "id"
+            ]
         },
         "LocationNIOResult": {
+            "description": "",
+            "id": "LocationNIOResult",
             "properties": {
                 "version": {
                     "type": "string"
@@ -603,92 +149,947 @@
                     "$ref": "LocationNIO"
                 }
             },
-            "description": "",
-            "extends": "",
-            "id": "LocationNIOResult"
-        },
-        "TagNIO": {
-            "required": [
-                "id",
-                "tag",
-                "locationId"
-            ],
-            "properties": {
-                "lastUpdated": {
-                    "type": "string",
-                    "description": "Time when the device interface info last got updated"
-                },
-                "locationId": {
-                    "type": "string",
-                    "description": "Unique identifier of location"
-                },
-                "interfaceId": {
-                    "type": "string",
-                    "description": "Unique identifier of the interface"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "Tag Id"
-                },
-                "networkDeviceId": {
-                    "type": "string",
-                    "description": "Unique identifier of device"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of tag"
-                },
-                "linkId": {
-                    "type": "string",
-                    "description": "Unique identifier of link"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "TagNIO"
-        },
-        "LocationNIO": {
-            "required": [
-                "id",
-                "locationName"
-            ],
-            "properties": {
-                "locationName": {
-                    "type": "string",
-                    "description": "Name of the location"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Description of the location"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "Tag associated with the location"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier for location"
-                },
-                "civicAddress": {
-                    "type": "string",
-                    "description": "Civic address of the location"
-                },
-                "geographicalAddress": {
-                    "type": "string",
-                    "description": "Geographic address of the location"
-                },
-                "attributeInfo": {
-                    "$ref": "object"
-                }
-            },
-            "description": "",
-            "extends": "",
-            "id": "LocationNIO"
+            "extends": ""
         }
     },
-    "basePath": "/apic-em-inventory-manager-service",
+    "resourcePath": "/",
     "produces": [
         "application/json"
     ],
-    "resourcePath": "/"
+    "apis": [
+        {
+            "description": "updateLocation",
+            "path": "/location",
+            "operations": [
+                {
+                    "method": "PUT",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "updateLocation",
+                    "type": "TaskIdResult",
+                    "notes": "Updates a location with the given attributes",
+                    "summary": "Updates location",
+                    "parameters": [
+                        {
+                            "description": "Attributes of a location",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "LocationNIO",
+                            "allowMultiple": false,
+                            "name": "locationNIO",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getAllLocation",
+            "path": "/location",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getAllLocation",
+                    "type": "LocationNIOListResult",
+                    "notes": "Gets list of locations",
+                    "summary": "Retrieves all locations",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "LocationNIOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "addLocation",
+            "path": "/location",
+            "operations": [
+                {
+                    "method": "POST",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "addLocation",
+                    "type": "TaskIdResult",
+                    "notes": "Creates a new location with the attributes given",
+                    "summary": "Creates location",
+                    "parameters": [
+                        {
+                            "description": "Attributes of a location",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "LocationNIO",
+                            "allowMultiple": false,
+                            "name": "locationNIO",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body.",
+                            "code": 201
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The request was accepted for processing, but the processing has not been completed.",
+                            "code": 202
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getLocationCount",
+            "path": "/location/count",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getLocationCount",
+                    "type": "CountResult",
+                    "notes": "Gets the count of all locations",
+                    "summary": "Retrieves location count",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "CountResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getLocationByName",
+            "path": "/location/location-name/{locationName}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getLocationByName",
+                    "type": "LocationNIOResult",
+                    "notes": "Gets the location with the given location name",
+                    "summary": "Retrieves location by location name",
+                    "parameters": [
+                        {
+                            "description": "Location name",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "locationName",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "LocationNIOResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "updateLocationTag",
+            "path": "/location/tag",
+            "operations": [
+                {
+                    "method": "POST",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "updateLocationTag",
+                    "type": "TaskIdResult",
+                    "notes": "Associates the given tag to the given location",
+                    "summary": "Associate a tag to a location",
+                    "parameters": [
+                        {
+                            "description": "TagNIO with tag ID and location ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "TagNIO",
+                            "allowMultiple": false,
+                            "name": "tagNIO",
+                            "paramType": "body"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The POST/PUT request was fulfilled and a new resource has been created. Information about the resource is in the response body.",
+                            "code": 201
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The request was accepted for processing, but the processing has not been completed.",
+                            "code": 202
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getLocationById",
+            "path": "/location/{id}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getLocationById",
+                    "type": "LocationNIOResult",
+                    "notes": "Gets the location with the given ID",
+                    "summary": "Retrieves location by ID",
+                    "parameters": [
+                        {
+                            "description": "Location ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "LocationNIOResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "deleteLocationById",
+            "path": "/location/{id}",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "deleteLocationById",
+                    "type": "TaskIdResult",
+                    "notes": "Deletes the location with the given ID",
+                    "summary": "Deletes location by ID",
+                    "parameters": [
+                        {
+                            "description": "Location ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "deleteLocationTag",
+            "path": "/location/{id}/tag",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "deleteLocationTag",
+                    "type": "TaskIdResult",
+                    "notes": "Deletes the location tag for the given location ID",
+                    "summary": "Deletes location tag by location ID",
+                    "parameters": [
+                        {
+                            "description": "Location ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "id",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "TaskIdResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getLocationByRange",
+            "path": "/location/{startIndex}/{recordsToReturn}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getLocationByRange",
+                    "type": "LocationNIOListResult",
+                    "notes": "Gets the list of locations in the given range",
+                    "summary": "Retrieves locations in the given range",
+                    "parameters": [
+                        {
+                            "description": "Start index",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": true,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "startIndex",
+                            "paramType": "path"
+                        },
+                        {
+                            "description": "Number of records to return",
+                            "defaultValue": "",
+                            "format": "int32",
+                            "required": true,
+                            "type": "integer",
+                            "allowMultiple": false,
+                            "name": "recordsToReturn",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "LocationNIOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "getLocationByTag",
+            "path": "/tag/{tagId}/location",
+            "operations": [
+                {
+                    "method": "GET",
+                    "deprecated": "false",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "nickname": "getLocationByTag",
+                    "type": "LocationNIOListResult",
+                    "notes": "Gets list of locations associated with the given tag",
+                    "summary": "Retrieves location by tag",
+                    "parameters": [
+                        {
+                            "description": "Tag ID",
+                            "defaultValue": "",
+                            "required": true,
+                            "type": "string",
+                            "allowMultiple": false,
+                            "name": "tagId",
+                            "paramType": "path"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "message": "The request was successful, however no content was returned.",
+                            "code": 204
+                        },
+                        {
+                            "message": "The target resource is in a conflicted state (for example, an edit conflict where a resource is being edited by multiple users). Retrying the request later might succeed.",
+                            "code": 409
+                        },
+                        {
+                            "message": "The GET request included a Range Header, and the server responded with the partial content matching the range.",
+                            "code": 206
+                        },
+                        {
+                            "message": "The server did not respond inside time restrictions and timed-out.",
+                            "code": 504
+                        },
+                        {
+                            "message": "The client sent a request body in a format that the server does not support (for example, XML to a server that only accepts JSON).",
+                            "code": 415
+                        },
+                        {
+                            "message": "The request was successful. The result is contained in the response body.",
+                            "code": 200,
+                            "responseModel": "LocationNIOListResult"
+                        },
+                        {
+                            "message": "The server could not fulfill the request.",
+                            "code": 500
+                        },
+                        {
+                            "message": "The server has not implemented the functionality required to fulfill the request.",
+                            "code": 501
+                        },
+                        {
+                            "message": "The server recognizes the authentication credentials, but the client is not authorized to perform this request.",
+                            "code": 403
+                        },
+                        {
+                            "message": "The client made a request that the server could not understand (for example, the request syntax is incorrect).",
+                            "code": 400
+                        },
+                        {
+                            "message": "The server is (temporarily) unavailable.",
+                            "code": 503
+                        },
+                        {
+                            "message": "The client's authentication credentials included with the request are missing or invalid.",
+                            "code": 401
+                        },
+                        {
+                            "message": "The client made a request for a resource that does not exist.",
+                            "code": 404
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "swaggerVersion": "1.2",
+    "consumes": [
+        "application/json"
+    ],
+    "basePath": "/apic-em-inventory-manager-service"
 }

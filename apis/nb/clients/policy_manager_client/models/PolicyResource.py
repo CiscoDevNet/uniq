@@ -15,6 +15,15 @@ class PolicyResource(object):
         """
         self.swaggerTypes = {
             
+            'trafficClasses': 'str',
+            
+            
+            'categories': 'list[CategoryDTO]',
+            
+            
+            'applications': 'list[PolicyApplication]',
+            
+            
             'userIdentifiers': 'list[str]',
             
             
@@ -24,17 +33,17 @@ class PolicyResource(object):
             'locations': 'list[str]',
             
             
-            'applications': 'list[PolicyApplication]',
-            
-            
-            'applicationDiffs': 'list[PolicyApplicationDiffDTO]',
-            
-            
-            'categories': 'list[CategoryDTO]'
+            'applicationDiffs': 'list[PolicyApplicationDiffDTO]'
             
         }
 
         self.attributeMap = {
+            
+            'trafficClasses': 'trafficClasses',
+            
+            'categories': 'categories',
+            
+            'applications': 'applications',
             
             'userIdentifiers': 'userIdentifiers',
             
@@ -42,14 +51,20 @@ class PolicyResource(object):
             
             'locations': 'locations',
             
-            'applications': 'applications',
-            
-            'applicationDiffs': 'applicationDiffs',
-            
-            'categories': 'categories'
+            'applicationDiffs': 'applicationDiffs'
             
         }       
 
+        
+        #Traffic classes to set the bandwidth profile for. If the ActionProperty is BandwidthProfileId, this resource should be &#39;ALL_TRAFFIC_CLASSES&#39;. Otherwise, it should be null.
+        
+        self.trafficClasses = None # str
+        
+        
+        self.categories = None # list[CategoryDTO]
+        
+        
+        self.applications = None # list[PolicyApplication]
         
         
         self.userIdentifiers = None # list[str]
@@ -61,11 +76,5 @@ class PolicyResource(object):
         self.locations = None # list[str]
         
         
-        self.applications = None # list[PolicyApplication]
-        
-        
         self.applicationDiffs = None # list[PolicyApplicationDiffDTO]
-        
-        
-        self.categories = None # list[CategoryDTO]
         
