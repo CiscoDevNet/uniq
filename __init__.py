@@ -50,5 +50,5 @@ __title__ = 'uniq'
 __license__ = 'Apache 2.0'
 __copyright__ = 'Copyright 2016 Cisco Systems'
 
-__version__ = '1.3.2'
+__version__ = '1.4.0'
 __first_release_date__ = '2016.6.8'
